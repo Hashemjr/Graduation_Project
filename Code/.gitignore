@@ -7,4 +7,5 @@
 /.flutter-plugins-dependencies
 /.packages
 ios/
-.dhiwise/
+.*
+!/.gitignore
