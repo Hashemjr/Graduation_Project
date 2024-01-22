@@ -8,5 +8,5 @@
 /.packages
 ios/
 .*
-# ignore
 !/.gitignore
+!/android/.gitignore
