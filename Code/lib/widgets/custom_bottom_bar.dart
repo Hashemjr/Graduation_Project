@@ -1,5 +1,5 @@
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
 
 class CustomBottomBar extends StatefulWidget {
   CustomBottomBar({this.onChanged});
@@ -15,41 +15,27 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 
   List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
-      icon: ImageConstant.imgNavHome,
-      activeIcon: ImageConstant.imgNavHome,
-      title: "lbl_home".tr,
-      type: BottomBarEnum.Home,
+      icon: ImageConstant.imgNavCourses31x24,
+      activeIcon: ImageConstant.imgNavCourses31x24,
+      title: "lbl_courses".tr,
+      type: BottomBarEnum.Courses,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imgContrast,
-      activeIcon: ImageConstant.imgContrast,
-      title: "lbl_home".tr,
-      type: BottomBarEnum.Home,
-    ),
-    BottomMenuModel(
-      icon: ImageConstant.imgThumbsUp,
-      activeIcon: ImageConstant.imgThumbsUp,
-      title: "lbl_home".tr,
-      type: BottomBarEnum.Home,
-    ),
-    BottomMenuModel(
-      icon: ImageConstant.imgSettingsDeepOrangeA700,
-      activeIcon: ImageConstant.imgSettingsDeepOrangeA700,
-      title: "lbl_home".tr,
-      type: BottomBarEnum.Home,
+      icon: ImageConstant.imgNavProfile,
+      activeIcon: ImageConstant.imgNavProfile,
+      title: "lbl_profile".tr,
+      type: BottomBarEnum.Profile,
     )
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 104.v,
+      height: 82.v,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            ImageConstant.imgFrame1991,
-          ),
-          fit: BoxFit.cover,
+        color: theme.colorScheme.primary,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20.h),
         ),
       ),
       child: BottomNavigationBar(
@@ -62,11 +48,24 @@ class CustomBottomBarState extends State<CustomBottomBar> {
         type: BottomNavigationBarType.fixed,
         items: List.generate(bottomMenuList.length, (index) {
           return BottomNavigationBarItem(
-            icon: CustomImageView(
-              imagePath: bottomMenuList[index].icon,
-              height: 24.adaptSize,
-              width: 24.adaptSize,
-              color: appTheme.deepOrangeA700,
+            icon: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomImageView(
+                  imagePath: bottomMenuList[index].icon,
+                  height: 24.adaptSize,
+                  width: 24.adaptSize,
+                  color: appTheme.deepOrangeA700,
+                ),
+                Text(
+                  bottomMenuList[index].title ?? "",
+                  style: CustomTextStyles.bodyMediumMontserratDeeporangeA700
+                      .copyWith(
+                    color: appTheme.deepOrangeA700,
+                  ),
+                ),
+              ],
             ),
             activeIcon: Column(
               mainAxisSize: MainAxisSize.min,
@@ -74,17 +73,23 @@ class CustomBottomBarState extends State<CustomBottomBar> {
               children: [
                 CustomImageView(
                   imagePath: bottomMenuList[index].activeIcon,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  color: appTheme.deepOrangeA700,
+                  height: 31.v,
+                  width: 24.h,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 4.v),
-                  child: Text(
-                    bottomMenuList[index].title ?? "",
-                    style: CustomTextStyles.labelLargeSFProTextDeeporangeA700
-                        .copyWith(
-                      color: appTheme.deepOrangeA700,
+                Text(
+                  bottomMenuList[index].title ?? "",
+                  style: CustomTextStyles.titleSmallMontserratDeeporangeA700
+                      .copyWith(
+                    color: appTheme.deepOrangeA700,
+                  ),
+                ),
+                Container(
+                  height: 8.v,
+                  width: 19.h,
+                  decoration: BoxDecoration(
+                    color: appTheme.deepOrangeA700,
+                    borderRadius: BorderRadius.circular(
+                      9.h,
                     ),
                   ),
                 ),
@@ -104,7 +109,8 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 }
 
 enum BottomBarEnum {
-  Home,
+  Courses,
+  Profile,
 }
 
 class BottomMenuModel {

@@ -1,7 +1,7 @@
 import 'bloc/app_navigation_bloc.dart';
 import 'models/app_navigation_model.dart';
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
 
 class AppNavigationScreen extends StatelessWidget {
   const AppNavigationScreen({Key? key})
@@ -41,87 +41,21 @@ class AppNavigationScreen extends StatelessWidget {
                           children: [
                             _buildScreenTitle(
                               context,
-                              screenTitle: "welcome page Three".tr,
+                              screenTitle: "choose accountOne".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.welcomePageThreeScreen),
+                                  AppRoutes.chooseAccountoneScreen),
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "welcome page Two".tr,
+                              screenTitle: "choose accountTwo".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.welcomePageTwoScreen),
+                                  AppRoutes.chooseAccounttwoScreen),
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "welcome page Four".tr,
+                              screenTitle: "choose accountThree".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.welcomePageFourScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "welcome page".tr,
-                              onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.welcomePageScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "welcome page One".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.welcomePageOneScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Frame 1321317428".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.frame1321317428Screen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "choose account Three".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.chooseAccountThreeScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "choose account One".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.chooseAccountOneScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "choose account Two".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.chooseAccountTwoScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "choose account".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.chooseAccountScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Home page - Container".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.homePageContainerScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "signup Two".tr,
-                              onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.signupTwoScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "signup One".tr,
-                              onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.signupOneScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "signup Three".tr,
-                              onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.signupThreeScreen),
+                                  AppRoutes.chooseAccountthreeScreen),
                             ),
                             _buildScreenTitle(
                               context,
@@ -131,39 +65,15 @@ class AppNavigationScreen extends StatelessWidget {
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "Home page Seven".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.homePageSevenScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Home page Five".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.homePageFiveScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Home page Six".tr,
+                              screenTitle: "signupTwo".tr,
                               onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.homePageSixScreen),
+                                  onTapScreenTitle(AppRoutes.signuptwoScreen),
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "Home page One".tr,
+                              screenTitle: "signupOne".tr,
                               onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.homePageOneScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Home page Four".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.homePageFourScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Home page Three".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.homePageThreeScreen),
+                                  onTapScreenTitle(AppRoutes.signuponeScreen),
                             ),
                             _buildScreenTitle(
                               context,
@@ -173,15 +83,15 @@ class AppNavigationScreen extends StatelessWidget {
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "forget password One".tr,
-                              onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.forgetPasswordOneScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
                               screenTitle: "forget password".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
                                   AppRoutes.forgetPasswordScreen),
+                            ),
+                            _buildScreenTitle(
+                              context,
+                              screenTitle: "forget passwordOne".tr,
+                              onTapScreenTitle: () => onTapScreenTitle(
+                                  AppRoutes.forgetPasswordoneScreen),
                             ),
                             _buildScreenTitle(
                               context,
@@ -191,15 +101,9 @@ class AppNavigationScreen extends StatelessWidget {
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "reset password One".tr,
+                              screenTitle: "reset passwordTwo".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.resetPasswordOneScreen),
-                            ),
-                            _buildScreenTitle(
-                              context,
-                              screenTitle: "Home page Two".tr,
-                              onTapScreenTitle: () =>
-                                  onTapScreenTitle(AppRoutes.homePageTwoScreen),
+                                  AppRoutes.resetPasswordtwoScreen),
                             ),
                             _buildScreenTitle(
                               context,
@@ -209,9 +113,15 @@ class AppNavigationScreen extends StatelessWidget {
                             ),
                             _buildScreenTitle(
                               context,
-                              screenTitle: "profile-stats".tr,
+                              screenTitle: "courses test - Container".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.profileStatsScreen),
+                                  AppRoutes.coursesTestContainer1Screen),
+                            ),
+                            _buildScreenTitle(
+                              context,
+                              screenTitle: "Home page - Container".tr,
+                              onTapScreenTitle: () => onTapScreenTitle(
+                                  AppRoutes.homePageContainerScreen),
                             ),
                           ],
                         ),

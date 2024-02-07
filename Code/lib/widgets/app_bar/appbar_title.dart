@@ -1,5 +1,5 @@
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
 
 // ignore: must_be_immutable
 class AppbarTitle extends StatelessWidget {
@@ -29,7 +29,7 @@ class AppbarTitle extends StatelessWidget {
         child: Text(
           text,
           style: theme.textTheme.headlineMedium!.copyWith(
-            color: appTheme.gray400,
+            color: theme.colorScheme.primary,
           ),
         ),
       ),

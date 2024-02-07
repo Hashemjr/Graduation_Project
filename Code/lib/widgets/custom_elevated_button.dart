@@ -1,6 +1,6 @@
+import 'package:chineasy/core/app_export.dart';
+import 'package:chineasy/widgets/base_button.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
-import 'package:grad_project/widgets/base_button.dart';
 
 class CustomElevatedButton extends BaseButton {
   CustomElevatedButton({
@@ -60,8 +60,7 @@ class CustomElevatedButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text,
-                style: buttonTextStyle ??
-                    CustomTextStyles.titleLargePoppinsBlack900,
+                style: buttonTextStyle ?? theme.textTheme.titleLarge,
               ),
               rightIcon ?? const SizedBox.shrink(),
             ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
+import 'package:chineasy/core/app_export.dart';
 
 class AppDecoration {
   // Background decorations
@@ -8,65 +8,33 @@ class AppDecoration {
           begin: Alignment(0.5, 0),
           end: Alignment(0.5, 1),
           colors: [
-            appTheme.black90001,
+            appTheme.black900,
             appTheme.gray90001,
-          ],
-        ),
-      );
-
-  // Card decorations
-  static BoxDecoration get card => BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.07, 1),
-          end: Alignment(0.99, 0.01),
-          colors: [
-            appTheme.gray90002,
-            appTheme.red90001,
           ],
         ),
       );
 
   // Fill decorations
   static BoxDecoration get fillBlack => BoxDecoration(
-        color: appTheme.black90001,
-      );
-  static BoxDecoration get fillBlueGray => BoxDecoration(
-        color: appTheme.blueGray100,
-      );
-  static BoxDecoration get fillCyan => BoxDecoration(
-        color: appTheme.cyan300,
-      );
-  static BoxDecoration get fillGray => BoxDecoration(
-        color: appTheme.gray200,
-      );
-  static BoxDecoration get fillGray20002 => BoxDecoration(
-        color: appTheme.gray20002,
-      );
-  static BoxDecoration get fillGray300 => BoxDecoration(
-        color: appTheme.gray300,
-      );
-  static BoxDecoration get fillGray40033 => BoxDecoration(
-        color: appTheme.gray40033,
-      );
-  static BoxDecoration get fillGray50 => BoxDecoration(
-        color: appTheme.gray50,
+        color: appTheme.black900,
       );
   static BoxDecoration get fillPrimary => BoxDecoration(
         color: theme.colorScheme.primary,
       );
 
   // Gradient decorations
-  static BoxDecoration get gradientGrayToRed => BoxDecoration(
+  static BoxDecoration get gradientDeepOrangeAToRedA => BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment(0.07, 1),
-          end: Alignment(0.99, 0.01),
+          begin: Alignment(0.16, 0.06),
+          end: Alignment(1, 1.06),
           colors: [
-            appTheme.gray90002,
-            appTheme.red90001,
+            appTheme.deepOrangeA70033,
+            appTheme.red30033,
+            appTheme.redA70033,
           ],
         ),
       );
-  static BoxDecoration get gradientGrayToRed900 => BoxDecoration(
+  static BoxDecoration get gradientGrayToRed => BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(0, 0),
           end: Alignment(1, 1),
@@ -76,7 +44,17 @@ class AppDecoration {
           ],
         ),
       );
-  static BoxDecoration get gradientGrayToRed90001 => BoxDecoration(
+  static BoxDecoration get gradientOnErrorContainerToRed => BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.07, 1),
+          end: Alignment(0.99, 0.01),
+          colors: [
+            theme.colorScheme.onErrorContainer.withOpacity(0.6),
+            appTheme.red90001.withOpacity(0.6),
+          ],
+        ),
+      );
+  static BoxDecoration get gradientOnErrorContainerToRed90001 => BoxDecoration(
         border: Border.all(
           color: appTheme.gray100.withOpacity(0.5),
           width: 1.h,
@@ -86,19 +64,40 @@ class AppDecoration {
           begin: Alignment(0.07, 1),
           end: Alignment(0.99, 0.01),
           colors: [
-            appTheme.gray90002,
+            theme.colorScheme.onErrorContainer,
             appTheme.red90001,
           ],
         ),
       );
-  static BoxDecoration get gradientPrimaryToRedD => BoxDecoration(
+  static BoxDecoration get gradientOnErrorContainerToRed900011 => BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.07, 1),
+          end: Alignment(0.99, 0.01),
+          colors: [
+            theme.colorScheme.onErrorContainer,
+            appTheme.red90001,
+          ],
+        ),
+      );
+  static BoxDecoration get gradientPrimaryToOnPrimary => BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(0.5, 0),
           end: Alignment(0.71, 0.89),
           colors: [
             theme.colorScheme.primary,
             appTheme.red200D1,
-            appTheme.red900D3,
+            theme.colorScheme.onPrimary,
+          ],
+        ),
+      );
+  static BoxDecoration get gradientPrimaryToOnPrimary1 => BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment(0.5, 0),
+          end: Alignment(0.71, 0.89),
+          colors: [
+            theme.colorScheme.primary,
+            appTheme.red200D1,
+            theme.colorScheme.onPrimary,
           ],
         ),
       );
@@ -106,6 +105,7 @@ class AppDecoration {
   // Outline decorations
   static BoxDecoration get outlineBlack => BoxDecoration();
   static BoxDecoration get outlineGray => BoxDecoration();
+  static BoxDecoration get outlineGray90099 => BoxDecoration();
   static BoxDecoration get outlineGrayCc => BoxDecoration(
         color: theme.colorScheme.primary,
         border: Border.all(
@@ -113,24 +113,18 @@ class AppDecoration {
           width: 1.h,
         ),
       );
-  static BoxDecoration get outlineOnError => BoxDecoration();
   static BoxDecoration get outlinePrimary => BoxDecoration();
   static BoxDecoration get outlinePrimary1 => BoxDecoration();
-  static BoxDecoration get outlinePrimary2 => BoxDecoration(
-        border: Border.all(
-          color: theme.colorScheme.primary.withOpacity(0.3),
-          width: 1.h,
-        ),
-      );
-  static BoxDecoration get outlinePrimary3 => BoxDecoration();
   static BoxDecoration get outlineRed => BoxDecoration();
-  static BoxDecoration get outlineRed9009901 => BoxDecoration();
 }
 
 class BorderRadiusStyle {
   // Circle borders
-  static BorderRadius get circleBorder23 => BorderRadius.circular(
-        23.h,
+  static BorderRadius get circleBorder16 => BorderRadius.circular(
+        16.h,
+      );
+  static BorderRadius get circleBorder36 => BorderRadius.circular(
+        36.h,
       );
 
   // Custom borders
@@ -140,28 +134,28 @@ class BorderRadiusStyle {
   static BorderRadius get customBorderBL24 => BorderRadius.vertical(
         bottom: Radius.circular(24.h),
       );
+  static BorderRadius get customBorderTL36 => BorderRadius.vertical(
+        top: Radius.circular(36.h),
+      );
+  static BorderRadius get customBorderTL40 => BorderRadius.vertical(
+        top: Radius.circular(40.h),
+      );
 
   // Rounded borders
-  static BorderRadius get roundedBorder2 => BorderRadius.circular(
-        2.h,
+  static BorderRadius get roundedBorder12 => BorderRadius.circular(
+        12.h,
       );
   static BorderRadius get roundedBorder20 => BorderRadius.circular(
         20.h,
       );
-  static BorderRadius get roundedBorder27 => BorderRadius.circular(
-        27.h,
+  static BorderRadius get roundedBorder24 => BorderRadius.circular(
+        24.h,
       );
   static BorderRadius get roundedBorder32 => BorderRadius.circular(
         32.h,
       );
-  static BorderRadius get roundedBorder38 => BorderRadius.circular(
-        38.h,
-      );
-  static BorderRadius get roundedBorder6 => BorderRadius.circular(
-        6.h,
-      );
-  static BorderRadius get roundedBorder71 => BorderRadius.circular(
-        71.h,
+  static BorderRadius get roundedBorder4 => BorderRadius.circular(
+        4.h,
       );
   static BorderRadius get roundedBorder78 => BorderRadius.circular(
         78.h,
@@ -171,9 +165,6 @@ class BorderRadiusStyle {
       );
   static BorderRadius get roundedBorder88 => BorderRadius.circular(
         88.h,
-      );
-  static BorderRadius get roundedBorder9 => BorderRadius.circular(
-        9.h,
       );
 }
 

@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) {
               return MaterialApp(
                 theme: theme,
-                title: 'grad_project',
+                title: 'chineasy',
                 navigatorKey: NavigatorService.navigatorKey,
                 debugShowCheckedModeBanner: false,
                 localizationsDelegates: [

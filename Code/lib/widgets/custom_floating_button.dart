@@ -1,5 +1,5 @@
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
 
 class CustomFloatingButton extends StatelessWidget {
   CustomFloatingButton({
@@ -57,17 +57,5 @@ class CustomFloatingButton extends StatelessWidget {
               ),
           child: child,
         ),
-      );
-}
-
-/// Extension on [CustomFloatingButton] to facilitate inclusion of all types of border style etc
-extension FloatingButtonStyleHelper on CustomFloatingButton {
-  static BoxDecoration get fillRed => BoxDecoration(
-        color: appTheme.red900,
-        borderRadius: BorderRadius.circular(27.h),
-      );
-  static BoxDecoration get fillRedTL31 => BoxDecoration(
-        color: appTheme.red900,
-        borderRadius: BorderRadius.circular(31.h),
       );
 }

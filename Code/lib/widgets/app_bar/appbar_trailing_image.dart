@@ -1,5 +1,5 @@
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
 
 // ignore: must_be_immutable
 class AppbarTrailingImage extends StatelessWidget {

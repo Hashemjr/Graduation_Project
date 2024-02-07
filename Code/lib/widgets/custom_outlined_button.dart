@@ -1,6 +1,6 @@
+import 'package:chineasy/core/app_export.dart';
+import 'package:chineasy/widgets/base_button.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
-import 'package:grad_project/widgets/base_button.dart';
 
 class CustomOutlinedButton extends BaseButton {
   CustomOutlinedButton({
@@ -63,7 +63,7 @@ class CustomOutlinedButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text,
-                style: buttonTextStyle ?? CustomTextStyles.titleSmallPrimary,
+                style: buttonTextStyle ?? CustomTextStyles.titleSmallInter,
               ),
               rightIcon ?? const SizedBox.shrink(),
             ],

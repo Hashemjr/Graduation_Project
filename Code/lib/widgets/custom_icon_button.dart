@@ -1,5 +1,5 @@
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
-import 'package:grad_project/core/app_export.dart';
 
 class CustomIconButton extends StatelessWidget {
   CustomIconButton({
@@ -68,28 +68,5 @@ class CustomIconButton extends StatelessWidget {
           ),
           onPressed: onTap,
         ),
-      );
-}
-
-/// Extension on [CustomIconButton] to facilitate inclusion of all types of border style etc
-extension IconButtonStyleHelper on CustomIconButton {
-  static BoxDecoration get fillCyan => BoxDecoration(
-        color: appTheme.cyan300,
-        borderRadius: BorderRadius.circular(17.h),
-      );
-  static BoxDecoration get outlineRedF => BoxDecoration(
-        color: appTheme.red900,
-        borderRadius: BorderRadius.circular(27.h),
-        boxShadow: [
-          BoxShadow(
-            color: appTheme.red9007f,
-            spreadRadius: 2.h,
-            blurRadius: 2.h,
-            offset: Offset(
-              0,
-              4,
-            ),
-          ),
-        ],
       );
 }
