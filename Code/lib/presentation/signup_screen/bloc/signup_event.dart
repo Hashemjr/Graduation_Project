@@ -14,15 +14,3 @@ class SignupInitialEvent extends SignupEvent {
   @override
   List<Object?> get props => [];
 }
-
-///event for OTP auto fill
-class ChangeOTPEvent extends SignupEvent {
-  ChangeOTPEvent({required this.code});
-
-  String code;
-
-  @override
-  List<Object?> get props => [
-        code,
-      ];
-}

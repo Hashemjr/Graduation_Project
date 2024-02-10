@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grad_project/main.dart';
+import 'package:chineasy/main.dart';
 
 class ServerException implements Exception {}
 

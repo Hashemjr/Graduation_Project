@@ -1,6 +1,6 @@
+import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:grad_project/core/app_export.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class CustomPinCodeTextField extends StatelessWidget {
@@ -51,10 +51,13 @@ class CustomPinCodeTextField extends StatelessWidget {
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
         ],
+        enableActiveFill: true,
         pinTheme: PinTheme(
           fieldHeight: 1.h,
           fieldWidth: 50.h,
           shape: PinCodeFieldShape.underline,
+          inactiveFillColor: theme.colorScheme.primary.withOpacity(0.65),
+          activeFillColor: theme.colorScheme.primary.withOpacity(0.65),
           inactiveColor: Colors.transparent,
           activeColor: Colors.transparent,
           selectedColor: Colors.transparent,

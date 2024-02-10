@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import '/core/app_export.dart';
-import 'package:grad_project/presentation/home_page_container_screen/models/home_page_container_model.dart';
+import 'package:chineasy/presentation/home_page_container_screen/models/home_page_container_model.dart';
 part 'home_page_container_event.dart';
 part 'home_page_container_state.dart';
 

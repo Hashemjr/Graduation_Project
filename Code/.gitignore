@@ -6,7 +6,3 @@
 /.flutter-plugins
 /.flutter-plugins-dependencies
 /.packages
-ios/
-.*
-!/.gitignore
-!/android/.gitignore
