@@ -105,14 +105,14 @@ class ChooseAccountoneScreen extends StatelessWidget {
         child: Container(
             height: 251.v,
             width: 350.h,
-            margin: EdgeInsets.only(top: 45.v),
-            child: Stack(alignment: Alignment.topLeft, children: [
+            margin: EdgeInsets.only(top: 15 .v,left:10.v),
+            child: Stack(alignment: Alignment.centerRight, children: [
               Align(
                   alignment: Alignment.centerRight,
                   child: SizedBox(
                       height: 251.v,
-                      width: 122.h,
-                      child: Stack(alignment: Alignment.center, children: [
+                      width: 125.h,
+                      child: Stack(alignment: Alignment.centerRight, children: [
                         CustomImageView(
                             imagePath: ImageConstant.imgBackGray90002,
                             height: 147.v,
@@ -120,7 +120,7 @@ class ChooseAccountoneScreen extends StatelessWidget {
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(top: 5.v)),
                         Align(
-                            alignment: Alignment.center,
+                            alignment: Alignment.centerRight,
                             child: SizedBox(
                                 height: 251.v,
                                 width: 122.h,
@@ -139,10 +139,10 @@ class ChooseAccountoneScreen extends StatelessWidget {
                                           alignment: Alignment.topCenter)
                                     ])))
                       ]))),
-              Align(
+               Align(
                   alignment: Alignment.topLeft,
                   child: Padding(
-                      padding: EdgeInsets.only(top: 38.v, right: 106.h),
+                      padding: EdgeInsets.only(top:15.v, right: 106.h),
                       child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,12 +158,13 @@ class ChooseAccountoneScreen extends StatelessWidget {
                             Align(
                                 alignment: Alignment.centerRight,
                                 child: Container(
-                                    width: 183.h,
-                                    margin: EdgeInsets.only(left: 60.h),
+                                    width: 200.h,
+                                    margin: EdgeInsets.only(top: 5.v,right: 8.h),
                                     child: Text("msg_embrace_the_happiness".tr,
-                                        maxLines: 5,
+                                        maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
-                                        style: theme.textTheme.bodyLarge)))
+                                        style: theme.textTheme.bodyLarge?.copyWith(
+                                            fontSize: 22.0))))
                           ])))
             ])));
   }
