@@ -23,109 +23,87 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            extendBody: true,
-            extendBodyBehindAppBar: true,
-            resizeToAvoidBottomInset: false,
-            body: Container(
-                width: SizeUtils.width,
+      child: Scaffold(
+        extendBody: true,
+        extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          width: SizeUtils.width,
+          height: SizeUtils.height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.5, 0),
+              end: Alignment(0.5, 1),
+              colors: [appTheme.black900, appTheme.gray90001],
+            ),
+          ),
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: Form(
+              key: _formKey,
+              child: SizedBox(
                 height: SizeUtils.height,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment(0.5, 0),
-                        end: Alignment(0.5, 1),
-                        colors: [appTheme.black900, appTheme.gray90001])),
-                child: Form(
-                    key: _formKey,
-                    child: SizedBox(
-                        width: double.maxFinite,
-                        child: Column(children: [
-                          SizedBox(height: 98.v),
-                          Expanded(
-                              child: SingleChildScrollView(
-                                  child: SizedBox(
-                                      height: 703.v,
-                                      width: double.maxFinite,
-                                      child: Stack(
-                                          alignment: Alignment.topRight,
-                                          children: [
-                                            Align(
-                                                alignment:
-                                                    Alignment.bottomCenter,
-                                                child: Card(
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    elevation: 0,
-                                                    margin: EdgeInsets.all(0),
-                                                    shape: RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadiusStyle
-                                                                .customBorderTL40),
-                                                    child: Container(
-                                                        height: 481.v,
-                                                        width: double.maxFinite,
-                                                        decoration: AppDecoration
-                                                            .gradientDeepOrangeAToRedA
-                                                            .copyWith(
-                                                                borderRadius:
-                                                                    BorderRadiusStyle
-                                                                        .customBorderTL40),
-                                                        child: Stack(
-                                                            alignment: Alignment
-                                                                .bottomCenter,
-                                                            children: [
-                                                              CustomImageView(
-                                                                  imagePath:
-                                                                      ImageConstant
-                                                                          .imgRedOpenedBook,
-                                                                  height: 136.v,
-                                                                  width: 147.h,
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .bottomLeft),
-                                                              _buildLoginSection(
-                                                                  context)
-                                                            ])))),
-                                            CustomImageView(
-                                                imagePath: ImageConstant
-                                                    .imgSmilingManWearing,
-                                                height: 136.v,
-                                                width: 159.h,
-                                                alignment: Alignment.topRight,
-                                                margin: EdgeInsets.only(
-                                                    top: 111.v, right: 4.h)),
-                                            Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 31.h,
-                                                        right: 129.h),
-                                                    child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text("lbl_forget".tr,
-                                                              style: theme
-                                                                  .textTheme
-                                                                  .displayMedium),
-                                                          Text(
-                                                              "lbl_password".tr,
-                                                              style: theme
-                                                                  .textTheme
-                                                                  .displayMedium)
-                                                        ])))
-                                          ]))))
-                        ]))))));
-  }
+                width: double.maxFinite,
+                child: Stack(
 
+                  alignment: Alignment.topRight, // Align items to top right corner
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        decoration: AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                          borderRadius: BorderRadiusStyle.customBorderTL40,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(height: 195.v),
+                            Padding(
+                              padding: EdgeInsets.only(left: 35.h, right: 35.h),
+                              child: _buildLoginSection(context), // Corrected syntax
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    CustomImageView( // Added notation
+                      imagePath: ImageConstant.imgSmilingManWearing,
+                      height: 150.v,
+                      width: 170.h,
+                      alignment: Alignment.topRight,
+                      margin: EdgeInsets.only(top: 140.v, right: 5.h),
+                    ),
+                    Align( // Added notation
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 25.h, right: 129.h,top:25.v),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("lbl_forget".tr, style: theme.textTheme.displayMedium),
+                            Text("lbl_password".tr, style: theme.textTheme.displayMedium),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
   /// Section Widget
-  Widget _buildLoginSection(BuildContext context) {
+    Widget _buildLoginSection(BuildContext context) {
     return Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
+
             padding: EdgeInsets.only(left: 35.h, right: 35.h, bottom: 99.v),
             child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -162,7 +140,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       }),
                   SizedBox(height: 14.v),
                   Padding(
-                      padding: EdgeInsets.only(left: 16.h, right: 30.h),
+                      padding: EdgeInsets.only(left: 0.h, right: 0.h),
                       child: Row(children: [
                         Padding(
                             padding: EdgeInsets.only(top: 4.v, bottom: 1.v),
@@ -173,7 +151,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                               onTapTxtLOGIN(context);
                             },
                             child: Padding(
-                                padding: EdgeInsets.only(left: 7.h),
+                                padding: EdgeInsets.only(left: 5.v),
                                 child: Text("lbl_login2".tr,
                                     style:
                                         CustomTextStyles.titleMediumPoppins)))

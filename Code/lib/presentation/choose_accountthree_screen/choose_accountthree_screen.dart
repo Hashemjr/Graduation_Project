@@ -49,80 +49,63 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: Card(
-                        clipBehavior: Clip.antiAlias,
-                        elevation: 0,
-                        margin: EdgeInsets.all(0),
-                        shape: RoundedRectangleBorder(
+                      child: Container(
+                        decoration:
+                        AppDecoration.gradientDeepOrangeAToRedA.copyWith(
                           borderRadius: BorderRadiusStyle.customBorderTL40,
                         ),
-                        child: Container(
-                          height: 582.v,
-                          width: double.maxFinite,
-                          decoration:
-                              AppDecoration.gradientDeepOrangeAToRedA.copyWith(
-                            borderRadius: BorderRadiusStyle.customBorderTL40,
-                          ),
-                          child: Stack(
-                            alignment: Alignment.topCenter,
-                            children: [
-                              CustomImageView(
-                                imagePath:
-                                    ImageConstant.imgRedOpenedBook156x171,
-                                height: 156.v,
-                                width: 171.h,
-                                alignment: Alignment.bottomLeft,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(height: 87.v),
+                            Container(
+                              decoration: AppDecoration.outlinePrimary,
+                              child: Text(
+                                "lbl_choose".tr,
+                                style: theme.textTheme.displaySmall,
                               ),
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 82.h,
-                                    top: 87.v,
-                                    right: 82.h,
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerRight,
-                                        child: Container(
-                                          margin: EdgeInsets.only(right: 7.h),
-                                          decoration:
-                                              AppDecoration.outlinePrimary,
-                                          child: Text(
-                                            "lbl_choose".tr,
-                                            style: theme.textTheme.displaySmall,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 14.v),
-                                      CustomImageView(
-                                        imagePath:
-                                            ImageConstant.img3dOthers1177x177,
-                                        height: 177.adaptSize,
-                                        width: 177.adaptSize,
-                                        radius: BorderRadius.circular(
-                                          88.h,
-                                        ),
-                                      ),
-                                      SizedBox(height: 4.v),
-                                      Divider(),
-                                      SizedBox(height: 62.v),
-                                      CustomElevatedButton(
-                                        height: 55.v,
-                                        text: "lbl_signup".tr,
-                                        margin: EdgeInsets.only(
-                                          left: 15.h,
-                                          right: 12.h,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                            ),
+                            SizedBox(height: 17.v),
+                            CustomImageView(
+                              imagePath: ImageConstant.img3dOthers1177x177,
+                              height: 177.adaptSize,
+                              width: 177.adaptSize,
+                              radius: BorderRadius.circular(
+                                88.h,
+                              ),
+                            ),
+                            SizedBox(height: 8.v),
+                            SizedBox(
+                              width: 196.h,
+                              child: Divider(),
+                            ),
+                            SizedBox(height: 55.v),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: SizedBox(
+                                height: 186.v,
+                                width: 265.h,
+                                child: Stack(
+                                  alignment: Alignment.topRight,
+                                  children: [
+                                    CustomImageView(
+                                      imagePath:
+                                      ImageConstant.imgRedOpenedBook156x171,
+                                      height: 156.v,
+                                      width: 171.h,
+                                      alignment: Alignment.bottomLeft,
+                                    ),
+                                    CustomElevatedButton(
+                                      height: 55.v,
+                                      width: 169.h,
+                                      text: "lbl_signup".tr,
+                                      alignment: Alignment.topRight,
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -136,7 +119,6 @@ class ChooseAccountthreeScreen extends StatelessWidget {
       },
     );
   }
-
   /// Section Widget
   Widget _buildTitleHeadStack(BuildContext context) {
     return Align(
@@ -144,7 +126,7 @@ class ChooseAccountthreeScreen extends StatelessWidget {
       child: Container(
         height: 251.v,
         width: 350.h,
-        margin: EdgeInsets.only(top: 45.v),
+        margin: EdgeInsets.only(top: 15 .v,left:10.v),
         child: Stack(
           alignment: Alignment.topLeft,
           children: [
@@ -152,9 +134,9 @@ class ChooseAccountthreeScreen extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: SizedBox(
                 height: 251.v,
-                width: 122.h,
+                width: 125.h,
                 child: Stack(
-                  alignment: Alignment.center,
+                  alignment: Alignment.centerRight,
                   children: [
                     CustomImageView(
                       imagePath: ImageConstant.imgBackGray90002,
@@ -195,8 +177,7 @@ class ChooseAccountthreeScreen extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: EdgeInsets.only(
-                  top: 38.v,
-                  right: 106.h,
+                    top:15.v, right: 106.h
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -213,17 +194,17 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                         style: CustomTextStyles.titleLargePaytoneOnePrimary,
                       ),
                     ),
-                    SizedBox(height: 11.v),
                     Align(
                       alignment: Alignment.centerRight,
                       child: Container(
-                        width: 183.h,
-                        margin: EdgeInsets.only(left: 60.h),
+                        width: 200.h,
+                        margin: EdgeInsets.only(top: 5.v,right: 8.h),
                         child: Text(
                           "msg_embrace_the_happiness".tr,
-                          maxLines: 5,
+                          maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodyLarge,
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            fontSize: 22.0),
                         ),
                       ),
                     ),
@@ -237,3 +218,4 @@ class ChooseAccountthreeScreen extends StatelessWidget {
     );
   }
 }
+

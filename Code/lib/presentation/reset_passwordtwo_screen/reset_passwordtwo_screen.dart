@@ -52,7 +52,7 @@ class ResetPasswordtwoScreen extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(
                           left: 31.h,
-                          top: 93.v,
+                          top: 20.v,
                           right: 129.h,
                         ),
                         child: Column(
@@ -76,7 +76,7 @@ class ResetPasswordtwoScreen extends StatelessWidget {
                       height: 192.v,
                       width: 185.h,
                       alignment: Alignment.topRight,
-                      margin: EdgeInsets.only(top: 161.v),
+                      margin: EdgeInsets.only(top: 130.v),
                     ),
                   ],
                 ),
@@ -99,7 +99,7 @@ class ResetPasswordtwoScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 38.v),
+            SizedBox(height: 30.v),
             Text(
               "lbl_success".tr,
               style: CustomTextStyles.displaySmallPoppinsBold,

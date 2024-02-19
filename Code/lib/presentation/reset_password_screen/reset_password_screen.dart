@@ -56,10 +56,10 @@ class ResetPasswordScreen extends StatelessWidget {
                                       child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            SizedBox(height: 99.v),
+                                            SizedBox(height: 100.v),
                                             Padding(
                                                 padding: EdgeInsets.only(
-                                                    left: 35.h, right: 36.h),
+                                                    left: 35.h, right: 35.h),
                                                 child: BlocSelector<
                                                         ResetPasswordBloc,
                                                         ResetPasswordState,
@@ -98,7 +98,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                             SizedBox(height: 62.v),
                                             Padding(
                                                 padding: EdgeInsets.only(
-                                                    left: 35.h, right: 36.h),
+                                                    left: 35.h, right: 35.h),
                                                 child: BlocSelector<
                                                         ResetPasswordBloc,
                                                         ResetPasswordState,
@@ -154,11 +154,11 @@ class ResetPasswordScreen extends StatelessWidget {
                                           ]))),
                               CustomImageView(
                                   imagePath: ImageConstant.imgSmilingManWearing,
-                                  height: 136.v,
+                                  height: 142.v,
                                   width: 159.h,
                                   alignment: Alignment.topRight,
                                   margin:
-                                      EdgeInsets.only(top: 210.v, right: 4.h)),
+                                      EdgeInsets.only(top: 230.v, right: 10.h)),
                               Align(
                                   alignment: Alignment.topLeft,
                                   child: Padding(
