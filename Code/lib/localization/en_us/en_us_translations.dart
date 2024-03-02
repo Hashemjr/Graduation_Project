@@ -118,7 +118,7 @@ final Map<String, String> enUs = {
   "msg_already_have_account": "Already have account?",
   "msg_confirm_password": "Confirm Password",
   "msg_embrace_the_happiness":
-      "“Embrace the happiness of learning. Let's make language learning a delightful and rewarding experience together!”",
+      "“Embrace the happiness of learning. Let's make language learning a delightful experience together!”",
   "msg_joyful_mandarin": "Joyful Mandarin!",
   "msg_start_learning": "start learning!!",
 

@@ -6,8 +6,8 @@ import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_icon_button.dart';
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-
 // ignore_for_file: must_be_immutable
+
 class SignupScreen extends StatelessWidget {
   SignupScreen({Key? key}) : super(key: key);
 
@@ -16,13 +16,14 @@ class SignupScreen extends StatelessWidget {
   static Widget builder(BuildContext context) {
     return BlocProvider<SignupBloc>(
         create: (context) =>
-            SignupBloc(SignupState(signupModelObj: SignupModel()))
+            SignupBloc(SignupState(signupModelObj: SignupModel(), genderValue: ""))
               ..add(SignupInitialEvent()),
         child: SignupScreen());
   }
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
         child: Scaffold(
             extendBody: true,
@@ -61,7 +62,7 @@ class SignupScreen extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                SizedBox(height: 13.v),
+                                                SizedBox(height: 20.v),
                                                 Align(
                                                     alignment: Alignment.center,
                                                     child: Row(
@@ -69,56 +70,61 @@ class SignupScreen extends StatelessWidget {
                                                             MainAxisAlignment
                                                                 .center,
                                                         children: [
+                                                          SizedBox(height: 30.v),
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
                                                                       .imgStar1,
                                                               height:
-                                                                  27.adaptSize,
+                                                                  20.adaptSize,
                                                               width:
-                                                                  27.adaptSize,
+                                                                  20.adaptSize,
                                                               radius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          4.h)),
+                                                                          4.h),
+                                                            color: Colors.white,),
+
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
                                                                       .imgStar2,
                                                               height:
-                                                                  27.adaptSize,
+                                                                  20.adaptSize,
                                                               width:
-                                                                  27.adaptSize,
+                                                                  20.adaptSize,
                                                               radius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           4.h),
+                                                              color: Colors.black,
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       left:
-                                                                          4.h)),
+                                                                          20.h)),
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
                                                                       .imgStar3,
                                                               height:
-                                                                  27.adaptSize,
+                                                                  20.adaptSize,
                                                               width:
-                                                                  27.adaptSize,
+                                                                  20.adaptSize,
                                                               radius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           4.h),
+                                                              color: Colors.black,
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       left:
-                                                                          4.h))
+                                                                          20.h))
                                                         ])),
-                                                SizedBox(height: 33.v),
+                                                SizedBox(height: 40.v),
                                                 _buildFirstAndLastName(context),
                                                 SizedBox(height: 35.v),
                                                 _buildUserName(context),
-                                                SizedBox(height: 36.v),
+                                                SizedBox(height: 35.v),
                                                 Padding(
                                                     padding: EdgeInsets.only(
                                                         left: 35.h),
@@ -126,15 +132,14 @@ class SignupScreen extends StatelessWidget {
                                                       Padding(
                                                           padding:
                                                               EdgeInsets.only(
-                                                                  top: 2.v),
+                                                                  top: 1.v),
                                                           child:
                                                               Column(children: [
                                                             Text("lbl_day".tr,
                                                                 style: theme
                                                                     .textTheme
                                                                     .bodyMedium),
-                                                            SizedBox(
-                                                                height: 1.v),
+
                                                             SizedBox(
                                                                 width: 49.h,
                                                                 child: Divider(
@@ -142,15 +147,15 @@ class SignupScreen extends StatelessWidget {
                                                                         .colorScheme
                                                                         .primary
                                                                         .withOpacity(
-                                                                            0.65)))
+                                                                            0.45)))
                                                           ])),
                                                       _buildMonthValue(context),
                                                       _buildYearValue(context)
                                                     ])),
-                                                SizedBox(height: 36.v),
+                                                SizedBox(height: 35.v),
                                                 Padding(
                                                     padding: EdgeInsets.only(
-                                                        left: 35.h),
+                                                        left: 35.h),//gender
                                                     child: Row(
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
@@ -158,22 +163,7 @@ class SignupScreen extends StatelessWidget {
                                                         children: [
                                                           _buildGenderValue(
                                                               context),
-                                                          CustomImageView(
-                                                              imagePath:
-                                                                  ImageConstant
-                                                                      .imgDownArrow,
-                                                              height: 22
-                                                                  .adaptSize,
-                                                              width:
-                                                                  22.adaptSize,
-                                                              radius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          2.h),
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      bottom:
-                                                                          4.v))
+
                                                         ])),
                                                 SizedBox(height: 38.v),
                                                 _buildSignup(context),
@@ -189,7 +179,7 @@ class SignupScreen extends StatelessWidget {
                                                           Padding(
                                                               padding: EdgeInsets
                                                                   .only(
-                                                                      top: 2.v,
+                                                                      top: 3.5.v,left: 15.v,
                                                                       bottom:
                                                                           3.v),
                                                               child: Text(
@@ -214,7 +204,7 @@ class SignupScreen extends StatelessWidget {
                                                                       style: CustomTextStyles
                                                                           .titleMediumPoppins)))
                                                         ])),
-                                                SizedBox(height: 1.v),
+                                                SizedBox(height: 10.v),
                                                 SizedBox(
                                                     height: 156.v,
                                                     width: 220.h,
@@ -222,30 +212,13 @@ class SignupScreen extends StatelessWidget {
                                                         alignment: Alignment
                                                             .bottomRight,
                                                         children: [
+
                                                           CustomImageView(
-                                                              imagePath:
-                                                                  ImageConstant
-                                                                      .imgRedOpenedBook156x171,
-                                                              height: 156.v,
-                                                              width: 171.h,
-                                                              alignment: Alignment
-                                                                  .centerLeft),
-                                                          CustomImageView(
-                                                              imagePath:
-                                                                  ImageConstant
-                                                                      .imgGmailLogo,
-                                                              height: 45
-                                                                  .adaptSize,
-                                                              width:
-                                                                  45.adaptSize,
-                                                              alignment: Alignment
-                                                                  .bottomRight,
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      right:
-                                                                          21.h,
-                                                                      bottom: 49
-                                                                          .v)),
+                                                            imagePath: ImageConstant.imgGmailLogo,
+                                                            height: 45.adaptSize,
+                                                            width: 45.adaptSize,
+                                                            alignment: Alignment.bottomRight,
+                                                            margin: EdgeInsets.only(right: 15.h, bottom: 57.v)),
                                                           Align(
                                                               alignment:
                                                                   Alignment
@@ -253,7 +226,7 @@ class SignupScreen extends StatelessWidget {
                                                               child: Padding(
                                                                   padding: EdgeInsets
                                                                       .only(
-                                                                          top: 43
+                                                                          top: 35
                                                                               .v),
                                                                   child: Text(
                                                                       "lbl_sign_in_using"
@@ -382,20 +355,43 @@ class SignupScreen extends StatelessWidget {
                   contentPadding: EdgeInsets.symmetric(horizontal: 4.h));
             }));
   }
-
+  var dropdownValue ='Gender';
+  var newValue="";
   /// Section Widget
   Widget _buildGenderValue(BuildContext context) {
-    return BlocSelector<SignupBloc, SignupState, TextEditingController?>(
-        selector: (state) => state.genderValueController,
-        builder: (context, genderValueController) {
-          return CustomTextFormField(
-              width: 115.h,
-              controller: genderValueController,
-              hintText: "lbl_gender".tr,
-              textInputAction: TextInputAction.done,
-              contentPadding: EdgeInsets.symmetric(horizontal: 5.h));
-        });
+    return Center(
+      child: DropdownButton<String>(
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_drop_down_rounded),
+        style: const TextStyle(color: Colors.white60),
+        underline: Container(
+          height: 1,
+          color: Colors.white60,
+        ),
+        onChanged: (String? newValue){
+          setState(() { dropdownValue = newValue!;});
+        },
+        items: const [
+
+          DropdownMenuItem<String>(
+            value: 'Gender',
+            child: Text('Male',
+              style: TextStyle(// Set text color to black
+              fontSize: 21, // Set font size to 16 (adjust as needed)
+            ),),
+
+          ),
+          DropdownMenuItem<String>(
+            value: 'Female',
+            child: Text('Female',style: TextStyle(// Set text color to black
+              fontSize: 21, // Set font size to 16 (adjust as needed)
+            ),),
+          )
+        ],
+      ),
+    );
   }
+
 
   /// Section Widget
   Widget _buildSignup(BuildContext context) {
@@ -429,56 +425,68 @@ class SignupScreen extends StatelessWidget {
                               Text("lbl_get_started".tr,
                                   style: theme.textTheme.displayMedium),
                               Align(
-                                  alignment: Alignment.centerRight,
+                                  alignment: Alignment.centerLeft,
                                   child: Padding(
-                                      padding: EdgeInsets.only(right: 3.h),
+                                      padding: EdgeInsets.only(right: 110.h),
                                       child: Text("msg_start_learning".tr,
                                           style: CustomTextStyles
                                               .titleSmallGray500)))
                             ])),
-                        SizedBox(
-                            height: 251.v,
-                            width: 122.h,
-                            child:
-                                Stack(alignment: Alignment.center, children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgBack,
-                                  height: 147.v,
-                                  width: 120.h,
-                                  alignment: Alignment.topCenter,
-                                  margin: EdgeInsets.only(top: 5.v)),
-                              Align(
-                                  alignment: Alignment.center,
-                                  child: SizedBox(
-                                      height: 251.v,
-                                      width: 122.h,
-                                      child: Stack(
-                                          alignment: Alignment.topCenter,
-                                          children: [
-                                            CustomImageView(
-                                                imagePath:
-                                                    ImageConstant.imgIcon7,
-                                                height: 177.v,
-                                                width: 118.h,
-                                                alignment:
-                                                    Alignment.bottomCenter),
-                                            CustomImageView(
-                                                imagePath:
-                                                    ImageConstant.imgIcon3,
-                                                height: 132.v,
-                                                width: 122.h,
-                                                alignment: Alignment.topCenter)
-                                          ])))
-                            ]))
+            Padding(
+              padding: EdgeInsets.only(left: 15.6.h), // Adjust the left padding as needed
+              child: SizedBox(
+                height: 251.v,
+                width: 122.h,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CustomImageView(
+                      imagePath: ImageConstant.imgBack,
+                      height: 147.v,
+                      width: 120.h,
+                      alignment: Alignment.topCenter,
+                      margin: EdgeInsets.only(top: 5.v),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        height: 251.v,
+                        width: 122.h,
+                        child: Stack(
+                          alignment: Alignment.topCenter,
+                          children: [
+                            CustomImageView(
+                              imagePath: ImageConstant.imgIcon7,
+                              height: 177.v,
+                              width: 118.h,
+                              alignment: Alignment.bottomCenter,
+                            ),
+                            CustomImageView(
+                              imagePath: ImageConstant.imgIcon3,
+                              height: 132.v,
+                              width: 122.h,
+                              alignment: Alignment.topCenter,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
                       ])),
-              CustomIconButton(
-                  height: 52.adaptSize,
-                  width: 52.adaptSize,
+              InkWell(
+                onTap: () {
+                  onTapBtnGoBack(context);
+                },
+                child: CustomImageView(
+                  imagePath: ImageConstant.imgGoBack,
+                  height: 45.adaptSize,
+                  width: 45.adaptSize,
                   alignment: Alignment.topLeft,
-                  onTap: () {
-                    onTapBtnGoBack(context);
-                  },
-                  child: CustomImageView(imagePath: ImageConstant.imgGoBack))
+                ),
+              )
             ])));
   }
 
@@ -502,4 +510,5 @@ class SignupScreen extends StatelessWidget {
       AppRoutes.chooseAccountoneScreen,
     );
   }
-}
+
+  void setState(Null Function() param0) {}}

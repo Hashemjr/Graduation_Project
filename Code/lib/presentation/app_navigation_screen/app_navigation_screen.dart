@@ -59,6 +59,12 @@ class AppNavigationScreen extends StatelessWidget {
                             ),
                             _buildScreenTitle(
                               context,
+                              screenTitle: "profile states".tr,
+                              onTapScreenTitle: () => onTapScreenTitle(
+                                  AppRoutes.profileStateTestPage),
+                            ),
+                            _buildScreenTitle(
+                              context,
                               screenTitle: "signup".tr,
                               onTapScreenTitle: () =>
                                   onTapScreenTitle(AppRoutes.signupScreen),
