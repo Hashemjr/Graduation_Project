@@ -20,7 +20,8 @@ class CustomImageView extends StatelessWidget {
   EdgeInsetsGeometry? margin;
   BorderRadius? radius;
   BoxBorder? border;
-
+  final Color backgroundColor;
+  final VoidCallback? onBackTap;
   ///a [CustomImageView] it can be used for showing any type of images
   /// it will shows the placeholder image if image is not found on network image
   CustomImageView({
@@ -31,10 +32,12 @@ class CustomImageView extends StatelessWidget {
     this.fit,
     this.alignment,
     this.onTap,
+    this.onBackTap,
     this.radius,
     this.margin,
     this.border,
     this.placeHolder = 'assets/images/image_not_found.png',
+    this.backgroundColor = Colors.transparent,
   });
 
   @override
@@ -52,11 +55,10 @@ class CustomImageView extends StatelessWidget {
       padding: margin ?? EdgeInsets.zero,
       child: InkWell(
         onTap: onTap,
-        child: _buildCircleImage(),
+        child: _buildImageView(),
       ),
     );
   }
-
   ///build the image with border radius
   _buildCircleImage() {
     if (radius != null) {

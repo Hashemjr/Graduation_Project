@@ -12,9 +12,9 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   }
 
   _onInitialize(
-    SignupInitialEvent event,
-    Emitter<SignupState> emit,
-  ) async {
+      SignupInitialEvent event,
+      Emitter<SignupState> emit,
+      ) async {
     emit(state.copyWith(
         firstNameController: TextEditingController(),
         lastNameController: TextEditingController(),

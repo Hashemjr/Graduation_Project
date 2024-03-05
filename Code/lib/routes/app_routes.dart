@@ -15,6 +15,8 @@ import 'package:chineasy/presentation/courses_test_container1_screen/courses_tes
 import 'package:chineasy/presentation/home_page_container_screen/home_page_container_screen.dart';
 import 'package:chineasy/presentation/app_navigation_screen/app_navigation_screen.dart';
 
+import '../presentation/profile_state_test_page/profile_state_test_page.dart';
+
 class AppRoutes {
   static const String chooseAccountoneScreen = '/choose_accountone_screen';
 
@@ -66,9 +68,10 @@ class AppRoutes {
         resetPasswordScreen: ResetPasswordScreen.builder,
         resetPasswordtwoScreen: ResetPasswordtwoScreen.builder,
         profileLeaderboardScreen: ProfileLeaderboardScreen.builder,
+        profileStateTestPage: ProfileStateTestPage.builder,
         coursesTestContainer1Screen: CoursesTestContainer1Screen.builder,
         homePageContainerScreen: HomePageContainerScreen.builder,
         appNavigationScreen: AppNavigationScreen.builder,
-        initialRoute: ChooseAccountoneScreen.builder
+        initialRoute: AppNavigationScreen.builder
       };
 }

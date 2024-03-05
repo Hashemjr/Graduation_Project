@@ -4,8 +4,9 @@ part of 'signup_bloc.dart';
 
 /// Represents the state of Signup in the application.
 class SignupState extends Equatable {
-  SignupState({
+  SignupState( {
     this.firstNameController,
+    required this.genderValue,
     this.lastNameController,
     this.userNameController,
     this.monthValueController,
@@ -13,7 +14,7 @@ class SignupState extends Equatable {
     this.genderValueController,
     this.signupModelObj,
   });
-
+  final String genderValue;
   TextEditingController? firstNameController;
 
   TextEditingController? lastNameController;
@@ -55,7 +56,7 @@ class SignupState extends Equatable {
       yearValueController: yearValueController ?? this.yearValueController,
       genderValueController:
           genderValueController ?? this.genderValueController,
-      signupModelObj: signupModelObj ?? this.signupModelObj,
+      signupModelObj: signupModelObj ?? this.signupModelObj, genderValue: '',
     );
   }
 }

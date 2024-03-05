@@ -59,12 +59,13 @@ class SignuponeScreen extends StatelessWidget {
                                           child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                SizedBox(height: 13.v),
+                                                SizedBox(height: 20.v),
                                                 Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
                                                             .center,
                                                     children: [
+                                                      SizedBox(height: 30.v),
                                                       SizedBox(
                                                           height: 27.v,
                                                           width: 58.h,
@@ -76,6 +77,7 @@ class SignuponeScreen extends StatelessWidget {
                                                                     alignment:
                                                                         Alignment
                                                                             .center,
+
                                                                     child: Container(
                                                                         height:
                                                                             3.v,
@@ -85,31 +87,34 @@ class SignuponeScreen extends StatelessWidget {
                                                                             color:
                                                                                 theme.colorScheme.primary,
                                                                             borderRadius: BorderRadius.circular(1.h)))),
+
                                                                 CustomImageView(
+
                                                                     imagePath:
                                                                         ImageConstant
                                                                             .imgStar21,
-                                                                    height: 27
+                                                                    height: 20
                                                                         .adaptSize,
-                                                                    width: 27
+                                                                    width: 20
                                                                         .adaptSize,
                                                                     radius: BorderRadius
                                                                         .circular(4
-                                                                            .h),
+                                                                            .h),color: Colors.white,
                                                                     alignment:
                                                                         Alignment
                                                                             .centerRight),
+
                                                                 CustomImageView(
                                                                     imagePath:
                                                                         ImageConstant
                                                                             .imgStar11,
-                                                                    height: 27
+                                                                    height: 20
                                                                         .adaptSize,
-                                                                    width: 27
+                                                                    width: 20
                                                                         .adaptSize,
                                                                     radius: BorderRadius
                                                                         .circular(4
-                                                                            .h),
+                                                                            .h),color: Colors.white,
                                                                     alignment:
                                                                         Alignment
                                                                             .centerLeft)
@@ -118,26 +123,26 @@ class SignuponeScreen extends StatelessWidget {
                                                           imagePath:
                                                               ImageConstant
                                                                   .imgStar31,
-                                                          height: 27.adaptSize,
-                                                          width: 27.adaptSize,
+                                                          height: 20.adaptSize,
+                                                          width: 20.adaptSize,
                                                           radius: BorderRadius
-                                                              .circular(4.h),
+                                                              .circular(4.h),color: Colors.black,
                                                           margin:
                                                               EdgeInsets.only(
-                                                                  left: 4.h))
+                                                                  left: 20.h))
                                                     ]),
-                                                SizedBox(height: 29.v),
+                                                SizedBox(height: 40.v),
                                                 _buildEmailField(context),
-                                                SizedBox(height: 30.v),
+                                                SizedBox(height: 40.v),
                                                 _buildEmailField1(context),
-                                                SizedBox(height: 33.v),
+                                                SizedBox(height: 40.v),
                                                 _buildPasswordField(context),
-                                                SizedBox(height: 29.v),
+                                                SizedBox(height: 40.v),
                                                 _buildConfirmPasswordField(
                                                     context),
-                                                SizedBox(height: 38.v),
+                                                SizedBox(height: 40.v),
                                                 _buildSignupButton(context),
-                                                SizedBox(height: 16.v),
+                                                SizedBox(height: 20.v),
                                                 Align(
                                                     alignment:
                                                         Alignment.centerLeft,
@@ -152,9 +157,7 @@ class SignuponeScreen extends StatelessWidget {
                                                             children: [
                                                               Padding(
                                                                   padding: EdgeInsets.only(
-                                                                      top: 2.v,
-                                                                      bottom:
-                                                                          3.v),
+                                                                      top: 3.v, bottom: 0.v),
                                                                   child: Text(
                                                                       "msg_already_have_account"
                                                                           .tr,
@@ -176,7 +179,7 @@ class SignuponeScreen extends StatelessWidget {
                                                                           style:
                                                                               CustomTextStyles.titleMediumPoppins)))
                                                             ]))),
-                                                SizedBox(height: 1.v),
+                                                SizedBox(height: 0.v),
                                                 Align(
                                                     alignment:
                                                         Alignment.centerLeft,
@@ -197,28 +200,18 @@ class SignuponeScreen extends StatelessWidget {
                                                                       Alignment
                                                                           .centerLeft),
                                                               CustomImageView(
-                                                                  imagePath:
-                                                                      ImageConstant
-                                                                          .imgGmailLogo,
-                                                                  height: 45
-                                                                      .adaptSize,
-                                                                  width: 45
-                                                                      .adaptSize,
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .bottomRight,
-                                                                  margin: EdgeInsets.only(
-                                                                      right:
-                                                                          21.h,
-                                                                      bottom: 49
-                                                                          .v)),
+                                                                  imagePath: ImageConstant.imgGmailLogo,
+                                                                  height: 45.adaptSize,
+                                                                  width: 45.adaptSize,
+                                                                  alignment: Alignment.bottomRight,
+                                                                  margin: EdgeInsets.only(right: 15.h, bottom: 57.v)),
                                                               Align(
                                                                   alignment:
                                                                       Alignment
                                                                           .topRight,
                                                                   child: Padding(
                                                                       padding: EdgeInsets.only(
-                                                                          top: 43
+                                                                          top: 35
                                                                               .v),
                                                                       child: Text(
                                                                           "lbl_sign_in_using"
@@ -231,7 +224,7 @@ class SignuponeScreen extends StatelessWidget {
                                                                           .topRight,
                                                                   child: Padding(
                                                                       padding: EdgeInsets.only(
-                                                                          top: 2
+                                                                          top: 5
                                                                               .v,
                                                                           right: 25
                                                                               .h),
@@ -374,54 +367,66 @@ class SignuponeScreen extends StatelessWidget {
                               Align(
                                   alignment: Alignment.centerRight,
                                   child: Padding(
-                                      padding: EdgeInsets.only(right: 3.h),
+                                      padding: EdgeInsets.only(right: 108.h),
                                       child: Text("msg_start_learning".tr,
                                           style: CustomTextStyles
                                               .titleSmallGray500)))
                             ])),
-                        SizedBox(
+                        Padding(
+                          padding: EdgeInsets.only(left: 15.5.h), // Adjust the left padding as needed
+                          child: SizedBox(
                             height: 251.v,
                             width: 122.h,
-                            child:
-                                Stack(alignment: Alignment.center, children: [
-                              CustomImageView(
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                CustomImageView(
                                   imagePath: ImageConstant.imgBack,
                                   height: 147.v,
                                   width: 120.h,
                                   alignment: Alignment.topCenter,
-                                  margin: EdgeInsets.only(top: 5.v)),
-                              Align(
+                                  margin: EdgeInsets.only(top: 5.v),
+                                ),
+                                Align(
                                   alignment: Alignment.center,
                                   child: SizedBox(
-                                      height: 251.v,
-                                      width: 122.h,
-                                      child: Stack(
+                                    height: 251.v,
+                                    width: 122.h,
+                                    child: Stack(
+                                      alignment: Alignment.topCenter,
+                                      children: [
+                                        CustomImageView(
+                                          imagePath: ImageConstant.imgIcon7,
+                                          height: 177.v,
+                                          width: 118.h,
+                                          alignment: Alignment.bottomCenter,
+                                        ),
+                                        CustomImageView(
+                                          imagePath: ImageConstant.imgIcon3,
+                                          height: 132.v,
+                                          width: 122.h,
                                           alignment: Alignment.topCenter,
-                                          children: [
-                                            CustomImageView(
-                                                imagePath:
-                                                    ImageConstant.imgIcon7,
-                                                height: 177.v,
-                                                width: 118.h,
-                                                alignment:
-                                                    Alignment.bottomCenter),
-                                            CustomImageView(
-                                                imagePath:
-                                                    ImageConstant.imgIcon3,
-                                                height: 132.v,
-                                                width: 122.h,
-                                                alignment: Alignment.topCenter)
-                                          ])))
-                            ]))
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
                       ])),
-              CustomIconButton(
-                  height: 52.adaptSize,
-                  width: 52.adaptSize,
+              InkWell(
+                onTap: () {
+                  onTapBtnGoBack(context);
+                },
+                child: CustomImageView(
+                  imagePath: ImageConstant.imgGoBack,
+                  height: 45.adaptSize,
+                  width: 45.adaptSize,
                   alignment: Alignment.topLeft,
-                  onTap: () {
-                    onTapBtnGoBack(context);
-                  },
-                  child: CustomImageView(imagePath: ImageConstant.imgGoBack))
+                ),
+              )
             ])));
   }
 
