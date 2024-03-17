@@ -3,7 +3,10 @@ import 'models/signupone_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/core/utils/validation_functions.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
+<<<<<<< HEAD
+=======
 import 'package:chineasy/widgets/custom_icon_button.dart';
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -77,7 +80,10 @@ class SignuponeScreen extends StatelessWidget {
                                                                     alignment:
                                                                         Alignment
                                                                             .center,
+<<<<<<< HEAD
+=======
 
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                                     child: Container(
                                                                         height:
                                                                             3.v,
@@ -87,9 +93,13 @@ class SignuponeScreen extends StatelessWidget {
                                                                             color:
                                                                                 theme.colorScheme.primary,
                                                                             borderRadius: BorderRadius.circular(1.h)))),
+<<<<<<< HEAD
+                                                                CustomImageView(
+=======
 
                                                                 CustomImageView(
 
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                                     imagePath:
                                                                         ImageConstant
                                                                             .imgStar21,
@@ -99,11 +109,20 @@ class SignuponeScreen extends StatelessWidget {
                                                                         .adaptSize,
                                                                     radius: BorderRadius
                                                                         .circular(4
+<<<<<<< HEAD
+                                                                            .h),
+                                                                    color: Colors
+                                                                        .white,
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .centerRight),
+=======
                                                                             .h),color: Colors.white,
                                                                     alignment:
                                                                         Alignment
                                                                             .centerRight),
 
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                                 CustomImageView(
                                                                     imagePath:
                                                                         ImageConstant
@@ -114,7 +133,13 @@ class SignuponeScreen extends StatelessWidget {
                                                                         .adaptSize,
                                                                     radius: BorderRadius
                                                                         .circular(4
+<<<<<<< HEAD
+                                                                            .h),
+                                                                    color: Colors
+                                                                        .white,
+=======
                                                                             .h),color: Colors.white,
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                                     alignment:
                                                                         Alignment
                                                                             .centerLeft)
@@ -126,7 +151,12 @@ class SignuponeScreen extends StatelessWidget {
                                                           height: 20.adaptSize,
                                                           width: 20.adaptSize,
                                                           radius: BorderRadius
+<<<<<<< HEAD
+                                                              .circular(4.h),
+                                                          color: Colors.black,
+=======
                                                               .circular(4.h),color: Colors.black,
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                           margin:
                                                               EdgeInsets.only(
                                                                   left: 20.h))
@@ -157,7 +187,13 @@ class SignuponeScreen extends StatelessWidget {
                                                             children: [
                                                               Padding(
                                                                   padding: EdgeInsets.only(
+<<<<<<< HEAD
+                                                                      top: 3.v,
+                                                                      bottom:
+                                                                          0.v),
+=======
                                                                       top: 3.v, bottom: 0.v),
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                                   child: Text(
                                                                       "msg_already_have_account"
                                                                           .tr,
@@ -200,11 +236,29 @@ class SignuponeScreen extends StatelessWidget {
                                                                       Alignment
                                                                           .centerLeft),
                                                               CustomImageView(
+<<<<<<< HEAD
+                                                                  imagePath:
+                                                                      ImageConstant
+                                                                          .imgGmailLogo,
+                                                                  height: 45
+                                                                      .adaptSize,
+                                                                  width: 45
+                                                                      .adaptSize,
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .bottomRight,
+                                                                  margin: EdgeInsets.only(
+                                                                      right:
+                                                                          15.h,
+                                                                      bottom: 57
+                                                                          .v)),
+=======
                                                                   imagePath: ImageConstant.imgGmailLogo,
                                                                   height: 45.adaptSize,
                                                                   width: 45.adaptSize,
                                                                   alignment: Alignment.bottomRight,
                                                                   margin: EdgeInsets.only(right: 15.h, bottom: 57.v)),
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                               Align(
                                                                   alignment:
                                                                       Alignment
@@ -373,7 +427,13 @@ class SignuponeScreen extends StatelessWidget {
                                               .titleSmallGray500)))
                             ])),
                         Padding(
+<<<<<<< HEAD
+                          padding: EdgeInsets.only(
+                              left:
+                                  15.5.h), // Adjust the left padding as needed
+=======
                           padding: EdgeInsets.only(left: 15.5.h), // Adjust the left padding as needed
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                           child: SizedBox(
                             height: 251.v,
                             width: 122.h,

@@ -1,7 +1,10 @@
 //ignore: unused_import
 import 'dart:convert';
+<<<<<<< HEAD
+=======
 import 'dart:ui';
 import 'package:flutter/scheduler.dart';
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefUtils {

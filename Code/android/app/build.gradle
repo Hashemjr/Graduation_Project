@@ -12,7 +12,11 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
+<<<<<<< HEAD
+    throw GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+=======
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -28,8 +32,12 @@ if (flutterVersionName == null) {
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+<<<<<<< HEAD
+    compileSdkVersion 34
+=======
     compileSdkVersion flutter.compileSdkVersion
 
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -62,6 +70,10 @@ flutter {
 }
 
 dependencies {
+<<<<<<< HEAD
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+=======
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.multidex:multidex:2.0.1"
 }

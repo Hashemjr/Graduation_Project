@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+<<<<<<< HEAD
+// ignore: must_be_immutable
+=======
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 class CustomPinCodeTextField extends StatelessWidget {
   CustomPinCodeTextField({
     Key? key,

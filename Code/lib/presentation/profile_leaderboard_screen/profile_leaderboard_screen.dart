@@ -10,6 +10,10 @@ import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 
+<<<<<<< HEAD
+// ignore: must_be_immutable
+=======
+>>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 class ProfileLeaderboardScreen extends StatelessWidget {
   ProfileLeaderboardScreen({Key? key})
       : super(
