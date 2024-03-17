@@ -1,10 +1,7 @@
 import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
 // ignore: must_be_immutable
-=======
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 class CustomBottomBar extends StatefulWidget {
   CustomBottomBar({this.onChanged});
 

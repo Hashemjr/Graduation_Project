@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 
@@ -270,6 +269,8 @@ class PrimaryColors {
 
   // White
   Color get whiteA700 => Color(0XFFFFFFFF);
+
+  get black90001 => null;
 }
 
 PrimaryColors get appTheme => ThemeHelper().themeColor();

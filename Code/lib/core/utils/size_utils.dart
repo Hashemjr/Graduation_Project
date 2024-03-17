@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-import 'dart:ui' as ui;
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 import 'package:flutter/material.dart';
 
 // These are the Viewport values of your Figma Design.

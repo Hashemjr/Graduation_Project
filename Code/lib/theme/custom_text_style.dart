@@ -14,11 +14,7 @@ class CustomTextStyles {
       );
   static get bodyLargeAlataBlack90001 =>
       theme.textTheme.bodyLarge!.alata.copyWith(
-<<<<<<< HEAD
         color: appTheme.black900,
-=======
-        color: appTheme.black90001,
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
       );
   static get bodyLargePoppinsPrimary =>
       theme.textTheme.bodyLarge!.poppins.copyWith(

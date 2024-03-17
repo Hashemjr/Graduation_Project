@@ -1,10 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:equatable/equatable.dart';
-<<<<<<< HEAD
-=======
-import '../../../core/app_export.dart';
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 import 'coursescard1_item_model.dart';
 
 /// This class defines the variables used in the [courses_test_container_page],

@@ -3,10 +3,6 @@ import 'models/signup_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/core/utils/validation_functions.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
-<<<<<<< HEAD
-=======
-import 'package:chineasy/widgets/custom_icon_button.dart';
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 // ignore_for_file: must_be_immutable
@@ -18,24 +14,14 @@ class SignupScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return BlocProvider<SignupBloc>(
-<<<<<<< HEAD
         create: (context) => SignupBloc(
             SignupState(signupModelObj: SignupModel(), genderValue: ""))
           ..add(SignupInitialEvent()),
-=======
-        create: (context) =>
-            SignupBloc(SignupState(signupModelObj: SignupModel(), genderValue: ""))
-              ..add(SignupInitialEvent()),
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
         child: SignupScreen());
   }
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-=======
-
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
     return SafeArea(
         child: Scaffold(
             extendBody: true,
@@ -82,7 +68,6 @@ class SignupScreen extends StatelessWidget {
                                                             MainAxisAlignment
                                                                 .center,
                                                         children: [
-<<<<<<< HEAD
                                                           SizedBox(
                                                               height: 30.v),
                                                           CustomImageView(
@@ -96,23 +81,6 @@ class SignupScreen extends StatelessWidget {
                                                                 .circular(4.h),
                                                             color: Colors.white,
                                                           ),
-=======
-                                                          SizedBox(height: 30.v),
-                                                          CustomImageView(
-                                                              imagePath:
-                                                                  ImageConstant
-                                                                      .imgStar1,
-                                                              height:
-                                                                  20.adaptSize,
-                                                              width:
-                                                                  20.adaptSize,
-                                                              radius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          4.h),
-                                                            color: Colors.white,),
-
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
@@ -125,20 +93,12 @@ class SignupScreen extends StatelessWidget {
                                                                   BorderRadius
                                                                       .circular(
                                                                           4.h),
-<<<<<<< HEAD
                                                               color:
                                                                   Colors.black,
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       left: 20
                                                                           .h)),
-=======
-                                                              color: Colors.black,
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      left:
-                                                                          20.h)),
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
@@ -151,12 +111,8 @@ class SignupScreen extends StatelessWidget {
                                                                   BorderRadius
                                                                       .circular(
                                                                           4.h),
-<<<<<<< HEAD
                                                               color:
                                                                   Colors.black,
-=======
-                                                              color: Colors.black,
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                               margin: EdgeInsets
                                                                   .only(
                                                                       left:
@@ -181,10 +137,6 @@ class SignupScreen extends StatelessWidget {
                                                                 style: theme
                                                                     .textTheme
                                                                     .bodyMedium),
-<<<<<<< HEAD
-=======
-
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                             SizedBox(
                                                                 width: 49.h,
                                                                 child: Divider(
@@ -200,11 +152,7 @@ class SignupScreen extends StatelessWidget {
                                                 SizedBox(height: 35.v),
                                                 Padding(
                                                     padding: EdgeInsets.only(
-<<<<<<< HEAD
                                                         left: 35.h), //gender
-=======
-                                                        left: 35.h),//gender
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                     child: Row(
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
@@ -212,10 +160,6 @@ class SignupScreen extends StatelessWidget {
                                                         children: [
                                                           _buildGenderValue(
                                                               context),
-<<<<<<< HEAD
-=======
-
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                         ])),
                                                 SizedBox(height: 38.v),
                                                 _buildSignup(context),
@@ -231,14 +175,10 @@ class SignupScreen extends StatelessWidget {
                                                           Padding(
                                                               padding: EdgeInsets
                                                                   .only(
-<<<<<<< HEAD
                                                                       top:
                                                                           3.5.v,
                                                                       left:
                                                                           15.v,
-=======
-                                                                      top: 3.5.v,left: 15.v,
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                                       bottom:
                                                                           3.v),
                                                               child: Text(
@@ -271,7 +211,6 @@ class SignupScreen extends StatelessWidget {
                                                         alignment: Alignment
                                                             .bottomRight,
                                                         children: [
-<<<<<<< HEAD
                                                           CustomImageView(
                                                               imagePath:
                                                                   ImageConstant
@@ -288,15 +227,6 @@ class SignupScreen extends StatelessWidget {
                                                                           15.h,
                                                                       bottom: 57
                                                                           .v)),
-=======
-
-                                                          CustomImageView(
-                                                            imagePath: ImageConstant.imgGmailLogo,
-                                                            height: 45.adaptSize,
-                                                            width: 45.adaptSize,
-                                                            alignment: Alignment.bottomRight,
-                                                            margin: EdgeInsets.only(right: 15.h, bottom: 57.v)),
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                                                           Align(
                                                               alignment:
                                                                   Alignment
@@ -433,15 +363,10 @@ class SignupScreen extends StatelessWidget {
                   contentPadding: EdgeInsets.symmetric(horizontal: 4.h));
             }));
   }
-<<<<<<< HEAD
 
   var dropdownValue = 'Gender';
   var newValue = "";
 
-=======
-  var dropdownValue ='Gender';
-  var newValue="";
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
   /// Section Widget
   Widget _buildGenderValue(BuildContext context) {
     return Center(
@@ -453,7 +378,6 @@ class SignupScreen extends StatelessWidget {
           height: 1,
           color: Colors.white60,
         ),
-<<<<<<< HEAD
         onChanged: (String? newValue) {
           setState(() {
             dropdownValue = newValue!;
@@ -479,36 +403,12 @@ class SignupScreen extends StatelessWidget {
                 fontSize: 21, // Set font size to 16 (adjust as needed)
               ),
             ),
-=======
-        onChanged: (String? newValue){
-          setState(() { dropdownValue = newValue!;});
-        },
-        items: const [
-
-          DropdownMenuItem<String>(
-            value: 'Gender',
-            child: Text('Male',
-              style: TextStyle(// Set text color to black
-              fontSize: 21, // Set font size to 16 (adjust as needed)
-            ),),
-
-          ),
-          DropdownMenuItem<String>(
-            value: 'Female',
-            child: Text('Female',style: TextStyle(// Set text color to black
-              fontSize: 21, // Set font size to 16 (adjust as needed)
-            ),),
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
           )
         ],
       ),
     );
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
   /// Section Widget
   Widget _buildSignup(BuildContext context) {
     return CustomElevatedButton(
@@ -548,7 +448,6 @@ class SignupScreen extends StatelessWidget {
                                           style: CustomTextStyles
                                               .titleSmallGray500)))
                             ])),
-<<<<<<< HEAD
                         Padding(
                           padding: EdgeInsets.only(
                               left:
@@ -594,51 +493,6 @@ class SignupScreen extends StatelessWidget {
                             ),
                           ),
                         )
-=======
-            Padding(
-              padding: EdgeInsets.only(left: 15.6.h), // Adjust the left padding as needed
-              child: SizedBox(
-                height: 251.v,
-                width: 122.h,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    CustomImageView(
-                      imagePath: ImageConstant.imgBack,
-                      height: 147.v,
-                      width: 120.h,
-                      alignment: Alignment.topCenter,
-                      margin: EdgeInsets.only(top: 5.v),
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: SizedBox(
-                        height: 251.v,
-                        width: 122.h,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: [
-                            CustomImageView(
-                              imagePath: ImageConstant.imgIcon7,
-                              height: 177.v,
-                              width: 118.h,
-                              alignment: Alignment.bottomCenter,
-                            ),
-                            CustomImageView(
-                              imagePath: ImageConstant.imgIcon3,
-                              height: 132.v,
-                              width: 122.h,
-                              alignment: Alignment.topCenter,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                       ])),
               InkWell(
                 onTap: () {
@@ -675,9 +529,5 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-<<<<<<< HEAD
   void setState(Null Function() param0) {}
 }
-=======
-  void setState(Null Function() param0) {}}
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a

@@ -129,13 +129,10 @@ class AppNavigationScreen extends StatelessWidget {
                               onTapScreenTitle: () => onTapScreenTitle(
                                   AppRoutes.homePageContainerScreen),
                             ),
-<<<<<<< HEAD
                             _buildScreenTitle(context,
                                 screenTitle: "Flashcards",
                                 onTapScreenTitle: () => onTapScreenTitle(
                                     AppRoutes.FlashcardsHomePage)),
-=======
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
                           ],
                         ),
                       ),

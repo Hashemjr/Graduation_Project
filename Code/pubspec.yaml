@@ -1,21 +1,12 @@
 name: chineasy
 description: A new Flutter project.
 version: 1.0.0+1
-<<<<<<< HEAD
 environment:
   sdk: ">=2.12.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
-=======
-environment: 
-  sdk: '>=2.12.0 <3.0.0'
-dependencies: 
-  flutter: 
-    sdk: flutter
-  flutter_localizations: 
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
     sdk: flutter
   flutter_bloc: ^8.1.3
   connectivity_plus: ^5.0.2
@@ -27,7 +18,6 @@ dependencies:
   sms_autofill: ^2.3.0
   outline_gradient_button: ^2.0.1+1
   flutter_svg_provider: ^1.0.7
-<<<<<<< HEAD
   provider: ^6.1.2
   download: ^1.0.0
   flutter_glow: ^0.3.0
@@ -42,19 +32,6 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-=======
-dev_dependencies: 
-  flutter_test: 
-    sdk: flutter
-flutter: 
-  uses-material-design: true
-  assets: 
-    - assets/
-    - assets/images/
-  fonts: 
-    - family: Montserrat
-      fonts: 
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
         - asset: assets/fonts/MontserratRegular.ttf
           weight: 400
         - asset: assets/fonts/MontserratRomanBold.ttf
@@ -62,11 +39,7 @@ flutter:
         - asset: assets/fonts/MontserratRomanRegular.ttf
           weight: 400
     - family: Poppins
-<<<<<<< HEAD
       fonts:
-=======
-      fonts: 
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
         - asset: assets/fonts/PoppinsRegular.ttf
           weight: 400
         - asset: assets/fonts/PoppinsMedium.ttf
@@ -76,35 +49,22 @@ flutter:
         - asset: assets/fonts/PoppinsBold.ttf
           weight: 700
     - family: Outfit
-<<<<<<< HEAD
       fonts:
-=======
-      fonts: 
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
         - asset: assets/fonts/OutfitRegular.ttf
           weight: 400
         - asset: assets/fonts/OutfitBold.ttf
           weight: 700
     - family: Alata
-<<<<<<< HEAD
       fonts:
         - asset: assets/fonts/AlataRegular.ttf
           weight: 400
     - family: Inter
       fonts:
-=======
-      fonts: 
-        - asset: assets/fonts/AlataRegular.ttf
-          weight: 400
-    - family: Inter
-      fonts: 
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
         - asset: assets/fonts/InterSemiBold.ttf
           weight: 600
         - asset: assets/fonts/InterMedium.ttf
           weight: 500
     - family: Oxygen
-<<<<<<< HEAD
       fonts:
         - asset: assets/fonts/OxygenBold.ttf
           weight: 700
@@ -114,16 +74,5 @@ flutter:
           weight: 400
     - family: Oooh Baby
       fonts:
-=======
-      fonts: 
-        - asset: assets/fonts/OxygenBold.ttf
-          weight: 700
-    - family: Paytone One
-      fonts: 
-        - asset: assets/fonts/PaytoneOneRegular.ttf
-          weight: 400
-    - family: Oooh Baby
-      fonts: 
->>>>>>> 745dc441913e5d902d5c69af130cc3f3de232b4a
         - asset: assets/fonts/OoohBabyRegular.ttf
           weight: 400
