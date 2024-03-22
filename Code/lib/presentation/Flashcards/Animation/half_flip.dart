@@ -30,7 +30,7 @@ class _HalfFlipAnimationState extends State<HalfFlipAnimation>
   initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 800),
     )..addListener(() {
         if (_controller.isCompleted) {
           widget.animationCompleted.call();

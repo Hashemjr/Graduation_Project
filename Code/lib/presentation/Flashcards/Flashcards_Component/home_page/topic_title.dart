@@ -1,4 +1,5 @@
 import 'package:chineasy/presentation/Flashcards/Animation/fade-in-animation.dart';
+import 'package:chineasy/presentation/Flashcards/Flashcards_Component/Configur/constants.dart';
 import 'package:chineasy/presentation/Flashcards/utils/methods.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class TopicTile extends StatelessWidget {
             child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(KcircularRadius),
                 ),
                 child: Column(children: [
                   Expanded(

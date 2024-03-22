@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 final appTheme = ThemeData(
     primaryColor: Kred,
-    textTheme:
-        TextTheme(bodyLarge: TextStyle(color: Colors.white, fontSize: 12)),
+    textTheme: TextTheme(
+      bodyLarge: TextStyle(color: Colors.white, fontSize: 12),
+      displayLarge: TextStyle(
+          color: Colors.white, fontSize: 58, fontWeight: FontWeight.bold),
+    ),
     appBarTheme: AppBarTheme(
         elevation: 0,
         centerTitle: true,

@@ -17,6 +17,18 @@ class FlashcardsPage extends StatefulWidget {
 
 class _FlashcardsPageState extends State<FlashcardsPage> {
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      final flashCardsNotitifer =
+          Provider.of<FlashCardsNotifier>(context, listen: false);
+      flashCardsNotitifer.runSlideCard1();
+      flashCardsNotitifer.generateAllSelectedWords();
+      flashCardsNotitifer.generateCurrentWord();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Consumer<FlashCardsNotifier>(
         builder: (_, notifier, __) => Scaffold(
@@ -25,8 +37,11 @@ class _FlashcardsPageState extends State<FlashcardsPage> {
                   child: CustomAppBar(
                     widget: widget,
                   )),
-              body: Stack(
-                children: [Card2(), Card1()],
+              body: IgnorePointer(
+                ignoring: notifier.ignoreTouches,
+                child: Stack(
+                  children: [Card2(), Card1()],
+                ),
               ),
               backgroundColor: widget.themeData.scaffoldBackgroundColor,
             ));

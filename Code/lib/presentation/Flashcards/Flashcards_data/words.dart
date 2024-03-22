@@ -190,11 +190,6 @@ final List<Word> words = [
       pinyin: "jìsuànjīkēxué"),
   Word(
       topic: "Computer Science",
-      english: "Computer Scientist",
-      character: "计算机科学家",
-      pinyin: "jìsuànjīkēxuéjiā"),
-  Word(
-      topic: "Computer Science",
       english: "Programming",
       character: "编程",
       pinyin: "biānchéng"),
@@ -267,8 +262,6 @@ final List<Word> words = [
   Word(topic: "Food", english: "Vegetables", character: "蔬菜", pinyin: "shūcài"),
   Word(topic: "Food", english: "Fruit", character: "水果", pinyin: "shuǐguǒ"),
   Word(topic: "Food", english: "Meat", character: "肉", pinyin: "ròu"),
-  Word(topic: "Food", english: "Fish", character: "鱼", pinyin: "yú"),
-  Word(topic: "Food", english: "Chicken", character: "鸡肉", pinyin: "jīròu"),
   Word(
       topic: "Sites",
       english: "Great Wall",
@@ -291,22 +284,14 @@ final List<Word> words = [
       pinyin: "bùdálāgōng"),
   Word(
       topic: "Sites",
-      english: "Zhangjiajie",
-      character: "张家界",
-      pinyin: "zhāngjiājiè"),
-  Word(
-      topic: "Sites",
       english: "Yellow Mountains",
       character: "黄山",
       pinyin: "huángshān"),
-  Word(topic: "Sites", english: "Lijiang", character: "丽江", pinyin: "lìjiāng"),
-  Word(topic: "Sites", english: "Suzhou", character: "苏州", pinyin: "sūzhōu"),
   Word(topic: "Drinks", english: "Water", character: "水", pinyin: "shuǐ"),
   Word(topic: "Drinks", english: "Tea", character: "茶", pinyin: "chá"),
   Word(topic: "Drinks", english: "Coffee", character: "咖啡", pinyin: "kāfēi"),
   Word(topic: "Drinks", english: "Milk", character: "牛奶", pinyin: "niúnǎi"),
   Word(topic: "Drinks", english: "Juice", character: "果汁", pinyin: "guǒzhī"),
-  Word(topic: "Drinks", english: "Soda", character: "苏打", pinyin: "sūdǎ"),
   Word(
       topic: "Travelling",
       english: "Travel",
@@ -456,4 +441,5 @@ final List<Word> words = [
       character: "制作风筝",
       pinyin: "zhìzuò fēngzhēng"),
   Word(topic: "Craft", english: "Ceramics", character: "陶瓷", pinyin: "táocí"),
+  Word(topic: "Craft", english: "Gold", character: "黄金", pinyin: "huángjīn"),
 ];

@@ -1,17 +1,26 @@
 import 'package:chineasy/presentation/Flashcards/Enums/Slide_direction.dart';
+import 'package:chineasy/presentation/Flashcards/Flashcards_Component/Configur/constants.dart';
 import 'package:flutter/material.dart';
 
 class SlideAnimation extends StatefulWidget {
   const SlideAnimation(
-      {this.animate = true,
+      {this.reset,
+      this.animationCompleted,
+      this.animate = true,
       required this.direction,
       required this.child,
+      this.animationduration = kSlideAwayDuration,
+      this.animationdelay = 0,
       Key? key})
       : super(key: key);
 
   final Widget child;
   final SlideDirection direction;
   final bool animate;
+  final bool? reset;
+  final VoidCallback? animationCompleted;
+  final int animationduration;
+  final int animationdelay;
 
   @override
   State<SlideAnimation> createState() => _SlideAnimationState();
@@ -25,20 +34,32 @@ class _SlideAnimationState extends State<SlideAnimation>
   initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 4000),
-    );
-
-    if (widget.animate) {
-      _controller.forward();
-    }
+      duration: Duration(milliseconds: widget.animationduration),
+    )..addListener(() {
+        if (_controller.isCompleted) {
+          widget.animationCompleted?.call();
+        }
+      });
 
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant SlideAnimation oldWidget) {
+    if (widget.reset == true) {
+      _controller.reset();
+    }
+
     if (widget.animate) {
-      _controller.forward();
+      if (widget.animationdelay > 0) {
+        Future.delayed(Duration(milliseconds: widget.animationdelay), () {
+          if (mounted) {
+            _controller.forward();
+          }
+        });
+      } else {
+        _controller.forward();
+      }
     }
     super.didUpdateWidget(oldWidget);
   }
