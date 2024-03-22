@@ -4,9 +4,26 @@ import 'package:chineasy/presentation/Flashcards/Enums/Slide_direction.dart';
 import 'package:chineasy/presentation/Flashcards/Flashcards_Component/Configur/constants.dart';
 import 'package:chineasy/presentation/Flashcards/Flashcards_Models/word.dart';
 import 'package:chineasy/presentation/Flashcards/Flashcards_data/words.dart';
+import 'package:chineasy/presentation/Flashcards/pages/results_box.dart';
 import 'package:flutter/material.dart';
 
 class FlashCardsNotifier extends ChangeNotifier {
+  int roundTally = 0;
+  int cardTally = 0, correctTally = 0, incorrectTally = 0;
+  int correctPercentage = 0;
+
+  List<Word> incorrect = [];
+  bool isFirstRound = true;
+  bool isRoundCompleted = false;
+  bool isSessionCompleted = false;
+
+  reset() {
+    isFirstRound = true;
+    isRoundCompleted = false;
+    isSessionCompleted = false;
+    roundTally = 0;
+  }
+
   String topic = "";
   Word word1 = Word(topic: "", english: "", character: "", pinyin: "");
   Word word2 = Word(topic: "", english: "", character: "", pinyin: "");
@@ -19,21 +36,55 @@ class FlashCardsNotifier extends ChangeNotifier {
 
   generateAllSelectedWords() {
     selectedWords.clear();
-    selectedWords = words.where((element) => element.topic == topic).toList();
+    isRoundCompleted = false;
+    if (isFirstRound) {
+      selectedWords = words.where((element) => element.topic == topic).toList();
+    } else {
+      selectedWords = incorrect.toList();
+      incorrect.clear();
+    }
+    roundTally++;
+    cardTally = selectedWords.length;
+    correctTally = 0;
+    incorrectTally = 0;
   }
 
-  generateCurrentWord() {
+  generateCurrentWord({required BuildContext context}) {
     if (selectedWords.isNotEmpty) {
       final rand = Random().nextInt(selectedWords.length);
       word1 = selectedWords[rand];
       selectedWords.removeAt(rand);
     } else {
-      print("No more words");
+      if (incorrect.isEmpty) {
+        isSessionCompleted = true;
+        print('Session Completed: $isSessionCompleted');
+      }
+      isRoundCompleted = true;
+      isFirstRound = false;
+      calculateCorrectPercentage();
+      Future.delayed(Duration(milliseconds: 500), () {
+        showDialog(context: context, builder: (context) => ResultBox());
+      });
     }
 
     Future.delayed(Duration(milliseconds: kSlideAwayDuration), () {
       word2 = word1;
     });
+  }
+
+  updateCardOutcome({required Word word, required bool isCorrect}) {
+    if (!isCorrect) {
+      incorrect.add(word);
+      incorrectTally++;
+    } else {
+      correctTally++;
+    }
+    notifyListeners();
+  }
+
+  calculateCorrectPercentage() {
+    correctPercentage = ((correctTally / cardTally) * 100).toInt();
+    notifyListeners();
   }
 
   // Animation Code
@@ -82,6 +133,8 @@ class FlashCardsNotifier extends ChangeNotifier {
   }
 
   runSwipeCard2({required SlideDirection direction}) {
+    updateCardOutcome(
+        word: word2, isCorrect: direction == SlideDirection.leftAway);
     swipedDirection = direction;
     resetSwipeCard2 = false;
     swipeCard2 = true;

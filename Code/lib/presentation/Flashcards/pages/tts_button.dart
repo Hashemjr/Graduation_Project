@@ -41,8 +41,8 @@ class _TTSButtonState extends State<TTSButton> {
                   setState(() {});
                 });
               },
-              icon: Icon(Icons.audiotrack,
-                  size: 50, color: _istapped ? Kyellow : Colors.white))),
+              icon: Image.asset('assets/images/img_voice_pic.png',
+                  color: _istapped ? Kyellow : Colors.white))),
     );
   }
 

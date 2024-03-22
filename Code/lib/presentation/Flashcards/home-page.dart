@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                               child: Center(
                                 child: FadeInAnimation(
                                     child: Image.asset(
-                                        'assets/images/Dragon.png')),
+                                        'assets/images/dragon .png')),
                               )))),
                 ),
                 SliverGrid(

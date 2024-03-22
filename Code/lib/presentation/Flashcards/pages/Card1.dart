@@ -37,7 +37,7 @@ class Card1 extends StatelessWidget {
               notifier.setIgnoreTouch(ignore: false);
             },
             reset: notifier.resetSlideCard1,
-            animate: notifier.slideCard1,
+            animate: notifier.slideCard1 && !notifier.isRoundCompleted,
             direction: SlideDirection.upIn,
             child: Center(
               child: Container(
