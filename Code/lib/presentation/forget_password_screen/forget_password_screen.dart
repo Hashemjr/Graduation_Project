@@ -47,7 +47,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                 height: SizeUtils.height,
                 width: double.maxFinite,
                 child: Stack(
-
                   alignment: Alignment.topRight, // Align items to top right corner
                   children: [
                     Align(
@@ -61,7 +60,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                           children: [
                             SizedBox(height: 195.v),
                             Padding(
-                              padding: EdgeInsets.only(left: 35.h, right: 35.h),
+                              padding: EdgeInsets.only(left: 0.h, right: 0.h),
                               child: _buildLoginSection(context), // Corrected syntax
                             ),
                           ],
@@ -73,7 +72,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       height: 150.v,
                       width: 170.h,
                       alignment: Alignment.topRight,
-                      margin: EdgeInsets.only(top: 140.v, right: 5.h),
+                      margin: EdgeInsets.only(top: 160.v, right: 5.h),
                     ),
                     Align( // Added notation
                       alignment: Alignment.topLeft,
@@ -103,8 +102,7 @@ class ForgetPasswordScreen extends StatelessWidget {
     return Align(
         alignment: Alignment.bottomCenter,
         child: Padding(
-
-            padding: EdgeInsets.only(left: 35.h, right: 35.h, bottom: 99.v),
+            padding: EdgeInsets.only(left: 35.h, right: 35.h, bottom: 150.v),
             child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,16 +130,17 @@ class ForgetPasswordScreen extends StatelessWidget {
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 9.h));
                           })),
-                  SizedBox(height: 133.v),
+                  SizedBox(height: 70.v),
                   CustomElevatedButton(
                       text: "lbl_submit".tr,
                       onPressed: () {
                         onTapSubmit(context);
                       }),
-                  SizedBox(height: 14.v),
+                  SizedBox(height: 15.v),
                   Padding(
-                      padding: EdgeInsets.only(left: 0.h, right: 0.h),
+                      padding: EdgeInsets.only(left: 35.h, right: 0.h),
                       child: Row(children: [
+                        SizedBox(height: 0.v),
                         Padding(
                             padding: EdgeInsets.only(top: 4.v, bottom: 1.v),
                             child: Text("msg_remembered_the_password".tr,
@@ -151,7 +150,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                               onTapTxtLOGIN(context);
                             },
                             child: Padding(
-                                padding: EdgeInsets.only(left: 5.v),
+                                padding: EdgeInsets.only(left: 7.v),
                                 child: Text("lbl_login2".tr,
                                     style:
                                         CustomTextStyles.titleMediumPoppins)))

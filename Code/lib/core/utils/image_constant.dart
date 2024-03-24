@@ -163,6 +163,8 @@ class ImageConstant {
   static String imgNavCourses31x24 = '$imagePath/img_nav_courses_31x24.png';
 
   static String imgNavProfile = '$imagePath/img_nav_profile.svg';
+   
+   static String imgQuizicon = '$imagePath/quiz_icon.png';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
 }
