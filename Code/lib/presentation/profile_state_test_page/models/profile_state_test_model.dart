@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:equatable/equatable.dart';
+import '../../../core/app_export.dart';
 import 'medalliontilelist_item_model.dart';
 
 /// This class defines the variables used in the [profile_state_test_page],

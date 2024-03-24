@@ -10,12 +10,11 @@ import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 
-// ignore: must_be_immutable
 class ProfileLeaderboardScreen extends StatelessWidget {
   ProfileLeaderboardScreen({Key? key})
       : super(
-          key: key,
-        );
+    key: key,
+  );
 
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
@@ -70,28 +69,26 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                     SizedBox(height: 12.v),
                     _buildOneStack(context),
                     SizedBox(height: 14.v),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 45.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text(
+                    Padding(
+                      padding: EdgeInsets.only(right: 45.h,left: 120.v),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: FractionalOffset(150.0, 0.0), // Adjust these values to move the text
+                            child: Text(
                               "lbl_leaderboard".tr.toUpperCase(),
-                              style: CustomTextStyles
-                                  .titleSmallInterDeeporangeA700,
+                              style: CustomTextStyles.titleSmallInterDeeporangeA700,
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 29.h),
-                              child: Text(
-                                "lbl_stats".tr,
-                                style:
-                                    CustomTextStyles.titleSmallInterGray50001,
-                              ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 29.h,),
+                            child: Text(
+                              "lbl_stats".tr,
+                              style: CustomTextStyles.titleSmallInterGray50001,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(height: 9.v),
@@ -112,7 +109,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                   .gradientOnErrorContainerToRed
                                   .copyWith(
                                 borderRadius:
-                                    BorderRadiusStyle.customBorderTL36,
+                                BorderRadiusStyle.customBorderTL36,
                               ),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -122,11 +119,11 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     padding: EdgeInsets.only(right: 116.h),
                                     child: Row(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                      CrossAxisAlignment.end,
                                       children: [
                                         CustomImageView(
                                           imagePath:
-                                              ImageConstant.imgFirstPlaceBadge,
+                                          ImageConstant.imgFirstPlaceBadge,
                                           height: 25.v,
                                           width: 17.h,
                                           margin: EdgeInsets.only(top: 19.v),
@@ -140,7 +137,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             children: [
                                               CustomImageView(
                                                 imagePath:
-                                                    ImageConstant.imgAvatar27,
+                                                ImageConstant.imgAvatar27,
                                                 height: 34.adaptSize,
                                                 width: 34.adaptSize,
                                                 radius: BorderRadius.vertical(
@@ -179,7 +176,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                       children: [
                                         CustomImageView(
                                           imagePath:
-                                              ImageConstant.imgRewardBadgeWith,
+                                          ImageConstant.imgRewardBadgeWith,
                                           height: 25.v,
                                           width: 17.h,
                                           margin: EdgeInsets.only(
@@ -391,7 +388,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
               ),
             ),
             floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
+            FloatingActionButtonLocation.centerDocked,
           ),
         );
       },
@@ -468,7 +465,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                   ),
                                   CustomImageView(
                                     imagePath:
-                                        ImageConstant.imgPeepsAvatarAlpha2,
+                                    ImageConstant.imgPeepsAvatarAlpha2,
                                     height: 65.adaptSize,
                                     width: 65.adaptSize,
                                     alignment: Alignment.bottomCenter,
@@ -502,6 +499,13 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                       top: 8.v,
                       bottom: 34.v,
                     ),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.6), // You can adjust the color of the border
+                        width: 1.0,// You can adjust the width of the border
+                      ),
+                    ),
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
@@ -510,12 +514,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                           height: 37.adaptSize,
                           width: 37.adaptSize,
                           alignment: Alignment.center,
-                        ),
-                        CustomIconButton(
-                          height: 53.adaptSize,
-                          width: 53.adaptSize,
-                          alignment: Alignment.center,
-                          child: CustomImageView(),
                         ),
                       ],
                     ),
@@ -683,10 +681,10 @@ class ProfileLeaderboardScreen extends StatelessWidget {
 
   /// Common widget
   Widget _buildFiveRow(
-    BuildContext context, {
-    required String textValue,
-    required String username,
-  }) {
+      BuildContext context, {
+        required String textValue,
+        required String username,
+      }) {
     return Row(
       children: [
         Padding(
@@ -738,9 +736,9 @@ class ProfileLeaderboardScreen extends StatelessWidget {
 
   ///Handling page based on route
   Widget getCurrentPage(
-    BuildContext context,
-    String currentRoute,
-  ) {
+      BuildContext context,
+      String currentRoute,
+      ) {
     switch (currentRoute) {
       case AppRoutes.coursesTestContainerPage:
         return CoursesTestContainerPage.builder(context);
@@ -751,3 +749,4 @@ class ProfileLeaderboardScreen extends StatelessWidget {
     }
   }
 }
+

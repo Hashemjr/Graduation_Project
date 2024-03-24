@@ -70,7 +70,7 @@ class ProfileStateTestPage extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 8.h),
+                    padding: EdgeInsets.only(left: 30.h),
                     child: Row(
                       children: [
                         Text(
@@ -157,7 +157,7 @@ class ProfileStateTestPage extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 9.v),
+              padding: EdgeInsets.only(bottom: 6.v),
               child: Text(
                 "lbl_level_1".tr,
                 style: CustomTextStyles.bodyMediumOutfitGray400,
@@ -228,7 +228,8 @@ class ProfileStateTestPage extends StatelessWidget {
                       width: 48.adaptSize,
                       padding: EdgeInsets.all(5.h),
                       child: CustomImageView(
-                        imagePath: ImageConstant.imgGearPng148x48,
+                        imagePath: ImageConstant.imgGearPng1,
+                        radius: BorderRadius.circular(30.0), // Adjust the border corner radius here
                       ),
                     ),
                   ),
@@ -260,10 +261,10 @@ class ProfileStateTestPage extends StatelessWidget {
         ],
       ),
       corners: Corners(
-        topLeft: Radius.circular(12),
-        topRight: Radius.circular(12),
-        bottomLeft: Radius.circular(12),
-        bottomRight: Radius.circular(12),
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
+        bottomLeft: Radius.circular(20),
+        bottomRight: Radius.circular(20),
       ),
       child: CustomOutlinedButton(
         width: 24.h,
@@ -295,10 +296,10 @@ class ProfileStateTestPage extends StatelessWidget {
             ],
           ),
           corners: Corners(
-            topLeft: Radius.circular(12),
-            topRight: Radius.circular(12),
-            bottomLeft: Radius.circular(12),
-            bottomRight: Radius.circular(12),
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
           ),
           child: CustomOutlinedButton(
             width: 24.h,
@@ -318,42 +319,57 @@ class ProfileStateTestPage extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Opacity(
-            opacity: 0.2,
-            child: CustomImageView(
-              imagePath: ImageConstant.imgInnerlevel,
-              height: 32.v,
-              width: 298.h,
-              radius: BorderRadius.circular(
-                16.h,
-              ),
-              alignment: Alignment.center,
-            ),
-          ),
           Align(
             alignment: Alignment.center,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 25.v,
-                  width: 224.h,
+                  height: 32.v,
+                  width: 298.h,
                   child: Stack(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.center,
                     children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgOuterlevel,
-                        height: 25.v,
-                        width: 224.h,
-                        radius: BorderRadius.circular(
-                          12.h,
+                      Positioned(
+                top:1.5.h, // Adjust position as needed
+                left:1.h, // Adjust position as needed
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    width: 225.h,
+                    height: 27.h,
+                    decoration: AppDecoration.gradientDeepOrangeAToRedA,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 1.5.h, // Adjust position as needed
+                left: 1.h, // Adjust position as needed
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Opacity(
+                    opacity: 0.4,
+                    child: Container(
+                      width: 288.h,
+                      height: 27.h,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.deepOrange.withOpacity(0.4),
+                            Colors.red.withOpacity(0.4)
+                          ],
                         ),
-                        alignment: Alignment.center,
                       ),
+                    ),
+                  ),
+                ),
+              ),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Container(
-                          width: 214.h,
+                          width: 298.h,
                           margin: EdgeInsets.only(right: 10.h),
                           child: Row(
                             children: [
@@ -395,6 +411,7 @@ class ProfileStateTestPage extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                 ),
                               ),
+                              _buildTwo(context),
                             ],
                           ),
                         ),
@@ -402,7 +419,7 @@ class ProfileStateTestPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                _buildTwo(context),
+                
               ],
             ),
           ),
@@ -424,12 +441,13 @@ class ProfileStateTestPage extends StatelessWidget {
           Container(
             width: 155.h,
             padding: EdgeInsets.symmetric(
-              horizontal: 8.h,
-              vertical: 11.v,
+              horizontal: 7.h,
+              vertical: 10.v,
             ),
             decoration:
                 AppDecoration.gradientOnErrorContainerToRed90001.copyWith(
               borderRadius: BorderRadiusStyle.roundedBorder24,
+              border: Border.all(color: Colors.transparent),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -437,22 +455,24 @@ class ProfileStateTestPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                    top: 8.v,
-                    bottom: 7.v,
+                              top: 8.v,
+                              bottom: 7.v,
+                                          ),
+                            child: SizedBox(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(4.h),
+                                        child: Image.asset(
+                                        ImageConstant.imgQuizicon,
+                                        width: 27.h,
+                                        height: 27.h,
+                                        ),
+                                      ),
+                                    ),
                   ),
-                  child: CustomIconButton(
-                    height: 27.adaptSize,
-                    width: 27.adaptSize,
-                    padding: EdgeInsets.all(4.h),
-                    child: CustomImageView(
-                      imagePath: ImageConstant.imgQuizIcon,
-                    ),
-                  ),
-                ),
                 Padding(
                   padding: EdgeInsets.only(
                     right: 30.h,
-                    bottom: 3.v,
+                   // bottom: 3.v,
                   ),
                   child: Column(
                     children: [
@@ -460,7 +480,7 @@ class ProfileStateTestPage extends StatelessWidget {
                         "lbl_3".tr,
                         style: CustomTextStyles.titleMediumInter,
                       ),
-                      SizedBox(height: 2.v),
+                      //SizedBox(height: 1.v),
                       Text(
                         "lbl_quizzes".tr,
                         style: CustomTextStyles.labelLargeInterErrorContainer,
@@ -481,19 +501,27 @@ class ProfileStateTestPage extends StatelessWidget {
             decoration:
                 AppDecoration.gradientOnErrorContainerToRed90001.copyWith(
               borderRadius: BorderRadiusStyle.roundedBorder24,
+              border: Border.all(color: Colors.transparent),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgLeadboardIcon,
-                  height: 27.adaptSize,
-                  width: 27.adaptSize,
-                  margin: EdgeInsets.only(
-                    top: 8.v,
-                    bottom: 10.v,
-                  ),
-                ),
+                Padding(
+  padding: EdgeInsets.only(
+    top: 8.v,
+    bottom: 7.v,
+  ),
+  child: SizedBox(
+    child: Padding(
+      padding: EdgeInsets.all(4.h),
+      child: Image.asset(
+        ImageConstant.imgLeadboardIcon,
+        width: 27.h,
+                                        height: 27.h,
+      ),
+    ),
+  ),
+),
                 Padding(
                   padding: EdgeInsets.only(
                     left: 16.h,

@@ -39,7 +39,7 @@ class MedalliontilelistItemWidget extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 19.h,
-                    vertical: 18.v,
+                    vertical: 17.v,
                   ),
                   decoration: AppDecoration.outlineGrayCc.copyWith(
                     borderRadius: BorderRadiusStyle.roundedBorder24,
@@ -48,11 +48,11 @@ class MedalliontilelistItemWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       CustomImageView(
-                        imagePath: medalliontilelistItemModelObj.imageId,
-                        height: 49.adaptSize,
-                        width: 49.adaptSize,
+                        imagePath: medalliontilelistItemModelObj?.imageId,
+                        height: 47.adaptSize,
+                        width: 50.adaptSize,
                       ),
-                      SizedBox(height: 17.v),
+                      SizedBox(height: 15.v),
                       SizedBox(
                         width: 124.h,
                         child: Text(
