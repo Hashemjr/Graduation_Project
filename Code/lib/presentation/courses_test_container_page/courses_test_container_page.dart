@@ -1,4 +1,6 @@
 import '../courses_test_container_page/widgets/coursescard1_item_widget.dart';
+import '../courses_test_container_page/widgets/coursescard1_item_widget copy.dart';
+import '../courses_test_container_page/widgets/coursescard1_item_widget copy 2.dart';
 import 'bloc/courses_test_container_bloc.dart';
 import 'models/courses_test_container_model.dart';
 import 'models/coursescard1_item_model.dart';
@@ -11,16 +13,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 
+// ignore_for_file: must_be_immutable
 class CoursesTestContainerPage extends StatelessWidget {
-  const CoursesTestContainerPage({Key? key}) : super(key: key);
+  const CoursesTestContainerPage({Key? key})
+      : super(
+          key: key,
+        );
 
   static Widget builder(BuildContext context) {
     return BlocProvider<CoursesTestContainerBloc>(
-      create: (context) => CoursesTestContainerBloc(
-        CoursesTestContainerState(
-          coursesTestContainerModelObj: CoursesTestContainerModel(),
-        ),
-      )..add(CoursesTestContainerInitialEvent()),
+      create: (context) => CoursesTestContainerBloc(CoursesTestContainerState(
+        coursesTestContainerModelObj: CoursesTestContainerModel(),
+      ))
+        ..add(CoursesTestContainerInitialEvent()),
       child: CoursesTestContainerPage(),
     );
   }
@@ -32,36 +37,69 @@ class CoursesTestContainerPage extends StatelessWidget {
         extendBody: true,
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
-          child: Container(
-            width: SizeUtils.width,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  appTheme.black900,
-                  appTheme.gray90001,
-                ],
-              ),
+        body: Container(
+          width: SizeUtils.width,
+          height: SizeUtils.height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.5, 0),
+              end: Alignment(0.5, 1),
+              colors: [
+                appTheme.black900,
+                appTheme.gray90001,
+              ],
             ),
+          ),
+          child: Container(
+            width: double.maxFinite,
+            decoration: AppDecoration.background2,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 16.v),
-                _buildJourneyToFluency(context),
-                SizedBox(height: 16.v),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 28.h),
-                  child: Text(
-                    "msg_mandarin_courses".tr,
-                    style: CustomTextStyles.titleLargeOutfitPrimary,
+                _buildOne(context),
+                SizedBox(height: 20 .v),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 28.h),
+                      child: Column(
+                        children: [
+                          Text(
+                            "msg_mandarin_courses".tr,
+                            style: CustomTextStyles.titleLargeOutfitPrimary,
+                          ),
+                          SizedBox(height: 20.v),
+                          SizedBox(
+                            height: 175.v,
+                            width: 300.h,
+                            child: Stack(
+                              children: [
+                                _buildCoursesCard1(context),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 175.v,
+                            width: 300.h,
+                            child: Stack(
+                              children: [
+                                _buildCoursesCard2(context),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 175.v,
+                            width: 300.h,
+                            child: Stack(
+                              children: [
+                                _buildCoursesCard3(context),
+                              ],
+                            ),
+                          ),  
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(height: 16.v),
-                _buildCourseSection(context),
-                SizedBox(height: 20.v), // Adjusted height for gradient
               ],
             ),
           ),
@@ -70,7 +108,8 @@ class CoursesTestContainerPage extends StatelessWidget {
     );
   }
 
-  Widget _buildJourneyToFluency(BuildContext context) {
+  /// Section Widget
+  Widget _buildOne(BuildContext context) {
     return SizedBox(
       height: 241.v,
       width: double.maxFinite,
@@ -97,16 +136,8 @@ class CoursesTestContainerPage extends StatelessWidget {
                 horizontal: 20.h,
                 vertical: 8.v,
               ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.white.withOpacity(0.3),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 2),
-                  ),
-                ],
+              decoration: AppDecoration.outlineGray.copyWith(
+                borderRadius: BorderRadiusStyle.roundedBorder24,
                 image: DecorationImage(
                   image: fs.Svg(
                     ImageConstant.imgBiglevelCard,
@@ -263,25 +294,9 @@ class CoursesTestContainerPage extends StatelessWidget {
             ),
           ),
           CustomAppBar(
-            title: Row(
-              children: [
-                AppbarTitle(
-                  text: "msg_journey_to_fluency".tr,
-                  margin: EdgeInsets.only(left: 8.h),
-                ),
-                Spacer(),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: IconButton(
-                    onPressed: () {
-                      // Handle search icon tap
-                    },
-                    icon: Icon(Icons.search),
-                    color: Colors.white,
-                    iconSize: 32,
-                  ),
-                ),
-              ],
+            title: AppbarTitle(
+              text: "msg_journey_to_fluency".tr,
+              margin: EdgeInsets.only(left: 65.h),
             ),
             actions: [
               AppbarTrailingImage(
@@ -295,68 +310,115 @@ class CoursesTestContainerPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCourseSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _buildCoursesCard1(context),
-        SizedBox(height: 5.v),
-        _buildCoursesCard1(context),
-        SizedBox(height: 5.v),
-        _buildCoursesCard1(context),
-      ],
+  /// Section Widget
+  Widget _buildCoursesCard1(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 0.v),
+        child: BlocSelector<CoursesTestContainerBloc, CoursesTestContainerState,
+            CoursesTestContainerModel?>(
+          selector: (state) => state.coursesTestContainerModelObj,
+          builder: (context, coursesTestContainerModelObj) {
+            return ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (
+                context,
+                index,
+              ) {
+                return SizedBox(
+                  height: 13.v,
+                );
+              },
+              itemCount:
+                  coursesTestContainerModelObj?.coursescard1ItemList.length ??
+                      0,
+              itemBuilder: (context, index) {
+                Coursescard1ItemModel model =
+                    coursesTestContainerModelObj?.coursescard1ItemList[index] ??
+                        Coursescard1ItemModel();
+                return Coursescard1ItemWidget(
+                  model,
+                );
+              },
+            );
+          },
+        ),
+      ),
     );
   }
-
-  Widget _buildCoursesCard1(BuildContext context) {
-    return SizedBox(
-      height: 241.v,
-      width: double.maxFinite,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 21.v),
-              child: BlocSelector<CoursesTestContainerBloc,
-                  CoursesTestContainerState, CoursesTestContainerModel?>(
-                selector: (state) => state.coursesTestContainerModelObj,
-                builder: (context, coursesTestContainerModelObj) {
-                  return ListView.separated(
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    separatorBuilder: (
-                      context,
-                      index,
-                    ) {
-                      return SizedBox(
-                        height: 5.v,
-                      );
-                    },
-                    itemCount: coursesTestContainerModelObj
-                            ?.coursescard1ItemList.length ??
-                        0,
-                    itemBuilder: (context, index) {
-                      Coursescard1ItemModel model = coursesTestContainerModelObj
-                              ?.coursescard1ItemList[index] ??
-                          Coursescard1ItemModel();
-                      return Coursescard1ItemWidget(
-                        model,
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ),
-          CustomImageView(
-            imagePath: ImageConstant.imgHomePrimary,
-            height: 108.v,
-            width: 79.h,
-            alignment: Alignment.bottomCenter,
-          ),
-        ],
+    Widget _buildCoursesCard2(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 0.v),
+        child: BlocSelector<CoursesTestContainerBloc, CoursesTestContainerState,
+            CoursesTestContainerModel?>(
+          selector: (state) => state.coursesTestContainerModelObj,
+          builder: (context, coursesTestContainerModelObj) {
+            return ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (
+                context,
+                index,
+              ) {
+                return SizedBox(
+                  height: 13.v,
+                );
+              },
+              itemCount:
+                  coursesTestContainerModelObj?.coursescard1ItemList.length ??
+                      0,
+              itemBuilder: (context, index) {
+                Coursescard1ItemModel model =
+                    coursesTestContainerModelObj?.coursescard1ItemList[index] ??
+                        Coursescard1ItemModel();
+                return Coursescard1ItemWidget1(
+                  model,
+                );
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+  Widget _buildCoursesCard3(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding: EdgeInsets.only(bottom: 0.v),
+        child: BlocSelector<CoursesTestContainerBloc, CoursesTestContainerState,
+            CoursesTestContainerModel?>(
+          selector: (state) => state.coursesTestContainerModelObj,
+          builder: (context, coursesTestContainerModelObj) {
+            return ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (
+                context,
+                index,
+              ) {
+                return SizedBox(
+                  height: 13.v,
+                );
+              },
+              itemCount:
+                  coursesTestContainerModelObj?.coursescard1ItemList.length ??
+                      0,
+              itemBuilder: (context, index) {
+                Coursescard1ItemModel model =
+                    coursesTestContainerModelObj?.coursescard1ItemList[index] ??
+                        Coursescard1ItemModel();
+                return Coursescard1ItemWidget2(
+                  model,
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
