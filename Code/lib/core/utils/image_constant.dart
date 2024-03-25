@@ -154,7 +154,7 @@ class ImageConstant {
 
   static String imgBackground1 = '$imagePath/img_background1.png';
 
-  static String imgFpdl2 = '$imagePath/img_fpdl_2.png';
+  static String imgcourse2 = '$imagePath/img_fpdl_2.png';
 
   static String imgHandDrawnCart = '$imagePath/img_hand_drawn_cart.png';
 
@@ -167,4 +167,9 @@ class ImageConstant {
    static String imgQuizicon = '$imagePath/quiz_icon.png';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
+  
+static String home_icon = 'assets/images/home_icon.png';
+
+static String profile_icon = 'assets/images/profile_icon.png';
+
 }
