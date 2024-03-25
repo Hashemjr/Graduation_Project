@@ -48,7 +48,7 @@ class MedalliontilelistItemWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       CustomImageView(
-                        imagePath: medalliontilelistItemModelObj?.imageId,
+                        imagePath: medalliontilelistItemModelObj.imageId,
                         height: 47.adaptSize,
                         width: 50.adaptSize,
                       ),
