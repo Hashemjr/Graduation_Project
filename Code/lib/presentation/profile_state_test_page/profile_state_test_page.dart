@@ -7,6 +7,7 @@ import 'package:chineasy/widgets/custom_icon_button.dart';
 import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 // ignore_for_file: must_be_immutable
 class ProfileStateTestPage extends StatelessWidget {
@@ -120,6 +121,19 @@ class ProfileStateTestPage extends StatelessWidget {
             ),
           ),
         ),
+      bottomNavigationBar: CurvedNavigationBar(
+    backgroundColor: Colors.transparent,
+    items: <Widget>[
+      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+    ],
+    animationDuration: Duration(milliseconds: 150),
+    height:75,
+    onTap: (index) {
+      //Handle button tap
+    }, 
+  ),
       ),
     );
   }
@@ -558,6 +572,7 @@ class ProfileStateTestPage extends StatelessWidget {
         ],
       ),
     );
+  
   }
 
   /// Section Widget
