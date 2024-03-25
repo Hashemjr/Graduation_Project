@@ -101,11 +101,11 @@ class Coursescard1ItemWidget2 extends StatelessWidget {
               ),
             ),
             CustomImageView(
-              imagePath: coursescard1ItemModelObj?.courseImage2,
+              imagePath: coursescard1ItemModelObj.courseImage2,
               height: 140.v,
               width: 172.h,
               alignment: Alignment.bottomRight,
-              margin: EdgeInsets.only(right: 2.h,top: 8.h),
+              margin: EdgeInsets.only(right: 2.h, top: 8.h),
             ),
             Align(
               alignment: Alignment.topLeft,

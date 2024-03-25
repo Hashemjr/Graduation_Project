@@ -163,13 +163,26 @@ class ImageConstant {
   static String imgNavCourses31x24 = '$imagePath/img_nav_courses_31x24.png';
 
   static String imgNavProfile = '$imagePath/img_nav_profile.svg';
-   
-   static String imgQuizicon = '$imagePath/quiz_icon.png';
+
+  static String imgQuizicon = '$imagePath/quiz_icon.png';
 
   static String imageNotFound = 'assets/images/image_not_found.png';
-  
-static String home_icon = 'assets/images/home_icon.png';
 
-static String profile_icon = 'assets/images/profile_icon.png';
+  static String home_icon = 'assets/images/home_icon.png';
 
+  static String profile_icon = 'assets/images/profile_icon.png';
+
+// welcome page Three images
+  static String imgAsset51 = '$imagePath/img_asset_5_1.png';
+
+  // welcome page Four images
+  static String imgAsset51800x360 = '$imagePath/img_asset_5_1_800x360.png';
+
+  // choose account images
+  static String imgBackground = '$imagePath/img_background.png';
+
+  static String imgAsset52 = '$imagePath/img_asset_5_2.png';
+
+  // Common images
+  static String imgDragon = 'assets/images/dragon .png';
 }

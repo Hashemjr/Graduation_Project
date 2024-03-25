@@ -1,3 +1,7 @@
+import 'package:chineasy/presentation/welcome_page_four_screen/welcome_page_four_screen.dart';
+import 'package:chineasy/presentation/welcome_page_one_screen/welcome_page_one_screen.dart';
+import 'package:chineasy/presentation/welcome_page_three_screen/welcome_page_three_screen.dart';
+import 'package:chineasy/presentation/welcome_page_two_screen/welcome_page_two_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chineasy/presentation/choose_accountone_screen/choose_accountone_screen.dart';
 import 'package:chineasy/presentation/choose_accounttwo_screen/choose_accounttwo_screen.dart';
@@ -56,6 +60,14 @@ class AppRoutes {
 
   static const String appNavigationScreen = '/app_navigation_screen';
 
+  static const String welcomePageOneScreen = '/welcome_page_one_screen';
+
+  static const String welcomePageTwoScreen = '/welcome_page_two_screen';
+
+  static const String welcomePageThreeScreen = '/welcome_page_three_screen';
+
+  static const String welcomePageFourScreen = '/welcome_page_four_screen';
+
   static const String initialRoute = '/initialRoute';
 
   static Map<String, WidgetBuilder> get routes => {
@@ -76,6 +88,10 @@ class AppRoutes {
         homePageContainerScreen: HomePageContainerScreen.builder as dynamic,
         appNavigationScreen: AppNavigationScreen.builder,
         FlashcardsHomePage: (context) => const HomePage(),
-        initialRoute: AppNavigationScreen.builder
+        welcomePageOneScreen: (context) => const WelcomePageOneScreen(),
+        welcomePageTwoScreen: (context) => const WelcomePageTwoScreen(),
+        welcomePageThreeScreen: (context) => const WelcomePageThreeScreen(),
+        welcomePageFourScreen: (context) => const WelcomePageFourScreen(),
+        // initialRoute: AppNavigationScreen.builder
       };
 }
