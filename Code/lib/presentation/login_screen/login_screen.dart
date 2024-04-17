@@ -155,7 +155,14 @@ class LoginScreen extends StatelessWidget {
                                             CustomElevatedButton(
                                                 text: "lbl_login2".tr,
                                                 margin: EdgeInsets.only(
-                                                    left: 35.h, right: 36.h)),
+                                                    left: 35.h, right: 36.h),
+                                              onPressed: () {
+                                                  NavigatorService.pushNamed(
+                                                    AppRoutes
+                                                        .homePageContainerScreen,
+                                                  );
+                                                  // Navigate to the second page when the button is pressed
+                                                }),
                                             SizedBox(height: 14.v),
                                             Row(
                                                 mainAxisAlignment:
