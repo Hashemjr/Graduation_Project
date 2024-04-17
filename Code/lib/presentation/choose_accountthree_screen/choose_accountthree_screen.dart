@@ -100,6 +100,12 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                                       width: 169.h,
                                       text: "lbl_signup".tr,
                                       alignment: Alignment.topRight,
+                                      onPressed: () {
+                                          NavigatorService.pushNamed(
+                                            AppRoutes.signupScreen,
+                                          );
+                                          // Navigate to the second page when the button is pressed
+                                        }
                                     ),
                                   ],
                                 ),
