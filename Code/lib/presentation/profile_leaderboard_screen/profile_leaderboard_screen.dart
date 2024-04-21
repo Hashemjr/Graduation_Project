@@ -8,6 +8,8 @@ import 'package:chineasy/widgets/custom_floating_button.dart';
 import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 
 // ignore: must_be_immutable
 class ProfileLeaderboardScreen extends StatelessWidget {
@@ -34,6 +36,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
+            
             extendBody: true,
             extendBodyBehindAppBar: true,
             body: Container(
@@ -49,6 +52,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -363,16 +367,16 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgAvatar27,
-                            height: 34.adaptSize,
-                            width: 34.adaptSize,
-                            radius: BorderRadius.vertical(
-                              bottom: Radius.circular(17.h),
-                            ),
-                            alignment: Alignment.bottomLeft,
-                            margin: EdgeInsets.only(left: 37.h),
-                          ),
+                         // CustomImageView(
+                          //  imagePath: ImageConstant.imgAvatar27,
+                            //height: 34.adaptSize,
+                            //width: 34.adaptSize,
+                            //radius: BorderRadius.vertical(
+                             // bottom: Radius.circular(17.h),
+                            //),
+                            //alignment: Alignment.bottomLeft,
+                            //margin: EdgeInsets.only(left: 37.h),
+                          //),
                         ],
                       ),
                     ),
@@ -380,20 +384,49 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            bottomNavigationBar: _buildNavbar1BottomAppBar(context),
-            floatingActionButton: CustomFloatingButton(
-              height: 53,
-              width: 53,
-              backgroundColor: theme.colorScheme.primary,
-              child: CustomImageView(
-                imagePath: ImageConstant.imgHome,
-                height: 26.5.v,
-                width: 26.5.h,
-              ),
-            ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
-          ),
+           // bottomNavigationBar: _buildNavbar1BottomAppBar(context),
+            //floatingActionButton: CustomFloatingButton(
+              //height: 53,
+              //width: 53,
+              //backgroundColor: theme.colorScheme.primary,
+              //child: CustomImageView(
+                //imagePath: ImageConstant.imgHome,
+                //height: 26.5.v,
+                //width: 26.5.h,
+              //),
+            //),
+            //floatingActionButtonLocation:
+              //  FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: CurvedNavigationBar(
+    backgroundColor: Colors.transparent,
+    items: <Widget>[
+      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+    ],
+    animationDuration: Duration(milliseconds: 150),
+    height:75,
+    index: 2,
+    onTap: (index) {
+      if (index == 0) {
+    // Navigate to the first screen
+    NavigatorService.pushNamed(
+      AppRoutes.coursesTestContainerPage,
+    );
+  } else if (index == 1) {
+    // Navigate to the second screen
+    NavigatorService.pushNamed(
+      AppRoutes.homePageContainerScreen,
+    );
+  } else if (index == 2) {
+    // Navigate to the third screen
+   NavigatorService.pushNamed(
+      AppRoutes.profileStateTestPage,
+    );
+  }
+      //Handle button tap
+    }, 
+  ),),
         );
       },
     );
@@ -569,7 +602,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(3.h, 3.v, 2.h, 3.v),
+              padding: EdgeInsets.fromLTRB(3.h, 3.v, 3.h, 3.v),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -590,10 +623,10 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                       ],
                     ),
                     corners: Corners(
-                      topLeft: Radius.circular(12),
-                      topRight: Radius.circular(12),
-                      bottomLeft: Radius.circular(12),
-                      bottomRight: Radius.circular(12),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
                     ),
                     child: CustomOutlinedButton(
                       width: 24.h,
@@ -675,14 +708,14 @@ class ProfileLeaderboardScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildNavbar1BottomAppBar(BuildContext context) {
-    return CustomBottomBar(
-      onChanged: (BottomBarEnum type) {
-        Navigator.pushNamed(
-            navigatorKey.currentContext!, getCurrentRoute(type));
-      },
-    );
-  }
+  //Widget _buildNavbar1BottomAppBar(BuildContext context) {
+    //return CustomBottomBar(
+      //onChanged: (BottomBarEnum type) {
+        //Navigator.pushNamed(
+          //  navigatorKey.currentContext!, getCurrentRoute(type));
+      //},
+    //);
+  //}
 
   /// Common widget
   Widget _buildFiveRow(
@@ -728,19 +761,19 @@ class ProfileLeaderboardScreen extends StatelessWidget {
   }
 
   ///Handling route based on bottom click actions
-  String getCurrentRoute(BottomBarEnum type) {
-    switch (type) {
-      case BottomBarEnum.Courses:
-        return AppRoutes.coursesTestContainerPage;
-      case BottomBarEnum.Profile:
-        return AppRoutes.profileStateTestPage;
-      default:
-        return "/";
-    }
-  }
+  //String getCurrentRoute(BottomBarEnum type) {
+    //switch (type) {
+      //case BottomBarEnum.Courses:
+        //return AppRoutes.coursesTestContainerPage;
+      //case BottomBarEnum.Profile:
+        //return AppRoutes.profileStateTestPage;
+      //default:
+        //return "/";
+    //}
+  //}
 
   ///Handling page based on route
-  Widget getCurrentPage(
+  /*Widget getCurrentPage(
     BuildContext context,
     String currentRoute,
   ) {
@@ -749,8 +782,9 @@ class ProfileLeaderboardScreen extends StatelessWidget {
         return CoursesTestContainerPage.builder(context);
       case AppRoutes.profileStateTestPage:
         return ProfileStateTestPage.builder(context);
-      default:
-        return DefaultWidget();
+      //default:
+        //return DefaultWidget();
     }
   }
+  */
 }
