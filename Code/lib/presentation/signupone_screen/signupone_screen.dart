@@ -14,434 +14,417 @@ class SignuponeScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return BlocProvider<SignuponeBloc>(
-        create: (context) =>
-            SignuponeBloc(SignuponeState(signuponeModelObj: SignuponeModel()))
-              ..add(SignuponeInitialEvent()),
-        child: SignuponeScreen());
+      create: (context) => SignuponeBloc(SignuponeState(signuponeModelObj: SignuponeModel()))
+        ..add(SignuponeInitialEvent()),
+      child: SignuponeScreen(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            extendBody: true,
-            extendBodyBehindAppBar: true,
-            resizeToAvoidBottomInset: false,
-            body: Container(
-                width: SizeUtils.width,
+      child: Scaffold(
+        extendBody: true,
+        extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: false,
+        body: Container(
+          width: SizeUtils.width,
+          height: SizeUtils.height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.5, 0),
+              end: Alignment(0.5, 1),
+              colors: [appTheme.black900, appTheme.gray90001],
+            ),
+          ),
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Form(
+              key: _formKey,
+              child: SizedBox(
                 height: SizeUtils.height,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment(0.5, 0),
-                        end: Alignment(0.5, 1),
-                        colors: [appTheme.black900, appTheme.gray90001])),
-                child: SingleChildScrollView(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Form(
-                        key: _formKey,
-                        child: SizedBox(
-                            height: SizeUtils.height,
-                            width: double.maxFinite,
-                            child: Stack(
-                                alignment: Alignment.topCenter,
-                                children: [
-                                  Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: Container(
-                                          decoration: AppDecoration
-                                              .gradientDeepOrangeAToRedA
-                                              .copyWith(
-                                                  borderRadius:
-                                                      BorderRadiusStyle
-                                                          .customBorderTL40),
-                                          child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                SizedBox(height: 20.v),
-                                                Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      SizedBox(height: 30.v),
-                                                      SizedBox(
-                                                          height: 27.v,
-                                                          width: 58.h,
-                                                          child: Stack(
-                                                              alignment: Alignment
-                                                                  .centerRight,
-                                                              children: [
-                                                                Align(
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .center,
-                                                                    child: Container(
-                                                                        height:
-                                                                            3.v,
-                                                                        width: 20
-                                                                            .h,
-                                                                        decoration: BoxDecoration(
-                                                                            color:
-                                                                                theme.colorScheme.primary,
-                                                                            borderRadius: BorderRadius.circular(1.h)))),
-                                                                CustomImageView(
-                                                                    imagePath:
-                                                                        ImageConstant
-                                                                            .imgStar21,
-                                                                    height: 20
-                                                                        .adaptSize,
-                                                                    width: 20
-                                                                        .adaptSize,
-                                                                    radius: BorderRadius
-                                                                        .circular(4
-                                                                            .h),
-                                                                    color: Colors
-                                                                        .white,
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .centerRight),
-                                                                CustomImageView(
-                                                                    imagePath:
-                                                                        ImageConstant
-                                                                            .imgStar11,
-                                                                    height: 20
-                                                                        .adaptSize,
-                                                                    width: 20
-                                                                        .adaptSize,
-                                                                    radius: BorderRadius
-                                                                        .circular(4
-                                                                            .h),
-                                                                    color: Colors
-                                                                        .white,
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .centerLeft)
-                                                              ])),
-                                                      CustomImageView(
-                                                          imagePath:
-                                                              ImageConstant
-                                                                  .imgStar31,
-                                                          height: 20.adaptSize,
-                                                          width: 20.adaptSize,
-                                                          radius: BorderRadius
-                                                              .circular(4.h),
-                                                          color: Colors.black,
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 20.h))
-                                                    ]),
-                                                SizedBox(height: 40.v),
-                                                _buildEmailField(context),
-                                                SizedBox(height: 40.v),
-                                                _buildEmailField1(context),
-                                                SizedBox(height: 40.v),
-                                                _buildPasswordField(context),
-                                                SizedBox(height: 40.v),
-                                                _buildConfirmPasswordField(
-                                                    context),
-                                                SizedBox(height: 40.v),
-                                                _buildSignupButton(context),
-                                                SizedBox(height: 20.v),
-                                                Align(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 70.h),
-                                                        child: Row(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                  padding: EdgeInsets.only(
-                                                                      top: 3.v,
-                                                                      bottom:
-                                                                          0.v),
-                                                                  child: Text(
-                                                                      "msg_already_have_account"
-                                                                          .tr,
-                                                                      style: theme
-                                                                          .textTheme
-                                                                          .bodySmall)),
-                                                              GestureDetector(
-                                                                  onTap: () {
-                                                                    onTapTxtLogIn(
-                                                                        context);
-                                                                  },
-                                                                  child: Padding(
-                                                                      padding: EdgeInsets.only(
-                                                                          left: 5
-                                                                              .h),
-                                                                      child: Text(
-                                                                          "lbl_log_in"
-                                                                              .tr,
-                                                                          style:
-                                                                              CustomTextStyles.titleMediumPoppins)))
-                                                            ]))),
-                                                SizedBox(height: 0.v),
-                                                Align(
-                                                    alignment:
-                                                        Alignment.centerLeft,
-                                                    child: SizedBox(
-                                                        height: 156.v,
-                                                        width: 220.h,
-                                                        child: Stack(
-                                                            alignment: Alignment
-                                                                .bottomRight,
-                                                            children: [
-                                                              CustomImageView(
-                                                                  imagePath:
-                                                                      ImageConstant
-                                                                          .imgRedOpenedBook156x171,
-                                                                  height: 156.v,
-                                                                  width: 171.h,
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .centerLeft),
-                                                              CustomImageView(
-                                                                  imagePath:
-                                                                      ImageConstant
-                                                                          .imgGmailLogo,
-                                                                  height: 45
-                                                                      .adaptSize,
-                                                                  width: 45
-                                                                      .adaptSize,
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .bottomRight,
-                                                                  margin: EdgeInsets.only(
-                                                                      right:
-                                                                          15.h,
-                                                                      bottom: 57
-                                                                          .v)),
-                                                              Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .topRight,
-                                                                  child: Padding(
-                                                                      padding: EdgeInsets.only(
-                                                                          top: 35
-                                                                              .v),
-                                                                      child: Text(
-                                                                          "lbl_sign_in_using"
-                                                                              .tr,
-                                                                          style:
-                                                                              CustomTextStyles.bodySmallPrimary))),
-                                                              Align(
-                                                                  alignment:
-                                                                      Alignment
-                                                                          .topRight,
-                                                                  child: Padding(
-                                                                      padding: EdgeInsets.only(
-                                                                          top: 5
-                                                                              .v,
-                                                                          right: 25
-                                                                              .h),
-                                                                      child: Text(
-                                                                          "lbl_or"
-                                                                              .tr,
-                                                                          style:
-                                                                              CustomTextStyles.titleLargePrimary)))
-                                                            ])))
-                                              ]))),
-                                  _buildTitleHead(context)
-                                ])))))));
+                width: double.maxFinite,
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        decoration: AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                          borderRadius: BorderRadiusStyle.customBorderTL40,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            SizedBox(height: 20.v),
+                            _buildEmailField(context),
+                            SizedBox(height: 40.v),
+                            _buildEmailField1(context),
+                            SizedBox(height: 40.v),
+                            _buildPasswordField(context),
+                            SizedBox(height: 40.v),
+                            _buildConfirmPasswordField(context),
+                            SizedBox(height: 40.v),
+                            _buildSignupButton(context),
+                            SizedBox(height: 20.v),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 70.h),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(top: 3.v, bottom: 0.v),
+                                      child: Text("msg_already_have_account".tr, style: theme.textTheme.bodySmall),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        onTapTxtLogIn(context);
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 5.h),
+                                        child: Text("lbl_log_in".tr, style: CustomTextStyles.titleMediumPoppins),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 0.v),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: SizedBox(
+                                height: 156.v,
+                                width: 220.h,
+                                child: Stack(
+                                  alignment: Alignment.bottomRight,
+                                  children: [
+                                    CustomImageView(
+                                      imagePath: ImageConstant.imgRedOpenedBook156x171,
+                                      height: 156.v,
+                                      width: 171.h,
+                                      alignment: Alignment.centerLeft,
+                                    ),
+                                    CustomImageView(
+                                      imagePath: ImageConstant.imgGmailLogo,
+                                      height: 45.adaptSize,
+                                      width: 45.adaptSize,
+                                      alignment: Alignment.bottomRight,
+                                      margin: EdgeInsets.only(right: 15.h, bottom: 57.v),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(top: 35.v),
+                                        child: Text("lbl_sign_in_using".tr, style: CustomTextStyles.bodySmallPrimary),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(top: 5.v, right: 25.h),
+                                        child: Text("lbl_or".tr, style: CustomTextStyles.titleLargePrimary),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    _buildTitleHead(context),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   /// Section Widget
   Widget _buildEmailField(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(left: 35.h, right: 36.h),
-        child:
-            BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
-                selector: (state) => state.emailFieldController,
-                builder: (context, emailFieldController) {
-                  return CustomTextFormField(
-                      controller: emailFieldController,
-                      hintText: "lbl_email2".tr,
-                      textInputType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null ||
-                            (!isValidEmail(value, isRequired: true))) {
-                          return "err_msg_please_enter_valid_email".tr;
-                        }
-                        return null;
-                      },
-                      contentPadding: EdgeInsets.symmetric(horizontal: 7.h));
-                }));
+      padding: EdgeInsets.only(left: 35.h, right: 36.h),
+      child: BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
+        selector: (state) => state.emailFieldController,
+        builder: (context, emailFieldController) {
+          return CustomTextFormField(
+            controller: emailFieldController,
+            hintText: "lbl_email2".tr,
+            textInputType: TextInputType.emailAddress,
+            validator: (value) {
+              if (value == null || !isValidEmail(value, isRequired: true)) {
+                return "err_msg_please_enter_valid_email".tr;
+              }
+              return null;
+            },
+            contentPadding: EdgeInsets.symmetric(horizontal: 7.h),
+          );
+        },
+      ),
+    );
   }
 
   /// Section Widget
-  Widget _buildEmailField1(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(left: 35.h, right: 36.h),
-        child:
-            BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
-                selector: (state) => state.emailFieldController1,
-                builder: (context, emailFieldController1) {
-                  return CustomTextFormField(
-                      controller: emailFieldController1,
-                      hintText: "lbl_confirm_email".tr,
-                      textInputType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null ||
-                            (!isValidEmail(value, isRequired: true))) {
-                          return "err_msg_please_enter_valid_email".tr;
-                        }
-                        return null;
-                      },
-                      contentPadding: EdgeInsets.symmetric(horizontal: 7.h));
-                }));
-  }
+Widget _buildEmailField1(BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.only(left: 35.h, right: 36.h),
+    child: BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
+      selector: (state) => state.emailFieldController1,
+      builder: (context, emailFieldController1) {
+        return CustomTextFormField(
+          controller: emailFieldController1,
+          hintText: "lbl_confirm_email".tr,
+          textInputType: TextInputType.emailAddress,
+          validator: (value) {
+            if (value == null || !isValidEmail(value, isRequired: true)) {
+              return "err_msg_please_enter_valid_email".tr;
+            }
+            if (value !=
+                context.read<SignuponeBloc>().state.emailFieldController?.text) {
+              return "err_msg_emails_do_not_match".tr; // Updated error message
+            }
+            return null;
+          },
+          contentPadding: EdgeInsets.symmetric(horizontal: 7.h),
+        );
+      },
+    ),
+  );
+}
 
   /// Section Widget
   Widget _buildPasswordField(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(left: 35.h, right: 36.h),
-        child:
-            BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
-                selector: (state) => state.passwordFieldController,
-                builder: (context, passwordFieldController) {
-                  return CustomTextFormField(
-                      controller: passwordFieldController,
-                      hintText: "lbl_password".tr,
-                      textInputType: TextInputType.visiblePassword,
-                      validator: (value) {
-                        if (value == null ||
-                            (!isValidPassword(value, isRequired: true))) {
-                          return "err_msg_please_enter_valid_password".tr;
-                        }
-                        return null;
-                      },
-                      obscureText: true,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 7.h));
-                }));
+      padding: EdgeInsets.only(left: 35.h, right: 36.h),
+      child: BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
+        selector: (state) => state.passwordFieldController,
+        builder: (context, passwordFieldController) {
+          return CustomTextFormField(
+            controller: passwordFieldController,
+            hintText: "lbl_password".tr,
+            textInputType: TextInputType.visiblePassword,
+            validator: (value) {
+              if (value == null || !isValidPassword(value, isRequired: true)) {
+                return "err_msg_please_enter_valid_password".tr;
+              }
+              return null;
+            },
+            obscureText: true,
+            contentPadding: EdgeInsets.symmetric(horizontal: 7.h),
+          );
+        },
+      ),
+    );
   }
 
   /// Section Widget
-  Widget _buildConfirmPasswordField(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(left: 35.h, right: 36.h),
-        child:
-            BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
-                selector: (state) => state.confirmPasswordFieldController,
-                builder: (context, confirmPasswordFieldController) {
-                  return CustomTextFormField(
-                      controller: confirmPasswordFieldController,
-                      hintText: "msg_confirm_password".tr,
-                      textInputAction: TextInputAction.done,
-                      textInputType: TextInputType.visiblePassword,
-                      validator: (value) {
-                        if (value == null ||
-                            (!isValidPassword(value, isRequired: true))) {
-                          return "err_msg_please_enter_valid_password".tr;
-                        }
-                        return null;
-                      },
-                      obscureText: true,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 7.h));
-                }));
-  }
+Widget _buildConfirmPasswordField(BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.only(left: 35.h, right: 36.h),
+    child: BlocSelector<SignuponeBloc, SignuponeState, TextEditingController?>(
+      selector: (state) => state.confirmPasswordFieldController,
+      builder: (context, confirmPasswordFieldController) {
+        return CustomTextFormField(
+          controller: confirmPasswordFieldController,
+          hintText: "msg_confirm_password".tr,
+          textInputAction: TextInputAction.done,
+          textInputType: TextInputType.visiblePassword,
+          validator: (value) {
+            if (value == null || !isValidPassword(value, isRequired: true)) {
+              return "err_msg_please_enter_valid_password".tr;
+            }
+            if (value !=
+                context.read<SignuponeBloc>().state.passwordFieldController?.text) { // Use ?. to access text property
+              return "err_msg_passwords_do_not_match".tr;
+            }
+            return null;
+          },
+          obscureText: true,
+          contentPadding: EdgeInsets.symmetric(horizontal: 7.h),
+        );
+      },
+    ),
+  );
+}
 
   /// Section Widget
-  Widget _buildSignupButton(BuildContext context) {
-    return CustomElevatedButton(
+/// Section Widget
+Widget _buildSignupButton(BuildContext context) {
+  return BlocBuilder<SignuponeBloc, SignuponeState>(
+    builder: (context, state) {
+      final emailNotEmpty = state.emailFieldController?.text?.isNotEmpty ?? false;
+      final email1NotEmpty = state.emailFieldController1?.text?.isNotEmpty ?? false;
+      final passwordNotEmpty = state.passwordFieldController?.text?.isNotEmpty ?? false;
+      final confirmPasswordNotEmpty = state.confirmPasswordFieldController?.text?.isNotEmpty ?? false;
+
+      String errorMessage = '';
+      if (!emailNotEmpty || !email1NotEmpty || !passwordNotEmpty || !confirmPasswordNotEmpty) {
+        errorMessage = 'All fields must be filled.';
+      } else {
+        final emailValid = isValidEmail(state.emailFieldController?.text ?? '');
+        final emailMatch = state.emailFieldController?.text == state.emailFieldController1?.text;
+        final passwordValid = isValidPassword(state.passwordFieldController?.text ?? '');
+        final passwordMatch = state.passwordFieldController?.text == state.confirmPasswordFieldController?.text;
+
+        if (!emailValid) {
+          errorMessage = 'Please enter a valid email.';
+        } else if (!emailMatch) {
+          errorMessage = 'Emails do not match.';
+        } else if (!passwordValid) {
+          errorMessage = '''
+Please enter a valid password:
+
+- at least 8 characters long
+
+- mix of uppercase and lowercase letters
+
+- numbers and special characters
+                 ''';
+        } else if (!passwordMatch) {
+          errorMessage = 'Passwords do not match.';
+        }
+      }
+
+      return CustomElevatedButton(
         text: "lbl_signup".tr,
         margin: EdgeInsets.only(left: 35.h, right: 36.h),
         onPressed: () {
-          onTapSignupButton(context);
-        });
-  }
+          if (errorMessage.isNotEmpty) {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Colors.white, // Set background color to white
+                  title: Text(
+                    'Validation Error',
+                    style: TextStyle(color: Colors.black), // Set text color to black
+                  ),
+                  content: Text(
+                    errorMessage,
+                    style: TextStyle(color: Colors.black), // Set text color to black
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text(
+                        'OK',
+                        style: TextStyle(color: Colors.blue), // Set button text color to blue
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          } else {
+            onTapSignupButton(context);
+          }
+        },
+      );
+    },
+  );
+}
 
   /// Section Widget
   Widget _buildTitleHead(BuildContext context) {
     return Align(
-        alignment: Alignment.topCenter,
-        child: Container(
-            height: 258.v,
-            width: double.maxFinite,
-            margin: EdgeInsets.only(top: 38.v),
-            child: Stack(alignment: Alignment.topLeft, children: [
-              Align(
-                  alignment: Alignment.center,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+      alignment: Alignment.topCenter,
+      child: Container(
+        height: 258.v,
+        width: double.maxFinite,
+        margin: EdgeInsets.only(top: 38.v),
+        child: Stack(
+          alignment: Alignment.topLeft,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 38.v, bottom: 135.v),
+                    child: Column(
                       children: [
-                        Padding(
-                            padding: EdgeInsets.only(top: 38.v, bottom: 135.v),
-                            child: Column(children: [
-                              Text("lbl_get_started".tr,
-                                  style: theme.textTheme.displayMedium),
-                              Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Padding(
-                                      padding: EdgeInsets.only(right: 108.h),
-                                      child: Text("msg_start_learning".tr,
-                                          style: CustomTextStyles
-                                              .titleSmallGray500)))
-                            ])),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left:
-                                  15.5.h), // Adjust the left padding as needed
-                          child: SizedBox(
-                            height: 251.v,
-                            width: 122.h,
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                CustomImageView(
-                                  imagePath: ImageConstant.imgBack,
-                                  height: 147.v,
-                                  width: 120.h,
-                                  alignment: Alignment.topCenter,
-                                  margin: EdgeInsets.only(top: 5.v),
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: SizedBox(
-                                    height: 251.v,
-                                    width: 122.h,
-                                    child: Stack(
-                                      alignment: Alignment.topCenter,
-                                      children: [
-                                        CustomImageView(
-                                          imagePath: ImageConstant.imgIcon7,
-                                          height: 177.v,
-                                          width: 118.h,
-                                          alignment: Alignment.bottomCenter,
-                                        ),
-                                        CustomImageView(
-                                          imagePath: ImageConstant.imgIcon3,
-                                          height: 132.v,
-                                          width: 122.h,
-                                          alignment: Alignment.topCenter,
-                                        )
-                                      ],
-                                    ),
+                        Text("lbl_get_started".tr, style: theme.textTheme.displayMedium),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 108.h),
+                            child: Text("msg_start_learning".tr, style: CustomTextStyles.titleSmallGray500),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15.5.h), // Adjust the left padding as needed
+                    child: SizedBox(
+                      height: 251.v,
+                      width: 122.h,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          CustomImageView(
+                            imagePath: ImageConstant.imgBack,
+                            height: 147.v,
+                            width: 120.h,
+                            alignment: Alignment.topCenter,
+                            margin: EdgeInsets.only(top: 5.v),
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: SizedBox(
+                              height: 251.v,
+                              width: 122.h,
+                              child: Stack(
+                                alignment: Alignment.topCenter,
+                                children: [
+                                  CustomImageView(
+                                    imagePath: ImageConstant.imgIcon7,
+                                    height: 177.v,
+                                    width: 118.h,
+                                    alignment: Alignment.bottomCenter,
                                   ),
-                                ),
-                              ],
+                                  CustomImageView(
+                                    imagePath: ImageConstant.imgIcon3,
+                                    height: 132.v,
+                                    width: 122.h,
+                                    alignment: Alignment.topCenter,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        )
-                      ])),
-              InkWell(
-                onTap: () {
-                  onTapBtnGoBack(context);
-                },
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgGoBack,
-                  height: 45.adaptSize,
-                  width: 45.adaptSize,
-                  alignment: Alignment.topLeft,
-                ),
-              )
-            ])));
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                onTapBtnGoBack(context);
+              },
+              child: CustomImageView(
+                imagePath: ImageConstant.imgGoBack,
+                height: 45.adaptSize,
+                width: 45.adaptSize,
+                alignment: Alignment.topLeft,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   /// Navigates to the signuptwoScreen when the action is triggered.
