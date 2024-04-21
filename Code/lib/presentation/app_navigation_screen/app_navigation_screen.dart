@@ -121,7 +121,7 @@ class AppNavigationScreen extends StatelessWidget {
                               context,
                               screenTitle: "courses test - Container".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
-                                  AppRoutes.coursesTestContainer1Screen),
+                                  AppRoutes.coursesTestContainerPage),
                             ),
                             _buildScreenTitle(
                               context,

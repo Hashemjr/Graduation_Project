@@ -130,7 +130,24 @@ class ProfileStateTestPage extends StatelessWidget {
     ],
     animationDuration: Duration(milliseconds: 150),
     height:75,
+    index: 2,
     onTap: (index) {
+      if (index == 0) {
+    // Navigate to the first screen
+    NavigatorService.pushNamed(
+      AppRoutes.coursesTestContainerPage,
+    );
+  } else if (index == 1) {
+    // Navigate to the second screen
+    NavigatorService.pushNamed(
+      AppRoutes.homePageContainerScreen,
+    );
+  } else if (index == 2) {
+    // Navigate to the third screen
+   NavigatorService.pushNamed(
+      AppRoutes.profileStateTestPage,
+    );
+  }
       //Handle button tap
     }, 
   ),

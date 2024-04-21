@@ -3,9 +3,9 @@ import 'models/home_page_container_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
 import 'package:chineasy/presentation/profile_state_test_page/profile_state_test_page.dart';
-import 'package:chineasy/widgets/custom_bottom_bar.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 // ignore: must_be_immutable
 class HomePageContainerScreen extends StatelessWidget {
@@ -80,17 +80,47 @@ class HomePageContainerScreen extends StatelessWidget {
                 ),
               ),
             ),
-            bottomNavigationBar: _buildNavigationBar(context),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {},
-              child: CustomImageView(
-                imagePath: ImageConstant.imgThumbsUp,
-                height: 26.5.v,
-                width: 26.5.h,
-              ),
-            ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerDocked,
+            bottomNavigationBar: CurvedNavigationBar(
+    backgroundColor: Colors.transparent,
+    items: <Widget>[
+      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+    ],
+    animationDuration: Duration(milliseconds: 150),
+    height:75,
+    index: 1,
+    onTap: (index) {
+      if (index == 0) {
+    // Navigate to the first screen
+    NavigatorService.pushNamed(
+      AppRoutes.coursesTestContainerPage,
+    );
+  } else if (index == 1) {
+    // Navigate to the second screen
+    NavigatorService.pushNamed(
+      AppRoutes.homePageContainerScreen,
+    );
+  } else if (index == 2) {
+    // Navigate to the third screen
+   NavigatorService.pushNamed(
+      AppRoutes.profileStateTestPage,
+    );
+  }
+      //Handle button tap
+    }, 
+  ),
+            //bottomNavigationBar: _buildNavigationBar(context),
+            //floatingActionButton: FloatingActionButton(
+              //onPressed: () {},
+              //child: CustomImageView(
+               // imagePath: ImageConstant.imgThumbsUp,
+                //height: 26.5.v,
+                //width: 26.5.h,
+              //),
+            //),
+            //floatingActionButtonLocation:
+              //  FloatingActionButtonLocation.centerDocked,
           ),
         );
       },
@@ -725,14 +755,14 @@ class HomePageContainerScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildNavigationBar(BuildContext context) {
-    return CustomBottomBar(
-      onChanged: (BottomBarEnum type) {
-        Navigator.pushNamed(
-            navigatorKey.currentContext!, getCurrentRoute(type));
-      },
-    );
-  }
+  //Widget _buildNavigationBar(BuildContext context) {
+    //return CustomBottomBar(
+      //onChanged: (BottomBarEnum type) {
+        //Navigator.pushNamed(
+          //  navigatorKey.currentContext!, getCurrentRoute(type));
+      //},
+    //);
+  //}
 
   /// Common widget
   Widget _buildCulture(
@@ -766,7 +796,7 @@ class HomePageContainerScreen extends StatelessWidget {
   }
 
   ///Handling route based on bottom click actions
-  String getCurrentRoute(BottomBarEnum type) {
+  /*String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Courses:
         return AppRoutes.coursesTestContainerPage;
@@ -791,4 +821,5 @@ class HomePageContainerScreen extends StatelessWidget {
         return DefaultWidget();
     }
   }
+  */
 }

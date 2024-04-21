@@ -15,11 +15,11 @@ import 'package:chineasy/presentation/forget_passwordone_screen/forget_passwordo
 import 'package:chineasy/presentation/reset_password_screen/reset_password_screen.dart';
 import 'package:chineasy/presentation/reset_passwordtwo_screen/reset_passwordtwo_screen.dart';
 import 'package:chineasy/presentation/profile_leaderboard_screen/profile_leaderboard_screen.dart';
+import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
 import 'package:chineasy/presentation/courses_test_container1_screen/courses_test_container1_screen.dart';
 import 'package:chineasy/presentation/home_page_container_screen/home_page_container_screen.dart';
 import 'package:chineasy/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:chineasy/presentation/Flashcards/home-page.dart';
-
 import '../presentation/profile_state_test_page/profile_state_test_page.dart';
 
 class AppRoutes {
@@ -51,9 +51,6 @@ class AppRoutes {
 
   static const String FlashcardsHomePage = '/home_page';
 
-  static const String coursesTestContainer1Screen =
-      '/courses_test_container1_screen';
-
   static const String profileStateTestPage = '/profile_state_test_page';
 
   static const String homePageContainerScreen = '/home_page_container_screen';
@@ -84,7 +81,7 @@ class AppRoutes {
         resetPasswordtwoScreen: ResetPasswordtwoScreen.builder,
         profileLeaderboardScreen: ProfileLeaderboardScreen.builder,
         profileStateTestPage: ProfileStateTestPage.builder,
-        coursesTestContainer1Screen: CoursesTestContainer1Screen.builder,
+        coursesTestContainerPage: CoursesTestContainerPage.builder,
         homePageContainerScreen: HomePageContainerScreen.builder as dynamic,
         appNavigationScreen: AppNavigationScreen.builder,
         FlashcardsHomePage: (context) => const HomePage(),
@@ -92,6 +89,8 @@ class AppRoutes {
         welcomePageTwoScreen: (context) => const WelcomePageTwoScreen(),
         welcomePageThreeScreen: (context) => const WelcomePageThreeScreen(),
         welcomePageFourScreen: (context) => const WelcomePageFourScreen(),
+        //profileLeaderboardScreen: (context) => ProfileLeaderboardScreen(),
+        //: (context) => ProfileStateTestPage(),
         // initialRoute: AppNavigationScreen.builder
       };
 }
