@@ -12,6 +12,7 @@ import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 import 'package:outline_gradient_button/outline_gradient_button.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 // ignore_for_file: must_be_immutable
 class CoursesTestContainerPage extends StatelessWidget {
@@ -104,7 +105,36 @@ class CoursesTestContainerPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      bottomNavigationBar: CurvedNavigationBar(
+    backgroundColor: Colors.transparent,
+    items: <Widget>[
+      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+    ],
+    animationDuration: Duration(milliseconds: 150),
+    height:75,
+    index: 0,
+    onTap: (index) {
+      if (index == 0) {
+    // Navigate to the first screen
+    NavigatorService.pushNamed(
+      AppRoutes.coursesTestContainerPage,
+    );
+  } else if (index == 1) {
+     //Navigate to the second screen
+    NavigatorService.pushNamed(
+      AppRoutes.homePageContainerScreen,
+    );
+  } else if (index == 2) {
+    // Navigate to the third screen
+   NavigatorService.pushNamed(
+      AppRoutes.profileStateTestPage,
+    );
+  }
+      //Handle button tap
+    }, 
+  ),),
     );
   }
 
@@ -170,14 +200,14 @@ class CoursesTestContainerPage extends StatelessWidget {
                     width: 298.h,
                     child: Stack(
                       alignment: Alignment.center,
-                      children: [
+                       children: [
                         CustomImageView(
                           imagePath: ImageConstant.imgGroup289345,
                           height: 32.v,
                           width: 298.h,
                           alignment: Alignment.center,
                         ),
-                        Align(
+                       Align(
                           alignment: Alignment.center,
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(3.h, 3.v, 2.h, 3.v),
@@ -202,10 +232,10 @@ class CoursesTestContainerPage extends StatelessWidget {
                                     ],
                                   ),
                                   corners: Corners(
-                                    topLeft: Radius.circular(12),
-                                    topRight: Radius.circular(12),
-                                    bottomLeft: Radius.circular(12),
-                                    bottomRight: Radius.circular(12),
+                                    topLeft: Radius.circular(25),
+                                    topRight: Radius.circular(25),
+                                    bottomLeft: Radius.circular(25),
+                                    bottomRight: Radius.circular(25),
                                   ),
                                   child: CustomOutlinedButton(
                                     width: 24.h,
