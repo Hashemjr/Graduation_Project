@@ -139,26 +139,30 @@ class CoursesTestContainerPage extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildOne(BuildContext context) {
-    return SizedBox(
-      height: 241.v,
-      width: double.maxFinite,
-      child: Stack(
-        alignment: Alignment.topRight,
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgBackgroundBlur,
-            height: 187.v,
-            width: 216.h,
-            alignment: Alignment.topLeft,
-          ),
-          CustomImageView(
-            imagePath: ImageConstant.imgBackgroundBlur188x200,
-            height: 188.v,
-            width: 200.h,
-            alignment: Alignment.topRight,
-          ),
-          Align(
+Widget _buildOne(BuildContext context) {
+  return SizedBox(
+    height: 241.v,
+    width: double.maxFinite,
+    child: Stack(
+      alignment: Alignment.topRight,
+      children: [
+        CustomImageView(
+          imagePath: ImageConstant.imgBackgroundBlur,
+          height: 187.v,
+          width: 216.h,
+          alignment: Alignment.topLeft,
+        ),
+        CustomImageView(
+          imagePath: ImageConstant.imgBackgroundBlur188x200,
+          height: 188.v,
+          width: 200.h,
+          alignment: Alignment.topRight,
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Align(
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 10.h),
@@ -189,9 +193,12 @@ class CoursesTestContainerPage extends StatelessWidget {
                   SizedBox(height: 1.v),
                   Padding(
                     padding: EdgeInsets.only(left: 3.h),
-                    child: Text(
+                    child:Text(
                       "msg_250_points_to_next".tr,
-                      style: CustomTextStyles.titleSmallInterBlack900SemiBold,
+                      style: CustomTextStyles.titleSmallInterBlack900SemiBold
+                          .copyWith(
+                        color: Color.fromARGB(221, 75, 75, 75), // Change the color here to the desired darker shade
+                      ),
                     ),
                   ),
                   SizedBox(height: 9.v),
@@ -303,8 +310,7 @@ class CoursesTestContainerPage extends StatelessWidget {
                                           alignment: Alignment.center,
                                           child: Text(
                                             "lbl_2".tr,
-                                            style: CustomTextStyles
-                                                .titleSmallInter,
+                                            style: CustomTextStyles.titleSmallInter,
                                           ),
                                         ),
                                       ],
@@ -323,7 +329,12 @@ class CoursesTestContainerPage extends StatelessWidget {
               ),
             ),
           ),
-          CustomAppBar(
+        ),
+        Positioned(
+          top: 40,
+          left: 8,
+          right: 0,
+          child: CustomAppBar(
             title: AppbarTitle(
               text: "msg_journey_to_fluency".tr,
               margin: EdgeInsets.only(left: 65.h),
@@ -335,10 +346,11 @@ class CoursesTestContainerPage extends StatelessWidget {
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
   /// Section Widget
   Widget _buildCoursesCard1(BuildContext context) {

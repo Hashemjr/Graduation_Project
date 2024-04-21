@@ -2,32 +2,31 @@
 
 part of 'signup_bloc.dart';
 
-/// Represents the state of Signup in the application.
+// signup_state.dart
 class SignupState extends Equatable {
-  SignupState( {
+  SignupState({
     this.firstNameController,
-    required this.genderValue,
+    this.genderValue = '',
     this.lastNameController,
     this.userNameController,
     this.monthValueController,
     this.yearValueController,
     this.genderValueController,
+    this.dayValueController, // Include dayValueController
     this.signupModelObj,
+    this.selectedDateText, // Include selectedDateText
   });
+
   final String genderValue;
   TextEditingController? firstNameController;
-
   TextEditingController? lastNameController;
-
   TextEditingController? userNameController;
-
   TextEditingController? monthValueController;
-
   TextEditingController? yearValueController;
-
   TextEditingController? genderValueController;
-
+  TextEditingController? dayValueController; // Include dayValueController
   SignupModel? signupModelObj;
+  final String? selectedDateText; // Include selectedDateText
 
   @override
   List<Object?> get props => [
@@ -37,8 +36,11 @@ class SignupState extends Equatable {
         monthValueController,
         yearValueController,
         genderValueController,
+        dayValueController,
         signupModelObj,
+        selectedDateText, // Add selectedDateText to props
       ];
+
   SignupState copyWith({
     TextEditingController? firstNameController,
     TextEditingController? lastNameController,
@@ -46,7 +48,10 @@ class SignupState extends Equatable {
     TextEditingController? monthValueController,
     TextEditingController? yearValueController,
     TextEditingController? genderValueController,
+    TextEditingController? dayValueController,
     SignupModel? signupModelObj,
+    String? genderValue,
+    String? selectedDateText, // Include selectedDateText in copyWith
   }) {
     return SignupState(
       firstNameController: firstNameController ?? this.firstNameController,
@@ -56,7 +61,10 @@ class SignupState extends Equatable {
       yearValueController: yearValueController ?? this.yearValueController,
       genderValueController:
           genderValueController ?? this.genderValueController,
-      signupModelObj: signupModelObj ?? this.signupModelObj, genderValue: '',
+      dayValueController: dayValueController ?? this.dayValueController,
+      signupModelObj: signupModelObj ?? this.signupModelObj,
+      genderValue: genderValue ?? this.genderValue,
+      selectedDateText: selectedDateText ?? this.selectedDateText, // Include selectedDateText in copyWith
     );
   }
 }
