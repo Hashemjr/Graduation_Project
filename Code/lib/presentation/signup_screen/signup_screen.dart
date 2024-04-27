@@ -18,8 +18,8 @@ class SignupScreen extends StatelessWidget {
   static Widget builder(BuildContext context) {
     return BlocProvider<SignupBloc>(
       create: (context) => SignupBloc(
-        SignupState(signupModelObj: SignupModel(), genderValue: "")
-      )..add(SignupInitialEvent()),
+          SignupState(signupModelObj: SignupModel(), genderValue: ""))
+        ..add(SignupInitialEvent()),
       child: SignupScreen(),
     );
   }
@@ -56,7 +56,8 @@ class SignupScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
-                        decoration: AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                        decoration:
+                            AppDecoration.gradientDeepOrangeAToRedA.copyWith(
                           borderRadius: BorderRadiusStyle.customBorderTL40,
                         ),
                         child: Column(
@@ -76,6 +77,7 @@ class SignupScreen extends StatelessWidget {
                                     width: 20.adaptSize,
                                     radius: BorderRadius.circular(4.h),
                                     color: Colors.white,
+                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgStar2,
@@ -84,6 +86,7 @@ class SignupScreen extends StatelessWidget {
                                     radius: BorderRadius.circular(4.h),
                                     color: Colors.black,
                                     margin: EdgeInsets.only(left: 20.h),
+                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgStar3,
@@ -92,6 +95,7 @@ class SignupScreen extends StatelessWidget {
                                     radius: BorderRadius.circular(4.h),
                                     color: Colors.black,
                                     margin: EdgeInsets.only(left: 20.h),
+                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -142,7 +146,8 @@ class SignupScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(top: 3.5.v, left: 15.v, bottom: 3.v),
+                                    padding: EdgeInsets.only(
+                                        top: 3.5.v, left: 15.v, bottom: 3.v),
                                     child: Text(
                                       "msg_already_have_account".tr,
                                       style: theme.textTheme.bodySmall,
@@ -156,7 +161,8 @@ class SignupScreen extends StatelessWidget {
                                       padding: EdgeInsets.only(left: 5.h),
                                       child: Text(
                                         "lbl_log_in".tr,
-                                        style: CustomTextStyles.titleMediumPoppins,
+                                        style:
+                                            CustomTextStyles.titleMediumPoppins,
                                       ),
                                     ),
                                   ),
@@ -175,7 +181,9 @@ class SignupScreen extends StatelessWidget {
                                     height: 45.adaptSize,
                                     width: 45.adaptSize,
                                     alignment: Alignment.bottomRight,
-                                    margin: EdgeInsets.only(right: 15.h, bottom: 57.v),
+                                    margin: EdgeInsets.only(
+                                        right: 15.h, bottom: 57.v),
+                                    icon: '',
                                   ),
                                   Align(
                                     alignment: Alignment.topRight,
@@ -183,17 +191,20 @@ class SignupScreen extends StatelessWidget {
                                       padding: EdgeInsets.only(top: 35.v),
                                       child: Text(
                                         "lbl_sign_in_using".tr,
-                                        style: CustomTextStyles.bodySmallPrimary,
+                                        style:
+                                            CustomTextStyles.bodySmallPrimary,
                                       ),
                                     ),
                                   ),
                                   Align(
                                     alignment: Alignment.topRight,
                                     child: Padding(
-                                      padding: EdgeInsets.only(top: 2.v, right: 25.h),
+                                      padding: EdgeInsets.only(
+                                          top: 2.v, right: 25.h),
                                       child: Text(
                                         "lbl_or".tr,
-                                        style: CustomTextStyles.titleLargePrimary,
+                                        style:
+                                            CustomTextStyles.titleLargePrimary,
                                       ),
                                     ),
                                   ),
@@ -225,16 +236,18 @@ class SignupScreen extends StatelessWidget {
         return Theme(
           data: ThemeData.dark().copyWith(
             colorScheme: ColorScheme.dark(
-              primary: Color.fromARGB(255, 0, 0, 0), // Background color of the button
+              primary: Color.fromARGB(
+                  255, 0, 0, 0), // Background color of the button
               onPrimary: Colors.white, // Text color of the button
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 100, 4, 4), // Background color of the button
+                foregroundColor: Colors.white,
+                backgroundColor: Color.fromARGB(
+                    255, 100, 4, 4), // Background color of the button
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0), // Rounded corners
-                ),
-                primary: Colors.white, // Text color of the buttons
+                ), // Text color of the buttons
               ),
             ),
           ),
@@ -335,151 +348,164 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-String? genderValue; // Declare genderValue outside the function
+  String? genderValue; // Declare genderValue outside the function
 
-Widget _buildGenderValue(BuildContext context) {
-  return Center(
-    child: SizedBox(
-      width: 200,
-      child: DropdownButtonFormField<String>(
-        value: genderValue,
-        icon: const Icon(Icons.arrow_drop_down_rounded),
-        style: TextStyle(color: Colors.black), // Set text color to black for visibility
-        decoration: InputDecoration(
-          labelText: 'Gender', // Add a label to indicate the purpose of the dropdown
-          labelStyle: TextStyle(
-            color: Colors.black, // Set label text color to black for visibility
-            fontSize: 16, // Set label font size to match other fonts
-            fontWeight: FontWeight.normal, // Set label font weight to normal
-            fontFamily: 'Roboto', // Set label font family to match other fonts
+  Widget _buildGenderValue(BuildContext context) {
+    return Center(
+      child: SizedBox(
+        width: 200,
+        child: DropdownButtonFormField<String>(
+          value: genderValue,
+          icon: const Icon(Icons.arrow_drop_down_rounded),
+          style: TextStyle(
+              color: Colors.black), // Set text color to black for visibility
+          decoration: InputDecoration(
+            labelText:
+                'Gender', // Add a label to indicate the purpose of the dropdown
+            labelStyle: TextStyle(
+              color:
+                  Colors.black, // Set label text color to black for visibility
+              fontSize: 16, // Set label font size to match other fonts
+              fontWeight: FontWeight.normal, // Set label font weight to normal
+              fontFamily:
+                  'Roboto', // Set label font family to match other fonts
+            ),
+            fillColor:
+                Colors.grey[200], // Set background color to match the theme
+            filled: true,
+            contentPadding: EdgeInsets.symmetric(
+                vertical: 12,
+                horizontal: 16), // Adjust padding for better appearance
+            border: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Colors.black), // Set border color to black
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: Colors.black), // Set border color to black
+            ),
           ),
-          fillColor: Colors.grey[200], // Set background color to match the theme
-          filled: true,
-          contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16), // Adjust padding for better appearance
-          border: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black), // Set border color to black
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black), // Set border color to black
-          ),
+          onChanged: (String? newValue) {
+            if (newValue != null && newValue != genderValue) {
+              genderValue = newValue;
+            }
+          },
+          items: [
+            DropdownMenuItem<String>(
+              value: 'male',
+              child: Text('Male'),
+            ),
+            DropdownMenuItem<String>(
+              value: 'female',
+              child: Text('Female'),
+            ),
+            // Add more items as needed
+          ],
         ),
-        onChanged: (String? newValue) {
-          if (newValue != null && newValue != genderValue) {
-            genderValue = newValue;
-          }
-        },
-        items: [
-          DropdownMenuItem<String>(
-            value: 'male',
-            child: Text('Male'),
-          ),
-          DropdownMenuItem<String>(
-            value: 'female',
-            child: Text('Female'),
-          ),
-          // Add more items as needed
-        ],
       ),
-    ),
-  );
-}
+    );
+  }
 
   /// Section Widget
-Widget _buildSignup(BuildContext context) {
-  return CustomElevatedButton(
-    text: "lbl_signup".tr,
-    margin: EdgeInsets.only(left: 35.h, right: 36.h),
-    onPressed: () => _validateAndSignup(context),
-    alignment: Alignment.center,
-  );
-}
-
-void _validateAndSignup(BuildContext context) {
-  final state = context.read<SignupBloc>().state;
-  final firstNameController = state.firstNameController;
-  final lastNameController = state.lastNameController;
-  final userNameController = state.userNameController;
-  final selectedDateText = state.selectedDateText;
-  final genderValue = state.genderValue;
-
-  List<String> missingFields = [];
-
-  if (firstNameController?.text.isEmpty ?? true) {
-    missingFields.add("First Name");
-  }
-  if (lastNameController?.text.isEmpty ?? true) {
-    missingFields.add("Last Name");
-  }
-  if (userNameController?.text.isEmpty ?? true) {
-    missingFields.add("Username");
-  }
-  if (selectedDateText == null || selectedDateText.isEmpty) {
-    missingFields.add("Birthday");
-  }
-  if (genderValue == null || genderValue.isEmpty) {
-    missingFields.add("Gender");
+  Widget _buildSignup(BuildContext context) {
+    return CustomElevatedButton(
+      text: "lbl_signup".tr,
+      margin: EdgeInsets.only(left: 35.h, right: 36.h),
+      onPressed: () => _validateAndSignup(context),
+      alignment: Alignment.center,
+    );
   }
 
-  if (missingFields.isNotEmpty) {
-    _showValidationErrorDialog(context, missingFields);
-  } else {
-    _navigateToNextScreen(context);
+  void _validateAndSignup(BuildContext context) {
+    final state = context.read<SignupBloc>().state;
+    final firstNameController = state.firstNameController;
+    final lastNameController = state.lastNameController;
+    final userNameController = state.userNameController;
+    final selectedDateText = state.selectedDateText;
+    final genderValue = state.genderValue;
+
+    List<String> missingFields = [];
+
+    if (firstNameController?.text.isEmpty ?? true) {
+      missingFields.add("First Name");
+    }
+    if (lastNameController?.text.isEmpty ?? true) {
+      missingFields.add("Last Name");
+    }
+    if (userNameController?.text.isEmpty ?? true) {
+      missingFields.add("Username");
+    }
+    if (selectedDateText == null || selectedDateText.isEmpty) {
+      missingFields.add("Birthday");
+    }
+    if (genderValue.isEmpty) {
+      missingFields.add("Gender");
+    }
+
+    if (missingFields.isNotEmpty) {
+      _showValidationErrorDialog(context, missingFields);
+    } else {
+      _navigateToNextScreen(context);
+    }
   }
-}
 
-bool _areFieldsEmpty(
-    TextEditingController? firstNameController,
-    TextEditingController? lastNameController,
-    TextEditingController? userNameController,
-    String? selectedDateText, // Added parameter for selected date text
-    String? genderValue // Added parameter for gender value
-) {
-  // Check if any controller is null or if its text is empty
-  return (firstNameController?.text.isEmpty ?? true) ||
-      (lastNameController?.text.isEmpty ?? true) ||
-      (userNameController?.text.isEmpty ?? true) ||
-      (selectedDateText == null || selectedDateText.isEmpty) || // Check if selectedDateText is null or empty
-      (genderValue == null || genderValue.isEmpty); // Check if genderValue is null or empty
-}
-
-void _showValidationErrorDialog(BuildContext context, List<String> missingFields) {
-  String errorMessage = "Please fill in the following fields:\n";
-  for (String field in missingFields) {
-    errorMessage += "- $field\n";
+  bool _areFieldsEmpty(
+      TextEditingController? firstNameController,
+      TextEditingController? lastNameController,
+      TextEditingController? userNameController,
+      String? selectedDateText, // Added parameter for selected date text
+      String? genderValue // Added parameter for gender value
+      ) {
+    // Check if any controller is null or if its text is empty
+    return (firstNameController?.text.isEmpty ?? true) ||
+        (lastNameController?.text.isEmpty ?? true) ||
+        (userNameController?.text.isEmpty ?? true) ||
+        (selectedDateText == null ||
+            selectedDateText
+                .isEmpty) || // Check if selectedDateText is null or empty
+        (genderValue == null ||
+            genderValue.isEmpty); // Check if genderValue is null or empty
   }
 
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          "Validation Error",
-          style: TextStyle(color: Colors.black),
-        ),
-        content: Text(
-          errorMessage,
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        actions: <Widget>[
-          TextButton(
-            child: Text("OK"),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+  void _showValidationErrorDialog(
+      BuildContext context, List<String> missingFields) {
+    String errorMessage = "Please fill in the following fields:\n";
+    for (String field in missingFields) {
+      errorMessage += "- $field\n";
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Validation Error",
+            style: TextStyle(color: Colors.black),
           ),
-        ],
-      );
-    },
-  );
-}
+          content: Text(
+            errorMessage,
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
-/// Navigate to the next screen
-void _navigateToNextScreen(BuildContext context) {
-  NavigatorService.pushNamed(
-    AppRoutes.signuponeScreen,
-  );
-}
+  /// Navigate to the next screen
+  void _navigateToNextScreen(BuildContext context) {
+    NavigatorService.pushNamed(
+      AppRoutes.signuponeScreen,
+    );
+  }
 
   /// Section Widget
   Widget _buildTitleHead(BuildContext context) {
@@ -533,6 +559,7 @@ void _navigateToNextScreen(BuildContext context) {
                             width: 120.h,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(top: 5.v),
+                            icon: '',
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -547,12 +574,14 @@ void _navigateToNextScreen(BuildContext context) {
                                     height: 177.v,
                                     width: 118.h,
                                     alignment: Alignment.bottomCenter,
+                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgIcon3,
                                     height: 132.v,
                                     width: 122.h,
                                     alignment: Alignment.topCenter,
+                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -574,6 +603,7 @@ void _navigateToNextScreen(BuildContext context) {
                 height: 45.adaptSize,
                 width: 45.adaptSize,
                 alignment: Alignment.topLeft,
+                icon: '',
               ),
             ),
           ],

@@ -146,19 +146,23 @@ class ResetPasswordScreen extends StatelessWidget {
                                                   onTapSubmit(context);
                                                 }),
                                             CustomImageView(
-                                                imagePath: ImageConstant
-                                                    .imgRedOpenedBook,
-                                                height: 136.v,
-                                                width: 147.h,
-                                                alignment: Alignment.centerLeft)
+                                              imagePath: ImageConstant
+                                                  .imgRedOpenedBook,
+                                              height: 136.v,
+                                              width: 147.h,
+                                              alignment: Alignment.centerLeft,
+                                              icon: '',
+                                            )
                                           ]))),
                               CustomImageView(
-                                  imagePath: ImageConstant.imgSmilingManWearing,
-                                  height: 142.v,
-                                  width: 159.h,
-                                  alignment: Alignment.topRight,
-                                  margin:
-                                      EdgeInsets.only(top: 230.v, right: 10.h)),
+                                imagePath: ImageConstant.imgSmilingManWearing,
+                                height: 142.v,
+                                width: 159.h,
+                                alignment: Alignment.topRight,
+                                margin:
+                                    EdgeInsets.only(top: 230.v, right: 10.h),
+                                icon: '',
+                              ),
                               Align(
                                   alignment: Alignment.topLeft,
                                   child: Padding(

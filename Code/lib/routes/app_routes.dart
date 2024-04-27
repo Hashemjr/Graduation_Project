@@ -1,3 +1,4 @@
+import 'package:chineasy/presentation/object_detection_screen/camera_view.dart';
 import 'package:chineasy/presentation/welcome_page_four_screen/welcome_page_four_screen.dart';
 import 'package:chineasy/presentation/welcome_page_one_screen/welcome_page_one_screen.dart';
 import 'package:chineasy/presentation/welcome_page_three_screen/welcome_page_three_screen.dart';
@@ -16,7 +17,6 @@ import 'package:chineasy/presentation/reset_password_screen/reset_password_scree
 import 'package:chineasy/presentation/reset_passwordtwo_screen/reset_passwordtwo_screen.dart';
 import 'package:chineasy/presentation/profile_leaderboard_screen/profile_leaderboard_screen.dart';
 import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
-import 'package:chineasy/presentation/courses_test_container1_screen/courses_test_container1_screen.dart';
 import 'package:chineasy/presentation/home_page_container_screen/home_page_container_screen.dart';
 import 'package:chineasy/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:chineasy/presentation/Flashcards/home-page.dart';
@@ -50,6 +50,8 @@ class AppRoutes {
   static const String coursesTestContainerPage = '/courses_test_container_page';
 
   static const String FlashcardsHomePage = '/home_page';
+
+  static const String objectDetectionScreen = '/object_detection_screen';
 
   static const String profileStateTestPage = '/profile_state_test_page';
 
@@ -89,6 +91,7 @@ class AppRoutes {
         welcomePageTwoScreen: (context) => const WelcomePageTwoScreen(),
         welcomePageThreeScreen: (context) => const WelcomePageThreeScreen(),
         welcomePageFourScreen: (context) => const WelcomePageFourScreen(),
+        objectDetectionScreen: (context) => MyApp(),
         //profileLeaderboardScreen: (context) => ProfileLeaderboardScreen(),
         //: (context) => ProfileStateTestPage(),
         // initialRoute: AppNavigationScreen.builder

@@ -62,19 +62,19 @@ class WelcomePageOneScreen extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       children: [
                         Align(
-                          alignment: Alignment.topLeft,
+                          alignment: Alignment.center,
                           child: Text(
-                            "Chin",
+                            "Chineasy",
                             style: theme.textTheme.displayLarge,
                           ),
                         ),
-                        Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            "easy",
-                            style: theme.textTheme.displayLarge,
-                          ),
-                        ),
+                        // Align(
+                        //   alignment: Alignment.bottomRight,
+                        //   child: Text(
+                        //     "easy",
+                        //     style: theme.textTheme.displayLarge,
+                        //   ),
+                        //),
                       ],
                     ),
                   ),

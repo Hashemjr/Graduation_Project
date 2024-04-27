@@ -47,12 +47,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                 height: SizeUtils.height,
                 width: double.maxFinite,
                 child: Stack(
-                  alignment: Alignment.topRight, // Align items to top right corner
+                  alignment:
+                      Alignment.topRight, // Align items to top right corner
                   children: [
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: Container(
-                        decoration: AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                        decoration:
+                            AppDecoration.gradientDeepOrangeAToRedA.copyWith(
                           borderRadius: BorderRadiusStyle.customBorderTL40,
                         ),
                         child: Column(
@@ -61,29 +63,35 @@ class ForgetPasswordScreen extends StatelessWidget {
                             SizedBox(height: 195.v),
                             Padding(
                               padding: EdgeInsets.only(left: 0.h, right: 0.h),
-                              child: _buildLoginSection(context), // Corrected syntax
+                              child: _buildLoginSection(
+                                  context), // Corrected syntax
                             ),
                           ],
                         ),
                       ),
                     ),
-                    CustomImageView( // Added notation
+                    CustomImageView(
+                      // Added notation
                       imagePath: ImageConstant.imgSmilingManWearing,
                       height: 150.v,
                       width: 170.h,
                       alignment: Alignment.topRight,
-                      margin: EdgeInsets.only(top: 160.v, right: 5.h),
+                      margin: EdgeInsets.only(top: 160.v, right: 5.h), icon: '',
                     ),
-                    Align( // Added notation
+                    Align(
+                      // Added notation
                       alignment: Alignment.topLeft,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 25.h, right: 129.h,top:25.v),
+                        padding: EdgeInsets.only(
+                            left: 25.h, right: 129.h, top: 25.v),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("lbl_forget".tr, style: theme.textTheme.displayMedium),
-                            Text("lbl_password".tr, style: theme.textTheme.displayMedium),
+                            Text("lbl_forget".tr,
+                                style: theme.textTheme.displayMedium),
+                            Text("lbl_password".tr,
+                                style: theme.textTheme.displayMedium),
                           ],
                         ),
                       ),
@@ -97,8 +105,9 @@ class ForgetPasswordScreen extends StatelessWidget {
       ),
     );
   }
+
   /// Section Widget
-    Widget _buildLoginSection(BuildContext context) {
+  Widget _buildLoginSection(BuildContext context) {
     return Align(
         alignment: Alignment.bottomCenter,
         child: Padding(

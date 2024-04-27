@@ -74,9 +74,15 @@ class ProfileStateTestPage extends StatelessWidget {
                     padding: EdgeInsets.only(left: 30.h),
                     child: Row(
                       children: [
-                        Text(
-                          "lbl_leaderboard".tr.toUpperCase(),
-                          style: CustomTextStyles.titleSmallInterGray50001,
+                        GestureDetector(
+                          onTap: () {
+                            NavigatorService.pushNamed(
+                                AppRoutes.profileLeaderboardScreen);
+                          },
+                          child: Text(
+                            "lbl_leaderboard".tr.toUpperCase(),
+                            style: CustomTextStyles.titleSmallInterGray50001,
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 29.h),
@@ -121,36 +127,48 @@ class ProfileStateTestPage extends StatelessWidget {
             ),
           ),
         ),
-      bottomNavigationBar: CurvedNavigationBar(
-    backgroundColor: Colors.transparent,
-    items: <Widget>[
-      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-    ],
-    animationDuration: Duration(milliseconds: 150),
-    height:75,
-    index: 2,
-    onTap: (index) {
-      if (index == 0) {
-    // Navigate to the first screen
-    NavigatorService.pushNamed(
-      AppRoutes.coursesTestContainerPage,
-    );
-  } else if (index == 1) {
-    // Navigate to the second screen
-    NavigatorService.pushNamed(
-      AppRoutes.homePageContainerScreen,
-    );
-  } else if (index == 2) {
-    // Navigate to the third screen
-   NavigatorService.pushNamed(
-      AppRoutes.profileStateTestPage,
-    );
-  }
-      //Handle button tap
-    }, 
-  ),
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          items: <Widget>[
+            Icon(
+              Icons.import_contacts_rounded,
+              size: 28.v,
+              color: Color.fromARGB(255, 191, 37, 17),
+            ),
+            Icon(
+              Icons.home_filled,
+              size: 28.v,
+              color: Color.fromARGB(255, 191, 37, 17),
+            ),
+            Icon(
+              Icons.person_rounded,
+              size: 28.v,
+              color: Color.fromARGB(255, 191, 37, 17),
+            ),
+          ],
+          animationDuration: Duration(milliseconds: 150),
+          height: 75,
+          index: 2,
+          onTap: (index) {
+            if (index == 0) {
+              // Navigate to the first screen
+              NavigatorService.pushNamed(
+                AppRoutes.coursesTestContainerPage,
+              );
+            } else if (index == 1) {
+              // Navigate to the second screen
+              NavigatorService.pushNamed(
+                AppRoutes.homePageContainerScreen,
+              );
+            } else if (index == 2) {
+              // Navigate to the third screen
+              NavigatorService.pushNamed(
+                AppRoutes.profileStateTestPage,
+              );
+            }
+            //Handle button tap
+          },
+        ),
       ),
     );
   }
@@ -168,12 +186,14 @@ class ProfileStateTestPage extends StatelessWidget {
             height: 187.v,
             width: 216.h,
             alignment: Alignment.centerLeft,
+            icon: '',
           ),
           CustomImageView(
             imagePath: ImageConstant.imgBackgroundBlur188x200,
             height: 188.v,
             width: 200.h,
             alignment: Alignment.centerRight,
+            icon: '',
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -229,6 +249,7 @@ class ProfileStateTestPage extends StatelessWidget {
                               height: 65.adaptSize,
                               width: 65.adaptSize,
                               alignment: Alignment.bottomCenter,
+                              icon: '',
                             ),
                           ),
                         ),
@@ -238,12 +259,14 @@ class ProfileStateTestPage extends StatelessWidget {
                           width: 21.adaptSize,
                           alignment: Alignment.bottomLeft,
                           margin: EdgeInsets.only(left: 4.h),
+                          icon: '',
                         ),
                         CustomImageView(
                           imagePath: ImageConstant.imgFireFlamePng1,
                           height: 41.v,
                           width: 40.h,
                           alignment: Alignment.topRight,
+                          icon: '',
                         ),
                       ],
                     ),
@@ -260,7 +283,8 @@ class ProfileStateTestPage extends StatelessWidget {
                       padding: EdgeInsets.all(5.h),
                       child: CustomImageView(
                         imagePath: ImageConstant.imgGearPng1,
-                        radius: BorderRadius.circular(30.0), // Adjust the border corner radius here
+                        radius: BorderRadius.circular(30.0),
+                        icon: '', // Adjust the border corner radius here
                       ),
                     ),
                   ),
@@ -362,41 +386,41 @@ class ProfileStateTestPage extends StatelessWidget {
                     alignment: Alignment.center,
                     children: [
                       Positioned(
-                top:1.5.h, // Adjust position as needed
-                left:1.h, // Adjust position as needed
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Container(
-                    width: 225.h,
-                    height: 27.h,
-                    decoration: AppDecoration.gradientDeepOrangeAToRedA,
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 1.5.h, // Adjust position as needed
-                left: 1.h, // Adjust position as needed
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Opacity(
-                    opacity: 0.4,
-                    child: Container(
-                      width: 288.h,
-                      height: 27.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Colors.deepOrange.withOpacity(0.4),
-                            Colors.red.withOpacity(0.4)
-                          ],
+                        top: 1.5.h, // Adjust position as needed
+                        left: 1.h, // Adjust position as needed
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            width: 225.h,
+                            height: 27.h,
+                            decoration: AppDecoration.gradientDeepOrangeAToRedA,
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ),
-              ),
+                      Positioned(
+                        top: 1.5.h, // Adjust position as needed
+                        left: 1.h, // Adjust position as needed
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Opacity(
+                            opacity: 0.4,
+                            child: Container(
+                              width: 288.h,
+                              height: 27.h,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Colors.deepOrange.withOpacity(0.4),
+                                    Colors.red.withOpacity(0.4)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Container(
@@ -416,6 +440,7 @@ class ProfileStateTestPage extends StatelessWidget {
                                     top: 7.v,
                                     bottom: 8.v,
                                   ),
+                                  icon: '',
                                 ),
                               ),
                               Padding(
@@ -450,7 +475,6 @@ class ProfileStateTestPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                
               ],
             ),
           ),
@@ -486,24 +510,24 @@ class ProfileStateTestPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                              top: 8.v,
-                              bottom: 7.v,
-                                          ),
-                            child: SizedBox(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(4.h),
-                                        child: Image.asset(
-                                        ImageConstant.imgQuizicon,
-                                        width: 27.h,
-                                        height: 27.h,
-                                        ),
-                                      ),
-                                    ),
+                    top: 8.v,
+                    bottom: 7.v,
                   ),
+                  child: SizedBox(
+                    child: Padding(
+                      padding: EdgeInsets.all(4.h),
+                      child: Image.asset(
+                        ImageConstant.imgQuizicon,
+                        width: 27.h,
+                        height: 27.h,
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.only(
                     right: 30.h,
-                   // bottom: 3.v,
+                    // bottom: 3.v,
                   ),
                   child: Column(
                     children: [
@@ -538,21 +562,21 @@ class ProfileStateTestPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-  padding: EdgeInsets.only(
-    top: 8.v,
-    bottom: 7.v,
-  ),
-  child: SizedBox(
-    child: Padding(
-      padding: EdgeInsets.all(4.h),
-      child: Image.asset(
-        ImageConstant.imgLeadboardIcon,
-        width: 27.h,
-                                        height: 27.h,
-      ),
-    ),
-  ),
-),
+                  padding: EdgeInsets.only(
+                    top: 8.v,
+                    bottom: 7.v,
+                  ),
+                  child: SizedBox(
+                    child: Padding(
+                      padding: EdgeInsets.all(4.h),
+                      child: Image.asset(
+                        ImageConstant.imgLeadboardIcon,
+                        width: 27.h,
+                        height: 27.h,
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: EdgeInsets.only(
                     left: 16.h,
@@ -589,7 +613,6 @@ class ProfileStateTestPage extends StatelessWidget {
         ],
       ),
     );
-  
   }
 
   /// Section Widget

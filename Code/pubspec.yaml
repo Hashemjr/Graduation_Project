@@ -23,6 +23,19 @@ dependencies:
   flutter_glow: ^0.3.0
   flutter_tts: ^4.0.1
   curved_navigation_bar: ^1.0.3
+  camera: ^0.10.5+9
+  get: ^4.6.6
+  permission_handler: ^11.3.1
+  tflite_v2: ^1.0.0
+  mutex: ^3.1.0
+  firebase_core: ^2.30.0
+  firebase_database: ^10.5.2
+  flutter_webrtc: ^0.10.3
+  webview_flutter: ^4.7.0
+  image_picker: ^1.1.0
+  google_translator: ^1.0.0
+  translator: ^1.0.0
+  pinyin: ^3.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -37,6 +50,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/labels/labels.txt
+    - assets/models/model_unquant.tflite
   fonts:
     - family: Montserrat
       fonts:

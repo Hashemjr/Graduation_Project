@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-const Color Kred = Color.fromARGB(255, 215, 0, 0);
-const Color Kyellow = Color.fromARGB(255, 255, 165, 30);
+const Color Kred = Color(0X4CD86C68);
+const Color Kyellow = Color(0xFF90001);
 
 const int kSlideAwayDuration = 2000;
 

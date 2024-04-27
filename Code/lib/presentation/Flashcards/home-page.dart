@@ -1,6 +1,7 @@
 import 'package:chineasy/presentation/Flashcards/Animation/fade-in-animation.dart';
 import 'package:chineasy/presentation/Flashcards/Flashcards_data/words.dart';
 import 'package:chineasy/presentation/Flashcards/Flashcards_Component/Configur/Themes.dart';
+import 'package:chineasy/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:chineasy/presentation/Flashcards/Flashcards_Component/home_page/topic_title.dart';
 
@@ -43,23 +44,22 @@ class _HomePageState extends State<HomePage> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: size.width * 0.08,
-                      child: Image.asset('assets/images/Settings.png'),
-                    ),
-                    SizedBox(height: size.height * 0.06)
-                  ],
-                ),
+                Column(),
                 FadeInAnimation(
                     child:
                         Text('Flashcards\n 识字卡片', textAlign: TextAlign.center)),
                 Column(
                   children: [
                     SizedBox(
-                        width: size.width * 0.08,
-                        child: Image.asset('assets/images/evaluation.png')),
+                      width: size.width * 0.08,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, AppRoutes.homePageContainerScreen);
+                        },
+                        child: Image.asset('assets/images/evaluation.png'),
+                      ),
+                    ),
                     SizedBox(
                       height: size.height * 0.06,
                     ),

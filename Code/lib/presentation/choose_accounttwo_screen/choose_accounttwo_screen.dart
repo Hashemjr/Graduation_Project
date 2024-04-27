@@ -73,6 +73,7 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                               radius: BorderRadius.circular(
                                 88.h,
                               ),
+                              icon: '',
                             ),
                             SizedBox(height: 8.v),
                             SizedBox(
@@ -94,6 +95,7 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                                       height: 156.v,
                                       width: 171.h,
                                       alignment: Alignment.bottomLeft,
+                                      icon: '',
                                     ),
                                     CustomElevatedButton(
                                       height: 55.v,
@@ -133,7 +135,7 @@ class ChooseAccounttwoScreen extends StatelessWidget {
       child: Container(
         height: 251.v,
         width: 350.h,
-        margin: EdgeInsets.only(top: 15 .v,left:10.v),
+        margin: EdgeInsets.only(top: 15.v, left: 10.v),
         child: Stack(
           alignment: Alignment.topLeft,
           children: [
@@ -151,6 +153,7 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                       width: 120.h,
                       alignment: Alignment.topCenter,
                       margin: EdgeInsets.only(top: 5.v),
+                      icon: '',
                     ),
                     Align(
                       alignment: Alignment.center,
@@ -165,12 +168,14 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                               height: 177.v,
                               width: 118.h,
                               alignment: Alignment.bottomCenter,
+                              icon: '',
                             ),
                             CustomImageView(
                               imagePath: ImageConstant.imgIcon3,
                               height: 132.v,
                               width: 122.h,
                               alignment: Alignment.topCenter,
+                              icon: '',
                             ),
                           ],
                         ),
@@ -183,9 +188,7 @@ class ChooseAccounttwoScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: EdgeInsets.only(
-                    top:15.v, right: 106.h
-                ),
+                padding: EdgeInsets.only(top: 15.v, right: 106.h),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,13 +208,13 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: Container(
                         width: 200.h,
-                        margin: EdgeInsets.only(top: 5.v,right: 8.h),
+                        margin: EdgeInsets.only(top: 5.v, right: 8.h),
                         child: Text(
                           "msg_embrace_the_happiness".tr,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodyLarge?.copyWith(
-                              fontSize: 22.0),
+                          style: theme.textTheme.bodyLarge
+                              ?.copyWith(fontSize: 22.0),
                         ),
                       ),
                     ),

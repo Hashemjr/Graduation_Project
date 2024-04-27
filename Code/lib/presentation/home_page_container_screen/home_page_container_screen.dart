@@ -1,18 +1,20 @@
+import 'package:chineasy/presentation/Flashcards/utils/methods.dart';
 import 'bloc/home_page_container_bloc.dart';
 import 'models/home_page_container_model.dart';
 import 'package:chineasy/core/app_export.dart';
-import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
-import 'package:chineasy/presentation/profile_state_test_page/profile_state_test_page.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 // ignore: must_be_immutable
-class HomePageContainerScreen extends StatelessWidget {
+class HomePageContainerScreen extends StatefulWidget {
   HomePageContainerScreen({Key? key})
       : super(
           key: key,
         );
+  @override
+  _HomePageContainerScreenState createState() =>
+      _HomePageContainerScreenState();
 
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
@@ -25,7 +27,9 @@ class HomePageContainerScreen extends StatelessWidget {
       child: HomePageContainerScreen(),
     );
   }
+}
 
+class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomePageContainerBloc, HomePageContainerState>(
@@ -61,12 +65,14 @@ class HomePageContainerScreen extends StatelessWidget {
                             height: 187.v,
                             width: 216.h,
                             alignment: Alignment.topLeft,
+                            icon: '',
                           ),
                           CustomImageView(
                             imagePath: ImageConstant.imgBackgroundBlur188x200,
                             height: 188.v,
                             width: 200.h,
                             alignment: Alignment.topRight,
+                            icon: '',
                           ),
                           _buildHeader(context),
                           _buildContinueStudying(context),
@@ -81,46 +87,47 @@ class HomePageContainerScreen extends StatelessWidget {
               ),
             ),
             bottomNavigationBar: CurvedNavigationBar(
-    backgroundColor: Colors.transparent,
-    items: <Widget>[
-      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-    ],
-    animationDuration: Duration(milliseconds: 150),
-    height:75,
-    index: 1,
-    onTap: (index) {
-      if (index == 0) {
-    // Navigate to the first screen
-    NavigatorService.pushNamed(
-      AppRoutes.coursesTestContainerPage,
-    );
-  } else if (index == 1) {
-    // Navigate to the second screen
-    NavigatorService.pushNamed(
-      AppRoutes.homePageContainerScreen,
-    );
-  } else if (index == 2) {
-    // Navigate to the third screen
-   NavigatorService.pushNamed(
-      AppRoutes.profileStateTestPage,
-    );
-  }
-      //Handle button tap
-    }, 
-  ),
-            //bottomNavigationBar: _buildNavigationBar(context),
-            //floatingActionButton: FloatingActionButton(
-              //onPressed: () {},
-              //child: CustomImageView(
-               // imagePath: ImageConstant.imgThumbsUp,
-                //height: 26.5.v,
-                //width: 26.5.h,
-              //),
-            //),
-            //floatingActionButtonLocation:
-              //  FloatingActionButtonLocation.centerDocked,
+              backgroundColor: Colors.transparent,
+              items: <Widget>[
+                Icon(
+                  Icons.import_contacts_rounded,
+                  size: 28.v,
+                  color: Color.fromARGB(255, 191, 37, 17),
+                ),
+                Icon(
+                  Icons.home_filled,
+                  size: 28.v,
+                  color: Color.fromARGB(255, 191, 37, 17),
+                ),
+                Icon(
+                  Icons.person_rounded,
+                  size: 28.v,
+                  color: Color.fromARGB(255, 191, 37, 17),
+                ),
+              ],
+              animationDuration: Duration(milliseconds: 150),
+              height: 75,
+              index: 1,
+              onTap: (index) {
+                if (index == 0) {
+                  // Navigate to the first screen
+                  NavigatorService.pushNamed(
+                    AppRoutes.coursesTestContainerPage,
+                  );
+                } else if (index == 1) {
+                  // Navigate to the second screen
+                  NavigatorService.pushNamed(
+                    AppRoutes.homePageContainerScreen,
+                  );
+                } else if (index == 2) {
+                  // Navigate to the third screen
+                  NavigatorService.pushNamed(
+                    AppRoutes.profileStateTestPage,
+                  );
+                }
+                //Handle button tap
+              },
+            ),
           ),
         );
       },
@@ -164,6 +171,7 @@ class HomePageContainerScreen extends StatelessWidget {
                         width: 48,
                         radius: BorderRadius.circular(24.h),
                         alignment: Alignment.center,
+                        icon: '',
                       ),
                     ),
                     Positioned(
@@ -173,13 +181,14 @@ class HomePageContainerScreen extends StatelessWidget {
                         imagePath: ImageConstant.imgFireFlamePng1,
                         height: 30,
                         width: 30,
+                        icon: '',
                       ),
                     ),
                   ],
                 ),
-                SizedBox(width: 12),
+                SizedBox(width: 12.v),
                 Padding(
-                  padding: EdgeInsets.only(top: 15.5), // Adjusted top padding
+                  padding: EdgeInsets.only(top: 10.v), // Adjusted top padding
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -201,6 +210,7 @@ class HomePageContainerScreen extends StatelessWidget {
                   height: 48,
                   width: 48,
                   margin: EdgeInsets.only(top: 12.v),
+                  icon: '',
                 ),
               ],
             ),
@@ -212,6 +222,8 @@ class HomePageContainerScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildContinueStudying(BuildContext context) {
+    bool isPressed1 = false;
+    Color buttonColor = Colors.white;
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
@@ -223,10 +235,17 @@ class HomePageContainerScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: 2.h), // Adjusted horizontal padding
-              child: _buildCulture(
-                context,
-                currentLesson: "lbl_active_level".tr,
-                text: "lbl_see_course".tr,
+              child: GestureDetector(
+                onTap: () {
+                  NavigatorService.pushNamed(
+                    AppRoutes.coursesTestContainerPage,
+                  );
+                },
+                child: _buildCulture(
+                  context,
+                  currentLesson: "lbl_active_level".tr,
+                  text: "lbl_see_course".tr,
+                ),
               ),
             ),
             SizedBox(height: 11.v),
@@ -357,6 +376,7 @@ class HomePageContainerScreen extends StatelessWidget {
                             height: 82.v,
                             width: 86.h,
                             margin: EdgeInsets.only(top: 14.v),
+                            icon: '',
                           ),
                           Padding(
                             padding: EdgeInsets.only(
@@ -383,25 +403,34 @@ class HomePageContainerScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgDone,
-                            height: 42.v,
-                            width: 51.h,
-                            margin: EdgeInsets.only(
-                              left: 5.h,
-                              top: 33.v,
-                              bottom: 20.v,
-                            ),
+                          Stack(
+                            children: [
+                              Container(
+                                color: buttonColor,
+                                child: CustomImageView(
+                                  //imagePath: ImageConstant.imgDone,
+                                  height: 42.v,
+                                  width: 51.h,
+                                  margin: EdgeInsets.only(
+                                    left: 5.h,
+                                    top: 33.v,
+                                    bottom: 20.v,
+                                  ),
+                                  icon: '',
+                                ),
+                              )
+                            ],
                           ),
                           CustomImageView(
-                            imagePath: ImageConstant.imgVoicePic,
+                            //imagePath: ImageConstant.imgVoicePic,
                             height: 33.v,
                             width: 40.h,
                             margin: EdgeInsets.only(
-                              left: 5.h,
+                              left: 75.h,
                               top: 38.v,
                               bottom: 24.v,
                             ),
+                            icon: '',
                           ),
                         ],
                       ),
@@ -453,12 +482,19 @@ class HomePageContainerScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 6.v),
-            Padding(
-              padding: EdgeInsets.only(right: 6.h),
-              child: _buildCulture(
-                context,
-                currentLesson: "lbl_culture".tr,
-                text: "lbl_view_all".tr,
+            GestureDetector(
+              onTap: () {
+                NavigatorService.pushNamed(
+                  AppRoutes.FlashcardsHomePage,
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.only(right: 6.h),
+                child: _buildCulture(
+                  context,
+                  currentLesson: "lbl_culture".tr,
+                  text: "lbl_view_all".tr,
+                ),
               ),
             ),
           ],
@@ -504,15 +540,21 @@ class HomePageContainerScreen extends StatelessWidget {
                 height: 91.v,
                 width: 92.h,
                 alignment: Alignment.topRight,
+                icon: '',
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 17.h, top: 8.v), // Adjusted top padding
-                  child: Text(
-                    "lbl_craft".tr,
-                    style: theme.textTheme.headlineSmall,
+              GestureDetector(
+                onTap: () {
+                  loadSession(context: context, topic: "Craft");
+                },
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: 17.h, top: 8.v), // Adjusted top padding
+                    child: Text(
+                      "lbl_craft".tr,
+                      style: theme.textTheme.headlineSmall,
+                    ),
                   ),
                 ),
               ),
@@ -556,14 +598,20 @@ class HomePageContainerScreen extends StatelessWidget {
                 height: 93.v,
                 width: 78.h,
                 alignment: Alignment.bottomRight,
+                icon: '',
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 5.h),
-                  child: Text(
-                    "lbl_clothing".tr,
-                    style: theme.textTheme.headlineSmall,
+              GestureDetector(
+                onTap: () {
+                  loadSession(context: context, topic: "Costumes");
+                },
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 5.h),
+                    child: Text(
+                      "lbl_clothing".tr,
+                      style: theme.textTheme.headlineSmall,
+                    ),
                   ),
                 ),
               ),
@@ -603,17 +651,23 @@ class HomePageContainerScreen extends StatelessWidget {
                 height: 114.v,
                 width: 188.h,
                 alignment: Alignment.bottomRight,
+                icon: '',
               ),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 9.h,
-                    top: 24.v, // Adjusted top padding
-                  ),
-                  child: Text(
-                    "lbl_food".tr,
-                    style: CustomTextStyles.displaySmallPoppins,
+              GestureDetector(
+                onTap: () {
+                  loadSession(context: context, topic: "Food");
+                },
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                      left: 9.h,
+                      top: 24.v, // Adjusted top padding
+                    ),
+                    child: Text(
+                      "lbl_food".tr,
+                      style: CustomTextStyles.displaySmallPoppins,
+                    ),
                   ),
                 ),
               ),
@@ -662,23 +716,30 @@ class HomePageContainerScreen extends StatelessWidget {
                         height: 99.v,
                         width: 81.h,
                         alignment: Alignment.centerRight,
+                        icon: '',
                       ),
                       CustomImageView(
                         imagePath: ImageConstant.imgDecore61x40,
                         height: 61.v,
                         width: 40.h,
                         alignment: Alignment.topLeft,
+                        icon: '',
                       ),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 14.h,
-                            bottom: 14.v,
-                          ),
-                          child: Text(
-                            "lbl_festivals".tr,
-                            style: theme.textTheme.headlineSmall,
+                      GestureDetector(
+                        onTap: () {
+                          loadSession(context: context, topic: "Traditions");
+                        },
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: 14.h,
+                              bottom: 14.v,
+                            ),
+                            child: Text(
+                              "lbl_festivals".tr,
+                              style: theme.textTheme.headlineSmall,
+                            ),
                           ),
                         ),
                       ),
@@ -722,14 +783,20 @@ class HomePageContainerScreen extends StatelessWidget {
                         height: 91.v,
                         width: 92.h,
                         alignment: Alignment.topRight,
+                        icon: '',
                       ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 17.h),
-                          child: Text(
-                            "lbl_craft".tr,
-                            style: theme.textTheme.headlineSmall,
+                      GestureDetector(
+                        onTap: () {
+                          loadSession(context: context, topic: "Craft");
+                        },
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 17.h),
+                            child: Text(
+                              "lbl_craft".tr,
+                              style: theme.textTheme.headlineSmall,
+                            ),
                           ),
                         ),
                       ),
@@ -753,16 +820,6 @@ class HomePageContainerScreen extends StatelessWidget {
       ),
     );
   }
-
-  /// Section Widget
-  //Widget _buildNavigationBar(BuildContext context) {
-    //return CustomBottomBar(
-      //onChanged: (BottomBarEnum type) {
-        //Navigator.pushNamed(
-          //  navigatorKey.currentContext!, getCurrentRoute(type));
-      //},
-    //);
-  //}
 
   /// Common widget
   Widget _buildCulture(
@@ -794,32 +851,4 @@ class HomePageContainerScreen extends StatelessWidget {
       ],
     );
   }
-
-  ///Handling route based on bottom click actions
-  /*String getCurrentRoute(BottomBarEnum type) {
-    switch (type) {
-      case BottomBarEnum.Courses:
-        return AppRoutes.coursesTestContainerPage;
-      case BottomBarEnum.Profile:
-        return AppRoutes.profileStateTestPage;
-      default:
-        return "/";
-    }
-  }
-
-  ///Handling page based on route
-  Widget getCurrentPage(
-    BuildContext context,
-    String currentRoute,
-  ) {
-    switch (currentRoute) {
-      case AppRoutes.coursesTestContainerPage:
-        return CoursesTestContainerPage.builder(context);
-      case AppRoutes.profileStateTestPage:
-        return ProfileStateTestPage.builder(context);
-      default:
-        return DefaultWidget();
-    }
-  }
-  */
 }

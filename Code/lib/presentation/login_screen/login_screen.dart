@@ -38,12 +38,12 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           child: SingleChildScrollView(
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Form(
               key: _formKey,
               child: SizedBox(
                 height: SizeUtils.height,
-
                 width: double.maxFinite,
                 child: Stack(
                   alignment: Alignment.topRight,
@@ -52,7 +52,8 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         margin: EdgeInsets.only(top: 218.v),
-                        decoration: AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                        decoration:
+                            AppDecoration.gradientDeepOrangeAToRedA.copyWith(
                           borderRadius: BorderRadiusStyle.customBorderTL40,
                         ),
                         child: Column(
@@ -61,7 +62,8 @@ class LoginScreen extends StatelessWidget {
                             Spacer(),
                             Padding(
                               padding: EdgeInsets.only(left: 35.h, right: 36.h),
-                              child: BlocSelector<LoginBloc, LoginState, TextEditingController?>(
+                              child: BlocSelector<LoginBloc, LoginState,
+                                  TextEditingController?>(
                                 selector: (state) => state.userNameController,
                                 builder: (context, userNameController) {
                                   return CustomTextFormField(
@@ -73,7 +75,8 @@ class LoginScreen extends StatelessWidget {
                                       }
                                       return null;
                                     },
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 5.h),
                                   );
                                 },
                               ),
@@ -81,14 +84,16 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(height: 59.v),
                             Padding(
                               padding: EdgeInsets.only(left: 35.h, right: 36.h),
-                              child: BlocSelector<LoginBloc, LoginState, TextEditingController?>(
+                              child: BlocSelector<LoginBloc, LoginState,
+                                  TextEditingController?>(
                                 selector: (state) => state.passwordController,
                                 builder: (context, passwordController) {
                                   return CustomTextFormField(
                                     controller: passwordController,
                                     hintText: "lbl_password".tr,
                                     textInputAction: TextInputAction.done,
-                                    textInputType: TextInputType.visiblePassword,
+                                    textInputType:
+                                        TextInputType.visiblePassword,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return "password is required".tr;
@@ -96,7 +101,8 @@ class LoginScreen extends StatelessWidget {
                                       return null;
                                     },
                                     obscureText: true,
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 7.h),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 7.h),
                                   );
                                 },
                               ),
@@ -134,7 +140,8 @@ class LoginScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
+                                  padding:
+                                      EdgeInsets.only(top: 3.v, bottom: 2.v),
                                   child: Text(
                                     "msg_don_t_have_account".tr,
                                     style: theme.textTheme.bodySmall,
@@ -148,7 +155,8 @@ class LoginScreen extends StatelessWidget {
                                     padding: EdgeInsets.only(left: 4.h),
                                     child: Text(
                                       "lbl_signup2".tr,
-                                      style: CustomTextStyles.titleMediumPoppins,
+                                      style:
+                                          CustomTextStyles.titleMediumPoppins,
                                     ),
                                   ),
                                 ),
@@ -164,17 +172,21 @@ class LoginScreen extends StatelessWidget {
                                   alignment: Alignment.bottomRight,
                                   children: [
                                     CustomImageView(
-                                      imagePath: ImageConstant.imgRedOpenedBook156x171,
+                                      imagePath:
+                                          ImageConstant.imgRedOpenedBook156x171,
                                       height: 156.v,
                                       width: 171.h,
                                       alignment: Alignment.centerLeft,
+                                      icon: '',
                                     ),
                                     CustomImageView(
                                       imagePath: ImageConstant.imgGmailLogo,
                                       height: 45.adaptSize,
                                       width: 45.adaptSize,
                                       alignment: Alignment.bottomRight,
-                                      margin: EdgeInsets.only(right: 21.h, bottom: 49.v),
+                                      margin: EdgeInsets.only(
+                                          right: 21.h, bottom: 49.v),
+                                      icon: '',
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
@@ -182,17 +194,20 @@ class LoginScreen extends StatelessWidget {
                                         padding: EdgeInsets.only(top: 43.v),
                                         child: Text(
                                           "lbl_sign_in_using".tr,
-                                          style: CustomTextStyles.bodySmallPrimary,
+                                          style:
+                                              CustomTextStyles.bodySmallPrimary,
                                         ),
                                       ),
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
                                       child: Padding(
-                                        padding: EdgeInsets.only(top: 2.v, right: 25.h),
+                                        padding: EdgeInsets.only(
+                                            top: 2.v, right: 25.h),
                                         child: Text(
                                           "lbl_or".tr,
-                                          style: CustomTextStyles.titleLargePrimary,
+                                          style: CustomTextStyles
+                                              .titleLargePrimary,
                                         ),
                                       ),
                                     ),
@@ -214,234 +229,233 @@ class LoginScreen extends StatelessWidget {
       ),
     );
 
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment(0.5, 0),
-                        end: Alignment(0.5, 1),
-                        colors: [appTheme.black900, appTheme.gray90001])),
-                child: SingleChildScrollView(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Form(
-                        key: _formKey,
-                        child: SizedBox(
-                            height: SizeUtils.height,
-                            width: double.maxFinite,
-                            child:
-                                Stack(alignment: Alignment.topRight, children: [
-                              Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Container(
-                                      margin: EdgeInsets.only(top: 218.v),
-                                      decoration: AppDecoration
-                                          .gradientDeepOrangeAToRedA
-                                          .copyWith(
-                                              borderRadius: BorderRadiusStyle
-                                                  .customBorderTL40),
-                                      child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Spacer(),
-                                            Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 35.h, right: 36.h),
-                                                child: BlocSelector<
-                                                        LoginBloc,
-                                                        LoginState,
-                                                        TextEditingController?>(
-                                                    selector: (state) => state
-                                                        .userNameController,
-                                                    builder: (context,
-                                                        userNameController) {
-                                                      return CustomTextFormField(
-                                                          controller:
-                                                              userNameController,
-                                                          hintText:
-                                                              "lbl_username".tr,
-                                                          validator: (value) {
-                                                            if (!isText(
-                                                                value)) {
-                                                              return "err_msg_please_enter_valid_text"
-                                                                  .tr;
-                                                            }
-                                                            return null;
-                                                          },
-                                                          contentPadding:
-                                                              EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          5.h));
-                                                    })),
-                                            SizedBox(height: 59.v),
-                                            Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 35.h, right: 36.h),
-                                                child: BlocSelector<
-                                                        LoginBloc,
-                                                        LoginState,
-                                                        TextEditingController?>(
-                                                    selector: (state) => state
-                                                        .passwordController,
-                                                    builder: (context,
-                                                        passwordController) {
-                                                      return CustomTextFormField(
-                                                          controller:
-                                                              passwordController,
-                                                          hintText:
-                                                              "lbl_password".tr,
-                                                          textInputAction:
-                                                              TextInputAction
-                                                                  .done,
-                                                          textInputType:
-                                                              TextInputType
-                                                                  .visiblePassword,
-                                                          validator: (value) {
-                                                            if (value == null ||
-                                                                (!isValidPassword(
-                                                                    value,
-                                                                    isRequired:
-                                                                        true))) {
-                                                              return "err_msg_please_enter_valid_password"
-                                                                  .tr;
-                                                            }
-                                                            return null;
-                                                          },
-                                                          obscureText: true,
-                                                          contentPadding:
-                                                              EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          7.h));
-                                                    })),
-                                            SizedBox(height: 11.v),
-                                            Align(
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                child: GestureDetector(
-                                                    onTap: () {
-                                                      onTapTxtForgetPassword(
-                                                          context);
-                                                    },
-                                                    child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                right: 31.h),
-                                                        child: Text(
-                                                            "msg_forget_password"
-                                                                .tr,
-                                                            style: theme
-                                                                .textTheme
-                                                                .bodySmall!
-                                                                .copyWith(
-                                                                    decoration:
-                                                                        TextDecoration
-                                                                            .underline))))),
-                                            SizedBox(height: 80.v),
-                                            CustomElevatedButton(
-                                                text: "lbl_login2".tr,
-                                                margin: EdgeInsets.only(
-                                                    left: 35.h, right: 36.h),
-                                              onPressed: () {
-                                                  NavigatorService.pushNamed(
-                                                    AppRoutes
-                                                        .homePageContainerScreen,
-                                                  );
-                                                  // Navigate to the second page when the button is pressed
-                                                }),
-                                            SizedBox(height: 14.v),
-                                            Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Padding(
-                                                      padding: EdgeInsets.only(
-                                                          top: 3.v,
-                                                          bottom: 2.v),
-                                                      child: Text(
-                                                          "msg_don_t_have_account"
-                                                              .tr,
-                                                          style: theme.textTheme
-                                                              .bodySmall)),
-                                                  GestureDetector(
-                                                      onTap: () {
-                                                        onTapTxtSIGNUP(context);
-                                                      },
-                                                      child: Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  left: 4.h),
-                                                          child: Text(
-                                                              "lbl_signup2".tr,
-                                                              style: CustomTextStyles
-                                                                  .titleMediumPoppins)))
-                                                ]),
-                                            SizedBox(height: 3.v),
-                                            Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: SizedBox(
-                                                    height: 156.v,
-                                                    width: 220.h,
-                                                    child: Stack(
-                                                        alignment: Alignment
-                                                            .bottomRight,
-                                                        children: [
-                                                          CustomImageView(
-                                                              imagePath:
-                                                                  ImageConstant
-                                                                      .imgRedOpenedBook156x171,
-                                                              height: 156.v,
-                                                              width: 171.h,
-                                                              alignment: Alignment
-                                                                  .centerLeft),
-                                                          CustomImageView(
-                                                              imagePath:
-                                                                  ImageConstant
-                                                                      .imgGmailLogo,
-                                                              height: 45
-                                                                  .adaptSize,
-                                                              width:
-                                                                  45.adaptSize,
-                                                              alignment: Alignment
-                                                                  .bottomRight,
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      right:
-                                                                          21.h,
-                                                                      bottom: 49
-                                                                          .v)),
-                                                          Align(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topRight,
-                                                              child: Padding(
-                                                                  padding: EdgeInsets
-                                                                      .only(
-                                                                          top: 43
-                                                                              .v),
-                                                                  child: Text(
-                                                                      "lbl_sign_in_using"
-                                                                          .tr,
-                                                                      style: CustomTextStyles
-                                                                          .bodySmallPrimary))),
-                                                          Align(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .topRight,
-                                                              child: Padding(
-                                                                  padding: EdgeInsets.only(
-                                                                      top: 2.v,
-                                                                      right:
-                                                                          25.h),
-                                                                  child: Text(
-                                                                      "lbl_or"
-                                                                          .tr,
-                                                                      style: CustomTextStyles
-                                                                          .titleLargePrimary)))
-                                                        ])))
-                                          ]))),
-                              _buildTitleHead(context)
-                            ])))))));
-
+    // decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //         begin: Alignment(0.5, 0),
+    //         end: Alignment(0.5, 1),
+    //         colors: [appTheme.black900, appTheme.gray90001])),
+    // child: SingleChildScrollView(
+    //     padding: EdgeInsets.only(
+    //         bottom: MediaQuery.of(context).viewInsets.bottom),
+    //     child: Form(
+    //         key: _formKey,
+    //         child: SizedBox(
+    //             height: SizeUtils.height,
+    //             width: double.maxFinite,
+    //             child:
+    //                 Stack(alignment: Alignment.topRight, children: [
+    //               Align(
+    //                   alignment: Alignment.bottomCenter,
+    //                   child: Container(
+    //                       margin: EdgeInsets.only(top: 218.v),
+    //                       decoration: AppDecoration
+    //                           .gradientDeepOrangeAToRedA
+    //                           .copyWith(
+    //                               borderRadius: BorderRadiusStyle
+    //                                   .customBorderTL40),
+    //                       child: Column(
+    //                           mainAxisSize: MainAxisSize.min,
+    //                           children: [
+    //                             Spacer(),
+    //                             Padding(
+    //                                 padding: EdgeInsets.only(
+    //                                     left: 35.h, right: 36.h),
+    //                                 child: BlocSelector<
+    //                                         LoginBloc,
+    //                                         LoginState,
+    //                                         TextEditingController?>(
+    //                                     selector: (state) => state
+    //                                         .userNameController,
+    //                                     builder: (context,
+    //                                         userNameController) {
+    //                                       return CustomTextFormField(
+    //                                           controller:
+    //                                               userNameController,
+    //                                           hintText:
+    //                                               "lbl_username".tr,
+    //                                           validator: (value) {
+    //                                             if (!isText(
+    //                                                 value)) {
+    //                                               return "err_msg_please_enter_valid_text"
+    //                                                   .tr;
+    //                                             }
+    //                                             return null;
+    //                                           },
+    //                                           contentPadding:
+    //                                               EdgeInsets
+    //                                                   .symmetric(
+    //                                                       horizontal:
+    //                                                           5.h));
+    //                                     })),
+    //                             SizedBox(height: 59.v),
+    //                             Padding(
+    //                                 padding: EdgeInsets.only(
+    //                                     left: 35.h, right: 36.h),
+    //                                 child: BlocSelector<
+    //                                         LoginBloc,
+    //                                         LoginState,
+    //                                         TextEditingController?>(
+    //                                     selector: (state) => state
+    //                                         .passwordController,
+    //                                     builder: (context,
+    //                                         passwordController) {
+    //                                       return CustomTextFormField(
+    //                                           controller:
+    //                                               passwordController,
+    //                                           hintText:
+    //                                               "lbl_password".tr,
+    //                                           textInputAction:
+    //                                               TextInputAction
+    //                                                   .done,
+    //                                           textInputType:
+    //                                               TextInputType
+    //                                                   .visiblePassword,
+    //                                           validator: (value) {
+    //                                             if (value == null ||
+    //                                                 (!isValidPassword(
+    //                                                     value,
+    //                                                     isRequired:
+    //                                                         true))) {
+    //                                               return "err_msg_please_enter_valid_password"
+    //                                                   .tr;
+    //                                             }
+    //                                             return null;
+    //                                           },
+    //                                           obscureText: true,
+    //                                           contentPadding:
+    //                                               EdgeInsets
+    //                                                   .symmetric(
+    //                                                       horizontal:
+    //                                                           7.h));
+    //                                     })),
+    //                             SizedBox(height: 11.v),
+    //                             Align(
+    //                                 alignment:
+    //                                     Alignment.centerRight,
+    //                                 child: GestureDetector(
+    //                                     onTap: () {
+    //                                       onTapTxtForgetPassword(
+    //                                           context);
+    //                                     },
+    //                                     child: Padding(
+    //                                         padding:
+    //                                             EdgeInsets.only(
+    //                                                 right: 31.h),
+    //                                         child: Text(
+    //                                             "msg_forget_password"
+    //                                                 .tr,
+    //                                             style: theme
+    //                                                 .textTheme
+    //                                                 .bodySmall!
+    //                                                 .copyWith(
+    //                                                     decoration:
+    //                                                         TextDecoration
+    //                                                             .underline))))),
+    //                             SizedBox(height: 80.v),
+    //                             CustomElevatedButton(
+    //                                 text: "lbl_login2".tr,
+    //                                 margin: EdgeInsets.only(
+    //                                     left: 35.h, right: 36.h),
+    //                               onPressed: () {
+    //                                   NavigatorService.pushNamed(
+    //                                     AppRoutes
+    //                                         .homePageContainerScreen,
+    //                                   );
+    //                                   // Navigate to the second page when the button is pressed
+    //                                 }),
+    //                             SizedBox(height: 14.v),
+    //                             Row(
+    //                                 mainAxisAlignment:
+    //                                     MainAxisAlignment.center,
+    //                                 children: [
+    //                                   Padding(
+    //                                       padding: EdgeInsets.only(
+    //                                           top: 3.v,
+    //                                           bottom: 2.v),
+    //                                       child: Text(
+    //                                           "msg_don_t_have_account"
+    //                                               .tr,
+    //                                           style: theme.textTheme
+    //                                               .bodySmall)),
+    //                                   GestureDetector(
+    //                                       onTap: () {
+    //                                         onTapTxtSIGNUP(context);
+    //                                       },
+    //                                       child: Padding(
+    //                                           padding:
+    //                                               EdgeInsets.only(
+    //                                                   left: 4.h),
+    //                                           child: Text(
+    //                                               "lbl_signup2".tr,
+    //                                               style: CustomTextStyles
+    //                                                   .titleMediumPoppins)))
+    //                                 ]),
+    //                             SizedBox(height: 3.v),
+    //                             Align(
+    //                                 alignment: Alignment.centerLeft,
+    //                                 child: SizedBox(
+    //                                     height: 156.v,
+    //                                     width: 220.h,
+    //                                     child: Stack(
+    //                                         alignment: Alignment
+    //                                             .bottomRight,
+    //                                         children: [
+    //                                           CustomImageView(
+    //                                               imagePath:
+    //                                                   ImageConstant
+    //                                                       .imgRedOpenedBook156x171,
+    //                                               height: 156.v,
+    //                                               width: 171.h,
+    //                                               alignment: Alignment
+    //                                                   .centerLeft),
+    //                                           CustomImageView(
+    //                                               imagePath:
+    //                                                   ImageConstant
+    //                                                       .imgGmailLogo,
+    //                                               height: 45
+    //                                                   .adaptSize,
+    //                                               width:
+    //                                                   45.adaptSize,
+    //                                               alignment: Alignment
+    //                                                   .bottomRight,
+    //                                               margin: EdgeInsets
+    //                                                   .only(
+    //                                                       right:
+    //                                                           21.h,
+    //                                                       bottom: 49
+    //                                                           .v)),
+    //                                           Align(
+    //                                               alignment:
+    //                                                   Alignment
+    //                                                       .topRight,
+    //                                               child: Padding(
+    //                                                   padding: EdgeInsets
+    //                                                       .only(
+    //                                                           top: 43
+    //                                                               .v),
+    //                                                   child: Text(
+    //                                                       "lbl_sign_in_using"
+    //                                                           .tr,
+    //                                                       style: CustomTextStyles
+    //                                                           .bodySmallPrimary))),
+    //                                           Align(
+    //                                               alignment:
+    //                                                   Alignment
+    //                                                       .topRight,
+    //                                               child: Padding(
+    //                                                   padding: EdgeInsets.only(
+    //                                                       top: 2.v,
+    //                                                       right:
+    //                                                           25.h),
+    //                                                   child: Text(
+    //                                                       "lbl_or"
+    //                                                           .tr,
+    //                                                       style: CustomTextStyles
+    //                                                           .titleLargePrimary)))
+    //                                         ])))
+    //                           ]))),
+    //               _buildTitleHead(context)
+    //             ])))))));
   }
 
   Widget _buildTitleHead(BuildContext context) {
@@ -491,6 +505,7 @@ class LoginScreen extends StatelessWidget {
                     width: 120.h,
                     alignment: Alignment.topCenter,
                     margin: EdgeInsets.only(top: 5.v),
+                    icon: '',
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -505,12 +520,14 @@ class LoginScreen extends StatelessWidget {
                             height: 177.v,
                             width: 118.h,
                             alignment: Alignment.bottomCenter,
+                            icon: '',
                           ),
                           CustomImageView(
                             imagePath: ImageConstant.imgIcon3,
                             height: 132.v,
                             width: 122.h,
                             alignment: Alignment.topCenter,
+                            icon: '',
                           ),
                         ],
                       ),

@@ -51,6 +51,7 @@ class MedalliontilelistItemWidget extends StatelessWidget {
                         imagePath: medalliontilelistItemModelObj.imageId,
                         height: 47.adaptSize,
                         width: 50.adaptSize,
+                        icon: '',
                       ),
                       SizedBox(height: 15.v),
                       SizedBox(
