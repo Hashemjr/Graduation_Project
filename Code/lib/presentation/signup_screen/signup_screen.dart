@@ -5,7 +5,7 @@ import 'package:chineasy/core/utils/validation_functions.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Import the intl package
+import 'package:intl/intl.dart';
 // ignore_for_file: must_be_immutable
 
 class SignupScreen extends StatelessWidget {
@@ -353,42 +353,43 @@ class SignupScreen extends StatelessWidget {
   Widget _buildGenderValue(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 200,
+        width: 150,
         child: DropdownButtonFormField<String>(
           value: genderValue,
           icon: const Icon(Icons.arrow_drop_down_rounded),
           style: TextStyle(
-              color: Colors.black), // Set text color to black for visibility
+              color: Color.fromARGB(
+                  255, 0, 0, 0)), // Set text color to black for visibility
           decoration: InputDecoration(
             labelText:
                 'Gender', // Add a label to indicate the purpose of the dropdown
             labelStyle: TextStyle(
-              color:
-                  Colors.black, // Set label text color to black for visibility
+              color: Color.fromARGB(255, 255, 255,
+                  255), // Set label text color to black for visibility
               fontSize: 16, // Set label font size to match other fonts
               fontWeight: FontWeight.normal, // Set label font weight to normal
               fontFamily:
                   'Roboto', // Set label font family to match other fonts
             ),
-            fillColor:
-                Colors.grey[200], // Set background color to match the theme
+            fillColor: Color.fromARGB(
+                90, 124, 121, 121), // Set background color to match the theme
             filled: true,
             contentPadding: EdgeInsets.symmetric(
-                vertical: 12,
+                vertical: 10,
                 horizontal: 16), // Adjust padding for better appearance
             border: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Colors.black), // Set border color to black
+              borderSide: BorderSide(
+                  color: Color.fromARGB(
+                      255, 255, 255, 255)), // Set border color to black
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Colors.black), // Set border color to black
+              borderSide: BorderSide(
+                  color: Color.fromARGB(
+                      255, 255, 255, 255)), // Set border color to black
             ),
           ),
           onChanged: (String? newValue) {
-            if (newValue != null && newValue != genderValue) {
-              genderValue = newValue;
-            }
+            genderValue = newValue;
           },
           items: [
             DropdownMenuItem<String>(
@@ -411,7 +412,7 @@ class SignupScreen extends StatelessWidget {
     return CustomElevatedButton(
       text: "lbl_signup".tr,
       margin: EdgeInsets.only(left: 35.h, right: 36.h),
-      onPressed: () => _validateAndSignup(context),
+      onPressed: () async => _validateAndSignup(context),
       alignment: Alignment.center,
     );
   }
@@ -441,7 +442,6 @@ class SignupScreen extends StatelessWidget {
     if (genderValue.isEmpty) {
       missingFields.add("Gender");
     }
-
     if (missingFields.isNotEmpty) {
       _showValidationErrorDialog(context, missingFields);
     } else {
@@ -598,12 +598,11 @@ class SignupScreen extends StatelessWidget {
               onTap: () {
                 onTapBtnGoBack(context);
               },
-              child: CustomImageView(
-                imagePath: ImageConstant.imgGoBack,
+              child: Image.asset(
+                ImageConstant.imgGoBack,
                 height: 45.adaptSize,
                 width: 45.adaptSize,
                 alignment: Alignment.topLeft,
-                icon: '',
               ),
             ),
           ],

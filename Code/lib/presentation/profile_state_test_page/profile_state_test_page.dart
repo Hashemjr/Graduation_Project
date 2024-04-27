@@ -77,7 +77,8 @@ class ProfileStateTestPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             NavigatorService.pushNamed(
-                                AppRoutes.profileLeaderboardScreen);
+                              AppRoutes.profileLeaderboardScreen,
+                            );
                           },
                           child: Text(
                             "lbl_leaderboard".tr.toUpperCase(),

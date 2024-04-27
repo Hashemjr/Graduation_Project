@@ -413,12 +413,11 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
               onTap: () {
                 onTapBtnGoBack(context);
               },
-              child: CustomImageView(
-                imagePath: ImageConstant.imgGoBack,
+              child: Image.asset(
+                ImageConstant.imgGoBack,
                 height: 45.adaptSize,
                 width: 45.adaptSize,
                 alignment: Alignment.topLeft,
-                icon: '',
               ),
             ),
           ],

@@ -36,6 +36,10 @@ dependencies:
   google_translator: ^1.0.0
   translator: ^1.0.0
   pinyin: ^3.3.0
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  firebase_analytics: ^10.8.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

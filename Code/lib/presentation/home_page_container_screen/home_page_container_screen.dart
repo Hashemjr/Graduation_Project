@@ -222,7 +222,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
 
   /// Section Widget
   Widget _buildContinueStudying(BuildContext context) {
-    bool isPressed1 = false;
     Color buttonColor = Colors.white;
     return Align(
       alignment: Alignment.bottomCenter,

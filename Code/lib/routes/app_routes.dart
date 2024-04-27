@@ -75,7 +75,7 @@ class AppRoutes {
         chooseAccountthreeScreen: ChooseAccountthreeScreen.builder,
         signupScreen: SignupScreen.builder,
         signuptwoScreen: SignuptwoScreen.builder,
-        signuponeScreen: SignuponeScreen.builder,
+        signuponeScreen: (context) => SignuponeScreen.builder(context),
         loginScreen: LoginScreen.builder,
         forgetPasswordScreen: ForgetPasswordScreen.builder,
         forgetPasswordoneScreen: ForgetPasswordoneScreen.builder,
