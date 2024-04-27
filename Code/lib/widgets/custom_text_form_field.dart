@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField({
     Key? key,
+    this.autocorrect=true,
+    this.enableSuggestions = true,
     this.alignment,
     this.width,
     this.scrollPadding,
@@ -31,6 +33,9 @@ class CustomTextFormField extends StatelessWidget {
         );
 
   final Alignment? alignment;
+
+  final bool enableSuggestions;
+  final bool autocorrect;
 
   final double? width;
 
@@ -97,6 +102,8 @@ class CustomTextFormField extends StatelessWidget {
           textInputAction: textInputAction,
           keyboardType: textInputType,
           maxLines: maxLines ?? 1,
+          enableSuggestions: enableSuggestions,
+          autocorrect: autocorrect,
           decoration: decoration,
           validator: validator,
         ),

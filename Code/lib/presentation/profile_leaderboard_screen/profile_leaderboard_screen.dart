@@ -3,8 +3,6 @@ import 'models/profile_leaderboard_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
 import 'package:chineasy/presentation/profile_state_test_page/profile_state_test_page.dart';
-import 'package:chineasy/widgets/custom_bottom_bar.dart';
-import 'package:chineasy/widgets/custom_floating_button.dart';
 import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';

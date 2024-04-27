@@ -23,6 +23,10 @@ dependencies:
   flutter_glow: ^0.3.0
   flutter_tts: ^4.0.1
   curved_navigation_bar: ^1.0.3
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.15.8
+  firebase_analytics: ^10.8.9
 dev_dependencies:
   flutter_test:
     sdk: flutter
