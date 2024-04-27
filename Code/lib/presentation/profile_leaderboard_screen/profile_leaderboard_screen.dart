@@ -84,9 +84,16 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                             padding: EdgeInsets.only(
                               left: 29.h,
                             ),
-                            child: Text(
-                              "lbl_stats".tr,
-                              style: CustomTextStyles.titleSmallInterGray50001,
+                            child: GestureDetector(
+                              onTap: () {
+                                NavigatorService.pushNamed(
+                                    AppRoutes.profileStateTestPage);
+                              },
+                              child: Text(
+                                "lbl_stats".tr,
+                                style:
+                                    CustomTextStyles.titleSmallInterGray50001,
+                              ),
                             ),
                           ),
                         ],
