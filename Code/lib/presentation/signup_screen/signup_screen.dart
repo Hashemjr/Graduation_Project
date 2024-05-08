@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/signup_bloc.dart';
 import 'models/signup_model.dart';
 import 'package:chineasy/core/app_export.dart';
@@ -6,14 +7,18 @@ import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Import the intl package
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chineasy/presentation/app_functions.dart'; // Import the intl package
 // ignore_for_file: must_be_immutable
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({Key? key}) : super(key: key);
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String? dropdownValue;
+  String?dropdownValue;
+  String?username;
+  String?firstname;
+  String?lastname;
   String? selectedDateText; // Variable to store the selected date as text
 
   static Widget builder(BuildContext context) {
@@ -235,7 +240,7 @@ class SignupScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0), // Rounded corners
                 ),
-                primary: Colors.white, // Text color of the buttons
+                foregroundColor: Color.fromARGB(155, 255, 255, 255), // Text color of the buttons
               ),
             ),
           ),
@@ -247,6 +252,8 @@ class SignupScreen extends StatelessWidget {
     if (picked != null) {
       // Update the selected date as text
       selectedDateText = DateFormat('yyyy-MM-dd').format(picked);
+      // Dispatch an event to update the state with the selected date
+      context.read<SignupBloc>().add(UpdateSelectedDate(selectedDateText));
     }
   }
 
@@ -260,9 +267,10 @@ class SignupScreen extends StatelessWidget {
           controller: firstNameController,
           hintText: "lbl_first_name".tr,
           validator: (value) {
-            if (!isText(value)) {
+            if (!isText(value)){
               return "err_msg_please_enter_valid_text".tr;
             }
+            firstname=value;
             return null;
           },
           contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
@@ -286,6 +294,7 @@ class SignupScreen extends StatelessWidget {
               if (!isText(value)) {
                 return "err_msg_please_enter_valid_text".tr;
               }
+              lastname=value;
               return null;
             },
             contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
@@ -327,6 +336,7 @@ class SignupScreen extends StatelessWidget {
               if (!isText(value)) {
                 return "err_msg_please_enter_valid_text".tr;
               }
+              username=value;
               return null;
             },
             contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
@@ -367,6 +377,7 @@ Widget _buildGenderValue(BuildContext context) {
         onChanged: (String? newValue) {
             genderValue = newValue;
         },
+        
         items: [
           DropdownMenuItem<String>(
             value: 'male',
@@ -392,15 +403,17 @@ Widget _buildSignup(BuildContext context) {
     alignment: Alignment.center,
   );
 }
-
-void _validateAndSignup(BuildContext context) {
+_validateAndSignup(BuildContext context)async{
   final state = context.read<SignupBloc>().state;
   final firstNameController = state.firstNameController;
   final lastNameController = state.lastNameController;
   final userNameController = state.userNameController;
   final selectedDateText = state.selectedDateText;
-  final genderValue = state.genderValue;
-
+  //final genderValue = state.genderValue;
+  username = userNameController?.text;
+  firstname = firstNameController?.text;
+  lastname = lastNameController?.text;
+  this.selectedDateText = selectedDateText;
   List<String> missingFields = [];
 
   if (firstNameController?.text.isEmpty ?? true) {
@@ -415,31 +428,16 @@ void _validateAndSignup(BuildContext context) {
   if (selectedDateText == null || selectedDateText.isEmpty) {
     missingFields.add("Birthday");
   }
-  if (genderValue.isEmpty) {
+  if (genderValue==null||genderValue!.isEmpty) {
     missingFields.add("Gender");
   }
   if (missingFields.isNotEmpty) {
     _showValidationErrorDialog(context, missingFields);
   } else {
+     saveDataLocally();
     _navigateToNextScreen(context);
   }
 }
-
-bool _areFieldsEmpty(
-    TextEditingController? firstNameController,
-    TextEditingController? lastNameController,
-    TextEditingController? userNameController,
-    String? selectedDateText, // Added parameter for selected date text
-    String? genderValue // Added parameter for gender value
-) {
-  // Check if any controller is null or if its text is empty
-  return (firstNameController?.text.isEmpty ?? true) ||
-      (lastNameController?.text.isEmpty ?? true) ||
-      (userNameController?.text.isEmpty ?? true) ||
-      (selectedDateText == null || selectedDateText.isEmpty) || // Check if selectedDateText is null or empty
-      (genderValue == null || genderValue.isEmpty); // Check if genderValue is null or empty
-}
-
 void _showValidationErrorDialog(BuildContext context, List<String> missingFields) {
   String errorMessage = "Please fill in the following fields:\n";
   for (String field in missingFields) {
@@ -471,9 +469,17 @@ void _showValidationErrorDialog(BuildContext context, List<String> missingFields
     },
   );
 }
-
+void saveDataLocally() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  // Save data using keys
+  prefs.setString('username', username!);
+  prefs.setString('firstname', firstname!);
+  prefs.setString('lastname', lastname!);
+  prefs.setString('birthday', selectedDateText!);
+  prefs.setString('gender', genderValue!);
+}
 /// Navigate to the next screen
-void _navigateToNextScreen(BuildContext context) {
+void _navigateToNextScreen(BuildContext context) async {
   NavigatorService.pushNamed(
     AppRoutes.signuponeScreen,
   );

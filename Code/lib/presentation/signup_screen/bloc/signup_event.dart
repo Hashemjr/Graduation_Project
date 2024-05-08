@@ -5,8 +5,18 @@ part of 'signup_bloc.dart';
 ///
 /// Events must be immutable and implement the [Equatable] interface.
 @immutable
-abstract class SignupEvent extends Equatable {}
+abstract class SignupEvent extends Equatable {
+  const SignupEvent();
+@override
+  List<Object?> get props => [];}
+class UpdateSelectedDate extends SignupEvent {
+  final String? selectedDate;
 
+  UpdateSelectedDate(this.selectedDate);
+
+  @override
+  List<Object?> get props => [selectedDate];
+}
 /// Event that is dispatched when the Signup widget is first created.
 class SignupInitialEvent extends SignupEvent {
   @override

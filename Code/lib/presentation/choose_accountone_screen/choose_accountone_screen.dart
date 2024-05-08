@@ -4,14 +4,14 @@ import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class ChooseAccountoneScreen extends StatelessWidget {
-  const ChooseAccountoneScreen({Key? key}) : super(key: key);
+  const ChooseAccountoneScreen({Key? key, required String title}) : super(key: key);
 
   static Widget builder(BuildContext context) {
     return BlocProvider<ChooseAccountoneBloc>(
         create: (context) => ChooseAccountoneBloc(ChooseAccountoneState(
             chooseAccountoneModelObj: ChooseAccountoneModel()))
           ..add(ChooseAccountoneInitialEvent()),
-        child: ChooseAccountoneScreen());
+        child: ChooseAccountoneScreen(title: '',));
   }
 
   @override

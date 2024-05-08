@@ -4,7 +4,7 @@ import 'package:chineasy/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class AppNavigationScreen extends StatelessWidget {
-  const AppNavigationScreen({Key? key})
+  const AppNavigationScreen({Key? key, required String title})
       : super(
           key: key,
         );
@@ -15,7 +15,7 @@ class AppNavigationScreen extends StatelessWidget {
         appNavigationModelObj: AppNavigationModel(),
       ))
         ..add(AppNavigationInitialEvent()),
-      child: AppNavigationScreen(),
+      child: AppNavigationScreen(title: '',),
     );
   }
 

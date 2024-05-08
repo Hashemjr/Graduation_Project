@@ -6,7 +6,10 @@ import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:chineasy/firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:chineasy/presentation/app_functions.dart';
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -65,6 +68,8 @@ class LoginScreen extends StatelessWidget {
                                 selector: (state) => state.userNameController,
                                 builder: (context, userNameController) {
                                   return CustomTextFormField(
+                                    enableSuggestions: true,
+                                    autocorrect: false,
                                     controller: userNameController,
                                     hintText: "lbl_username".tr,
                                     validator: (value) {
@@ -86,6 +91,8 @@ class LoginScreen extends StatelessWidget {
                                 builder: (context, passwordController) {
                                   return CustomTextFormField(
                                     controller: passwordController,
+                                    enableSuggestions: false,
+                                    autocorrect: false,
                                     hintText: "lbl_password".tr,
                                     textInputAction: TextInputAction.done,
                                     textInputType: TextInputType.visiblePassword,
@@ -123,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                             CustomElevatedButton(
                               text: "lbl_login2".tr,
                               margin: EdgeInsets.only(left: 35.h, right: 36.h),
-                              onPressed: () {
+                              onPressed: () async{
                                 if (_formKey.currentState!.validate()) {
                                   onTapLoginButton(context);
                                 }
@@ -308,40 +315,78 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  onTapLoginButton(BuildContext context) {
-    // Here's where we can add the password validation check
-    final bloc = BlocProvider.of<LoginBloc>(context);
-    final state = bloc.state;
+  onTapLoginButton(BuildContext context) async {
+  // Here's where we can add the password validation check
+  final bloc = BlocProvider.of<LoginBloc>(context);
+  final state = bloc.state;
 
-    if (state.passwordController!.text.length < 8) {
-      // Show a pop-up message if the password is less than 8 characters
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              "Password Error",
-              style: TextStyle(color: Colors.black),
+  if (state.passwordController!.text.length < 8) {
+    // Show a pop-up message if the password is less than 8 characters
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Password Error",
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            "Your password must be at least 8 characters long.",
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
             ),
-            content: Text(
-              "Your password must be at least 8 characters long.",
-              style: TextStyle(color: Colors.black),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("OK"),
-              ),
-            ],
-            backgroundColor: Colors.white,
-          );
-        },
-      );
-    } else {
-      // Navigate to home page
+          ],
+          backgroundColor: Colors.white,
+        );
+      },
+    );
+  } else {
+    final useremail = state.userNameController?.text ?? '';
+    final passWord = state.passwordController?.text ?? '';
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: useremail, password: passWord);
+      
+      // If sign-in is successful, navigate to the home page
       NavigatorService.pushNamed(AppRoutes.homePageContainerScreen);
+    } on FirebaseAuthException catch (e) {
+      // Handle specific error codes
+      if (e.code == 'invalid-credential') {
+        // Show an AlertDialog for invalid credentials
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                "Invalid",
+                style: TextStyle(color: Colors.black),
+              ),
+              content: Text(
+                "The email or password you entered is incorrect.",
+                style: TextStyle(color: Colors.black),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("OK",
+                    style: TextStyle(color: Colors.blue),),)
+              ],
+              backgroundColor: Colors.white,
+            );
+          },
+        );
+      } else {
+        // Print other error codes for debugging purposes
+        print('Error code: ${e.code}');
+      }
     }
   }
 }
+  }

@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-
 import 'bloc/signupone_bloc.dart';
 import 'models/signupone_model.dart';
 import 'package:chineasy/core/app_export.dart';
@@ -9,6 +8,7 @@ import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chineasy/firebase_options.dart';
+import 'package:chineasy/presentation/app_functions.dart';
 // ignore_for_file: must_be_immutable
 class SignuponeScreen extends StatelessWidget {
   SignuponeScreen({Key? key}) : super(key: key);
@@ -312,7 +312,7 @@ Widget _buildConfirmPasswordField(BuildContext context) {
           controller: confirmPasswordFieldController,
           hintText: "msg_confirm_password".tr,
           enableSuggestions: false,
-            autocorrect: false,
+          autocorrect: false,
           textInputAction: TextInputAction.done,
           textInputType: TextInputType.visiblePassword,
           validator: (value) {
@@ -395,7 +395,7 @@ Please enter a valid password:
                         'OK',
                         style: TextStyle(color: Colors.blue), // Set button text color to blue
                       ),
-                      onPressed: () {
+                      onPressed: (){
                         Navigator.of(context).pop();
                       },
                     ),
@@ -404,21 +404,42 @@ Please enter a valid password:
               },
             );
           } else {
-            final _email= state.emailFieldController?.text ?? '';
-            final pass= state.passwordFieldController?.text?? '';
-            final usercredential= FirebaseAuth.instance.createUserWithEmailAndPassword(
-              email:_email,
-              password: pass,
+            final _email = state.emailFieldController?.text ?? '';
+            final pass = state.passwordFieldController?.text ?? '';
+
+            try {
+              // Create user with email and password
+              final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                email: _email,
+                password: pass,
               );
-              print(usercredential);
-            onTapSignupButton(context);
+
+              // Get the UID of the newly created user
+              final String uid = userCredential.user?.uid ?? '';
+
+              // Now you have the UID of the newly created user
+              print('UID of the newly created user: $uid');
+
+              // Fetch user data locally
+              final userData = await fetchDataLocally();
+
+              // Add user data to Firestore
+              addUserToFirestore(userData);
+
+              // Proceed with any additional actions
+
+              // Navigate to the next screen
+              onTapSignupButton(context);
+            } catch (e) {
+              // Handle any errors
+              print('Error creating user: $e');
+            }
           }
         },
       );
     },
   );
 }
-
   /// Section Widget
   Widget _buildTitleHead(BuildContext context) {
     return Align(
@@ -515,7 +536,8 @@ Please enter a valid password:
   }
 
   /// Navigates to the signuptwoScreen when the action is triggered.
-  onTapSignupButton(BuildContext context) {
+  onTapSignupButton(BuildContext context)async {
+    print('correct email and password');
     NavigatorService.pushNamed(
       AppRoutes.signuptwoScreen,
     );
