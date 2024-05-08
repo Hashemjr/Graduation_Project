@@ -404,42 +404,23 @@ Please enter a valid password:
               },
             );
           } else {
-            final _email = state.emailFieldController?.text ?? '';
-            final pass = state.passwordFieldController?.text ?? '';
-
-            try {
-              // Create user with email and password
-              final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                email: _email,
-                password: pass,
+            final _email= state.emailFieldController?.text ?? '';
+            final pass= state.passwordFieldController?.text?? '';
+            final usercredential= FirebaseAuth.instance.createUserWithEmailAndPassword(
+              email:_email,
+              password: pass,
               );
-
-              // Get the UID of the newly created user
-              final String uid = userCredential.user?.uid ?? '';
-
-              // Now you have the UID of the newly created user
-              print('UID of the newly created user: $uid');
-
-              // Fetch user data locally
-              final userData = await fetchDataLocally();
-
-              // Add user data to Firestore
+              print(usercredential);
+              Map<String, String?> userData = await fetchDataLocally();
               addUserToFirestore(userData);
-
-              // Proceed with any additional actions
-
-              // Navigate to the next screen
-              onTapSignupButton(context);
-            } catch (e) {
-              // Handle any errors
-              print('Error creating user: $e');
-            }
+            onTapSignupButton(context);
           }
         },
       );
     },
   );
 }
+
   /// Section Widget
   Widget _buildTitleHead(BuildContext context) {
     return Align(
