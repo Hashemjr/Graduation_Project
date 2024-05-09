@@ -105,7 +105,6 @@ class ForgetPasswordoneScreen extends StatelessWidget {
                             width: 159.h,
                             alignment: Alignment.topRight,
                             margin: EdgeInsets.only(top: 111.v, right: 4.h),
-                            icon: '',
                           ),
                         ],
                       ),

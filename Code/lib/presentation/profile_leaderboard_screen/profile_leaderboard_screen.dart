@@ -1,10 +1,13 @@
 import 'bloc/profile_leaderboard_bloc.dart';
 import 'models/profile_leaderboard_model.dart';
 import 'package:chineasy/core/app_export.dart';
+import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
+import 'package:chineasy/presentation/profile_state_test_page/profile_state_test_page.dart';
 import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 
 // ignore: must_be_immutable
 class ProfileLeaderboardScreen extends StatelessWidget {
@@ -31,6 +34,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
+            
             extendBody: true,
             extendBodyBehindAppBar: true,
             body: Container(
@@ -46,6 +50,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -84,16 +89,9 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                             padding: EdgeInsets.only(
                               left: 29.h,
                             ),
-                            child: GestureDetector(
-                              onTap: () {
-                                NavigatorService.pushNamed(
-                                    AppRoutes.profileStateTestPage);
-                              },
-                              child: Text(
-                                "lbl_stats".tr,
-                                style:
-                                    CustomTextStyles.titleSmallInterGray50001,
-                              ),
+                            child: Text(
+                              "lbl_stats".tr,
+                              style: CustomTextStyles.titleSmallInterGray50001,
                             ),
                           ),
                         ],
@@ -135,7 +133,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                           height: 25.v,
                                           width: 17.h,
                                           margin: EdgeInsets.only(top: 19.v),
-                                          icon: '',
                                         ),
                                         Container(
                                           height: 46.v,
@@ -153,7 +150,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                                   bottom: Radius.circular(17.h),
                                                 ),
                                                 alignment: Alignment.bottomLeft,
-                                                icon: '',
                                               ),
                                               CustomImageView(
                                                 imagePath: ImageConstant
@@ -161,7 +157,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                                 height: 20.v,
                                                 width: 21.h,
                                                 alignment: Alignment.topRight,
-                                                icon: '',
                                               ),
                                             ],
                                           ),
@@ -194,7 +189,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             top: 5.v,
                                             bottom: 4.v,
                                           ),
-                                          icon: '',
                                         ),
                                         CustomImageView(
                                           imagePath: ImageConstant.imgAvatar27,
@@ -204,7 +198,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: Radius.circular(17.h),
                                           ),
                                           margin: EdgeInsets.only(left: 5.h),
-                                          icon: '',
                                         ),
                                         Spacer(),
                                         Padding(
@@ -256,7 +249,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: Radius.circular(17.h),
                                           ),
                                           margin: EdgeInsets.only(left: 7.h),
-                                          icon: '',
                                         ),
                                         Spacer(),
                                         Padding(
@@ -353,7 +345,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: Radius.circular(17.h),
                                           ),
                                           margin: EdgeInsets.only(left: 6.h),
-                                          icon: '',
                                         ),
                                         Spacer(),
                                         Padding(
@@ -374,6 +365,16 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                               ),
                             ),
                           ),
+                         // CustomImageView(
+                          //  imagePath: ImageConstant.imgAvatar27,
+                            //height: 34.adaptSize,
+                            //width: 34.adaptSize,
+                            //radius: BorderRadius.vertical(
+                             // bottom: Radius.circular(17.h),
+                            //),
+                            //alignment: Alignment.bottomLeft,
+                            //margin: EdgeInsets.only(left: 37.h),
+                          //),
                         ],
                       ),
                     ),
@@ -381,49 +382,49 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                 ),
               ),
             ),
-            bottomNavigationBar: CurvedNavigationBar(
-              backgroundColor: Colors.transparent,
-              items: <Widget>[
-                Icon(
-                  Icons.import_contacts_rounded,
-                  size: 28.v,
-                  color: Color.fromARGB(255, 191, 37, 17),
-                ),
-                Icon(
-                  Icons.home_filled,
-                  size: 28.v,
-                  color: Color.fromARGB(255, 191, 37, 17),
-                ),
-                Icon(
-                  Icons.person_rounded,
-                  size: 28.v,
-                  color: Color.fromARGB(255, 191, 37, 17),
-                ),
-              ],
-              animationDuration: Duration(milliseconds: 150),
-              height: 75,
-              index: 2,
-              onTap: (index) {
-                if (index == 0) {
-                  // Navigate to the first screen
-                  NavigatorService.pushNamed(
-                    AppRoutes.coursesTestContainerPage,
-                  );
-                } else if (index == 1) {
-                  // Navigate to the second screen
-                  NavigatorService.pushNamed(
-                    AppRoutes.homePageContainerScreen,
-                  );
-                } else if (index == 2) {
-                  // Navigate to the third screen
-                  NavigatorService.pushNamed(
-                    AppRoutes.profileStateTestPage,
-                  );
-                }
-                //Handle button tap
-              },
-            ),
-          ),
+           // bottomNavigationBar: _buildNavbar1BottomAppBar(context),
+            //floatingActionButton: CustomFloatingButton(
+              //height: 53,
+              //width: 53,
+              //backgroundColor: theme.colorScheme.primary,
+              //child: CustomImageView(
+                //imagePath: ImageConstant.imgHome,
+                //height: 26.5.v,
+                //width: 26.5.h,
+              //),
+            //),
+            //floatingActionButtonLocation:
+              //  FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: CurvedNavigationBar(
+    backgroundColor: Colors.transparent,
+    items: <Widget>[
+      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
+    ],
+    animationDuration: Duration(milliseconds: 150),
+    height:75,
+    index: 2,
+    onTap: (index) {
+      if (index == 0) {
+    // Navigate to the first screen
+    NavigatorService.pushNamed(
+      AppRoutes.coursesTestContainerPage,
+    );
+  } else if (index == 1) {
+    // Navigate to the second screen
+    NavigatorService.pushNamed(
+      AppRoutes.homePageContainerScreen,
+    );
+  } else if (index == 2) {
+    // Navigate to the third screen
+   NavigatorService.pushNamed(
+      AppRoutes.profileStateTestPage,
+    );
+  }
+      //Handle button tap
+    }, 
+  ),),
         );
       },
     );
@@ -442,14 +443,12 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             height: 187.v,
             width: 216.h,
             alignment: Alignment.centerLeft,
-            icon: '',
           ),
           CustomImageView(
             imagePath: ImageConstant.imgBackgroundBlur188x200,
             height: 188.v,
             width: 200.h,
             alignment: Alignment.centerRight,
-            icon: '',
           ),
           Align(
             alignment: Alignment.topRight,
@@ -505,7 +504,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     height: 65.adaptSize,
                                     width: 65.adaptSize,
                                     alignment: Alignment.bottomCenter,
-                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -518,14 +516,12 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                           width: 21.adaptSize,
                           alignment: Alignment.bottomLeft,
                           margin: EdgeInsets.only(left: 4.h),
-                          icon: '',
                         ),
                         CustomImageView(
                           imagePath: ImageConstant.imgFireFlamePng1,
                           height: 41.v,
                           width: 40.h,
                           alignment: Alignment.topRight,
-                          icon: '',
                         ),
                       ],
                     ),
@@ -554,7 +550,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                           height: 37.adaptSize,
                           width: 37.adaptSize,
                           alignment: Alignment.center,
-                          icon: '',
                         ),
                       ],
                     ),
@@ -601,7 +596,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             height: 32.v,
             width: 298.h,
             alignment: Alignment.center,
-            icon: '',
           ),
           Align(
             alignment: Alignment.center,
@@ -650,7 +644,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                         top: 7.v,
                         bottom: 8.v,
                       ),
-                      icon: '',
                     ),
                   ),
                   Padding(
@@ -691,7 +684,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                             height: 25.v,
                             width: 24.h,
                             alignment: Alignment.center,
-                            icon: '',
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -712,6 +704,16 @@ class ProfileLeaderboardScreen extends StatelessWidget {
       ),
     );
   }
+
+  /// Section Widget
+  //Widget _buildNavbar1BottomAppBar(BuildContext context) {
+    //return CustomBottomBar(
+      //onChanged: (BottomBarEnum type) {
+        //Navigator.pushNamed(
+          //  navigatorKey.currentContext!, getCurrentRoute(type));
+      //},
+    //);
+  //}
 
   /// Common widget
   Widget _buildFiveRow(
@@ -738,7 +740,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             bottom: Radius.circular(17.h),
           ),
           margin: EdgeInsets.only(left: 8.h),
-          icon: '',
         ),
         Spacer(),
         Padding(
@@ -756,4 +757,32 @@ class ProfileLeaderboardScreen extends StatelessWidget {
       ],
     );
   }
+
+  ///Handling route based on bottom click actions
+  //String getCurrentRoute(BottomBarEnum type) {
+    //switch (type) {
+      //case BottomBarEnum.Courses:
+        //return AppRoutes.coursesTestContainerPage;
+      //case BottomBarEnum.Profile:
+        //return AppRoutes.profileStateTestPage;
+      //default:
+        //return "/";
+    //}
+  //}
+
+  ///Handling page based on route
+  /*Widget getCurrentPage(
+    BuildContext context,
+    String currentRoute,
+  ) {
+    switch (currentRoute) {
+      case AppRoutes.coursesTestContainerPage:
+        return CoursesTestContainerPage.builder(context);
+      case AppRoutes.profileStateTestPage:
+        return ProfileStateTestPage.builder(context);
+      //default:
+        //return DefaultWidget();
+    }
+  }
+  */
 }

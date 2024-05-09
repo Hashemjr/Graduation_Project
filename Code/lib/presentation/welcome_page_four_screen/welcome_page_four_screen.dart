@@ -32,7 +32,6 @@ class WelcomePageFourScreen extends StatelessWidget {
               imagePath: ImageConstant.imgAsset51800x360,
               width: 360.h,
               alignment: Alignment.center,
-              icon: '',
             ),
           ),
         ),

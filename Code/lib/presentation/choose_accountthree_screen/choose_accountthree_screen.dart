@@ -51,7 +51,7 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         decoration:
-                            AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                        AppDecoration.gradientDeepOrangeAToRedA.copyWith(
                           borderRadius: BorderRadiusStyle.customBorderTL40,
                         ),
                         child: Column(
@@ -73,7 +73,6 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                               radius: BorderRadius.circular(
                                 88.h,
                               ),
-                              icon: '',
                             ),
                             SizedBox(height: 8.v),
                             SizedBox(
@@ -91,23 +90,23 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                                   children: [
                                     CustomImageView(
                                       imagePath:
-                                          ImageConstant.imgRedOpenedBook156x171,
+                                      ImageConstant.imgRedOpenedBook156x171,
                                       height: 156.v,
                                       width: 171.h,
                                       alignment: Alignment.bottomLeft,
-                                      icon: '',
                                     ),
                                     CustomElevatedButton(
-                                        height: 55.v,
-                                        width: 169.h,
-                                        text: "lbl_signup".tr,
-                                        alignment: Alignment.topRight,
-                                        onPressed: () {
+                                      height: 55.v,
+                                      width: 169.h,
+                                      text: "lbl_signup".tr,
+                                      alignment: Alignment.topRight,
+                                      onPressed: () {
                                           NavigatorService.pushNamed(
                                             AppRoutes.signupScreen,
                                           );
                                           // Navigate to the second page when the button is pressed
-                                        }),
+                                        }
+                                    ),
                                   ],
                                 ),
                               ),
@@ -126,7 +125,6 @@ class ChooseAccountthreeScreen extends StatelessWidget {
       },
     );
   }
-
   /// Section Widget
   Widget _buildTitleHeadStack(BuildContext context) {
     return Align(
@@ -134,7 +132,7 @@ class ChooseAccountthreeScreen extends StatelessWidget {
       child: Container(
         height: 251.v,
         width: 350.h,
-        margin: EdgeInsets.only(top: 15.v, left: 10.v),
+        margin: EdgeInsets.only(top: 15 .v,left:10.v),
         child: Stack(
           alignment: Alignment.topLeft,
           children: [
@@ -152,7 +150,6 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                       width: 120.h,
                       alignment: Alignment.topCenter,
                       margin: EdgeInsets.only(top: 5.v),
-                      icon: '',
                     ),
                     Align(
                       alignment: Alignment.center,
@@ -167,14 +164,12 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                               height: 177.v,
                               width: 118.h,
                               alignment: Alignment.bottomCenter,
-                              icon: '',
                             ),
                             CustomImageView(
                               imagePath: ImageConstant.imgIcon3,
                               height: 132.v,
                               width: 122.h,
                               alignment: Alignment.topCenter,
-                              icon: '',
                             ),
                           ],
                         ),
@@ -187,7 +182,9 @@ class ChooseAccountthreeScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: EdgeInsets.only(top: 15.v, right: 106.h),
+                padding: EdgeInsets.only(
+                    top:15.v, right: 106.h
+                ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -207,13 +204,13 @@ class ChooseAccountthreeScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: Container(
                         width: 200.h,
-                        margin: EdgeInsets.only(top: 5.v, right: 8.h),
+                        margin: EdgeInsets.only(top: 5.v,right: 8.h),
                         child: Text(
                           "msg_embrace_the_happiness".tr,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.bodyLarge
-                              ?.copyWith(fontSize: 22.0),
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            fontSize: 22.0),
                         ),
                       ),
                     ),
@@ -227,3 +224,4 @@ class ChooseAccountthreeScreen extends StatelessWidget {
     );
   }
 }
+

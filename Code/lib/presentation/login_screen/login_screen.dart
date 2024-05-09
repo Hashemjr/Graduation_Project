@@ -1,10 +1,15 @@
 import 'bloc/login_bloc.dart';
 import 'models/login_model.dart';
 import 'package:chineasy/core/app_export.dart';
+import 'package:chineasy/core/utils/validation_functions.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chineasy/firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:chineasy/presentation/app_functions.dart';
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -37,8 +42,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           child: SingleChildScrollView(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Form(
               key: _formKey,
               child: SizedBox(
@@ -51,8 +55,7 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.bottomCenter,
                       child: Container(
                         margin: EdgeInsets.only(top: 218.v),
-                        decoration:
-                            AppDecoration.gradientDeepOrangeAToRedA.copyWith(
+                        decoration: AppDecoration.gradientDeepOrangeAToRedA.copyWith(
                           borderRadius: BorderRadiusStyle.customBorderTL40,
                         ),
                         child: Column(
@@ -61,11 +64,12 @@ class LoginScreen extends StatelessWidget {
                             Spacer(),
                             Padding(
                               padding: EdgeInsets.only(left: 35.h, right: 36.h),
-                              child: BlocSelector<LoginBloc, LoginState,
-                                  TextEditingController?>(
+                              child: BlocSelector<LoginBloc, LoginState, TextEditingController?>(
                                 selector: (state) => state.userNameController,
                                 builder: (context, userNameController) {
                                   return CustomTextFormField(
+                                    enableSuggestions: true,
+                                    autocorrect: false,
                                     controller: userNameController,
                                     hintText: "lbl_username".tr,
                                     validator: (value) {
@@ -74,8 +78,7 @@ class LoginScreen extends StatelessWidget {
                                       }
                                       return null;
                                     },
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 5.h),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
                                   );
                                 },
                               ),
@@ -83,16 +86,16 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(height: 59.v),
                             Padding(
                               padding: EdgeInsets.only(left: 35.h, right: 36.h),
-                              child: BlocSelector<LoginBloc, LoginState,
-                                  TextEditingController?>(
+                              child: BlocSelector<LoginBloc, LoginState, TextEditingController?>(
                                 selector: (state) => state.passwordController,
                                 builder: (context, passwordController) {
                                   return CustomTextFormField(
                                     controller: passwordController,
+                                    enableSuggestions: false,
+                                    autocorrect: false,
                                     hintText: "lbl_password".tr,
                                     textInputAction: TextInputAction.done,
-                                    textInputType:
-                                        TextInputType.visiblePassword,
+                                    textInputType: TextInputType.visiblePassword,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return "password is required".tr;
@@ -100,8 +103,7 @@ class LoginScreen extends StatelessWidget {
                                       return null;
                                     },
                                     obscureText: true,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 7.h),
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 7.h),
                                   );
                                 },
                               ),
@@ -128,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                             CustomElevatedButton(
                               text: "lbl_login2".tr,
                               margin: EdgeInsets.only(left: 35.h, right: 36.h),
-                              onPressed: () {
+                              onPressed: () async{
                                 if (_formKey.currentState!.validate()) {
                                   onTapLoginButton(context);
                                 }
@@ -139,8 +141,7 @@ class LoginScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding:
-                                      EdgeInsets.only(top: 3.v, bottom: 2.v),
+                                  padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
                                   child: Text(
                                     "msg_don_t_have_account".tr,
                                     style: theme.textTheme.bodySmall,
@@ -154,8 +155,7 @@ class LoginScreen extends StatelessWidget {
                                     padding: EdgeInsets.only(left: 4.h),
                                     child: Text(
                                       "lbl_signup2".tr,
-                                      style:
-                                          CustomTextStyles.titleMediumPoppins,
+                                      style: CustomTextStyles.titleMediumPoppins,
                                     ),
                                   ),
                                 ),
@@ -171,21 +171,17 @@ class LoginScreen extends StatelessWidget {
                                   alignment: Alignment.bottomRight,
                                   children: [
                                     CustomImageView(
-                                      imagePath:
-                                          ImageConstant.imgRedOpenedBook156x171,
+                                      imagePath: ImageConstant.imgRedOpenedBook156x171,
                                       height: 156.v,
                                       width: 171.h,
                                       alignment: Alignment.centerLeft,
-                                      icon: '',
                                     ),
                                     CustomImageView(
                                       imagePath: ImageConstant.imgGmailLogo,
                                       height: 45.adaptSize,
                                       width: 45.adaptSize,
                                       alignment: Alignment.bottomRight,
-                                      margin: EdgeInsets.only(
-                                          right: 21.h, bottom: 49.v),
-                                      icon: '',
+                                      margin: EdgeInsets.only(right: 21.h, bottom: 49.v),
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
@@ -193,20 +189,17 @@ class LoginScreen extends StatelessWidget {
                                         padding: EdgeInsets.only(top: 43.v),
                                         child: Text(
                                           "lbl_sign_in_using".tr,
-                                          style:
-                                              CustomTextStyles.bodySmallPrimary,
+                                          style: CustomTextStyles.bodySmallPrimary,
                                         ),
                                       ),
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
                                       child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 2.v, right: 25.h),
+                                        padding: EdgeInsets.only(top: 2.v, right: 25.h),
                                         child: Text(
                                           "lbl_or".tr,
-                                          style: CustomTextStyles
-                                              .titleLargePrimary,
+                                          style: CustomTextStyles.titleLargePrimary,
                                         ),
                                       ),
                                     ),
@@ -276,7 +269,6 @@ class LoginScreen extends StatelessWidget {
                     width: 120.h,
                     alignment: Alignment.topCenter,
                     margin: EdgeInsets.only(top: 5.v),
-                    icon: '',
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -291,14 +283,12 @@ class LoginScreen extends StatelessWidget {
                             height: 177.v,
                             width: 118.h,
                             alignment: Alignment.bottomCenter,
-                            icon: '',
                           ),
                           CustomImageView(
                             imagePath: ImageConstant.imgIcon3,
                             height: 132.v,
                             width: 122.h,
                             alignment: Alignment.topCenter,
-                            icon: '',
                           ),
                         ],
                       ),
@@ -325,40 +315,78 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  onTapLoginButton(BuildContext context) {
-    // Here's where we can add the password validation check
-    final bloc = BlocProvider.of<LoginBloc>(context);
-    final state = bloc.state;
+  onTapLoginButton(BuildContext context) async {
+  // Here's where we can add the password validation check
+  final bloc = BlocProvider.of<LoginBloc>(context);
+  final state = bloc.state;
 
-    if (state.passwordController!.text.length < 8) {
-      // Show a pop-up message if the password is less than 8 characters
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              "Password Error",
-              style: TextStyle(color: Colors.black),
+  if (state.passwordController!.text.length < 8) {
+    // Show a pop-up message if the password is less than 8 characters
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "Password Error",
+            style: TextStyle(color: Colors.black),
+          ),
+          content: Text(
+            "Your password must be at least 8 characters long.",
+            style: TextStyle(color: Colors.black),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("OK"),
             ),
-            content: Text(
-              "Your password must be at least 8 characters long.",
-              style: TextStyle(color: Colors.black),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("OK"),
-              ),
-            ],
-            backgroundColor: Colors.white,
-          );
-        },
-      );
-    } else {
-      // Navigate to home page
+          ],
+          backgroundColor: Colors.white,
+        );
+      },
+    );
+  } else {
+    final useremail = state.userNameController?.text ?? '';
+    final passWord = state.passwordController?.text ?? '';
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: useremail, password: passWord);
+      
+      // If sign-in is successful, navigate to the home page
       NavigatorService.pushNamed(AppRoutes.homePageContainerScreen);
+    } on FirebaseAuthException catch (e) {
+      // Handle specific error codes
+      if (e.code == 'invalid-credential') {
+        // Show an AlertDialog for invalid credentials
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(
+                "Invalid",
+                style: TextStyle(color: Colors.black),
+              ),
+              content: Text(
+                "The email or password you entered is incorrect.",
+                style: TextStyle(color: Colors.black),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("OK",
+                    style: TextStyle(color: Colors.blue),),)
+              ],
+              backgroundColor: Colors.white,
+            );
+          },
+        );
+      } else {
+        // Print other error codes for debugging purposes
+        print('Error code: ${e.code}');
+      }
     }
   }
 }
+  }
