@@ -11,6 +11,14 @@ void main() {
   runApp(MyApp());
 }
 
+class ObjectDetectionWrapper {
+  MyApp myApp; // Create an instance of MyApp
+
+  ObjectDetectionWrapper() : myApp = MyApp() {
+    myApp = MyApp();
+  }
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

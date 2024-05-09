@@ -2,7 +2,7 @@ name: chineasy
 description: A new Flutter project.
 version: 1.0.0+1
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 dependencies:
   flutter:
     sdk: flutter
@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^4.17.8
   cloud_firestore: ^4.15.8
   firebase_analytics: ^10.8.9
+  google_generative_ai: ^0.3.3
 
 dev_dependencies:
   flutter_test:

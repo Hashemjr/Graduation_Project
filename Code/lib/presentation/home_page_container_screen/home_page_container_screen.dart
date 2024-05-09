@@ -344,11 +344,15 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                   ),
                   SizedBox(height: 14.v),
                   CustomElevatedButton(
-                    height: 44.v,
-                    text: "msg_continue_studying".tr,
-                    buttonStyle: CustomButtonStyles.fillPrimary,
-                    buttonTextStyle: CustomTextStyles.titleSmallGray900,
-                  ),
+                      height: 44.v,
+                      text: "Mulan Chatbot".tr,
+                      buttonStyle: CustomButtonStyles.fillPrimary,
+                      buttonTextStyle: CustomTextStyles.titleSmallGray900,
+                      onPressed: () {
+                        NavigatorService.pushNamed(
+                          AppRoutes.chatbotScreen,
+                        );
+                      }),
                 ],
               ),
             ),

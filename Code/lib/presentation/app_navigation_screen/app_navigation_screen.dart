@@ -137,6 +137,10 @@ class AppNavigationScreen extends StatelessWidget {
                                 screenTitle: "Object Detection",
                                 onTapScreenTitle: () => onTapScreenTitle(
                                     AppRoutes.objectDetectionScreen)),
+                            _buildScreenTitle(context,
+                                screenTitle: "Chatbot",
+                                onTapScreenTitle: () =>
+                                    onTapScreenTitle(AppRoutes.chatbotScreen)),
                           ],
                         ),
                       ),

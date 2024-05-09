@@ -1,3 +1,4 @@
+import 'package:chineasy/presentation/chatbot/chatbot.dart';
 import 'package:chineasy/presentation/object_detection_screen/camera_view.dart';
 import 'package:chineasy/presentation/welcome_page_four_screen/welcome_page_four_screen.dart';
 import 'package:chineasy/presentation/welcome_page_one_screen/welcome_page_one_screen.dart';
@@ -67,6 +68,8 @@ class AppRoutes {
 
   static const String welcomePageFourScreen = '/welcome_page_four_screen';
 
+  static const String chatbotScreen = '/chatbot';
+
   static const String initialRoute = '/initialRoute';
 
   static Map<String, WidgetBuilder> get routes => {
@@ -91,7 +94,8 @@ class AppRoutes {
         welcomePageTwoScreen: (context) => const WelcomePageTwoScreen(),
         welcomePageThreeScreen: (context) => const WelcomePageThreeScreen(),
         welcomePageFourScreen: (context) => const WelcomePageFourScreen(),
-        objectDetectionScreen: (context) => MyApp(),
+        objectDetectionScreen: (context) => ObjectDetectionWrapper().myApp,
+        chatbotScreen: (context) => ChatScreen()
         //profileLeaderboardScreen: (context) => ProfileLeaderboardScreen(),
         //: (context) => ProfileStateTestPage(),
         // initialRoute: AppNavigationScreen.builder
