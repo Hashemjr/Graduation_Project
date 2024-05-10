@@ -112,7 +112,6 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                   radius: BorderRadius.circular(4.h),
                                   color: Colors.white,
                                   alignment: Alignment.centerRight,
-                                  icon: '',
                                 ),
                                 CustomImageView(
                                   imagePath: ImageConstant.imgStar227x27,
@@ -121,7 +120,6 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                   radius: BorderRadius.circular(4.h),
                                   color: Colors.white,
                                   alignment: Alignment.center,
-                                  icon: '',
                                 ),
                                 CustomImageView(
                                   imagePath: ImageConstant.imgStar127x27,
@@ -130,7 +128,6 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                   radius: BorderRadius.circular(4.h),
                                   color: Colors.white,
                                   alignment: Alignment.centerLeft,
-                                  icon: '',
                                 ),
                               ],
                             ),
@@ -167,15 +164,12 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                 Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 23),
                                   child: Transform.translate(
-                                    offset: Offset(0.0,
-                                        10.0), // Adjust the vertical offset as needed
+                                    offset: Offset(0.0, 10.0), // Adjust the vertical offset as needed
                                     child: SizedBox(
                                       width: 40,
                                       child: Center(
                                         child: Text(
-                                          enteredCode.length > i
-                                              ? enteredCode[i]
-                                              : '',
+                                          enteredCode.length > i ? enteredCode[i] : '',
                                           style: TextStyle(fontSize: 35),
                                         ),
                                       ),
@@ -275,7 +269,6 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                     height: 156.v,
                                     width: 171.h,
                                     alignment: Alignment.centerLeft,
-                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgGmailLogo,
@@ -284,22 +277,21 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                     alignment: Alignment.bottomRight,
                                     margin: EdgeInsets.only(
                                         right: 15.h, bottom: 57.v),
-                                    icon: '',
                                   ),
                                   Align(
                                     alignment: Alignment.topRight,
                                     child: Padding(
                                       padding: EdgeInsets.only(top: 35.v),
                                       child: Text("lbl_sign_in_using".tr,
-                                          style: CustomTextStyles
-                                              .bodySmallPrimary),
+                                          style:
+                                              CustomTextStyles.bodySmallPrimary),
                                     ),
                                   ),
                                   Align(
                                     alignment: Alignment.topRight,
                                     child: Padding(
-                                      padding: EdgeInsets.only(
-                                          top: 2.v, right: 25.h),
+                                      padding:
+                                          EdgeInsets.only(top: 2.v, right: 25.h),
                                       child: Text("lbl_or".tr,
                                           style: CustomTextStyles
                                               .titleLargePrimary),
@@ -374,7 +366,6 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                             width: 120.h,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(top: 5.v),
-                            icon: '',
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -389,14 +380,12 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                     height: 177.v,
                                     width: 118.h,
                                     alignment: Alignment.bottomCenter,
-                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgIcon3,
                                     height: 132.v,
                                     width: 122.h,
                                     alignment: Alignment.topCenter,
-                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -414,10 +403,10 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                 onTapBtnGoBack(context);
               },
               child: Image.asset(
-                ImageConstant.imgGoBack,
-                height: 45.adaptSize,
-                width: 45.adaptSize,
-                alignment: Alignment.topLeft,
+                      ImageConstant.imgGoBack,
+                      height: 45.adaptSize,
+                      width: 45.adaptSize,
+                      alignment: Alignment.topLeft,
               ),
             ),
           ],

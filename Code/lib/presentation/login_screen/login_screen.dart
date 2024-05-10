@@ -4,6 +4,7 @@ import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -66,6 +67,8 @@ class LoginScreen extends StatelessWidget {
                                 selector: (state) => state.userNameController,
                                 builder: (context, userNameController) {
                                   return CustomTextFormField(
+                                    enableSuggestions: true,
+                                    autocorrect: false,
                                     controller: userNameController,
                                     hintText: "lbl_username".tr,
                                     validator: (value) {
@@ -89,6 +92,8 @@ class LoginScreen extends StatelessWidget {
                                 builder: (context, passwordController) {
                                   return CustomTextFormField(
                                     controller: passwordController,
+                                    enableSuggestions: false,
+                                    autocorrect: false,
                                     hintText: "lbl_password".tr,
                                     textInputAction: TextInputAction.done,
                                     textInputType:
@@ -128,7 +133,7 @@ class LoginScreen extends StatelessWidget {
                             CustomElevatedButton(
                               text: "lbl_login2".tr,
                               margin: EdgeInsets.only(left: 35.h, right: 36.h),
-                              onPressed: () {
+                              onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   onTapLoginButton(context);
                                 }
@@ -176,7 +181,6 @@ class LoginScreen extends StatelessWidget {
                                       height: 156.v,
                                       width: 171.h,
                                       alignment: Alignment.centerLeft,
-                                      icon: '',
                                     ),
                                     CustomImageView(
                                       imagePath: ImageConstant.imgGmailLogo,
@@ -185,7 +189,6 @@ class LoginScreen extends StatelessWidget {
                                       alignment: Alignment.bottomRight,
                                       margin: EdgeInsets.only(
                                           right: 21.h, bottom: 49.v),
-                                      icon: '',
                                     ),
                                     Align(
                                       alignment: Alignment.topRight,
@@ -276,7 +279,6 @@ class LoginScreen extends StatelessWidget {
                     width: 120.h,
                     alignment: Alignment.topCenter,
                     margin: EdgeInsets.only(top: 5.v),
-                    icon: '',
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -291,14 +293,12 @@ class LoginScreen extends StatelessWidget {
                             height: 177.v,
                             width: 118.h,
                             alignment: Alignment.bottomCenter,
-                            icon: '',
                           ),
                           CustomImageView(
                             imagePath: ImageConstant.imgIcon3,
                             height: 132.v,
                             width: 122.h,
                             alignment: Alignment.topCenter,
-                            icon: '',
                           ),
                         ],
                       ),
@@ -325,7 +325,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  onTapLoginButton(BuildContext context) {
+  onTapLoginButton(BuildContext context) async {
     // Here's where we can add the password validation check
     final bloc = BlocProvider.of<LoginBloc>(context);
     final state = bloc.state;
@@ -357,8 +357,50 @@ class LoginScreen extends StatelessWidget {
         },
       );
     } else {
-      // Navigate to home page
-      NavigatorService.pushNamed(AppRoutes.homePageContainerScreen);
+      final useremail = state.userNameController?.text ?? '';
+      final passWord = state.passwordController?.text ?? '';
+      try {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: useremail, password: passWord);
+
+        // If sign-in is successful, navigate to the home page
+        NavigatorService.pushNamed(AppRoutes.homePageContainerScreen);
+      } on FirebaseAuthException catch (e) {
+        // Handle specific error codes
+        if (e.code == 'invalid-credential') {
+          // Show an AlertDialog for invalid credentials
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text(
+                  "Invalid",
+                  style: TextStyle(color: Colors.black),
+                ),
+                content: Text(
+                  "The email or password you entered is incorrect.",
+                  style: TextStyle(color: Colors.black),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "OK",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  )
+                ],
+                backgroundColor: Colors.white,
+              );
+            },
+          );
+        } else {
+          // Print other error codes for debugging purposes
+          print('Error code: ${e.code}');
+        }
+      }
     }
   }
 }

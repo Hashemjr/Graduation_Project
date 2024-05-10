@@ -14,7 +14,7 @@ class SignupState extends Equatable {
     this.genderValueController,
     this.dayValueController, // Include dayValueController
     this.signupModelObj,
-    this.selectedDateText, // Include selectedDateText
+    this.selectedDateText,   // Include selectedDateText
   });
 
   final String genderValue;
@@ -27,7 +27,6 @@ class SignupState extends Equatable {
   TextEditingController? dayValueController; // Include dayValueController
   SignupModel? signupModelObj;
   final String? selectedDateText; // Include selectedDateText
-
   @override
   List<Object?> get props => [
         firstNameController,
@@ -59,12 +58,13 @@ class SignupState extends Equatable {
       userNameController: userNameController ?? this.userNameController,
       monthValueController: monthValueController ?? this.monthValueController,
       yearValueController: yearValueController ?? this.yearValueController,
-      genderValueController:
-          genderValueController ?? this.genderValueController,
+      genderValueController:genderValueController ?? this.genderValueController,
       dayValueController: dayValueController ?? this.dayValueController,
       signupModelObj: signupModelObj ?? this.signupModelObj,
       genderValue: genderValue ?? this.genderValue,
-      selectedDateText: selectedDateText ?? this.selectedDateText, // Include selectedDateText in copyWith
+      selectedDateText: selectedDateText ?? this.selectedDateText,
+       // Include selectedDateText in copyWith
     );
   }
+
 }

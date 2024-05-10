@@ -65,14 +65,12 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                             height: 187.v,
                             width: 216.h,
                             alignment: Alignment.topLeft,
-                            icon: '',
                           ),
                           CustomImageView(
                             imagePath: ImageConstant.imgBackgroundBlur188x200,
                             height: 188.v,
                             width: 200.h,
                             alignment: Alignment.topRight,
-                            icon: '',
                           ),
                           _buildHeader(context),
                           _buildContinueStudying(context),
@@ -171,7 +169,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                         width: 48,
                         radius: BorderRadius.circular(24.h),
                         alignment: Alignment.center,
-                        icon: '',
                       ),
                     ),
                     Positioned(
@@ -181,7 +178,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                         imagePath: ImageConstant.imgFireFlamePng1,
                         height: 30,
                         width: 30,
-                        icon: '',
                       ),
                     ),
                   ],
@@ -210,7 +206,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                   height: 48,
                   width: 48,
                   margin: EdgeInsets.only(top: 12.v),
-                  icon: '',
                 ),
               ],
             ),
@@ -379,7 +374,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                             height: 82.v,
                             width: 86.h,
                             margin: EdgeInsets.only(top: 14.v),
-                            icon: '',
                           ),
                           Padding(
                             padding: EdgeInsets.only(
@@ -419,7 +413,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                                     top: 33.v,
                                     bottom: 20.v,
                                   ),
-                                  icon: '',
                                 ),
                               )
                             ],
@@ -433,7 +426,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                               top: 38.v,
                               bottom: 24.v,
                             ),
-                            icon: '',
                           ),
                         ],
                       ),
@@ -543,7 +535,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                 height: 91.v,
                 width: 92.h,
                 alignment: Alignment.topRight,
-                icon: '',
               ),
               GestureDetector(
                 onTap: () {
@@ -601,7 +592,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                 height: 93.v,
                 width: 78.h,
                 alignment: Alignment.bottomRight,
-                icon: '',
               ),
               GestureDetector(
                 onTap: () {
@@ -654,7 +644,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                 height: 114.v,
                 width: 188.h,
                 alignment: Alignment.bottomRight,
-                icon: '',
               ),
               GestureDetector(
                 onTap: () {
@@ -719,14 +708,12 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                         height: 99.v,
                         width: 81.h,
                         alignment: Alignment.centerRight,
-                        icon: '',
                       ),
                       CustomImageView(
                         imagePath: ImageConstant.imgDecore61x40,
                         height: 61.v,
                         width: 40.h,
                         alignment: Alignment.topLeft,
-                        icon: '',
                       ),
                       GestureDetector(
                         onTap: () {
@@ -786,7 +773,6 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                         height: 91.v,
                         width: 92.h,
                         alignment: Alignment.topRight,
-                        icon: '',
                       ),
                       GestureDetector(
                         onTap: () {

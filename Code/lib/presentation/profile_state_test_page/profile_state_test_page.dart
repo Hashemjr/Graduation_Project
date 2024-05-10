@@ -187,14 +187,12 @@ class ProfileStateTestPage extends StatelessWidget {
             height: 187.v,
             width: 216.h,
             alignment: Alignment.centerLeft,
-            icon: '',
           ),
           CustomImageView(
             imagePath: ImageConstant.imgBackgroundBlur188x200,
             height: 188.v,
             width: 200.h,
             alignment: Alignment.centerRight,
-            icon: '',
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -250,7 +248,6 @@ class ProfileStateTestPage extends StatelessWidget {
                               height: 65.adaptSize,
                               width: 65.adaptSize,
                               alignment: Alignment.bottomCenter,
-                              icon: '',
                             ),
                           ),
                         ),
@@ -260,14 +257,12 @@ class ProfileStateTestPage extends StatelessWidget {
                           width: 21.adaptSize,
                           alignment: Alignment.bottomLeft,
                           margin: EdgeInsets.only(left: 4.h),
-                          icon: '',
                         ),
                         CustomImageView(
                           imagePath: ImageConstant.imgFireFlamePng1,
                           height: 41.v,
                           width: 40.h,
                           alignment: Alignment.topRight,
-                          icon: '',
                         ),
                       ],
                     ),
@@ -285,7 +280,6 @@ class ProfileStateTestPage extends StatelessWidget {
                       child: CustomImageView(
                         imagePath: ImageConstant.imgGearPng1,
                         radius: BorderRadius.circular(30.0),
-                        icon: '', // Adjust the border corner radius here
                       ),
                     ),
                   ),
@@ -441,7 +435,6 @@ class ProfileStateTestPage extends StatelessWidget {
                                     top: 7.v,
                                     bottom: 8.v,
                                   ),
-                                  icon: '',
                                 ),
                               ),
                               Padding(

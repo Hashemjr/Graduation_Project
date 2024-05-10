@@ -54,7 +54,6 @@ class Coursescard1ItemWidget extends StatelessWidget {
                           20.h,
                         ),
                         alignment: Alignment.bottomLeft,
-                        icon: '',
                       ),
                       CustomImageView(
                         imagePath: ImageConstant.imgEllipse193,
@@ -65,7 +64,6 @@ class Coursescard1ItemWidget extends StatelessWidget {
                         ),
                         alignment: Alignment.bottomLeft,
                         margin: EdgeInsets.only(left: 20.h),
-                        icon: '',
                       ),
                       Align(
                         alignment: Alignment.bottomLeft,
@@ -84,7 +82,6 @@ class Coursescard1ItemWidget extends StatelessWidget {
                                   20.h,
                                 ),
                                 alignment: Alignment.center,
-                                icon: '',
                               ),
                               Align(
                                 alignment: Alignment.center,
@@ -109,7 +106,6 @@ class Coursescard1ItemWidget extends StatelessWidget {
               width: 172.h,
               alignment: Alignment.bottomRight,
               margin: EdgeInsets.only(right: 2.h),
-              icon: '',
             ),
             Align(
               alignment: Alignment.topLeft,

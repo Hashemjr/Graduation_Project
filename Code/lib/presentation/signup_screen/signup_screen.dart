@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/signup_bloc.dart';
 import 'models/signup_model.dart';
 import 'package:chineasy/core/app_export.dart';
@@ -13,6 +14,9 @@ class SignupScreen extends StatelessWidget {
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? dropdownValue;
+  String? username;
+  String? firstname;
+  String? lastname;
   String? selectedDateText; // Variable to store the selected date as text
 
   static Widget builder(BuildContext context) {
@@ -77,7 +81,6 @@ class SignupScreen extends StatelessWidget {
                                     width: 20.adaptSize,
                                     radius: BorderRadius.circular(4.h),
                                     color: Colors.white,
-                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgStar2,
@@ -86,7 +89,6 @@ class SignupScreen extends StatelessWidget {
                                     radius: BorderRadius.circular(4.h),
                                     color: Colors.black,
                                     margin: EdgeInsets.only(left: 20.h),
-                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgStar3,
@@ -95,7 +97,6 @@ class SignupScreen extends StatelessWidget {
                                     radius: BorderRadius.circular(4.h),
                                     color: Colors.black,
                                     margin: EdgeInsets.only(left: 20.h),
-                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -183,7 +184,6 @@ class SignupScreen extends StatelessWidget {
                                     alignment: Alignment.bottomRight,
                                     margin: EdgeInsets.only(
                                         right: 15.h, bottom: 57.v),
-                                    icon: '',
                                   ),
                                   Align(
                                     alignment: Alignment.topRight,
@@ -242,12 +242,13 @@ class SignupScreen extends StatelessWidget {
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
                 backgroundColor: Color.fromARGB(
                     255, 100, 4, 4), // Background color of the button
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0), // Rounded corners
-                ), // Text color of the buttons
+                ),
+                foregroundColor: Color.fromARGB(
+                    155, 255, 255, 255), // Text color of the buttons
               ),
             ),
           ),
@@ -259,6 +260,8 @@ class SignupScreen extends StatelessWidget {
     if (picked != null) {
       // Update the selected date as text
       selectedDateText = DateFormat('yyyy-MM-dd').format(picked);
+      // Dispatch an event to update the state with the selected date
+      context.read<SignupBloc>().add(UpdateSelectedDate(selectedDateText));
     }
   }
 
@@ -275,6 +278,7 @@ class SignupScreen extends StatelessWidget {
             if (!isText(value)) {
               return "err_msg_please_enter_valid_text".tr;
             }
+            firstname = value;
             return null;
           },
           contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
@@ -298,6 +302,7 @@ class SignupScreen extends StatelessWidget {
               if (!isText(value)) {
                 return "err_msg_please_enter_valid_text".tr;
               }
+              lastname = value;
               return null;
             },
             contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
@@ -339,6 +344,7 @@ class SignupScreen extends StatelessWidget {
               if (!isText(value)) {
                 return "err_msg_please_enter_valid_text".tr;
               }
+              username = value;
               return null;
             },
             contentPadding: EdgeInsets.symmetric(horizontal: 5.h),
@@ -391,6 +397,7 @@ class SignupScreen extends StatelessWidget {
           onChanged: (String? newValue) {
             genderValue = newValue;
           },
+
           items: [
             DropdownMenuItem<String>(
               value: 'male',
@@ -417,14 +424,17 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
-  void _validateAndSignup(BuildContext context) {
+  _validateAndSignup(BuildContext context) async {
     final state = context.read<SignupBloc>().state;
     final firstNameController = state.firstNameController;
     final lastNameController = state.lastNameController;
     final userNameController = state.userNameController;
     final selectedDateText = state.selectedDateText;
-    final genderValue = state.genderValue;
-
+    //final genderValue = state.genderValue;
+    username = userNameController?.text;
+    firstname = firstNameController?.text;
+    lastname = lastNameController?.text;
+    this.selectedDateText = selectedDateText;
     List<String> missingFields = [];
 
     if (firstNameController?.text.isEmpty ?? true) {
@@ -439,32 +449,15 @@ class SignupScreen extends StatelessWidget {
     if (selectedDateText == null || selectedDateText.isEmpty) {
       missingFields.add("Birthday");
     }
-    if (genderValue.isEmpty) {
+    if (genderValue == null || genderValue!.isEmpty) {
       missingFields.add("Gender");
     }
     if (missingFields.isNotEmpty) {
       _showValidationErrorDialog(context, missingFields);
     } else {
+      saveDataLocally();
       _navigateToNextScreen(context);
     }
-  }
-
-  bool _areFieldsEmpty(
-      TextEditingController? firstNameController,
-      TextEditingController? lastNameController,
-      TextEditingController? userNameController,
-      String? selectedDateText, // Added parameter for selected date text
-      String? genderValue // Added parameter for gender value
-      ) {
-    // Check if any controller is null or if its text is empty
-    return (firstNameController?.text.isEmpty ?? true) ||
-        (lastNameController?.text.isEmpty ?? true) ||
-        (userNameController?.text.isEmpty ?? true) ||
-        (selectedDateText == null ||
-            selectedDateText
-                .isEmpty) || // Check if selectedDateText is null or empty
-        (genderValue == null ||
-            genderValue.isEmpty); // Check if genderValue is null or empty
   }
 
   void _showValidationErrorDialog(
@@ -500,8 +493,18 @@ class SignupScreen extends StatelessWidget {
     );
   }
 
+  void saveDataLocally() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // Save data using keys
+    prefs.setString('username', username!);
+    prefs.setString('firstname', firstname!);
+    prefs.setString('lastname', lastname!);
+    prefs.setString('birthday', selectedDateText!);
+    prefs.setString('gender', genderValue!);
+  }
+
   /// Navigate to the next screen
-  void _navigateToNextScreen(BuildContext context) {
+  void _navigateToNextScreen(BuildContext context) async {
     NavigatorService.pushNamed(
       AppRoutes.signuponeScreen,
     );
@@ -559,7 +562,6 @@ class SignupScreen extends StatelessWidget {
                             width: 120.h,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(top: 5.v),
-                            icon: '',
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -574,14 +576,12 @@ class SignupScreen extends StatelessWidget {
                                     height: 177.v,
                                     width: 118.h,
                                     alignment: Alignment.bottomCenter,
-                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgIcon3,
                                     height: 132.v,
                                     width: 122.h,
                                     alignment: Alignment.topCenter,
-                                    icon: '',
                                   ),
                                 ],
                               ),

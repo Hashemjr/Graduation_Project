@@ -74,7 +74,6 @@ class WelcomePageTwoScreen extends StatelessWidget {
                 margin: EdgeInsets.only(
                   bottom: 80.v,
                 ),
-                icon: '',
               ),
             ],
           ),

@@ -31,7 +31,6 @@ class AppbarTrailingImage extends StatelessWidget {
           height: 39.v,
           width: 32.h,
           fit: BoxFit.contain,
-          icon: '',
         ),
       ),
     );

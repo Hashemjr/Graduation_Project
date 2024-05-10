@@ -52,8 +52,6 @@ class AppRoutes {
 
   static const String FlashcardsHomePage = '/home_page';
 
-  static const String objectDetectionScreen = '/object_detection_screen';
-
   static const String profileStateTestPage = '/profile_state_test_page';
 
   static const String homePageContainerScreen = '/home_page_container_screen';
@@ -70,6 +68,8 @@ class AppRoutes {
 
   static const String chatbotScreen = '/chatbot';
 
+  static const String objectDetectionScreen = '/object_detection_screen';
+
   static const String initialRoute = '/initialRoute';
 
   static Map<String, WidgetBuilder> get routes => {
@@ -78,7 +78,7 @@ class AppRoutes {
         chooseAccountthreeScreen: ChooseAccountthreeScreen.builder,
         signupScreen: SignupScreen.builder,
         signuptwoScreen: SignuptwoScreen.builder,
-        signuponeScreen: (context) => SignuponeScreen.builder(context),
+        signuponeScreen: SignuponeScreen.builder,
         loginScreen: LoginScreen.builder,
         forgetPasswordScreen: ForgetPasswordScreen.builder,
         forgetPasswordoneScreen: ForgetPasswordoneScreen.builder,

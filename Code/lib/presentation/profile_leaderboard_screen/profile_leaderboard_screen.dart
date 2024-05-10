@@ -135,7 +135,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                           height: 25.v,
                                           width: 17.h,
                                           margin: EdgeInsets.only(top: 19.v),
-                                          icon: '',
                                         ),
                                         Container(
                                           height: 46.v,
@@ -153,7 +152,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                                   bottom: Radius.circular(17.h),
                                                 ),
                                                 alignment: Alignment.bottomLeft,
-                                                icon: '',
                                               ),
                                               CustomImageView(
                                                 imagePath: ImageConstant
@@ -161,7 +159,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                                 height: 20.v,
                                                 width: 21.h,
                                                 alignment: Alignment.topRight,
-                                                icon: '',
                                               ),
                                             ],
                                           ),
@@ -194,7 +191,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             top: 5.v,
                                             bottom: 4.v,
                                           ),
-                                          icon: '',
                                         ),
                                         CustomImageView(
                                           imagePath: ImageConstant.imgAvatar27,
@@ -204,7 +200,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: Radius.circular(17.h),
                                           ),
                                           margin: EdgeInsets.only(left: 5.h),
-                                          icon: '',
                                         ),
                                         Spacer(),
                                         Padding(
@@ -256,7 +251,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: Radius.circular(17.h),
                                           ),
                                           margin: EdgeInsets.only(left: 7.h),
-                                          icon: '',
                                         ),
                                         Spacer(),
                                         Padding(
@@ -353,7 +347,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: Radius.circular(17.h),
                                           ),
                                           margin: EdgeInsets.only(left: 6.h),
-                                          icon: '',
                                         ),
                                         Spacer(),
                                         Padding(
@@ -442,14 +435,12 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             height: 187.v,
             width: 216.h,
             alignment: Alignment.centerLeft,
-            icon: '',
           ),
           CustomImageView(
             imagePath: ImageConstant.imgBackgroundBlur188x200,
             height: 188.v,
             width: 200.h,
             alignment: Alignment.centerRight,
-            icon: '',
           ),
           Align(
             alignment: Alignment.topRight,
@@ -505,7 +496,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     height: 65.adaptSize,
                                     width: 65.adaptSize,
                                     alignment: Alignment.bottomCenter,
-                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -518,14 +508,12 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                           width: 21.adaptSize,
                           alignment: Alignment.bottomLeft,
                           margin: EdgeInsets.only(left: 4.h),
-                          icon: '',
                         ),
                         CustomImageView(
                           imagePath: ImageConstant.imgFireFlamePng1,
                           height: 41.v,
                           width: 40.h,
                           alignment: Alignment.topRight,
-                          icon: '',
                         ),
                       ],
                     ),
@@ -554,7 +542,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                           height: 37.adaptSize,
                           width: 37.adaptSize,
                           alignment: Alignment.center,
-                          icon: '',
                         ),
                       ],
                     ),
@@ -601,7 +588,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             height: 32.v,
             width: 298.h,
             alignment: Alignment.center,
-            icon: '',
           ),
           Align(
             alignment: Alignment.center,
@@ -650,7 +636,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                         top: 7.v,
                         bottom: 8.v,
                       ),
-                      icon: '',
                     ),
                   ),
                   Padding(
@@ -691,7 +676,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                             height: 25.v,
                             width: 24.h,
                             alignment: Alignment.center,
-                            icon: '',
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -738,7 +722,6 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             bottom: Radius.circular(17.h),
           ),
           margin: EdgeInsets.only(left: 8.h),
-          icon: '',
         ),
         Spacer(),
         Padding(

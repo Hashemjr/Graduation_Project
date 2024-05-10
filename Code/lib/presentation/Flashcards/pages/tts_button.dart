@@ -1,3 +1,4 @@
+import 'package:chineasy/presentation/Flashcards/Flashcards_Component/Configur/constants.dart';
 import 'package:chineasy/presentation/Flashcards/Notifires/Notify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -41,7 +42,7 @@ class _TTSButtonState extends State<TTSButton> {
                 });
               },
               icon: Image.asset('assets/images/img_voice_pic.png',
-                  color: _istapped ? Colors.yellow : Colors.white))),
+                  color: _istapped ? Kyellow : Colors.white))),
     );
   }
 

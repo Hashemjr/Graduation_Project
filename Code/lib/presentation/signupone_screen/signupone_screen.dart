@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-
 import 'bloc/signupone_bloc.dart';
 import 'models/signupone_model.dart';
 import 'package:chineasy/core/app_export.dart';
@@ -9,6 +8,7 @@ import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chineasy/firebase_options.dart';
+import 'package:chineasy/presentation/app_functions.dart';
 
 // ignore_for_file: must_be_immutable
 class SignuponeScreen extends StatelessWidget {
@@ -103,7 +103,6 @@ class SignuponeScreen extends StatelessWidget {
                                 width: 20.adaptSize,
                                 radius: BorderRadius.circular(4.h),
                                 color: Colors.white,
-                                icon: '',
                               ),
                               Align(
                                 alignment: Alignment.centerLeft,
@@ -123,7 +122,6 @@ class SignuponeScreen extends StatelessWidget {
                                 radius: BorderRadius.circular(4.h),
                                 color: const Color.fromARGB(255, 255, 255, 255),
                                 margin: EdgeInsets.only(left: 00.h),
-                                icon: '',
                               ),
                               CustomImageView(
                                 imagePath: ImageConstant.imgStar3,
@@ -132,7 +130,6 @@ class SignuponeScreen extends StatelessWidget {
                                 radius: BorderRadius.circular(4.h),
                                 color: Colors.black,
                                 margin: EdgeInsets.only(left: 20.h),
-                                icon: '',
                               ),
                             ],
                           ),
@@ -191,7 +188,6 @@ class SignuponeScreen extends StatelessWidget {
                                   height: 156.v,
                                   width: 171.h,
                                   alignment: Alignment.centerLeft,
-                                  icon: '',
                                 ),
                                 CustomImageView(
                                   imagePath: ImageConstant.imgGmailLogo,
@@ -200,7 +196,6 @@ class SignuponeScreen extends StatelessWidget {
                                   alignment: Alignment.bottomRight,
                                   margin: EdgeInsets.only(
                                       right: 15.h, bottom: 57.v),
-                                  icon: '',
                                 ),
                                 Align(
                                   alignment: Alignment.topRight,
@@ -462,6 +457,8 @@ Please enter a valid password:
                 password: pass,
               );
               print(usercredential);
+              Map<String, String?> userData = await fetchDataLocally();
+              addUserToFirestore(userData);
               onTapSignupButton(context);
             }
           },
@@ -519,7 +516,6 @@ Please enter a valid password:
                             width: 120.h,
                             alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(top: 5.v),
-                            icon: '',
                           ),
                           Align(
                             alignment: Alignment.center,
@@ -534,14 +530,12 @@ Please enter a valid password:
                                     height: 177.v,
                                     width: 118.h,
                                     alignment: Alignment.bottomCenter,
-                                    icon: '',
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgIcon3,
                                     height: 132.v,
                                     width: 122.h,
                                     alignment: Alignment.topCenter,
-                                    icon: '',
                                   ),
                                 ],
                               ),
@@ -572,7 +566,8 @@ Please enter a valid password:
   }
 
   /// Navigates to the signuptwoScreen when the action is triggered.
-  onTapSignupButton(BuildContext context) {
+  onTapSignupButton(BuildContext context) async {
+    print('correct email and password');
     NavigatorService.pushNamed(
       AppRoutes.signuptwoScreen,
     );
