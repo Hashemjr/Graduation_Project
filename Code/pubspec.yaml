@@ -39,6 +39,8 @@ dependencies:
   translator: ^1.0.0
   pinyin: ^3.3.0
   tflite_v2: ^1.0.0
+  mailer: ^6.1.0
+  email_otp: ^2.1.2
 
 dev_dependencies:
   flutter_test:

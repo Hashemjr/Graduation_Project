@@ -5,6 +5,7 @@ import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_pin_code_text_field.dart';
 
+
 class SignuptwoScreen extends StatefulWidget {
   const SignuptwoScreen({Key? key}) : super(key: key);
 
