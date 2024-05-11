@@ -131,6 +131,12 @@ class AppNavigationScreen extends StatelessWidget {
                               onTapScreenTitle: () => onTapScreenTitle(
                                   AppRoutes.homePageContainerScreen),
                             ),
+                            _buildScreenTitle(
+                              context,
+                              screenTitle: "Inside course".tr,
+                              onTapScreenTitle: () => onTapScreenTitle(
+                                  AppRoutes.InsideCourseScreen),
+                            ),                            
                             _buildScreenTitle(context,
                                 screenTitle: "Flashcards",
                                 onTapScreenTitle: () => onTapScreenTitle(

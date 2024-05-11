@@ -19,6 +19,7 @@ import 'package:chineasy/presentation/reset_passwordtwo_screen/reset_passwordtwo
 import 'package:chineasy/presentation/profile_leaderboard_screen/profile_leaderboard_screen.dart';
 import 'package:chineasy/presentation/courses_test_container_page/courses_test_container_page.dart';
 import 'package:chineasy/presentation/home_page_container_screen/home_page_container_screen.dart';
+import 'package:chineasy/presentation/inside_course_screen/inside_course_screen.dart';
 import 'package:chineasy/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:chineasy/presentation/Flashcards/home-page.dart';
 import '../presentation/profile_state_test_page/profile_state_test_page.dart';
@@ -56,6 +57,8 @@ class AppRoutes {
 
   static const String homePageContainerScreen = '/home_page_container_screen';
 
+  static const String InsideCourseScreen = '/inside_course_screen';
+
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static const String welcomePageOneScreen = '/welcome_page_one_screen';
@@ -88,6 +91,7 @@ class AppRoutes {
         profileStateTestPage: ProfileStateTestPage.builder,
         coursesTestContainerPage: CoursesTestContainerPage.builder,
         homePageContainerScreen: HomePageContainerScreen.builder as dynamic,
+        InsideCourseScreen: InsideCoursesScreen.builder,
         appNavigationScreen: AppNavigationScreen.builder,
         FlashcardsHomePage: (context) => const HomePage(),
         welcomePageOneScreen: (context) => const WelcomePageOneScreen(),
