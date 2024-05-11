@@ -273,13 +273,16 @@ class ProfileStateTestPage extends StatelessWidget {
                       top: 10.v,
                       bottom: 37.v,
                     ),
-                    child: CustomIconButton(
-                      height: 48.adaptSize,
-                      width: 48.adaptSize,
-                      padding: EdgeInsets.all(5.h),
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imgGearPng1,
-                        radius: BorderRadius.circular(30.0),
+                    child: GestureDetector(
+                      onTap: () => _showPopupMenu(context),
+                      child: CustomIconButton(
+                        height: 48.adaptSize,
+                        width: 48.adaptSize,
+                        padding: EdgeInsets.all(5.h),
+                        child: CustomImageView(
+                          imagePath: ImageConstant.imgGearPng1,
+                          radius: BorderRadius.circular(30.0),
+                        ),
                       ),
                     ),
                   ),
@@ -645,6 +648,139 @@ class ProfileStateTestPage extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+
+  void _showPopupMenu(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: Colors.transparent,
+          insetPadding: EdgeInsets.all(10),
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    print("Change Username Selected");
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.person,
+                            color: const Color.fromARGB(
+                                255, 0, 0, 0)), // Profile icon
+                        SizedBox(width: 10),
+                        Text('Change Username',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18)),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                  thickness: 1.5,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    NavigatorService.pushNamed(
+                      AppRoutes.resetPasswordScreen,
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.lock,
+                            color: const Color.fromARGB(
+                                255, 0, 0, 0)), // Lock icon
+                        SizedBox(width: 10),
+                        Text('Change Password',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18)),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                  thickness: 1.5,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    print("Change Email Selected");
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.mail,
+                            color: const Color.fromARGB(
+                                255, 0, 0, 0)), // Mail icon
+                        SizedBox(width: 10),
+                        Text('Change Email',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18)),
+                      ],
+                    ),
+                  ),
+                ),
+                Divider(
+                  color: const Color.fromARGB(255, 0, 0, 0),
+                  thickness: 1.5,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    NavigatorService.pushNamed(
+                      AppRoutes.loginScreen,
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.exit_to_app,
+                            color: const Color.fromARGB(
+                                255, 0, 0, 0)), // Logout icon
+                        SizedBox(width: 10),
+                        Text('Logout',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18)),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
