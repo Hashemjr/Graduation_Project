@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 import 'package:firebase_core/firebase_core.dart';
 import 'bloc/signupone_bloc.dart';
@@ -10,10 +9,8 @@ import 'package:chineasy/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:chineasy/firebase_options.dart';
-import 'package:chineasy/presentation/app_functions.dart';
 import 'package:email_otp/email_otp.dart';
-import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server.dart';
+
 // ignore_for_file: must_be_immutable
 class SignuponeScreen extends StatelessWidget {
   SignuponeScreen({Key? key}) : super(key: key);
@@ -431,50 +428,51 @@ Please enter a valid password:
                       style: TextStyle(
                           color: Colors.black), // Set text color to black
                     ),
-                  //],
-                );
-              },
-            );
-          } else {
-            final _email = state.emailFieldController?.text ?? '';
-            final pass = state.passwordFieldController?.text ?? '';
-
-            try {
-              // Create user with email and password
-              final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                email: _email,
-                password: pass,
+                    //],
+                  );
+                },
               );
+            } else {
+              final _email = state.emailFieldController?.text ?? '';
+              final pass = state.passwordFieldController?.text ?? '';
 
-              // Get the UID of the newly created user
-              final String uid = userCredential.user?.uid ?? '';
+              try {
+                // Create user with email and password
+                final userCredential =
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                  email: _email,
+                  password: pass,
+                );
 
-              // Now you have the UID of the newly created user
-              print('UID of the newly created user: $uid');
-              // Generate OTP
-                  final String otp = _generateOTP();
-              // Send OTP to user's email
-              await sendEmail(_email, otp);
-              // Fetch user data locally
-              //final userData = await fetchDataLocally();
+                // Get the UID of the newly created user
+                final String uid = userCredential.user?.uid ?? '';
 
-              // Add user data to Firestore
-              //addUserToFirestore(userData);
+                // Now you have the UID of the newly created user
+                print('UID of the newly created user: $uid');
+                // Generate OTP
+                final String otp = _generateOTP();
+                // Send OTP to user's email
+                await sendEmail(_email, otp);
+                // Fetch user data locally
+                //final userData = await fetchDataLocally();
 
-              // Proceed with any additional actions
+                // Add user data to Firestore
+                //addUserToFirestore(userData);
 
-              // Navigate to the next screen
-              onTapSignupButton(context);
-            } catch (e) {
-              // Handle any errors
-              print('Error creating user: $e');
+                // Proceed with any additional actions
+
+                // Navigate to the next screen
+                onTapSignupButton(context);
+              } catch (e) {
+                // Handle any errors
+                print('Error creating user: $e');
+              }
             }
-          }
-        },
-      );
-    },
-  );
-}
+          },
+        );
+      },
+    );
+  }
 
   /// Section Widget
   Widget _buildTitleHead(BuildContext context) {
@@ -596,25 +594,27 @@ Please enter a valid password:
     );
   }
 }
-  String _generateOTP() {
-    // Generate a random 4-digit OTP
-    final _random = Random();
-    return (_random.nextInt(9000) + 1000).toString();
-  }
+
+String _generateOTP() {
+  // Generate a random 4-digit OTP
+  final _random = Random();
+  return (_random.nextInt(9000) + 1000).toString();
+}
+
 Future<void> sendEmail(String recipientEmail, String otp) async {
-    final myauth = EmailOTP();
+  final myauth = EmailOTP();
 
-    myauth.setConfig(
-      appEmail: "chineasy3@gmail.com",
-      appName: "Chineasy",
-      userEmail: recipientEmail,
-      otpLength: 4,
-      otpType: OTPType.digitsOnly,
-    );
+  myauth.setConfig(
+    appEmail: "chineasy3@gmail.com",
+    appName: "Chineasy",
+    userEmail: recipientEmail,
+    otpLength: 4,
+    otpType: OTPType.digitsOnly,
+  );
 
-    if (await myauth.sendOTP()) {
-      print("OTP has been sent to $recipientEmail");
-    } else {
-      print("Failed to send OTP to $recipientEmail");
-    }
+  if (await myauth.sendOTP()) {
+    print("OTP has been sent to $recipientEmail");
+  } else {
+    print("Failed to send OTP to $recipientEmail");
   }
+}

@@ -91,13 +91,21 @@ class _ChatScreenState extends State<ChatScreen> {
                   Expanded(
                     flex: 15,
                     child: TextFormField(
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                        color: Color(0XFFE06555),
+                        fontFamily: "Poppins",
+                        backgroundColor: Colors.black,
+                      ),
                       controller: _userInput,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          label: Text('Enter Your Message')),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        label: Text('Enter Your Message',
+                            style: TextStyle(
+                                color: Color(0XFF1CE230),
+                                fontFamily: "Poppins")),
+                      ),
                     ),
                   ),
                   Spacer(),
@@ -152,7 +160,7 @@ class Messages extends StatelessWidget {
           .copyWith(left: isUser ? 100 : 10, right: isUser ? 10 : 100),
       decoration: BoxDecoration(
           color: isUser
-              ? Color.fromARGB(255, 192, 27, 27)
+              ? Color(0XFFE06555)
               : const Color.fromARGB(255, 255, 255, 255),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
