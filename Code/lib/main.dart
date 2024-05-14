@@ -16,10 +16,11 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'core/app_export.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   Future.wait([
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,

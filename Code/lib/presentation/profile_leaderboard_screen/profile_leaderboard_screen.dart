@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'bloc/profile_leaderboard_bloc.dart';
 import 'models/profile_leaderboard_model.dart';
 import 'package:chineasy/core/app_export.dart';
@@ -5,7 +8,7 @@ import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
+String? username;
 // ignore: must_be_immutable
 class ProfileLeaderboardScreen extends StatelessWidget {
   ProfileLeaderboardScreen({Key? key})
@@ -16,6 +19,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
   GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   static Widget builder(BuildContext context) {
+    fetchUsernameAndPrint();
     return BlocProvider<ProfileLeaderboardBloc>(
       create: (context) => ProfileLeaderboardBloc(ProfileLeaderboardState(
         profileLeaderboardModelObj: ProfileLeaderboardModel(),
@@ -170,7 +174,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: 5.v,
                                           ),
                                           child: Text(
-                                            "lbl_harrypotter10".tr,
+                                            '${username ?? "Loading..."}',
                                             style: theme.textTheme.titleMedium,
                                           ),
                                         ),
@@ -208,7 +212,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: 4.v,
                                           ),
                                           child: Text(
-                                            "lbl_harrypotter12".tr,
+                                            "lbl_harrypotter10".tr,
                                             style: theme.textTheme.titleMedium,
                                           ),
                                         ),
@@ -555,7 +559,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(bottom: 26.v),
               child: Text(
-                "lbl_harrypotter10".tr,
+                '${username ?? "Loading..."}',
                 style: theme.textTheme.titleMedium,
               ),
             ),
@@ -738,5 +742,63 @@ class ProfileLeaderboardScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+Future<String?> getUidFromAuth() async {
+  try {
+    // Get the current user from FirebaseAuth
+    User? user = FirebaseAuth.instance.currentUser;
+    // Check if a user is signed in
+    if (user != null) {
+      // If a user is signed in, return the UID
+      return user.uid;
+    } else {
+      // If no user is signed in, return null
+      return null;
+    }
+  } catch (e) {
+    // If an error occurs during UID retrieval, print the error and return null
+    print('Error getting UID from FirebaseAuth: $e');
+    return null;
+  }
+}
+Future<String> getUsernameFromFirestore({required String uid}) async {
+  try {
+    // Get the document snapshot from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get();
+
+    // Check if the document exists
+    if (snapshot.exists) {
+      // Extract the username from the document data
+      String username = snapshot['username'] as String;
+      return username;
+    } else {
+      // If the document does not exist, return an empty string
+      return '';
+    }
+  } catch (e) {
+    // If an error occurs during data fetching, print the error and return an empty string
+    print('Error fetching username: $e');
+    return '';
+  }
+}
+Future<void> fetchUsernameAndPrint() async {
+  try {
+    // Get the UID from FirebaseAuth
+    String? uid = await getUidFromAuth();
+
+    if (uid != null) {
+      // If a UID is retrieved, fetch the username from Firestore
+      String usernamee = await getUsernameFromFirestore(uid: uid);
+      username=usernamee;
+    } else {
+      print('User is not signed in.');
+    }
+  } catch (e) {
+    // Handle any errors that occur during the process
+    print('Error fetching username and printing: $e');
   }
 }

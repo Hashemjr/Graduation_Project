@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'bloc/login_bloc.dart';
 import 'models/login_model.dart';
 import 'package:chineasy/core/app_export.dart';
@@ -70,10 +71,10 @@ class LoginScreen extends StatelessWidget {
                                     enableSuggestions: true,
                                     autocorrect: false,
                                     controller: userNameController,
-                                    hintText: "lbl_username".tr,
+                                    hintText: "lbl_email".tr,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return "username is required".tr;
+                                        return "Email is required".tr;
                                       }
                                       return null;
                                     },
@@ -362,7 +363,23 @@ class LoginScreen extends StatelessWidget {
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: useremail, password: passWord);
-
+        final snackBar = SnackBar(
+                  /// need to set following properties for best effect of awesome_snackbar_content
+                  elevation: 0,
+                  behavior: SnackBarBehavior.floating,
+                  backgroundColor: Colors.transparent,
+                  content: AwesomeSnackbarContent(
+                    title: 'GOOD JOB!',
+                    message:
+                        'Logined successfully',
+                    contentType: ContentType.success,
+                  ),
+                  duration: Duration(seconds: 1),
+                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(snackBar);
+              await Future.delayed(Duration(seconds: 2));
         // If sign-in is successful, navigate to the home page
         NavigatorService.pushNamed(AppRoutes.homePageContainerScreen);
       } on FirebaseAuthException catch (e) {
@@ -397,8 +414,21 @@ class LoginScreen extends StatelessWidget {
             },
           );
         } else {
-          // Print other error codes for debugging purposes
-          print('Error code: ${e.code}');
+          final snackBar = SnackBar(
+                  /// need to set following properties for best effect of awesome_snackbar_content
+                  elevation: 0,
+                  behavior: SnackBarBehavior.floating,
+                  backgroundColor: Colors.transparent,
+                  content: AwesomeSnackbarContent(
+                    title: 'On Snap!',
+                    message:
+                        'Error ${e.code}',
+                    contentType: ContentType.failure,
+                  ),
+                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(snackBar);
         }
       }
     }
