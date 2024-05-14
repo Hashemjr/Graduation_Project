@@ -1,14 +1,16 @@
+//import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/signuptwo_bloc.dart';
 import 'models/signuptwo_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:chineasy/widgets/custom_pin_code_text_field.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chineasy/presentation/app_functions.dart';
 
 class SignuptwoScreen extends StatefulWidget {
   const SignuptwoScreen({Key? key}) : super(key: key);
-
   static Widget builder(BuildContext context) {
     return BlocProvider<SignuptwoBloc>(
       create: (context) =>
@@ -24,14 +26,12 @@ class SignuptwoScreen extends StatefulWidget {
 
 class _SignuptwoScreenState extends State<SignuptwoScreen> {
   late FocusNode otpFocusNode;
-  String enteredCode = '';
-
+  String enteredCode = "";
   @override
   void initState() {
     super.initState();
     otpFocusNode = FocusNode();
   }
-
   @override
   void dispose() {
     otpFocusNode.dispose();
@@ -222,8 +222,37 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                           CustomElevatedButton(
                             text: "lbl_submit".tr,
                             margin: EdgeInsets.only(left: 35.h, right: 36.h),
-                            onPressed: () {
-                              onTapSubmit(context);
+                            onPressed: () async { 
+                              final SharedPreferences prefs = await SharedPreferences.getInstance();
+                              final String email = prefs.getString('email') ?? '';
+                              final String password = prefs.getString('password') ?? '';
+                              final String otp = prefs.getString('otp') ?? '';
+                              //final String otp = prefs.getString('otp') ?? '';
+                              if (enteredCode==otp) {
+                                        ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
+                                        content: Text("OTP is verified"),
+                                      ));
+                                        try {
+                                          final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                            email: email,
+                                            password: password,
+                                          );
+                                          final String uid = userCredential.user?.uid ?? '';
+                                          final userData = await fetchDataLocally();
+                                          addUserToFirestore(userData);
+                                          onTapSubmit(context);
+                                          // Proceed with any additional actions
+                                        } catch (e) {
+                                          print('Error creating user: $e');
+                                          // Handle error creating user
+                                        }
+                            } else {
+                                ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                              content: Text("Invalid OTP"),
+                            ));
+                            }
                             },
                           ),
                           SizedBox(height: 16.v),
