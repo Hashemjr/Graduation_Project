@@ -1,4 +1,5 @@
 //import 'package:email_otp/email_otp.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/signuptwo_bloc.dart';
@@ -229,10 +230,22 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                               final String otp = prefs.getString('otp') ?? '';
                               //final String otp = prefs.getString('otp') ?? '';
                               if (enteredCode==otp) {
-                                        ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                        content: Text("OTP is verified"),
-                                      ));
+                                              final snackBar = SnackBar(
+                                              /// need to set following properties for best effect of awesome_snackbar_content
+                                              elevation: 0,
+                                              behavior: SnackBarBehavior.floating,
+                                              backgroundColor: Colors.transparent,
+                                              content: AwesomeSnackbarContent(
+                                                title: 'GOOD JOB!',
+                                                message:
+                                                    'Account verified :D',
+                                                contentType: ContentType.success,
+                                              ),
+                                              duration: Duration(seconds: 1),
+                                            );
+                                            ScaffoldMessenger.of(context)
+                                              ..hideCurrentSnackBar()
+                                              ..showSnackBar(snackBar);
                                         try {
                                           final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                                             email: email,
@@ -241,6 +254,7 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                           final String uid = userCredential.user?.uid ?? '';
                                           final userData = await fetchDataLocally();
                                           addUserToFirestore(userData);
+                                          await Future.delayed(Duration(seconds: 2));
                                           onTapSubmit(context);
                                           // Proceed with any additional actions
                                         } catch (e) {
@@ -248,10 +262,21 @@ class _SignuptwoScreenState extends State<SignuptwoScreen> {
                                           // Handle error creating user
                                         }
                             } else {
-                                ScaffoldMessenger.of(context)
-                                .showSnackBar(const SnackBar(
-                              content: Text("Invalid OTP"),
-                            ));
+                                final snackBar = SnackBar(
+                  /// need to set following properties for best effect of awesome_snackbar_content
+                                elevation: 0,
+                                behavior: SnackBarBehavior.floating,
+                                backgroundColor: Colors.transparent,
+                                content: AwesomeSnackbarContent(
+                                  title: 'Oops!',
+                                  message:
+                                      'Incorrect OTP',
+                                  contentType: ContentType.failure,
+                                ),
+                              );
+                              ScaffoldMessenger.of(context)
+                                ..hideCurrentSnackBar()
+                                ..showSnackBar(snackBar);
                             }
                             },
                           ),

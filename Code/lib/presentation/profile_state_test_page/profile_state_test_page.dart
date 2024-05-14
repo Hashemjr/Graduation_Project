@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../profile_state_test_page/widgets/medalliontilelist_item_widget.dart';
 import 'bloc/profile_state_test_bloc.dart';
 import 'models/medalliontilelist_item_model.dart';
@@ -8,28 +11,31 @@ import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-
+String? username;
 // ignore_for_file: must_be_immutable
 class ProfileStateTestPage extends StatelessWidget {
-  const ProfileStateTestPage({Key? key})
+  final String uid;
+  const ProfileStateTestPage({Key? key,required this.uid,})
       : super(
           key: key,
         );
 
   static Widget builder(BuildContext context) {
+    fetchUsernameAndPrint();
     return BlocProvider<ProfileStateTestBloc>(
       create: (context) => ProfileStateTestBloc(ProfileStateTestState(
         profileStateTestModelObj: ProfileStateTestModel(),
       ))
         ..add(ProfileStateTestInitialEvent()),
-      child: ProfileStateTestPage(),
+      child: ProfileStateTestPage(uid: '',),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      
       child: Scaffold(
+        
         extendBody: true,
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
@@ -194,12 +200,13 @@ class ProfileStateTestPage extends StatelessWidget {
             width: 200.h,
             alignment: Alignment.centerRight,
           ),
+          
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: EdgeInsets.only(bottom: 26.v),
               child: Text(
-                "lbl_harrypotter10".tr,
+                '${username ?? "Loading..."}',
                 style: theme.textTheme.titleMedium,
               ),
             ),
@@ -782,5 +789,63 @@ class ProfileStateTestPage extends StatelessWidget {
         );
       },
     );
+  }
+}
+Future<String?> getUidFromAuth() async {
+  try {
+    // Get the current user from FirebaseAuth
+    User? user = FirebaseAuth.instance.currentUser;
+    // Check if a user is signed in
+    if (user != null) {
+      // If a user is signed in, return the UID
+      return user.uid;
+    } else {
+      // If no user is signed in, return null
+      return null;
+    }
+  } catch (e) {
+    // If an error occurs during UID retrieval, print the error and return null
+    print('Error getting UID from FirebaseAuth: $e');
+    return null;
+  }
+}
+Future<String> getUsernameFromFirestore({required String uid}) async {
+  try {
+    // Get the document snapshot from Firestore
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .get();
+
+    // Check if the document exists
+    if (snapshot.exists) {
+      // Extract the username from the document data
+      String username = snapshot['username'] as String;
+      return username;
+    } else {
+      // If the document does not exist, return an empty string
+      return '';
+    }
+  } catch (e) {
+    // If an error occurs during data fetching, print the error and return an empty string
+    print('Error fetching username: $e');
+    return '';
+  }
+}
+Future<void> fetchUsernameAndPrint() async {
+  try {
+    // Get the UID from FirebaseAuth
+    String? uid = await getUidFromAuth();
+
+    if (uid != null) {
+      // If a UID is retrieved, fetch the username from Firestore
+      String usernamee = await getUsernameFromFirestore(uid: uid);
+      username=usernamee;
+    } else {
+      print('User is not signed in.');
+    }
+  } catch (e) {
+    // Handle any errors that occur during the process
+    print('Error fetching username and printing: $e');
   }
 }

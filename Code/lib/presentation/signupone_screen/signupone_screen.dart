@@ -1,4 +1,4 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/signupone_bloc.dart';
@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:chineasy/firebase_options.dart';
 //import 'package:email_otp/email_otp.dart';
 import 'package:chineasy/presentation/OTP.dart';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 // ignore_for_file: must_be_immutable
 class SignuponeScreen extends StatelessWidget {
   SignuponeScreen({Key? key}) : super(key: key);
@@ -435,6 +436,55 @@ Please enter a valid password:
             final _email = state.emailFieldController?.text ?? '';
             final pass = state.passwordFieldController?.text ?? '';
             try {
+              bool check= await checkEmail(_email);
+              if(check){
+                final snackBar = SnackBar(
+                  /// need to set following properties for best effect of awesome_snackbar_content
+                  elevation: 0,
+                  behavior: SnackBarBehavior.floating,
+                  backgroundColor: Colors.transparent,
+                  content: AwesomeSnackbarContent(
+                    title: 'On Snap!',
+                    message:
+                        'This email aready exists.',
+                    contentType: ContentType.failure,
+                  ),
+                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(snackBar);
+               //return;
+              }else{
+                await sendEmail(_email,myauth);
+              otp=myauth.getSentOTP();
+              await saveDATA(_email,pass,otp as String);
+              final snackBar = SnackBar(
+                  /// need to set following properties for best effect of awesome_snackbar_content
+                  elevation: 0,
+                  behavior: SnackBarBehavior.floating,
+                  backgroundColor: Colors.transparent,
+                  content: AwesomeSnackbarContent(
+                    title: 'GOOD JOB!',
+                    message:
+                        'Correct email and password',
+                    contentType: ContentType.success,
+                  ),
+                  duration: Duration(seconds: 1),
+                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(snackBar);
+              await Future.delayed(Duration(seconds: 2));
+              // Save OTP to Firestore
+              // Send OTP to user's email
+              // Fetch user data locally
+              //final userData = await fetchDataLocally();
+              // Add user data to Firestore
+              //addUserToFirestore(userData);
+              // Proceed with any additional actions
+              // Navigate to the next screen
+              onTapSignupButton(context);
+              }
               // Create user with email and password
               //final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
               //  email: _email,
@@ -446,18 +496,7 @@ Please enter a valid password:
               //print('UID of the newly created user: $uid');
               // Generate OTP
               //final String otp = _generateOTP();
-              await sendEmail(_email,myauth);
-              otp=myauth.getSentOTP();
-              await saveDATA(_email,pass,otp as String);
-              // Save OTP to Firestore
-              // Send OTP to user's email
-              // Fetch user data locally
-              //final userData = await fetchDataLocally();
-              // Add user data to Firestore
-              //addUserToFirestore(userData);
-              // Proceed with any additional actions
-              // Navigate to the next screen
-              onTapSignupButton(context);
+              
             } catch (e) {
               // Handle any errors
               print('Error creating user: $e');
@@ -616,3 +655,13 @@ Future<void> sendEmail(String recipientEmail,EmailOTP myauth) async {
     await prefs.setString('password', password); // Save password
     await prefs.setString('otp', otp); // Save OTP
   }
+Future<bool> checkEmail(String email) async {
+  try {
+    // ignore: deprecated_member_use
+    List<String> signInMethods = await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+    return signInMethods.isNotEmpty; // If not empty, email is registered
+  } catch (e) {
+    print("Error checking email registration: $e");
+    return false; // Return false if an error occurs
+  }
+}

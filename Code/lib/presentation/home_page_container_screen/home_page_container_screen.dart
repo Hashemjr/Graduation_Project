@@ -5,6 +5,8 @@ import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // ignore: must_be_immutable
 class HomePageContainerScreen extends StatefulWidget {
@@ -30,6 +32,19 @@ class HomePageContainerScreen extends StatefulWidget {
 }
 
 class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
+  late String username = '';
+  @override
+  void initState() {
+    super.initState();
+    fetchUsername(); // Call the function to fetch the username
+  }
+
+  Future<void> fetchUsername() async {
+    String usernameFromFirestore = await getUsernameFromFirestore();
+    setState(() {
+      username = usernameFromFirestore; // Save the username in the state
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomePageContainerBloc, HomePageContainerState>(
@@ -189,7 +204,7 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "lbl_welcome_harry".tr,
+                        username,
                         style: CustomTextStyles.bodyMediumOutfitGray400,
                       ),
                       SizedBox(height: 2.v),
@@ -840,4 +855,31 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
       ],
     );
   }
+  
+Future<String> getUsernameFromFirestore() async {
+  User? user = FirebaseAuth.instance.currentUser;
+
+  if (user != null) {
+    String uid = user.uid;
+
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .get();
+
+      if (snapshot.exists) {
+        String username = snapshot['username'];
+        return username;
+      } else {
+        return 'User document not found';
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+      return 'Error fetching user data';
+    }
+  } else {
+    return 'User not signed in';
+  }
+}
 }
