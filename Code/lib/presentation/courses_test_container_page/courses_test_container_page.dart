@@ -57,7 +57,7 @@ class CoursesTestContainerPage extends StatelessWidget {
             child: Column(
               children: [
                 _buildOne(context),
-                SizedBox(height: 20 .v),
+                SizedBox(height: 20.v),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Container(
@@ -72,10 +72,17 @@ class CoursesTestContainerPage extends StatelessWidget {
                           SizedBox(
                             height: 175.v,
                             width: 300.h,
-                            child: Stack(
-                              children: [
-                                _buildCoursesCard1(context),
-                              ],
+                            child: GestureDetector(
+                              onTap: () {
+                                NavigatorService.pushNamed(
+                                  AppRoutes.InsideCourseScreen,
+                                );
+                              },
+                              child: Stack(
+                                children: [
+                                  _buildCoursesCard1(context),
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -95,7 +102,7 @@ class CoursesTestContainerPage extends StatelessWidget {
                                 _buildCoursesCard3(context),
                               ],
                             ),
-                          ),  
+                          ),
                         ],
                       ),
                     ),
@@ -105,252 +112,267 @@ class CoursesTestContainerPage extends StatelessWidget {
             ),
           ),
         ),
-      bottomNavigationBar: CurvedNavigationBar(
-    backgroundColor: Colors.transparent,
-    items: <Widget>[
-      Icon(Icons.import_contacts_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-      Icon(Icons.home_filled, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-      Icon(Icons.person_rounded, size: 28.v,color: Color.fromARGB(255, 191, 37, 17),),
-    ],
-    animationDuration: Duration(milliseconds: 150),
-    height:75,
-    index: 0,
-    onTap: (index) {
-      if (index == 0) {
-    // Navigate to the first screen
-    NavigatorService.pushNamed(
-      AppRoutes.coursesTestContainerPage,
-    );
-  } else if (index == 1) {
-     //Navigate to the second screen
-    NavigatorService.pushNamed(
-      AppRoutes.homePageContainerScreen,
-    );
-  } else if (index == 2) {
-    // Navigate to the third screen
-   NavigatorService.pushNamed(
-      AppRoutes.profileStateTestPage,
-    );
-  }
-      //Handle button tap
-    }, 
-  ),),
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.transparent,
+          items: <Widget>[
+            Icon(
+              Icons.import_contacts_rounded,
+              size: 28.v,
+              color: Color.fromARGB(255, 191, 37, 17),
+            ),
+            Icon(
+              Icons.home_filled,
+              size: 28.v,
+              color: Color.fromARGB(255, 191, 37, 17),
+            ),
+            Icon(
+              Icons.person_rounded,
+              size: 28.v,
+              color: Color.fromARGB(255, 191, 37, 17),
+            ),
+          ],
+          animationDuration: Duration(milliseconds: 150),
+          height: 75,
+          index: 0,
+          onTap: (index) {
+            if (index == 0) {
+              // Navigate to the first screen
+              NavigatorService.pushNamed(
+                AppRoutes.coursesTestContainerPage,
+              );
+            } else if (index == 1) {
+              //Navigate to the second screen
+              NavigatorService.pushNamed(
+                AppRoutes.homePageContainerScreen,
+              );
+            } else if (index == 2) {
+              // Navigate to the third screen
+              NavigatorService.pushNamed(
+                AppRoutes.profileStateTestPage,
+              );
+            }
+            //Handle button tap
+          },
+        ),
+      ),
     );
   }
 
   /// Section Widget
-Widget _buildOne(BuildContext context) {
-  return SizedBox(
-    height: 241.v,
-    width: double.maxFinite,
-    child: Stack(
-      alignment: Alignment.topRight,
-      children: [
-        CustomImageView(
-          imagePath: ImageConstant.imgBackgroundBlur,
-          height: 187.v,
-          width: 216.h,
-          alignment: Alignment.topLeft,
-        ),
-        CustomImageView(
-          imagePath: ImageConstant.imgBackgroundBlur188x200,
-          height: 188.v,
-          width: 200.h,
-          alignment: Alignment.topRight,
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 10.h),
-              padding: EdgeInsets.symmetric(
-                horizontal: 20.h,
-                vertical: 8.v,
-              ),
-              decoration: AppDecoration.outlineGray.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder24,
-                image: DecorationImage(
-                  image: fs.Svg(
-                    ImageConstant.imgBiglevelCard,
-                  ),
-                  fit: BoxFit.cover,
+  Widget _buildOne(BuildContext context) {
+    return SizedBox(
+      height: 241.v,
+      width: double.maxFinite,
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          CustomImageView(
+            imagePath: ImageConstant.imgBackgroundBlur,
+            height: 187.v,
+            width: 216.h,
+            alignment: Alignment.topLeft,
+          ),
+          CustomImageView(
+            imagePath: ImageConstant.imgBackgroundBlur188x200,
+            height: 188.v,
+            width: 200.h,
+            alignment: Alignment.topRight,
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.h),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 20.h,
+                  vertical: 8.v,
                 ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 3.h),
-                    child: Text(
-                      "lbl_level_12".tr,
-                      style: CustomTextStyles.titleLargeInterBlack900,
+                decoration: AppDecoration.outlineGray.copyWith(
+                  borderRadius: BorderRadiusStyle.roundedBorder24,
+                  image: DecorationImage(
+                    image: fs.Svg(
+                      ImageConstant.imgBiglevelCard,
                     ),
+                    fit: BoxFit.cover,
                   ),
-                  SizedBox(height: 1.v),
-                  Padding(
-                    padding: EdgeInsets.only(left: 3.h),
-                    child:Text(
-                      "msg_250_points_to_next".tr,
-                      style: CustomTextStyles.titleSmallInterBlack900SemiBold
-                          .copyWith(
-                        color: Color.fromARGB(221, 75, 75, 75), // Change the color here to the desired darker shade
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 3.h),
+                      child: Text(
+                        "lbl_level_12".tr,
+                        style: CustomTextStyles.titleLargeInterBlack900,
                       ),
                     ),
-                  ),
-                  SizedBox(height: 9.v),
-                  SizedBox(
-                    height: 32.v,
-                    width: 298.h,
-                    child: Stack(
-                      alignment: Alignment.center,
-                       children: [
-                        CustomImageView(
-                          imagePath: ImageConstant.imgGroup289345,
-                          height: 32.v,
-                          width: 298.h,
-                          alignment: Alignment.center,
+                    SizedBox(height: 1.v),
+                    Padding(
+                      padding: EdgeInsets.only(left: 3.h),
+                      child: Text(
+                        "msg_250_points_to_next".tr,
+                        style: CustomTextStyles.titleSmallInterBlack900SemiBold
+                            .copyWith(
+                          color: Color.fromARGB(221, 75, 75,
+                              75), // Change the color here to the desired darker shade
                         ),
-                       Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(3.h, 3.v, 2.h, 3.v),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                OutlineGradientButton(
-                                  padding: EdgeInsets.only(
-                                    left: 2.h,
-                                    top: 2.v,
-                                    right: 2.h,
-                                    bottom: 2.v,
-                                  ),
-                                  strokeWidth: 2.h,
-                                  gradient: LinearGradient(
-                                    begin: Alignment(0.07, 1),
-                                    end: Alignment(0.99, 0.01),
-                                    colors: [
-                                      theme.colorScheme.onErrorContainer,
-                                      appTheme.red90001,
-                                    ],
-                                  ),
-                                  corners: Corners(
-                                    topLeft: Radius.circular(25),
-                                    topRight: Radius.circular(25),
-                                    bottomLeft: Radius.circular(25),
-                                    bottomRight: Radius.circular(25),
-                                  ),
-                                  child: CustomOutlinedButton(
-                                    width: 24.h,
-                                    text: "lbl_1".tr,
-                                  ),
-                                ),
-                                Spacer(
-                                  flex: 62,
-                                ),
-                                Opacity(
-                                  opacity: 0.6,
-                                  child: CustomImageView(
-                                    imagePath: ImageConstant.imgSignal,
-                                    height: 9.v,
-                                    width: 10.h,
-                                    margin: EdgeInsets.only(
-                                      top: 6.v,
-                                      bottom: 9.v,
+                      ),
+                    ),
+                    SizedBox(height: 9.v),
+                    SizedBox(
+                      height: 32.v,
+                      width: 298.h,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          CustomImageView(
+                            imagePath: ImageConstant.imgGroup289345,
+                            height: 32.v,
+                            width: 298.h,
+                            alignment: Alignment.center,
+                          ),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: EdgeInsets.fromLTRB(3.h, 3.v, 2.h, 3.v),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  OutlineGradientButton(
+                                    padding: EdgeInsets.only(
+                                      left: 2.h,
+                                      top: 2.v,
+                                      right: 2.h,
+                                      bottom: 2.v,
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    left: 3.h,
-                                    top: 3.v,
-                                    bottom: 4.v,
-                                  ),
-                                  child: RichText(
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: "lbl_750".tr,
-                                          style: CustomTextStyles
-                                              .titleSmallInterfffffefd,
-                                        ),
-                                        TextSpan(
-                                          text: "lbl_1000".tr,
-                                          style: CustomTextStyles
-                                              .titleSmallInter7fffffff,
-                                        ),
+                                    strokeWidth: 2.h,
+                                    gradient: LinearGradient(
+                                      begin: Alignment(0.07, 1),
+                                      end: Alignment(0.99, 0.01),
+                                      colors: [
+                                        theme.colorScheme.onErrorContainer,
+                                        appTheme.red90001,
                                       ],
                                     ),
-                                    textAlign: TextAlign.left,
+                                    corners: Corners(
+                                      topLeft: Radius.circular(25),
+                                      topRight: Radius.circular(25),
+                                      bottomLeft: Radius.circular(25),
+                                      bottomRight: Radius.circular(25),
+                                    ),
+                                    child: CustomOutlinedButton(
+                                      width: 24.h,
+                                      text: "lbl_1".tr,
+                                    ),
                                   ),
-                                ),
-                                Spacer(
-                                  flex: 37,
-                                ),
-                                Opacity(
-                                  opacity: 0.5,
-                                  child: SizedBox(
-                                    height: 25.v,
-                                    width: 24.h,
-                                    child: Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        CustomImageView(
-                                          imagePath:
-                                              ImageConstant.imgGroup289382,
-                                          height: 25.v,
-                                          width: 24.h,
-                                          alignment: Alignment.center,
-                                        ),
-                                        Align(
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "lbl_2".tr,
-                                            style: CustomTextStyles.titleSmallInter,
+                                  Spacer(
+                                    flex: 62,
+                                  ),
+                                  Opacity(
+                                    opacity: 0.6,
+                                    child: CustomImageView(
+                                      imagePath: ImageConstant.imgSignal,
+                                      height: 9.v,
+                                      width: 10.h,
+                                      margin: EdgeInsets.only(
+                                        top: 6.v,
+                                        bottom: 9.v,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      left: 3.h,
+                                      top: 3.v,
+                                      bottom: 4.v,
+                                    ),
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: "lbl_750".tr,
+                                            style: CustomTextStyles
+                                                .titleSmallInterfffffefd,
                                           ),
-                                        ),
-                                      ],
+                                          TextSpan(
+                                            text: "lbl_1000".tr,
+                                            style: CustomTextStyles
+                                                .titleSmallInter7fffffff,
+                                          ),
+                                        ],
+                                      ),
+                                      textAlign: TextAlign.left,
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Spacer(
+                                    flex: 37,
+                                  ),
+                                  Opacity(
+                                    opacity: 0.5,
+                                    child: SizedBox(
+                                      height: 25.v,
+                                      width: 24.h,
+                                      child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          CustomImageView(
+                                            imagePath:
+                                                ImageConstant.imgGroup289382,
+                                            height: 25.v,
+                                            width: 24.h,
+                                            alignment: Alignment.center,
+                                          ),
+                                          Align(
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              "lbl_2".tr,
+                                              style: CustomTextStyles
+                                                  .titleSmallInter,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 12.v),
-                ],
+                    SizedBox(height: 12.v),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          top: 40,
-          left: 8,
-          right: 0,
-          child: CustomAppBar(
-            title: AppbarTitle(
-              text: "msg_journey_to_fluency".tr,
-              margin: EdgeInsets.only(left: 65.h),
-            ),
-            actions: [
-              AppbarTrailingImage(
-                imagePath: ImageConstant.imgRewind,
-                margin: EdgeInsets.symmetric(horizontal: 15.h),
+          Positioned(
+            top: 40,
+            left: 8,
+            right: 0,
+            child: CustomAppBar(
+              title: AppbarTitle(
+                text: "msg_journey_to_fluency".tr,
+                margin: EdgeInsets.only(left: 65.h),
               ),
-            ],
+              actions: [
+                AppbarTrailingImage(
+                  imagePath: ImageConstant.imgRewind,
+                  margin: EdgeInsets.symmetric(horizontal: 15.h),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
-  );
-}
+        ],
+      ),
+    );
+  }
 
   /// Section Widget
   Widget _buildCoursesCard1(BuildContext context) {
@@ -390,7 +412,8 @@ Widget _buildOne(BuildContext context) {
       ),
     );
   }
-    Widget _buildCoursesCard2(BuildContext context) {
+
+  Widget _buildCoursesCard2(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
@@ -427,6 +450,7 @@ Widget _buildOne(BuildContext context) {
       ),
     );
   }
+
   Widget _buildCoursesCard3(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
