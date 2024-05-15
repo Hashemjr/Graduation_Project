@@ -528,7 +528,7 @@ class SignupScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 38.v, bottom: 135.v),
+                    padding: EdgeInsets.only(top: 38.v, bottom: 0.v,left: 0.h),//no left
                     child: Column(
                       children: [
                         Text(
@@ -538,7 +538,7 @@ class SignupScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 110.h),
+                            padding: EdgeInsets.only(right: 105.h),//110
                             child: Text(
                               "msg_start_learning".tr,
                               style: CustomTextStyles.titleSmallGray500,
@@ -549,25 +549,25 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 15.6.h),
+                    padding: EdgeInsets.only(left: 7.5.h),//15.6
                     child: SizedBox(
                       height: 251.v,
-                      width: 122.h,
+                      width: 115.h,//122
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
                           CustomImageView(
                             imagePath: ImageConstant.imgBack,
                             height: 147.v,
-                            width: 120.h,
+                            width: 122.h,
                             alignment: Alignment.topCenter,
-                            margin: EdgeInsets.only(top: 5.v),
+                            
                           ),
                           Align(
                             alignment: Alignment.center,
                             child: SizedBox(
                               height: 251.v,
-                              width: 122.h,
+                              width: 122.h,//122
                               child: Stack(
                                 alignment: Alignment.topCenter,
                                 children: [
@@ -576,12 +576,14 @@ class SignupScreen extends StatelessWidget {
                                     height: 177.v,
                                     width: 118.h,
                                     alignment: Alignment.bottomCenter,
+                                    
                                   ),
                                   CustomImageView(
                                     imagePath: ImageConstant.imgIcon3,
                                     height: 132.v,
-                                    width: 122.h,
+                                    width: 122.h,//122
                                     alignment: Alignment.topCenter,
+                                    
                                   ),
                                 ],
                               ),

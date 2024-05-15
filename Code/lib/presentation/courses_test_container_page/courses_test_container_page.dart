@@ -134,7 +134,7 @@ class CoursesTestContainerPage extends StatelessWidget {
           animationDuration: Duration(milliseconds: 150),
           height: 75,
           index: 0,
-          onTap: (index) {
+          onTap: (index) async {
             if (index == 0) {
               // Navigate to the first screen
               NavigatorService.pushNamed(
@@ -142,11 +142,13 @@ class CoursesTestContainerPage extends StatelessWidget {
               );
             } else if (index == 1) {
               //Navigate to the second screen
+              await Future.delayed(Duration(milliseconds: 140));
               NavigatorService.pushNamed(
                 AppRoutes.homePageContainerScreen,
               );
             } else if (index == 2) {
               // Navigate to the third screen
+              await Future.delayed(Duration(milliseconds: 140));
               NavigatorService.pushNamed(
                 AppRoutes.profileStateTestPage,
               );
@@ -354,7 +356,7 @@ class CoursesTestContainerPage extends StatelessWidget {
           ),
           Positioned(
             top: 40,
-            left: 8,
+            left: 0,//8
             right: 0,
             child: CustomAppBar(
               title: AppbarTitle(
@@ -364,7 +366,7 @@ class CoursesTestContainerPage extends StatelessWidget {
               actions: [
                 AppbarTrailingImage(
                   imagePath: ImageConstant.imgRewind,
-                  margin: EdgeInsets.symmetric(horizontal: 15.h),
+                  margin: EdgeInsets.symmetric(horizontal: 0.h),//3 azon
                 ),
               ],
             ),

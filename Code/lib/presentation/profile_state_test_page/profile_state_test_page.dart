@@ -156,14 +156,16 @@ class ProfileStateTestPage extends StatelessWidget {
           animationDuration: Duration(milliseconds: 150),
           height: 75,
           index: 2,
-          onTap: (index) {
+          onTap: (index) async {
             if (index == 0) {
               // Navigate to the first screen
+              await Future.delayed(Duration(milliseconds: 140));
               NavigatorService.pushNamed(
                 AppRoutes.coursesTestContainerPage,
               );
             } else if (index == 1) {
               // Navigate to the second screen
+              await Future.delayed(Duration(milliseconds: 140));
               NavigatorService.pushNamed(
                 AppRoutes.homePageContainerScreen,
               );

@@ -212,7 +212,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: 4.v,
                                           ),
                                           child: Text(
-                                            "lbl_harrypotter10".tr,
+                                            "Anas__10",
                                             style: theme.textTheme.titleMedium,
                                           ),
                                         ),
@@ -228,7 +228,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     child: _buildFiveRow(
                                       context,
                                       textValue: "lbl_3".tr,
-                                      username: "lbl_harrypotter10".tr,
+                                      username: "MM",
                                     ),
                                   ),
                                   SizedBox(height: 10.v),
@@ -263,7 +263,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: 4.v,
                                           ),
                                           child: Text(
-                                            "lbl_harrypotter10".tr,
+                                            "Riskoo007",
                                             style: theme.textTheme.titleMedium,
                                           ),
                                         ),
@@ -279,7 +279,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     child: _buildFiveRow(
                                       context,
                                       textValue: "lbl_5".tr,
-                                      username: "lbl_harrypotter10".tr,
+                                      username: "GamerB",
                                     ),
                                   ),
                                   SizedBox(height: 10.v),
@@ -291,7 +291,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     child: _buildFiveRow(
                                       context,
                                       textValue: "lbl_6".tr,
-                                      username: "lbl_harrypotter10".tr,
+                                      username: "JOEEE",
                                     ),
                                   ),
                                   SizedBox(height: 10.v),
@@ -303,7 +303,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     child: _buildFiveRow(
                                       context,
                                       textValue: "lbl_7".tr,
-                                      username: "lbl_harrypotter10".tr,
+                                      username: "Youssef_ECU",
                                     ),
                                   ),
                                   SizedBox(height: 10.v),
@@ -315,7 +315,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     child: _buildFiveRow(
                                       context,
                                       textValue: "lbl_8".tr,
-                                      username: "lbl_harrypotter10".tr,
+                                      username: "HarryPotter",
                                     ),
                                   ),
                                   SizedBox(height: 10.v),
@@ -327,7 +327,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                     child: _buildFiveRow(
                                       context,
                                       textValue: "lbl_9".tr,
-                                      username: "lbl_harrypotter10".tr,
+                                      username: "SHENO",
                                     ),
                                   ),
                                   SizedBox(height: 10.v),
@@ -359,7 +359,7 @@ class ProfileLeaderboardScreen extends StatelessWidget {
                                             bottom: 7.v,
                                           ),
                                           child: Text(
-                                            "lbl_harrypotter10".tr,
+                                            "JJ_15",
                                             style: theme.textTheme.titleMedium,
                                           ),
                                         ),
@@ -400,13 +400,15 @@ class ProfileLeaderboardScreen extends StatelessWidget {
               animationDuration: Duration(milliseconds: 150),
               height: 75,
               index: 2,
-              onTap: (index) {
+              onTap: (index)async {
                 if (index == 0) {
                   // Navigate to the first screen
+                  await Future.delayed(Duration(milliseconds: 140));
                   NavigatorService.pushNamed(
                     AppRoutes.coursesTestContainerPage,
                   );
                 } else if (index == 1) {
+                  await Future.delayed(Duration(milliseconds: 140));
                   // Navigate to the second screen
                   NavigatorService.pushNamed(
                     AppRoutes.homePageContainerScreen,

@@ -534,7 +534,7 @@ Please enter a valid password:
                         Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 108.h),
+                            padding: EdgeInsets.only(right: 105.h),
                             child: Text("msg_start_learning".tr,
                                 style: CustomTextStyles.titleSmallGray500),
                           ),
@@ -544,10 +544,11 @@ Please enter a valid password:
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        left: 15.5.h), // Adjust the left padding as needed
+                        left: 7.5.h),//15.5
+                         // Adjust the left padding as needed
                     child: SizedBox(
                       height: 251.v,
-                      width: 122.h,
+                      width: 115.h,//122
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
