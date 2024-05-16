@@ -6,4 +6,4 @@
 
 - The Project is a Chinese Learning Application called "Chineasy" which means Chinese Made in an easy way
 
-- The application is developed using Flutter 
+- The application is developed using Flutter and Firebase
