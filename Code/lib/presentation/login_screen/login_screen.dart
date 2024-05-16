@@ -245,7 +245,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             Container(
               height: 102.v,
-              width: 201.h,
+              width: 210.h,//201
               margin: EdgeInsets.only(top: 39.v, bottom: 109.v),
               child: Stack(
                 alignment: Alignment.bottomLeft,

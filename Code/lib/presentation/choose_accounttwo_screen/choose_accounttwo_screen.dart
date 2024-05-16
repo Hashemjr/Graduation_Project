@@ -205,13 +205,13 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: Container(
                         width: 200.h,
-                        margin: EdgeInsets.only(top: 5.v,right: 8.h),
+                        margin: EdgeInsets.only(top: 5.v,right: 18.h),
                         child: Text(
                           "msg_embrace_the_happiness".tr,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.bodyLarge?.copyWith(
-                              fontSize: 22.0),
+                              fontSize: 16.0),
                         ),
                       ),
                     ),

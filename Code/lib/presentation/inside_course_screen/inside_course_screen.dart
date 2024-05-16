@@ -61,7 +61,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 80,
+                left: 60,
                 top: 59,
                 child: SizedBox(
                   width: 250,
@@ -79,7 +79,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 100,
+                left: 95,//100
                 top: 347,
                 child: SizedBox(
                   width: 200,
@@ -123,7 +123,7 @@ class InsideCourses extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        left: 130,
+                        left: 122,//130
                         top: 15,
                         child: SizedBox(
                           width: 220,
@@ -175,7 +175,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 30,
+                left: 18,//30
                 top: 457,
                 child: Container(
                   width: 348,
@@ -248,7 +248,7 @@ class InsideCourses extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 15,
+                    fontSize: 14,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                     height: 0.19,
@@ -256,7 +256,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 23,
+                left: 15,
                 top: 637,
                 child: Container(
                   width: 340,
@@ -366,7 +366,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 71,
+                left: 55,//71
                 top: 124,
                 child: Container(
                   width: 250,
@@ -423,7 +423,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 330,
+                left: 302,
                 top: 0,
                 child: Container(
                   width: 103.02,
@@ -437,7 +437,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 25,
+                left: 15,//25
                 top: 440,
                 child: Container(
                   width: 117,
@@ -451,7 +451,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 130,
+                left: 120,//130
                 top: 457.07,
                 child: Transform(
                   transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(-0.13),
@@ -468,7 +468,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 265,
+                left: 255,//265
                 top: 420,
                 child: Container(
                   width: 110,
@@ -482,7 +482,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 38,
+                left: 28,//38
                 top: 530,
                 child: SizedBox(
                   width: 95,
@@ -501,7 +501,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 156,
+                left: 146,//156
                 top: 530,
                 child: SizedBox(
                   width: 95.67,
@@ -520,7 +520,7 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 268,
+                left: 258,//268
                 top: 530,
                 child: SizedBox(
                   width: 110.39,
@@ -539,8 +539,9 @@ class InsideCourses extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: MediaQuery.of(context).size.width / 2 - 175,
+                left:23,//MediaQuery.of(context).size.width / 2 - 175,
                 top: 187,
+                
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width - 50,
                   height: 144,

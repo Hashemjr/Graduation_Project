@@ -89,7 +89,7 @@ class ChooseAccountoneScreen extends StatelessWidget {
           CustomImageView(
               imagePath: ImageConstant.img3dOthers1,
               height: 169.adaptSize,
-              width: 169.adaptSize,
+              width: 165.adaptSize,//169
               radius: BorderRadius.circular(84.h),
               margin: EdgeInsets.only(left: 4.h, top: 5.v, bottom: 22.v),
               onTap: () {
@@ -106,7 +106,9 @@ class ChooseAccountoneScreen extends StatelessWidget {
             height: 251.v,
             width: 350.h,
             margin: EdgeInsets.only(top: 15 .v,left:10.v),
-            child: Stack(alignment: Alignment.centerRight, children: [
+            child: Stack(
+            alignment: Alignment.centerRight, 
+            children: [
               Align(
                   alignment: Alignment.centerRight,
                   child: SizedBox(
@@ -159,12 +161,12 @@ class ChooseAccountoneScreen extends StatelessWidget {
                                 alignment: Alignment.centerRight,
                                 child: Container(
                                     width: 200.h,
-                                    margin: EdgeInsets.only(top: 5.v,right: 8.h),
+                                    margin: EdgeInsets.only(top: 5.v,right: 18.h),//rigth:8
                                     child: Text("msg_embrace_the_happiness".tr,
                                         maxLines: 3,
                                         overflow: TextOverflow.ellipsis,
                                         style: theme.textTheme.bodyLarge?.copyWith(
-                                            fontSize: 22.0))))
+                                            fontSize: 16.0))))//22
                           ])))
             ])));
   }

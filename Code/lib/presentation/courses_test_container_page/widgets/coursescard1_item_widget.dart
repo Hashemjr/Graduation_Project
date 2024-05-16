@@ -110,7 +110,7 @@ class Coursescard1ItemWidget extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Container(
-                width: 115.h,
+                width: 120.h,
                 margin: EdgeInsets.only(
                   left: 12.h,
                   top: 25.v,
