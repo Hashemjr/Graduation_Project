@@ -136,7 +136,7 @@ class AppNavigationScreen extends StatelessWidget {
                               screenTitle: "Inside course".tr,
                               onTapScreenTitle: () => onTapScreenTitle(
                                   AppRoutes.InsideCourseScreen),
-                            ),                            
+                            ),
                             _buildScreenTitle(context,
                                 screenTitle: "Flashcards",
                                 onTapScreenTitle: () => onTapScreenTitle(
@@ -149,6 +149,14 @@ class AppNavigationScreen extends StatelessWidget {
                                 screenTitle: "Chatbot",
                                 onTapScreenTitle: () =>
                                     onTapScreenTitle(AppRoutes.chatbotScreen)),
+                            _buildScreenTitle(context,
+                                screenTitle: "MCQ",
+                                onTapScreenTitle: () => onTapScreenTitle(
+                                    AppRoutes.MultipleChoiceQuestion)),
+                            _buildScreenTitle(context,
+                                screenTitle: "Match",
+                                onTapScreenTitle: () => onTapScreenTitle(
+                                    AppRoutes.MatchingExercises)),
                           ],
                         ),
                       ),
