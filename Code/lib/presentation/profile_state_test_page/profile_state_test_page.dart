@@ -1,188 +1,251 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../profile_state_test_page/widgets/medalliontilelist_item_widget.dart';
 import 'bloc/profile_state_test_bloc.dart';
 import 'models/medalliontilelist_item_model.dart';
 import 'models/profile_state_test_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/widgets/custom_icon_button.dart';
-import 'package:chineasy/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
-import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-String? username;
-// ignore_for_file: must_be_immutable
-class ProfileStateTestPage extends StatelessWidget {
-  final String uid;
-  const ProfileStateTestPage({Key? key,required this.uid,})
-      : super(
-          key: key,
-        );
+import 'package:chineasy/level_progress_bar.dart';
+class ProfileStateTestBloc
+    extends Bloc<ProfileStateTestEvent, ProfileStateTestState> {
+  ProfileStateTestBloc(ProfileStateTestState initialState)
+      : super(initialState) {
+    on<ProfileStateTestInitialEvent>(_onInitialize);
+  }
+  void _onInitialize(
+    ProfileStateTestInitialEvent event,
+    Emitter<ProfileStateTestState> emit,
+  ) async {
+    emit(state.copyWith(
+      profileStateTestModelObj: state.profileStateTestModelObj?.copyWith(
+        medalliontilelistItemList: fillMedalliontilelistItemList(),
+      ),
+    ));
+  }
+
+  List<MedalliontilelistItemModel> fillMedalliontilelistItemList() {
+    return [
+      MedalliontilelistItemModel(
+          imageId: ImageConstant.imgMedallions,
+          courseName: "Essential Mandarin Course",
+          id:'1'),
+      MedalliontilelistItemModel(
+          imageId: ImageConstant.imgMedallionsBlack900,
+          courseName: "Advanced Mandarin Proficiency",
+          id:'2'),
+      MedalliontilelistItemModel(
+          imageId: ImageConstant.medalgold,
+          courseName: "Advanced Mandarin Proficiency",
+          id:'3'),
+    ];
+  }
+}
+
+class ProfileStateTestPage extends StatefulWidget {
+  final int? currentScore;
+  final int? maxScore;
+  final int? currentLevel;
+  final int? nextLevel;
+  //final String uid;
+   ProfileStateTestPage({
+    Key? key,
+   required this.currentScore,
+    required this.maxScore,
+    required this.currentLevel,
+    required this.nextLevel,}) : super(key: key);
+  
+  @override
+  _ProfileStateTestPageState createState() => _ProfileStateTestPageState();
 
   static Widget builder(BuildContext context) {
-    fetchUsernameAndPrint();
     return BlocProvider<ProfileStateTestBloc>(
       create: (context) => ProfileStateTestBloc(ProfileStateTestState(
         profileStateTestModelObj: ProfileStateTestModel(),
       ))
         ..add(ProfileStateTestInitialEvent()),
-      child: ProfileStateTestPage(uid: '',),
+      child: ProfileStateTestPage(currentScore: null, maxScore: null, currentLevel: null, nextLevel: null,),
     );
+  }
+}
+class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
+  PageController _pageController = PageController();
+  int _currentIndex = 0;
+  late String username = '';
+    @override
+  void initState() {
+    super.initState();
+    fetchUsername(); // Call the function to fetch the word of the day
+  }
+
+  Future<void> fetchUsername() async {
+    String usernameFromFirestore = await getUsernameFromFirestore();
+    setState(() {
+      username = usernameFromFirestore; // Save the username in the state
+    });
   }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      
-      child: Scaffold(
-        
-        extendBody: true,
-        extendBodyBehindAppBar: true,
-        backgroundColor: Colors.transparent,
-        body: Container(
-          width: SizeUtils.width,
-          height: SizeUtils.height,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment(0.5, 0),
-              end: Alignment(0.5, 1),
-              colors: [
-                appTheme.black900,
-                appTheme.gray90001,
-              ],
-            ),
-          ),
-          child: Container(
-            width: double.maxFinite,
-            decoration: AppDecoration.background2,
-            child: Column(
-              children: [
-                _buildBackgroundBlurStack(context),
-                SizedBox(height: 4.v),
-                Container(
-                  decoration: AppDecoration.outlinePrimary1,
-                  child: Text(
-                    "lbl_40".tr,
-                    style: CustomTextStyles.titleMediumPoppinsSemiBold,
-                  ),
-                ),
-                SizedBox(height: 2.v),
-                Text(
-                  "lbl_friends".tr,
-                  style: CustomTextStyles.bodyMediumOutfitGray400,
-                ),
-                SizedBox(height: 12.v),
-                _buildBackgroundShowStack(context),
-                SizedBox(height: 14.v),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 30.h),
-                    child: Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            NavigatorService.pushNamed(
-                              AppRoutes.profileLeaderboardScreen,
-                            );
-                          },
-                          child: Text(
-                            "lbl_leaderboard".tr.toUpperCase(),
-                            style: CustomTextStyles.titleSmallInterGray50001,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 29.h),
-                          child: Text(
-                            "lbl_stats".tr,
-                            style:
-                                CustomTextStyles.titleSmallInterDeeporangeA700,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 30.v),
-                _buildState1Row(context),
-                SizedBox(height: 31.v),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 17.h),
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: "lbl_certifications".tr,
-                            style: CustomTextStyles.titleSmallInterff9098a3,
-                          ),
-                          TextSpan(
-                            text: "lbl_6".tr,
-                            style: CustomTextStyles.titleSmallInterffb6b6b6,
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 18.v),
-                _buildMedallionTileList(context),
-                SizedBox(height: 52.v),
-              ],
-            ),
-          ),
-        ),
-        bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.transparent,
-          items: <Widget>[
-            Icon(
-              Icons.import_contacts_rounded,
-              size: 28.v,
-              color: Color.fromARGB(255, 191, 37, 17),
-            ),
-            Icon(
-              Icons.home_filled,
-              size: 28.v,
-              color: Color.fromARGB(255, 191, 37, 17),
-            ),
-            Icon(
-              Icons.person_rounded,
-              size: 28.v,
-              color: Color.fromARGB(255, 191, 37, 17),
-            ),
-          ],
-          animationDuration: Duration(milliseconds: 150),
-          height: 75,
-          index: 2,
-          onTap: (index) async {
-            if (index == 0) {
-              // Navigate to the first screen
-              await Future.delayed(Duration(milliseconds: 140));
-              NavigatorService.pushNamed(
-                AppRoutes.coursesTestContainerPage,
-              );
-            } else if (index == 1) {
-              // Navigate to the second screen
-              await Future.delayed(Duration(milliseconds: 140));
-              NavigatorService.pushNamed(
-                AppRoutes.homePageContainerScreen,
-              );
-            } else if (index == 2) {
-              // Navigate to the third screen
-              NavigatorService.pushNamed(
-                AppRoutes.profileStateTestPage,
-              );
-            }
-            //Handle button tap
-          },
-        ),
-      ),
+    return BlocBuilder<ProfileStateTestBloc, ProfileStateTestState>(
+      builder: (context, state) {
+        return _buildProfileStateTestPage(context);
+      },
     );
   }
 
-  /// Section Widget
+ Widget _buildProfileStateTestPage(BuildContext context) {
+  return SafeArea(
+    child: Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
+      body: Container(
+        width: SizeUtils.width,
+        height: SizeUtils.height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment(0.5, 0),
+            end: Alignment(0.5, 1),
+            colors: [
+              appTheme.black900,
+              appTheme.gray90001,
+            ],
+          ),
+        ),
+        child: Container(
+          width: double.maxFinite,
+          decoration: AppDecoration.background2,
+          child: Column(
+            children: [
+  _buildBackgroundBlurStack(context),
+  SizedBox(height: 4.v),
+  Container(
+    decoration: AppDecoration.outlinePrimary1,
+    child: Text(
+      "lbl_40".tr,
+      style: CustomTextStyles.titleMediumPoppinsSemiBold,
+    ),
+  ),
+  SizedBox(height: 2.v),
+  Text(
+    "lbl_friends".tr,
+    style: CustomTextStyles.bodyMediumOutfitGray400,
+  ),
+  SizedBox(height: 12.v),
+  Padding(
+    padding: EdgeInsets.symmetric(horizontal: 40.h), // Adjust the padding as needed
+    child: LevelProgressBar(
+      currentScore: 600,  // Example value
+      maxScore: 1000,     // Example value
+      currentLevel: 1,    // Example value
+      nextLevel: 2,       // Example value
+    ),
+  ),
+  SizedBox(height: 20.v),
+  Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      GestureDetector(
+        onTap: () {
+          _pageController.animateToPage(0,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut);
+        },
+        child: Text(
+          "lbl_stats".tr.toUpperCase(),
+          style: _currentIndex == 0
+              ? CustomTextStyles.titleSmallInterDeeporangeA700
+              : CustomTextStyles.titleSmallInterGray50001,
+        ),
+      ),
+      SizedBox(width: 35.h),
+      GestureDetector(
+        onTap: () {
+          _pageController.animateToPage(1,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut);
+        },
+        child: Text(
+          "lbl_leaderboard".tr.toUpperCase(),
+          style: _currentIndex == 1
+              ? CustomTextStyles.titleSmallInterDeeporangeA700
+              : CustomTextStyles.titleSmallInterGray50001,
+        ),
+      ),
+    ],
+  ),
+  SizedBox(height: 20.v),
+  Expanded(
+    child: PageView(
+      controller: _pageController,
+      onPageChanged: (index) {
+        setState(() {
+          _currentIndex = index;
+        });
+      },
+      children: [
+        _buildStatsPage(context),
+        SingleChildScrollView(
+          child: _buildLeaderboardPage(context),
+        ),
+      ],
+    ),
+  ),
+],
+
+          ),
+        ),
+      ),
+      bottomNavigationBar:CurvedNavigationBar(
+                backgroundColor: Colors.transparent,
+                items: <Widget>[
+                  Icon(
+                    Icons.import_contacts_rounded,
+                    size: 28.v,
+                    color: Color.fromARGB(255, 191, 37, 17),
+                  ),
+                  Icon(
+                    Icons.home_filled,
+                    size: 28.v,
+                    color: Color.fromARGB(255, 191, 37, 17),
+                  ),
+                  Icon(
+                    Icons.person_rounded,
+                    size: 28.v,
+                    color: Color.fromARGB(255, 191, 37, 17),
+                  ),
+                ],
+                animationDuration: Duration(milliseconds: 150),
+                height: 75,
+                index: 2,
+                onTap: (index) async {
+                  if (index == 0) {
+                    // Navigate to the first screen
+                    await Future.delayed(Duration(milliseconds: 140));
+                    NavigatorService.pushNamed(
+                      AppRoutes.coursesTestContainerPage,
+                    );
+                  } else if (index == 1) {
+                    // Navigate to the second screen
+                    await Future.delayed(Duration(milliseconds: 140));
+                    NavigatorService.pushNamed(
+                      AppRoutes.homePageContainerScreen,
+                    );
+                  } else if (index == 2) {
+                    // Navigate to the third screen
+                    NavigatorService.pushNamed(
+                      AppRoutes.profileStateTestPage,
+                    );
+                  }
+                },
+              ),
+    ),
+    
+  );
+}
+
   Widget _buildBackgroundBlurStack(BuildContext context) {
     return SizedBox(
       height: 188.v,
@@ -202,13 +265,12 @@ class ProfileStateTestPage extends StatelessWidget {
             width: 200.h,
             alignment: Alignment.centerRight,
           ),
-          
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: EdgeInsets.only(bottom: 26.v),
               child: Text(
-                '${username ?? "Loading..."}',
+                '${username}',
                 style: theme.textTheme.titleMedium,
               ),
             ),
@@ -304,8 +366,309 @@ class ProfileStateTestPage extends StatelessWidget {
     );
   }
 
+  Widget _buildStatsPage(BuildContext context) {
+    return Column(
+      children: [
+        _buildState1Row(context),
+        SizedBox(height: 31.v),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.only(left: 17.h),
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: "lbl_certifications".tr,
+                    style: CustomTextStyles.titleSmallInterff9098a3,
+                  ),
+                  TextSpan(
+                    text: "lbl_6".tr,
+                    style: CustomTextStyles.titleSmallInterffb6b6b6,
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
+        ),
+        SizedBox(height: 18.v),
+        _buildMedallionTileList(context),
+        SizedBox(height: 52.v),
+      ],
+    );
+  }
+
+  Widget _buildLeaderboardPage(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          //height: 494.v,
+          width: double.maxFinite,
+          child: Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 15.h,
+                    vertical: 7.v,
+                  ),
+                  decoration:
+                      AppDecoration.gradientOnErrorContainerToRed.copyWith(
+                    borderRadius: BorderRadiusStyle.customBorderTL36,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 116.h),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            CustomImageView(
+                              imagePath: ImageConstant.imgFirstPlaceBadge,
+                              height: 25.v,
+                              width: 17.h,
+                              margin: EdgeInsets.only(top: 19.v),
+                            ),
+                            Container(
+                              height: 46.v,
+                              width: 39.h,
+                              margin: EdgeInsets.only(left: 5.h),
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  CustomImageView(
+                                    imagePath: ImageConstant.imgAvatar27,
+                                    height: 34.adaptSize,
+                                    width: 34.adaptSize,
+                                    radius: BorderRadius.vertical(
+                                      bottom: Radius.circular(17.h),
+                                    ),
+                                    alignment: Alignment.bottomLeft,
+                                  ),
+                                  CustomImageView(
+                                    imagePath: ImageConstant.imgCrownObliquely,
+                                    height: 20.v,
+                                    width: 21.h,
+                                    alignment: Alignment.topRight,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Spacer(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 18.v,
+                                bottom: 5.v,
+                              ),
+                              child: Text(
+                                '${username}',
+                                style: theme.textTheme.titleMedium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(right: 116.h),
+                        child: Row(
+                          children: [
+                            CustomImageView(
+                              imagePath: ImageConstant.imgRewardBadgeWith,
+                              height: 25.v,
+                              width: 17.h,
+                              margin: EdgeInsets.only(
+                                top: 5.v,
+                                bottom: 4.v,
+                              ),
+                            ),
+                            CustomImageView(
+                              imagePath: ImageConstant.imgAvatar27,
+                              height: 34.adaptSize,
+                              width: 34.adaptSize,
+                              radius: BorderRadius.vertical(
+                                bottom: Radius.circular(17.h),
+                              ),
+                              margin: EdgeInsets.only(left: 5.h),
+                            ),
+                            Spacer(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 6.v,
+                                bottom: 4.v,
+                              ),
+                              child: Text(
+                                "Anas__10",
+                                style: theme.textTheme.titleMedium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          right: 116.h,
+                        ),
+                        child: _buildFiveRow(
+                          context,
+                          textValue: "lbl_3".tr,
+                          username: "MM",
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 3.h,
+                          right: 116.h,
+                        ),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6.v),
+                              child: Text(
+                                "lbl_4".tr,
+                                style: theme.textTheme.titleSmall,
+                              ),
+                            ),
+                            CustomImageView(
+                              imagePath: ImageConstant.imgAvatar27,
+                              height: 34.adaptSize,
+                              width: 34.adaptSize,
+                              radius: BorderRadius.vertical(
+                                bottom: Radius.circular(17.h),
+                              ),
+                              margin: EdgeInsets.only(left: 7.h),
+                            ),
+                            Spacer(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 6.v,
+                                bottom: 4.v,
+                              ),
+                              child: Text(
+                                "Riskoo007",
+                                style: theme.textTheme.titleMedium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          right: 116.h,
+                        ),
+                        child: _buildFiveRow(
+                          context,
+                          textValue: "lbl_5".tr,
+                          username: "GamerB",
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          right: 116.h,
+                        ),
+                        child: _buildFiveRow(
+                          context,
+                          textValue: "lbl_6".tr,
+                          username: "JOEEE",
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          right: 116.h,
+                        ),
+                        child: _buildFiveRow(
+                          context,
+                          textValue: "lbl_7".tr,
+                          username: "Youssef_ECU",
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          right: 116.h,
+                        ),
+                        child: _buildFiveRow(
+                          context,
+                          textValue: "lbl_8".tr,
+                          username: "HarryPotter",
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          right: 116.h,
+                        ),
+                        child: _buildFiveRow(
+                          context,
+                          textValue: "lbl_9".tr,
+                          username: "SHENO",
+                        ),
+                      ),
+                      SizedBox(height: 10.v),
+                      Padding(
+                        padding: EdgeInsets.only(right: 116.h),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6.v),
+                              child: Text(
+                                "lbl_10".tr,
+                                style: theme.textTheme.titleSmall,
+                              ),
+                            ),
+                            CustomImageView(
+                              imagePath: ImageConstant.imgAvatar27,
+                              height: 34.adaptSize,
+                              width: 34.adaptSize,
+                              radius: BorderRadius.vertical(
+                                bottom: Radius.circular(17.h),
+                              ),
+                              margin: EdgeInsets.only(left: 6.h),
+                            ),
+                            Spacer(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 3.v,
+                                bottom: 7.v,
+                              ),
+                              child: Text(
+                                "JJ_15",
+                                style: theme.textTheme.titleMedium,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20.v),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+//buildonestack
   /// Section Widget
-  Widget _buildOne(BuildContext context) {
+ /* Widget _buildOne(BuildContext context) {
     return OutlineGradientButton(
       padding: EdgeInsets.only(
         left: 2.h,
@@ -313,7 +676,7 @@ class ProfileStateTestPage extends StatelessWidget {
         right: 2.h,
         bottom: 2.v,
       ),
-      strokeWidth: 2.h,
+      strokeWidth: 8.h,
       gradient: LinearGradient(
         begin: Alignment(0.07, 1),
         end: Alignment(0.99, 0.01),
@@ -330,7 +693,7 @@ class ProfileStateTestPage extends StatelessWidget {
       ),
       child: CustomOutlinedButton(
         width: 24.h,
-        text: "lbl_1".tr,
+        text: "1",
       ),
     );
   }
@@ -340,7 +703,7 @@ class ProfileStateTestPage extends StatelessWidget {
     return Opacity(
       opacity: 0.5,
       child: Padding(
-        padding: EdgeInsets.only(left: 43.h),
+        padding: EdgeInsets.only(left: 50.h),
         child: OutlineGradientButton(
           padding: EdgeInsets.only(
             left: 2.h,
@@ -365,7 +728,7 @@ class ProfileStateTestPage extends StatelessWidget {
           ),
           child: CustomOutlinedButton(
             width: 24.h,
-            text: "lbl_2".tr,
+            text: "2",
             buttonStyle: CustomButtonStyles.outlineTL122,
           ),
         ),
@@ -398,7 +761,7 @@ class ProfileStateTestPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Container(
-                            width: 225.h,
+                            width:200.h,
                             height: 27.h,
                             decoration: AppDecoration.gradientDeepOrangeAToRedA,
                           ),
@@ -410,7 +773,7 @@ class ProfileStateTestPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Opacity(
-                            opacity: 0.4,
+                            opacity: 1,
                             child: Container(
                               width: 288.h,
                               height: 27.h,
@@ -488,23 +851,56 @@ class ProfileStateTestPage extends StatelessWidget {
       ),
     );
   }
+*/
 
-  /// Section Widget
+  Widget _buildFiveRow(
+    BuildContext context, {
+    required String textValue,
+    required String username,
+  }) {
+    return Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 6.v),
+          child: Text(
+            textValue,
+            style: theme.textTheme.titleSmall!.copyWith(
+              color: theme.colorScheme.primary,
+            ),
+          ),
+        ),
+        CustomImageView(
+          imagePath: ImageConstant.imgAvatar27,
+          height: 34.adaptSize,
+          width: 34.adaptSize,
+          radius: BorderRadius.vertical(
+            bottom: Radius.circular(17.h),
+          ),
+          margin: EdgeInsets.only(left: 8.h),
+        ),
+        Spacer(),
+        Padding(
+          padding: EdgeInsets.only(top: 6.v, bottom: 4.v),
+          child: Text(
+            username,
+            style: theme.textTheme.titleMedium!.copyWith(
+              color: theme.colorScheme.primary,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildState1Row(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        left: 12.h,
-        right: 18.h,
-      ),
+      padding: EdgeInsets.only(left: 12.h, right: 18.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             width: 155.h,
-            padding: EdgeInsets.symmetric(
-              horizontal: 7.h,
-              vertical: 10.v,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 7.h, vertical: 10.v),
             decoration:
                 AppDecoration.gradientOnErrorContainerToRed90001.copyWith(
               borderRadius: BorderRadiusStyle.roundedBorder24,
@@ -515,10 +911,7 @@ class ProfileStateTestPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: 8.v,
-                    bottom: 7.v,
-                  ),
+                  padding: EdgeInsets.only(top: 8.v, bottom: 7.v),
                   child: SizedBox(
                     child: Padding(
                       padding: EdgeInsets.all(4.h),
@@ -531,17 +924,13 @@ class ProfileStateTestPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                    right: 30.h,
-                    // bottom: 3.v,
-                  ),
+                  padding: EdgeInsets.only(right: 30.h),
                   child: Column(
                     children: [
                       Text(
                         "lbl_3".tr,
                         style: CustomTextStyles.titleMediumInter,
                       ),
-                      //SizedBox(height: 1.v),
                       Text(
                         "lbl_quizzes".tr,
                         style: CustomTextStyles.labelLargeInterErrorContainer,
@@ -555,10 +944,7 @@ class ProfileStateTestPage extends StatelessWidget {
           Container(
             width: 155.h,
             margin: EdgeInsets.only(left: 18.h),
-            padding: EdgeInsets.symmetric(
-              horizontal: 7.h,
-              vertical: 10.v,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 7.h, vertical: 10.v),
             decoration:
                 AppDecoration.gradientOnErrorContainerToRed90001.copyWith(
               borderRadius: BorderRadiusStyle.roundedBorder24,
@@ -568,10 +954,7 @@ class ProfileStateTestPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(
-                    top: 8.v,
-                    bottom: 7.v,
-                  ),
+                  padding: EdgeInsets.only(top: 8.v, bottom: 7.v),
                   child: SizedBox(
                     child: Padding(
                       padding: EdgeInsets.all(4.h),
@@ -584,10 +967,7 @@ class ProfileStateTestPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(
-                    left: 16.h,
-                    bottom: 3.v,
-                  ),
+                  padding: EdgeInsets.only(left: 16.h, bottom: 3.v),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -603,9 +983,7 @@ class ProfileStateTestPage extends StatelessWidget {
                               text: "lbl_leaderboard".tr,
                               style: CustomTextStyles.labelLargeInterff9098a3,
                             ),
-                            TextSpan(
-                              text: " ",
-                            ),
+                            TextSpan(text: " "),
                           ],
                         ),
                         textAlign: TextAlign.left,
@@ -621,7 +999,6 @@ class ProfileStateTestPage extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget _buildMedallionTileList(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
@@ -634,24 +1011,17 @@ class ProfileStateTestPage extends StatelessWidget {
             return ListView.separated(
               padding: EdgeInsets.only(left: 12.h),
               scrollDirection: Axis.horizontal,
-              separatorBuilder: (
-                context,
-                index,
-              ) {
-                return SizedBox(
-                  width: 9.h,
-                );
+              separatorBuilder: (context, index) {
+                return SizedBox(width: 9.h);
               },
               itemCount:
                   profileStateTestModelObj?.medalliontilelistItemList.length ??
                       0,
               itemBuilder: (context, index) {
-                MedalliontilelistItemModel model = profileStateTestModelObj
-                        ?.medalliontilelistItemList[index] ??
-                    MedalliontilelistItemModel();
-                return MedalliontilelistItemWidget(
-                  model,
-                );
+                MedalliontilelistItemModel model =
+                    profileStateTestModelObj?.medalliontilelistItemList[index] ??
+                        MedalliontilelistItemModel();
+                return MedalliontilelistItemWidget(model);
               },
             );
           },
@@ -659,7 +1029,6 @@ class ProfileStateTestPage extends StatelessWidget {
       ),
     );
   }
-
   void _showPopupMenu(BuildContext context) {
     showDialog(
       context: context,
@@ -793,61 +1162,42 @@ class ProfileStateTestPage extends StatelessWidget {
     );
   }
 }
-Future<String?> getUidFromAuth() async {
-  try {
-    // Get the current user from FirebaseAuth
-    User? user = FirebaseAuth.instance.currentUser;
-    // Check if a user is signed in
-    if (user != null) {
-      // If a user is signed in, return the UID
-      return user.uid;
-    } else {
-      // If no user is signed in, return null
-      return null;
+Future<String> getUsernameFromFirestore() async {
+  User? user = FirebaseAuth.instance.currentUser;
+
+  if (user != null) {
+    String uid = user.uid;
+
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .get();
+
+      if (snapshot.exists) {
+        String username = snapshot['username'];
+        return username;
+      } else {
+        return 'User document not found';
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+      return 'Error fetching user data';
     }
-  } catch (e) {
-    // If an error occurs during UID retrieval, print the error and return null
-    print('Error getting UID from FirebaseAuth: $e');
-    return null;
+  } else {
+    return 'User not signed in';
   }
 }
-Future<String> getUsernameFromFirestore({required String uid}) async {
-  try {
-    // Get the document snapshot from Firestore
-    DocumentSnapshot snapshot = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(uid)
-        .get();
+class Word {
+  final String simplified;
+  final String english;
 
-    // Check if the document exists
-    if (snapshot.exists) {
-      // Extract the username from the document data
-      String username = snapshot['username'] as String;
-      return username;
-    } else {
-      // If the document does not exist, return an empty string
-      return '';
-    }
-  } catch (e) {
-    // If an error occurs during data fetching, print the error and return an empty string
-    print('Error fetching username: $e');
-    return '';
-  }
-}
-Future<void> fetchUsernameAndPrint() async {
-  try {
-    // Get the UID from FirebaseAuth
-    String? uid = await getUidFromAuth();
+  Word({required this.simplified, required this.english});
 
-    if (uid != null) {
-      // If a UID is retrieved, fetch the username from Firestore
-      String usernamee = await getUsernameFromFirestore(uid: uid);
-      username=usernamee;
-    } else {
-      print('User is not signed in.');
-    }
-  } catch (e) {
-    // Handle any errors that occur during the process
-    print('Error fetching username and printing: $e');
+  factory Word.fromJson(Map<String, dynamic> json) {
+    return Word(
+      simplified: json['simplified'],
+      english: json['english'],
+    );
   }
 }

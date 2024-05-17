@@ -12,7 +12,8 @@ class ImageConstant {
 
   // choose accountThree images
   static String img3dOthers1177x177 = '$imagePath/img_3d_others_1_177x177.png';
-
+  //gold icon
+  static String medalgold ='$imagePath/Medallionsgold.png';
   // signup images
   static String imgStar1 = '$imagePath/img_star_1.svg';
 

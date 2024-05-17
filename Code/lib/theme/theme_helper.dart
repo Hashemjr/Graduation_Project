@@ -231,8 +231,12 @@ class PrimaryColors {
   Color get gray200 => Color(0XFFEFEFEF);
   Color get gray20001 => Color(0XFFE7E8EB);
   Color get gray300 => Color(0XFFE5E5E8);
-  Color get gray400 => Color(0XFFB3B3B3);
-  Color get gray40033 => Color(0X33D0C6AA);
+  Color get gray400 => Color.fromARGB(255, 179, 179, 179);
+  Color get silver400 =>Color.fromARGB(8, 16, 16, 16);
+  Color get silver90003 =>Color.fromARGB(255, 119, 131, 144);
+  Color get gold400 =>Color.fromARGB(255, 237, 180, 82);
+  Color get gold90003 =>Color.fromARGB(255, 255, 255, 255);
+  Color get gray40033 => Color.fromARGB(24, 208, 198, 170);
   Color get gray500 => Color(0XFFA3A3A3);
   Color get gray50001 => Color(0XFF9E9FA1);
   Color get gray50002 => Color(0XFFA59E8E);

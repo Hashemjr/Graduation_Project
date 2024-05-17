@@ -12,7 +12,7 @@ class MedalliontilelistItemWidget extends StatelessWidget {
           key: key,
         );
 
-  MedalliontilelistItemModel medalliontilelistItemModelObj;
+  final MedalliontilelistItemModel medalliontilelistItemModelObj;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class MedalliontilelistItemWidget extends StatelessWidget {
                       SizedBox(
                         width: 124.h,
                         child: Text(
-                          medalliontilelistItemModelObj.courseName!,
+                          medalliontilelistItemModelObj.courseName ?? '',
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.center,
@@ -64,14 +64,34 @@ class MedalliontilelistItemWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 19.v),
-                      CustomElevatedButton(
-                        height: 28.v,
-                        width: 132.h,
-                        text: "msg_bronze_certified".tr,
-                        buttonStyle: CustomButtonStyles.fillGray,
-                        buttonTextStyle:
-                            CustomTextStyles.titleSmallInterGray50002,
-                      ),
+                      if (medalliontilelistItemModelObj.id == '1') ...[
+                        CustomElevatedButton(
+                          height: 28.v,
+                          width: 132.h,
+                          text: "msg_bronze_certified".tr,
+                          buttonStyle: CustomButtonStyles.fillGray,
+                          buttonTextStyle:
+                              CustomTextStyles.titleSmallInterGray50002,
+                        ),
+                      ] else if (medalliontilelistItemModelObj.id == '2') ...[
+                        CustomElevatedButton(
+                          height: 28.v,
+                          width: 132.h,
+                          text: "Silver Certified",
+                          buttonStyle: CustomButtonStyles.fillSilver,
+                          buttonTextStyle:
+                              CustomTextStyles.titleSmallInterSilver50002,
+                        ),
+                      ] else if (medalliontilelistItemModelObj.id == '3') ...[
+                        CustomElevatedButton(
+                          height: 28.v,
+                          width: 132.h,
+                          text: "Gold Certified",
+                          buttonStyle: CustomButtonStyles.fillGold,
+                          buttonTextStyle:
+                              CustomTextStyles.titleSmallInterGold50002,
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -83,3 +103,4 @@ class MedalliontilelistItemWidget extends StatelessWidget {
     );
   }
 }
+

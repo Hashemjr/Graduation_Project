@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'bloc/profile_leaderboard_bloc.dart';
 import 'models/profile_leaderboard_model.dart';
 import 'package:chineasy/core/app_export.dart';
