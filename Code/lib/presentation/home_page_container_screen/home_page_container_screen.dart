@@ -243,304 +243,271 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
   }
 
   /// Section Widget
-  Widget _buildContinueStudying(BuildContext context) {
-    return FutureBuilder<Word>(
-      future: _wordOfTheDay,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else if (!snapshot.hasData) {
-          return Text('No word of the day available');
-        } else {
-          Word word = snapshot.data!;
-          return Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 10.h), // Adjusted horizontal padding
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 2.h), // Adjusted horizontal padding
-                    child: GestureDetector(
-                      onTap: () {
-                        NavigatorService.pushNamed(
-                            AppRoutes.coursesTestContainerPage);
-                      },
-                      child: _buildCulture(
-                        context,
-                        currentLesson: "lbl_active_level".tr,
-                        text: "lbl_see_course".tr,
-                      ),
+Widget _buildContinueStudying(BuildContext context) {
+  return FutureBuilder<Word>(
+    future: _wordOfTheDay,
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return CircularProgressIndicator();
+      } else if (snapshot.hasError) {
+        return Text('Error: ${snapshot.error}');
+      } else if (!snapshot.hasData) {
+        return Text('No word of the day available');
+      } else {
+        Word word = snapshot.data!;
+        return Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.h), // Adjusted horizontal padding
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2.h), // Adjusted horizontal padding
+                  child: GestureDetector(
+                    onTap: () {
+                      NavigatorService.pushNamed(AppRoutes.coursesTestContainerPage);
+                    },
+                    child: _buildCulture(
+                      context,
+                      currentLesson: "lbl_active_level".tr,
+                      text: "lbl_see_course".tr,
                     ),
                   ),
-                  SizedBox(height: 11.v),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                        horizontal: 2.h), // Adjusted horizontal margin
-                    padding: EdgeInsets.all(20.h),
-                    decoration: AppDecoration
-                        .gradientOnErrorContainerToRed900011
-                        .copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder32,
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 41.h),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 84.adaptSize,
-                                width: 84.adaptSize,
-                                margin:
-                                    EdgeInsets.only(top: 12.v, bottom: 15.v),
-                                child: Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Container(
-                                      height: 84.adaptSize,
-                                      width: 84.adaptSize,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
+                ),
+                SizedBox(height: 11.v),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 2.h), // Adjusted horizontal margin
+                  padding: EdgeInsets.all(20.h),
+                  decoration: AppDecoration.gradientOnErrorContainerToRed900011.copyWith(
+                    borderRadius: BorderRadiusStyle.roundedBorder32,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 41.h),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 84.adaptSize,
+                              width: 84.adaptSize,
+                              margin: EdgeInsets.only(top: 12.v, bottom: 15.v),
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Container(
+                                    height: 84.adaptSize,
+                                    width: 84.adaptSize,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: SimpleCircularProgressBar(
+                                      progressColors: const [Color.fromARGB(255, 255, 255, 255)],
+                                      backColor: Color.fromARGB(199, 71, 71, 71),
+                                      progressStrokeWidth: 10,
+                                      backStrokeWidth: 5,
+                                      mergeMode: true,
+                                      fullProgressColor: Colors.green,
+                                      animationDuration: 3,
+                                      valueNotifier: progressNotifier,
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      decoration: AppDecoration.outlinePrimary1,
+                                      child: Text(
+                                        "lbl_72".tr,
+                                        style: CustomTextStyles.titleMediumPoppinsSemiBold,
                                       ),
-                                      child: SimpleCircularProgressBar(
-                                        progressColors: const [
-                                          Color.fromARGB(255, 255, 255, 255)
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 16.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "lbl_beginner_level".tr,
+                                    style: CustomTextStyles.titleSmallGray50003,
+                                  ),
+                                  Text(
+                                    "lbl_chapter_2".tr,
+                                    style: CustomTextStyles.labelLargeGray50003,
+                                  ),
+                                  SizedBox(
+                                    width: 153.h,
+                                    child: Text(
+                                      "msg_pinyin_chinese".tr,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: CustomTextStyles.titleMediumPoppinsSemiBold.copyWith(
+                                        height: 1.33,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 12.v),
+                                  Text(
+                                    "msg_continue_your_journey".tr,
+                                    style: CustomTextStyles.bodySmallOnError,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 14.v),
+                      CustomElevatedButton(
+                        height: 44.v,
+                        text: "Mulan Chatbot".tr,
+                        buttonStyle: CustomButtonStyles.fillPrimary,
+                        buttonTextStyle: CustomTextStyles.titleSmallGray900,
+                        onPressed: () {
+                          NavigatorService.pushNamed(AppRoutes.chatbotScreen);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 12.v),
+                SizedBox(
+                  height: 109.v,
+                  width: 330.h,
+                  child: Stack(
+                    alignment: Alignment.topCenter,
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Play Lottie animation on tap
+                            showDialog(
+                              context: context,
+                              builder: (context) => Dialog(
+                                //backgroundColor: Colors.transparent, // No background color
+                                child: Lottie.asset('assets/images/NEW_WORD_Animation.json'),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(top: 5.v),
+                            decoration: AppDecoration.fillPrimary.copyWith(
+                              borderRadius: BorderRadiusStyle.roundedBorder20,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start, // Align to the left
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CustomImageView(
+                                  imagePath: ImageConstant.imgGoldenOpenBoo,
+                                  height: 82.v,
+                                  width: 86.h,
+                                  margin: EdgeInsets.only(top: 15.v, right: 0.h), // Adjusted margin
+                                ),
+                                SizedBox(width: 5.h), // Add spacing between image and text
+                                Expanded(
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 25.v,right: 95), // Adjusted padding
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            decoration: AppDecoration.outlineBlack,
+                                            child: Text(
+                                              word.simplified,
+                                              style: CustomTextStyles.headlineSmallOnErrorContainer,
+                                            ),
+                                          ),
+                                          SizedBox(height: 0.v), // Adjusted spacing
+                                          Text(
+                                            word.english,
+                                            style: CustomTextStyles.bodyLargeAlataBlack900,
+                                            textAlign: TextAlign.center,
+                                          ),
                                         ],
-                                        backColor:
-                                            Color.fromARGB(199, 71, 71, 71),
-                                        progressStrokeWidth: 10,
-                                        backStrokeWidth: 5,
-                                        mergeMode: true,
-                                        fullProgressColor: Colors.green,
-                                        animationDuration: 3,
-                                        valueNotifier: progressNotifier,
                                       ),
                                     ),
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        decoration:
-                                            AppDecoration.outlinePrimary1,
-                                        child: Text(
-                                          "lbl_72".tr,
-                                          style: CustomTextStyles
-                                              .titleMediumPoppinsSemiBold,
-                                        ),
-                                      ),
+                                  ),
+                                ),
+                                // Other widgets...
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                          height: 36.v,
+                          width: 330.h,
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Container(
+                                  height: 33.v,
+                                  width: 330.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.vertical(top: Radius.circular(20.h)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment(0.07, 1),
+                                      end: Alignment(0.99, 0.01),
+                                      colors: [
+                                        theme.colorScheme.onErrorContainer,
+                                        appTheme.red90001,
+                                      ],
                                     ),
-                                  ],
+                                  ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 16.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "lbl_beginner_level".tr,
-                                      style:
-                                          CustomTextStyles.titleSmallGray50003,
-                                    ),
-                                    Text(
-                                      "lbl_chapter_2".tr,
-                                      style:
-                                          CustomTextStyles.labelLargeGray50003,
-                                    ),
-                                    SizedBox(
-                                      width: 153.h,
-                                      child: Text(
-                                        "msg_pinyin_chinese".tr,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: CustomTextStyles
-                                            .titleMediumPoppinsSemiBold
-                                            .copyWith(
-                                          height: 1.33,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(height: 12.v),
-                                    Text(
-                                      "msg_continue_your_journey".tr,
-                                      style: CustomTextStyles.bodySmallOnError,
-                                    ),
-                                  ],
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  decoration: AppDecoration.outlineBlack,
+                                  child: Text(
+                                    "lbl_word_of_the_day".tr,
+                                    style: CustomTextStyles.bodyLargePoppinsPrimary,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 14.v),
-                        CustomElevatedButton(
-                          height: 44.v,
-                          text: "Mulan Chatbot".tr,
-                          buttonStyle: CustomButtonStyles.fillPrimary,
-                          buttonTextStyle: CustomTextStyles.titleSmallGray900,
-                          onPressed: () {
-                            NavigatorService.pushNamed(AppRoutes.chatbotScreen);
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 12.v),
-                  SizedBox(
-                    height: 109.v,
-                    width: 330.h,
-                    child: Stack(
-                      alignment: Alignment.topCenter,
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: GestureDetector(
-                            onTap: () {
-                              // Play Lottie animation on tap
-                              showDialog(
-                                context: context,
-                                builder: (context) => Dialog(
-                                  backgroundColor: Color.fromARGB(255, 255, 255,
-                                      255), // No background color
-                                  child: Lottie.asset(
-                                      'assets/images/NEW_WORD_Animation.json'),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(top: 5.v),
-                              decoration: AppDecoration.fillPrimary.copyWith(
-                                borderRadius: BorderRadiusStyle.roundedBorder20,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .start, // Align to the left
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  CustomImageView(
-                                    imagePath: ImageConstant.imgGoldenOpenBoo,
-                                    height: 82.v,
-                                    width: 86.h,
-                                    margin: EdgeInsets.only(
-                                        top: 15.v,
-                                        right: 0.h), // Adjusted margin
-                                  ),
-                                  SizedBox(
-                                      width: 5
-                                          .h), // Add spacing between image and text
-                                  Expanded(
-                                    child: Center(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 25.v,
-                                            right: 95), // Adjusted padding
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              decoration:
-                                                  AppDecoration.outlineBlack,
-                                              child: Text(
-                                                word.simplified,
-                                                style: CustomTextStyles
-                                                    .headlineSmallOnErrorContainer,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                                height:
-                                                    0.v), // Adjusted spacing
-                                            Text(
-                                              word.english,
-                                              style: CustomTextStyles
-                                                  .bodyLargeAlataBlack900,
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  // Other widgets...
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: SizedBox(
-                            height: 36.v,
-                            width: 330.h,
-                            child: Stack(
-                              alignment: Alignment.bottomCenter,
-                              children: [
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Container(
-                                    height: 33.v,
-                                    width: 330.h,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.vertical(
-                                          top: Radius.circular(20.h)),
-                                      gradient: LinearGradient(
-                                        begin: Alignment(0.07, 1),
-                                        end: Alignment(0.99, 0.01),
-                                        colors: [
-                                          theme.colorScheme.onErrorContainer,
-                                          appTheme.red90001,
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    decoration: AppDecoration.outlineBlack,
-                                    child: Text(
-                                      "lbl_word_of_the_day".tr,
-                                      style: CustomTextStyles
-                                          .bodyLargePoppinsPrimary,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 6.v),
-                  GestureDetector(
-                    onTap: () {
-                      NavigatorService.pushNamed(AppRoutes.FlashcardsHomePage);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 6.h),
-                      child: _buildCulture(
-                        context,
-                        currentLesson: "lbl_culture".tr,
-                        text: "lbl_view_all".tr,
                       ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 6.v),
+                GestureDetector(
+                  onTap: () {
+                    NavigatorService.pushNamed(AppRoutes.FlashcardsHomePage);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 6.h),
+                    child: _buildCulture(
+                      context,
+                      currentLesson: "lbl_culture".tr,
+                      text: "lbl_view_all".tr,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          );
-        }
-      },
-    );
-  }
+          ),
+        );
+      }
+    },
+  );
+}
 }
 
 /// Section Widget
