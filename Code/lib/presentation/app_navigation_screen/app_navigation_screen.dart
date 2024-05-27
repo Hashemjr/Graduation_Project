@@ -157,6 +157,10 @@ class AppNavigationScreen extends StatelessWidget {
                                 screenTitle: "Match",
                                 onTapScreenTitle: () => onTapScreenTitle(
                                     AppRoutes.MatchingExercises)),
+                            _buildScreenTitle(context,
+                                screenTitle: "link",
+                                onTapScreenTitle: () =>
+                                    onTapScreenTitle(AppRoutes.LINK)),
                           ],
                         ),
                       ),
