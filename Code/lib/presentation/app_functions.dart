@@ -39,8 +39,22 @@ void addUserToFirestore(Map<String, String?> userData) {
     'lastName': userData['lastName'],
     'birthday': userData['birthday'],
     'gender': userData['gender'],
-  }).then((_) {
+    'college':'ecu',
+  }).then((_){
     print('User added to Firestore successfully!');
+    // Add the Userstats subcollection
+    users.doc(uid).collection('Userstats').add({
+      'levelprogress': '0',
+      'courseprogress': '0',
+      'quizzes': '0',
+      'certificate': '0',
+      'streak': '0',
+    }).then((_) {
+      print('Userstats added to Firestore successfully!');
+    }).catchError((error) {
+      print('Failed to add Userstats to Firestore: $error');
+    });
+
   }).catchError((error) {
     print('Failed to add user to Firestore: $error');
   });

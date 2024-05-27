@@ -1,7 +1,7 @@
 import 'dart:io';
-
 import 'package:chineasy/presentation/chatbot/chatbot.dart';
 import 'package:chineasy/presentation/courses/link/link.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp/lesson_Temp.dart';
 import 'package:chineasy/presentation/courses/Multiple_questions/mcq.dart';
 import 'package:chineasy/presentation/courses/Matching/match.dart';
 import 'package:chineasy/presentation/object_detection_screen/camera_view.dart';
@@ -82,6 +82,7 @@ class AppRoutes {
 
   static const String MatchingExercises = '/courses/Matching';
   static const String LINK = '/courses/link';
+  static const String Lesson_temp='/courses/lesson_temp';
   static const String initialRoute = '/initialRoute';
 
   static Map<String, WidgetBuilder> get routes => {
@@ -112,6 +113,7 @@ class AppRoutes {
         MultipleChoiceQuestion: (context) => ChineseLearningApp(),
         MatchingExercises: (context) => MatchingExercise(),
         LINK: (context) => Link(),
+        Lesson_temp:(context)=> Lessontemp(),
         //profileLeaderboardScreen: (context) => ProfileLeaderboardScreen(),
         //: (context) => ProfileStateTestPage(),
         // initialRoute: AppNavigationScreen.builder
