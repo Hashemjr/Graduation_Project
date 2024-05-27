@@ -12,7 +12,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'core/app_export.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,7 +64,6 @@ class SplashScreen extends StatelessWidget {
   //@override
   //_SplashScreenState createState() => _SplashScreenState();
 }
-
 /*class _SplashScreenState extends State<SplashScreen> {
   int _currentIndex = 0;
   late Timer _timer;

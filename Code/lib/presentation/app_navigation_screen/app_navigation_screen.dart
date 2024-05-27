@@ -161,6 +161,10 @@ class AppNavigationScreen extends StatelessWidget {
                                 screenTitle: "link",
                                 onTapScreenTitle: () =>
                                     onTapScreenTitle(AppRoutes.LINK)),
+                                    _buildScreenTitle(context,
+                                screenTitle: "Lesson 1",
+                                onTapScreenTitle: () =>
+                                    onTapScreenTitle(AppRoutes.Lesson_temp)),
                           ],
                         ),
                       ),
