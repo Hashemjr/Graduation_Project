@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:chineasy/presentation/chatbot/chatbot.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp2/lesson_temp2.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp3/lesson_temp3.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp4/lesson_temp4.dart';
 import 'package:chineasy/presentation/courses/link/link.dart';
 import 'package:chineasy/presentation/courses/Lesson_Temp/lesson_Temp.dart';
 import 'package:chineasy/presentation/courses/Multiple_questions/mcq.dart';
@@ -81,8 +84,17 @@ class AppRoutes {
   static const String MultipleChoiceQuestion = '/courses/Multiple_questions';
 
   static const String MatchingExercises = '/courses/Matching';
+
   static const String LINK = '/courses/link';
+
   static const String Lesson_temp='/courses/lesson_temp';
+
+  static const String Lesson_temp2='/courses/lesson_temp2';
+  
+  static const String Lesson_temp3='/courses/lesson_temp3';
+
+  static const String Lesson_temp4='/courses/lesson_temp4';
+
   static const String initialRoute = '/initialRoute';
 
   static Map<String, WidgetBuilder> get routes => {
@@ -114,6 +126,9 @@ class AppRoutes {
         MatchingExercises: (context) => MatchingExercise(),
         LINK: (context) => Link(),
         Lesson_temp:(context)=> Lessontemp(),
+        Lesson_temp2:(context)=> Lessontemp2(),
+        Lesson_temp3:(context)=> Lessontemp3(),
+        Lesson_temp4:(context)=> Lessontemp4(),
         //profileLeaderboardScreen: (context) => ProfileLeaderboardScreen(),
         //: (context) => ProfileStateTestPage(),
         // initialRoute: AppNavigationScreen.builder

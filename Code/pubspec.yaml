@@ -61,6 +61,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/greeting/
+    - assets/images/numbers/
     - assets/labels/
     - assets/models/
   fonts:
