@@ -11,17 +11,39 @@ class ChineseLearningApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Disable debug banner
       home: Scaffold(
-        appBar: AppBar(
-          title:
-              Text('Chinese Learning', style: TextStyle(color: Colors.white)),
-          centerTitle: true,
-          backgroundColor: appTheme.black900,
-        ),
         body: Container(
-          color: appTheme.gray90001,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30.0),
-            child: MultipleChoiceQuestion(),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.5, 0),
+              end: Alignment(0.5, 1),
+              colors: [appTheme.black900, appTheme.gray90001],
+            ),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 60,bottom: 20),
+                  child: Text(
+                    'Chinese Test',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 40, // Adjust the font size as needed
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0.0),
+                  child: MultipleChoiceQuestion(),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -172,7 +194,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
         return AlertDialog(
           title: Text(
             'Quiz Result',
-            style: TextStyle(fontSize: 25), // Increased font size
+            style: TextStyle(fontSize: 16), // Increased font size
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -180,13 +202,13 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
             children: [
               Text(
                 'Score: $score/${questions.length}',
-                style: TextStyle(fontSize: 24), // Increased font size
+                style: TextStyle(fontSize: 20), // Increased font size
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 2),
               Text(
                 'Answers:',
                 style: TextStyle(
-                    fontSize: 20), // Increased font size for "Answers:"
+                    fontSize: 14), // Increased font size for "Answers:"
               ),
               for (int i = 0; i < questions.length; i++)
                 Text(
@@ -195,7 +217,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                     color: selectedAnswers[i] == questions[i].correctAnswer
                         ? Colors.green
                         : Colors.red,
-                    fontSize: 25, // Increased font size
+                    fontSize: 18, // Increased font size
                   ),
                 ),
             ],
@@ -212,7 +234,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
               ),
               child: Text(
                 'Restart Quiz',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+                style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
             ElevatedButton(
@@ -225,7 +247,7 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
               child: Text(
                 'Finish',
                 style: TextStyle(
-                    fontSize: 20, color: Color.fromARGB(255, 255, 255, 255)),
+                    fontSize: 18, color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
           ],
@@ -251,9 +273,9 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                   children: [
                     Text(
                       currentQuestion.question,
-                      style: TextStyle(fontSize: 30, color: Colors.white),
+                      style: TextStyle(fontSize: 20, color: Colors.white,fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 5),
                     for (String option in currentQuestion.options)
                       ElevatedButton(
                         onPressed: selectedAnswers[index] == null
@@ -279,10 +301,10 @@ class _MultipleChoiceQuestionState extends State<MultipleChoiceQuestion> {
                         ),
                         child: Text(
                           option,
-                          style: TextStyle(fontSize: 26, color: Colors.black),
+                          style: TextStyle(fontSize: 16, color: Colors.black),
                         ),
                       ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 5),
                   ],
                 );
               },

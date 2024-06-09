@@ -54,7 +54,7 @@ class _LevelProgressBarState extends State<LevelProgressBar>
           Stack(
             children: [
               Container(
-                height: 43,
+                height: 33,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   gradient: LinearGradient(
@@ -71,7 +71,7 @@ class _LevelProgressBarState extends State<LevelProgressBar>
                     animation: _animation,
                     builder: (context, child) {
                       return Container(
-                        height: 43,
+                        height: 33,
                         width: constraints.maxWidth * _animation.value,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
@@ -122,7 +122,7 @@ class _LevelProgressBarState extends State<LevelProgressBar>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(50),
         gradient: LinearGradient(
           colors: isCurrent
               ? [

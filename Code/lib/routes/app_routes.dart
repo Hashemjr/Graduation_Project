@@ -3,6 +3,8 @@ import 'package:chineasy/presentation/chatbot/chatbot.dart';
 import 'package:chineasy/presentation/courses/Lesson_Temp2/lesson_temp2.dart';
 import 'package:chineasy/presentation/courses/Lesson_Temp3/lesson_temp3.dart';
 import 'package:chineasy/presentation/courses/Lesson_Temp4/lesson_temp4.dart';
+import 'package:chineasy/presentation/courses/intro_course1.dart';
+import 'package:chineasy/presentation/courses/course_screen.dart';
 import 'package:chineasy/presentation/courses/link/link.dart';
 import 'package:chineasy/presentation/courses/Lesson_Temp/lesson_Temp.dart';
 import 'package:chineasy/presentation/courses/Multiple_questions/mcq.dart';
@@ -31,7 +33,7 @@ import 'package:chineasy/presentation/inside_course_screen/inside_course_screen.
 import 'package:chineasy/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:chineasy/presentation/Flashcards/home-page.dart';
 import '../presentation/profile_state_test_page/profile_state_test_page.dart';
-
+import 'package:chineasy/presentation/detect.dart';
 class AppRoutes {
   static const String chooseAccountoneScreen = '/choose_accountone_screen';
 
@@ -97,6 +99,12 @@ class AppRoutes {
 
   static const String initialRoute = '/initialRoute';
 
+  static const String introCoursePage ='/courses/intro_course1';
+
+  static const String courseScreen ='/courses/course_screen';
+
+  static const String detect ='/detect';
+
   static Map<String, WidgetBuilder> get routes => {
         chooseAccountoneScreen: ChooseAccountoneScreen.builder,
         chooseAccounttwoScreen: ChooseAccounttwoScreen.builder,
@@ -129,8 +137,11 @@ class AppRoutes {
         Lesson_temp2:(context)=> Lessontemp2(),
         Lesson_temp3:(context)=> Lessontemp3(),
         Lesson_temp4:(context)=> Lessontemp4(),
+        introCoursePage:(context)=> IntroCoursePage(),
+        courseScreen:(context)=> CourseScreen(),
+        detect:(context)=> Detect(),
         //profileLeaderboardScreen: (context) => ProfileLeaderboardScreen(),
         //: (context) => ProfileStateTestPage(),
-        // initialRoute: AppNavigationScreen.builder
+        initialRoute: ChooseAccountoneScreen.builder
       };
 }

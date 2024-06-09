@@ -85,18 +85,22 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                       child: Stack(
                         alignment: Alignment.topRight,
                         children: [
-                          CustomImageView(
-                            imagePath: ImageConstant.imgBackgroundBlur,
-                            height: 187.v,
-                            width: 216.h,
-                            alignment: Alignment.topLeft,
-                          ),
-                          CustomImageView(
-                            imagePath: ImageConstant.imgBackgroundBlur188x200,
-                            height: 188.v,
-                            width: 200.h,
-                            alignment: Alignment.topRight,
-                          ),
+                          Padding(
+                                  padding: const EdgeInsets.only(top: 0),
+                                  child: CustomImageView(
+                                    imagePath: ImageConstant.backgroundleft,
+                                    width: 180.h,
+                                    alignment: Alignment.topLeft,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: CustomImageView(
+                                    imagePath: ImageConstant.backgroundright,
+                                    width: 180.h,
+                                    alignment: Alignment.topRight,
+                                  ),
+                                ),
                           _buildHeader(context),
                           _buildContinueStudying(context),
                         ],
@@ -225,7 +229,7 @@ class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    NavigatorService.pushNamed(AppRoutes.objectDetectionScreen);
+                    NavigatorService.pushNamed(AppRoutes.detect);
                   },
                   child: CustomImageView(
                     imagePath: ImageConstant.imgCameraIconPng,
@@ -517,7 +521,7 @@ Widget _buildCard(BuildContext context) {
       Container(
         height: 95.v,
         width: 167.h,
-        margin: EdgeInsets.symmetric(vertical: 17.v),
+        margin: EdgeInsets.symmetric(vertical: 8.v),
         decoration: AppDecoration.outlineRed,
         child: Stack(
           alignment: Alignment.topRight,
@@ -624,9 +628,14 @@ Widget _buildCard(BuildContext context) {
         ),
       ),
       Container(
-        height: 131.v,
-        width: 240.h,
-        margin: EdgeInsets.only(left: 2.h),
+        height: 98.v,
+        width: 180.h,
+        margin: EdgeInsets.only(
+          left: 2.h,
+          top: 16.v,
+          bottom: 16.v,
+          right: 10,
+        ),
         decoration: AppDecoration.outlineRed,
         child: Stack(
           alignment: Alignment.bottomRight,
@@ -634,8 +643,8 @@ Widget _buildCard(BuildContext context) {
             Align(
               alignment: Alignment.centerLeft,
               child: Container(
-                height: 131.v,
-                width: 206.h,
+                height: 95.v,
+                width: 160.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
                     20.h,
@@ -653,8 +662,8 @@ Widget _buildCard(BuildContext context) {
             ),
             CustomImageView(
               imagePath: ImageConstant.imgNoodlePic,
-              height: 114.v,
-              width: 188.h,
+              height: 85.v,
+              width: 110.h,
               alignment: Alignment.bottomRight,
             ),
             GestureDetector(
@@ -665,8 +674,8 @@ Widget _buildCard(BuildContext context) {
                 alignment: Alignment.topLeft,
                 child: Padding(
                   padding: EdgeInsets.only(
-                    left: 9.h,
-                    top: 24.v, // Adjusted top padding
+                    left: 5.h,
+                    top: 10 // Adjusted top padding
                   ),
                   child: Text(
                     "lbl_food".tr,

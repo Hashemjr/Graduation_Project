@@ -7,8 +7,9 @@ class TonePractice extends StatefulWidget {
 }
 
 class _TonePracticeState extends State<TonePractice> {
-  final List<String> tones = ['ā', 'á', 'ǎ', 'à', 'ē', 'é', 'ě', 'è'];
-  final List<String> syllables = ['ma', 'ba', 'da', 'fa', 'mo', 'bo', 'do', 'fo'];
+  final List<String> tones = ['ā', 'á', 'ǎ', 'à', 'ō', 'ó', 'ǒ', 'ò'];
+  final List<String> audio = ['ma1', 'ba2', 'da3', 'fa4', 'mo1', 'bo2', 'po3', 'fo4'];
+  final List<String> syllables = ['ma', 'ba', 'da', 'fa', 'mo', 'bo', 'po', 'fo'];
   late AudioPlayer _audioPlayer;
   final Map<String, String> selectedTones = {};
   final Map<String, bool> answerStatus = {}; // Track correctness of answers
@@ -25,24 +26,26 @@ class _TonePracticeState extends State<TonePractice> {
     super.dispose();
   }
 
-void _playSound(String syllable, String tone) async {
-  if (!mounted) return; // Check if the widget is still mounted
-  
-  String pinyin = syllable + tone.substring(1); // Concatenate syllable with tone number
-  String url = 'https://yabla.vo.llnwd.net/media.yabla.com/chinese_static/audio/alicia/$pinyin.mp3';
-  try {
-    await _audioPlayer.setSourceUrl(url); // Updated method name
-    await _audioPlayer.resume();
-  } catch (e) {
-    if (mounted) { // Check again if widget is still mounted before showing the SnackBar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to load audio for $pinyin', style: TextStyle(color: Colors.red)),
-        ),
-      );
+  void _playSound(String syllable) async {
+    if (!mounted) return; // Check if the widget is still mounted
+
+    int syllableIndex = syllables.indexOf(syllable);
+    String audioFile = audio[syllableIndex];
+    String url = 'https://yabla.vo.llnwd.net/media.yabla.com/chinese_static/audio/alicia/$audioFile.mp3';
+
+    try {
+      await _audioPlayer.setSourceUrl(url); // Updated method name
+      await _audioPlayer.resume();
+    } catch (e) {
+      if (mounted) { // Check again if widget is still mounted before showing the SnackBar
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to load audio for $audioFile', style: TextStyle(color: Colors.red)),
+          ),
+        );
+      }
     }
   }
-}
 
   void _checkAnswers() {
     answerStatus.clear(); // Clear previous feedback
@@ -78,7 +81,7 @@ void _playSound(String syllable, String tone) async {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 132, 0, 0),
         elevation: 0,
       ),
       body: ListView.builder(
@@ -136,7 +139,7 @@ void _playSound(String syllable, String tone) async {
                     setState(() {
                       selectedTones[syllable] = value;
                     });
-                    _playSound(syllable, value);
+                    _playSound(syllable);
                   }
                 },
                 icon: Icon(Icons.arrow_drop_down, color: textColor),

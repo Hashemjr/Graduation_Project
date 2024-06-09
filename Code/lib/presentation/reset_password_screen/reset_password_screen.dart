@@ -147,7 +147,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                                 }),
                                             CustomImageView(
                                                 imagePath: ImageConstant
-                                                    .imgRedOpenedBook,
+                                                    .redbook,
                                                 height: 136.v,
                                                 width: 147.h,
                                                 alignment: Alignment.centerLeft)

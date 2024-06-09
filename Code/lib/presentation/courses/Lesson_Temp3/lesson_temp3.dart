@@ -1,8 +1,8 @@
 import 'package:chineasy/core/app_export.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp3/CountingExercise.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp3/NumberGames.dart';
 import 'package:flutter/material.dart';
-import 'CountingExercise.dart';
-import 'NumberGames.dart';
-import 'NumberQuest.dart';
+
 
 class Lessontemp3 extends StatefulWidget {
   @override
@@ -16,6 +16,9 @@ class _Lessontemp3State extends State<Lessontemp3> {
   }
     @override
   Widget build(BuildContext context) {
+
+    final double buttonWidth = MediaQuery.of(context).size.width * 0.8;
+    final double buttonHeight = MediaQuery.of(context).size.height * 0.07;
     return SafeArea(
       child: Scaffold(
         extendBody: true,
@@ -31,65 +34,74 @@ class _Lessontemp3State extends State<Lessontemp3> {
               colors: [appTheme.black900, appTheme.gray90001],
             ),
           ),
-          child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 50.0),
+                  child: Text(
+                    'Lesson Menu',
+                    style: TextStyle(
+                      fontFamily: 'Roboto', // Change to your desired font family
+                      fontSize: 30, // Adjust the font size as needed
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                _buildModernButton(
                   context,
-                  MaterialPageRoute(builder: (context) => CountingExercise()),
-                );
-              },
-              child: Text('Counting Exercise',style: TextStyle(
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 25.0,
-                  ),),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+                  'Counting Exercise',
+                  CountingExercise(),
+                  buttonWidth,
+                  buttonHeight,
+                ),
+                SizedBox(height: 20),
+                _buildModernButton(
                   context,
-                  MaterialPageRoute(builder: (context) => NumberQuizScreen()),
-                );
-              },
-              child: Text('Number Quiz',style: TextStyle(
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 25.0,
-                  ),),
+                  'Number Quiz',
+                  NumberQuizScreen(),
+                  buttonWidth,
+                  buttonHeight,
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DragAndDropNumberGame()),
-                );
-              },
-              child: Text('Drag and Drop Number Game',style: TextStyle(
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 25.0,
-                  ),),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NumberQuestScreen()),
-                );
-              },
-              child: Text('Number Quest',style: TextStyle(
-                  color: const Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 25.0,
-                  ),),
-            ),
-          ],
           ),
         ),
       ),
     );
   }
 }
-
+  Widget _buildModernButton(
+      BuildContext context, String text, Widget page, double width, double height) {
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => page),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          primary: Color.fromARGB(255, 132, 0, 0), // Background color
+          onPrimary: Colors.white, // Text color
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+          textStyle: TextStyle(
+            fontFamily: 'Roboto', // Change to your desired font family
+            fontSize: 20, // Adjust the font size as needed
+            fontWeight: FontWeight.bold,
+          ),
+          elevation: 5, // Add shadow for smooth look
+        ),
+        child: Text(text),
+      ),
+    );
+  }
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

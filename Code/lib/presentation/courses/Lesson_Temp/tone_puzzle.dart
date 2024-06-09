@@ -156,7 +156,7 @@ class _PinyinQuizState extends State<PinyinQuiz> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 132, 0, 0),
         elevation: 0,
       ),
       body: Padding(
@@ -202,7 +202,7 @@ class _PinyinQuizState extends State<PinyinQuiz> {
                     selectedTone = value;
                   });
                 },
-                activeColor: Colors.blue, // Change active color
+                activeColor: Color.fromARGB(255, 132, 0, 0), // Change active color
                 controlAffinity:
                     ListTileControlAffinity.trailing, // Move the radio button to the end
               );
@@ -215,7 +215,7 @@ class _PinyinQuizState extends State<PinyinQuiz> {
                       checkAnswer(selectedTone!);
                     },
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent,
+                primary: Color.fromARGB(255, 132, 0, 0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30), // Increased border radius
                 ),

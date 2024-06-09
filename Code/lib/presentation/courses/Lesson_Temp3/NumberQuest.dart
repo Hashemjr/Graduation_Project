@@ -48,7 +48,7 @@ class _NumberQuestScreenState extends State<NumberQuestScreen> {
         children: [
           Expanded(
             child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
               itemCount: numbers.length,
               itemBuilder: (context, index) {
                 return GestureDetector(

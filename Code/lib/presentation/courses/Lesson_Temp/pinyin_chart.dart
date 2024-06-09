@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:chineasy/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -111,6 +112,7 @@ class _PinyinChartState extends State<PinyinChart> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:Color.fromARGB(255, 132, 0, 0),
         title: Text(
           'Interactive Pinyin Chart',
           style: TextStyle(
@@ -120,10 +122,19 @@ class _PinyinChartState extends State<PinyinChart> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.blueAccent,
         elevation: 0,
       ),
-      body: GridView.builder(
+      body:Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.5, 0),
+              end: Alignment(0.5, 1),
+              colors: [appTheme.black900, appTheme.gray90001],
+            ),
+          ),
+          child: GridView.builder(
         padding: EdgeInsets.all(cardPadding),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
@@ -154,6 +165,7 @@ class _PinyinChartState extends State<PinyinChart> {
             ),
           );
         },
+      ),
       ),
     );
   }

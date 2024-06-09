@@ -14,7 +14,10 @@ class ImageConstant {
   static String img3dOthers1177x177 = '$imagePath/img_3d_others_1_177x177.png';
   //gold icon
   static String medalgold ='$imagePath/Medallionsgold.png';
-  // signup images
+  static String backgroundright ='$imagePath/background1.png';
+  static String backgroundleft ='$imagePath/background2.png';
+  static String redbook ='$imagePath/red book.png';
+  // signup image
   static String imgStar1 = '$imagePath/img_star_1.svg';
 
   static String imgStar2 = '$imagePath/img_star_2.svg';

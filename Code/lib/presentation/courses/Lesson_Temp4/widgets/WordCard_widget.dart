@@ -9,11 +9,11 @@ class WordCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: isDragging ? Colors.grey : const Color.fromARGB(255, 214, 152, 152),
+      color: isDragging ? Color.fromARGB(143, 78, 78, 78) : Color.fromARGB(255, 81, 0, 0),
       child: Center(
         child: Text(
           word,
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 35,color: Colors.white),
         ),
       ),
     );

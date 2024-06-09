@@ -90,7 +90,7 @@ class ChooseAccounttwoScreen extends StatelessWidget {
                                   children: [
                                     CustomImageView(
                                       imagePath:
-                                          ImageConstant.imgRedOpenedBook156x171,
+                                          ImageConstant.redbook,
                                       height: 156.v,
                                       width: 171.h,
                                       alignment: Alignment.bottomLeft,
