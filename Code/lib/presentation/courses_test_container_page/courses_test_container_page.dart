@@ -172,18 +172,22 @@ class _CoursesTestContainerPageState extends State<CoursesTestContainerPage> {
     child: Stack(
       alignment: Alignment.topRight,
       children: [
-        CustomImageView(
-          imagePath: ImageConstant.imgBackgroundBlur,
-          height: 187.v,
-          width: 216.h,
-          alignment: Alignment.topLeft,
-        ),
-        CustomImageView(
-          imagePath: ImageConstant.imgBackgroundBlur188x200,
-          height: 188.v,
-          width: 200.h,
-          alignment: Alignment.topRight,
-        ),
+        Padding(
+                                  padding: const EdgeInsets.only(top: 0),
+                                  child: CustomImageView(
+                                    imagePath: ImageConstant.backgroundleft,
+                                    width: 180.h,
+                                    alignment: Alignment.topLeft,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: CustomImageView(
+                                    imagePath: ImageConstant.backgroundright,
+                                    width: 180.h,
+                                    alignment: Alignment.topRight,
+                                  ),
+                                ),
         Positioned(
           bottom: 0,
           left: 0,

@@ -46,6 +46,14 @@ dependencies:
   simple_circular_progress_bar: ^1.0.2
   flutter_web_browser: ^0.17.1
   audioplayers: ^5.2.1
+  confetti: ^0.7.0
+  animations: ^2.0.11
+  flash_card: ^0.0.7
+  awesome_dialog: ^3.2.1
+  flutter_spinkit: ^5.2.1
+  introduction_screen: ^3.1.14
+  percent_indicator: ^4.2.3
+  flutter_slidable: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -55,7 +63,7 @@ flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/dragon .png"
-  background_color: "#000000"
+  background_color: "#ffffff"
 flutter:
   uses-material-design: true
   assets:
@@ -63,6 +71,7 @@ flutter:
     - assets/images/
     - assets/images/greeting/
     - assets/images/numbers/
+    - assets/images/begin/
     - assets/labels/
     - assets/models/
   fonts:

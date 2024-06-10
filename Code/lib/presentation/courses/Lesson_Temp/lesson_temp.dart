@@ -1,3 +1,4 @@
+import 'package:chineasy/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'pinyin_chart.dart';
 import 'tone_practice.dart';
@@ -31,7 +32,7 @@ class _LessontempState extends State<Lessontemp> {
             gradient: LinearGradient(
               begin: Alignment(0.5, 0),
               end: Alignment(0.5, 1),
-              colors: [Colors.black, Colors.grey[900]!],
+              colors: [appTheme.black900, appTheme.gray90001],
             ),
           ),
           child: Center(
@@ -39,7 +40,7 @@ class _LessontempState extends State<Lessontemp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 40.0),
+                  padding: const EdgeInsets.only(bottom: 50.0),
                   child: Text(
                     'Lesson Menu',
                     style: TextStyle(
@@ -94,7 +95,7 @@ class _LessontempState extends State<Lessontemp> {
           );
         },
         style: ElevatedButton.styleFrom(
-          primary: Colors.blue, // Background color
+          primary: Color.fromARGB(255, 132, 0, 0), // Background color
           onPrimary: Colors.white, // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),

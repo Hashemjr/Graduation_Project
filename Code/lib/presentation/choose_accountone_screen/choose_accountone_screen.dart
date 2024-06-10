@@ -57,7 +57,7 @@ class ChooseAccountoneScreen extends StatelessWidget {
                                       SizedBox(height: 71.v),
                                       CustomImageView(
                                           imagePath: ImageConstant
-                                              .imgRedOpenedBook156x171,
+                                              .redbook,
                                           height: 156.v,
                                           width: 171.h,
                                           alignment: Alignment.centerLeft)

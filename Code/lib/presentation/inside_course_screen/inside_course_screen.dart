@@ -1,3 +1,4 @@
+import 'package:chineasy/presentation/courses/course_screen.dart';
 import 'package:chineasy/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 
@@ -373,37 +374,40 @@ class InsideCourses extends StatelessWidget {
                   height: 41,
                   child: Stack(
                     children: [
-                      Positioned(
-                        left: 25,
-                        top: 0,
-                        child: Container(
-                          width: 218,
-                          height: 41,
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 66,
-                        top: 19,
-                        child: SizedBox(
-                          width: 150,
-                          child: Text(
-                            'Enroll Now',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 25,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w600,
-                              height: 0.09,
-                            ),
-                          ),
-                        ),
-                      ),
+                       Positioned(
+            left: 25,
+            top: 0,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CourseScreen()),
+                );
+              },
+              child: Container(
+                width: 218,
+                height: 41,
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'Enroll Now',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w600,
+                      height: 0.09,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
                     ],
                   ),
                 ),

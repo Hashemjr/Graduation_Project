@@ -208,6 +208,12 @@ class SignupScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  CustomImageView(
+                                          imagePath: ImageConstant
+                                              .redbook,
+                                          height: 156.v,
+                                          width: 171.h,
+                                          alignment: Alignment.centerLeft)
                                 ],
                               ),
                             ),

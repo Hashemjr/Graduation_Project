@@ -135,7 +135,7 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
   ),
   SizedBox(height: 12.v),
   Padding(
-    padding: EdgeInsets.symmetric(horizontal: 40.h), // Adjust the padding as needed
+    padding: EdgeInsets.symmetric(horizontal: 30.h), // Adjust the padding as needed
     child: LevelProgressBar(
       currentScore: 600,  // Example value
       maxScore: 1000,     // Example value
@@ -143,7 +143,7 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
       nextLevel: 2,       // Example value
     ),
   ),
-  SizedBox(height: 20.v),
+  SizedBox(height: 12.v),
   Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -248,27 +248,32 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
 
   Widget _buildBackgroundBlurStack(BuildContext context) {
     return SizedBox(
-      height: 188.v,
+      height: 180.v,
       width: double.maxFinite,
       child: Stack(
-        alignment: Alignment.centerRight,
+        alignment: Alignment.topCenter,
         children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgBackgroundBlur,
-            height: 187.v,
-            width: 216.h,
-            alignment: Alignment.centerLeft,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50,right: 10),
+            child: CustomImageView(
+              imagePath: ImageConstant.backgroundleft,
+              //height: 230.v,
+              width: 180.h,
+              alignment: Alignment.centerLeft,
+            ),
           ),
-          CustomImageView(
-            imagePath: ImageConstant.imgBackgroundBlur188x200,
-            height: 188.v,
-            width: 200.h,
-            alignment: Alignment.centerRight,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 40,left: 5),
+            child: CustomImageView(
+              imagePath: ImageConstant.backgroundright,
+              width: 180.h,
+              alignment: Alignment.centerRight,
+            ),
           ),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 26.v),
+              padding: EdgeInsets.only(top: 130),
               child: Text(
                 '${username}',
                 style: theme.textTheme.titleMedium,
@@ -276,9 +281,9 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
             ),
           ),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: 6.v),
+              padding: EdgeInsets.only(top: 160),
               child: Text(
                 "lbl_level_1".tr,
                 style: CustomTextStyles.bodyMediumOutfitGray400,
@@ -289,7 +294,7 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
             alignment: Alignment.topRight,
             child: Padding(
               padding: EdgeInsets.only(
-                top: 38.v,
+                top: 15.v,
                 right: 15.h,
               ),
               child: Row(
@@ -370,7 +375,7 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
     return Column(
       children: [
         _buildState1Row(context),
-        SizedBox(height: 31.v),
+        SizedBox(height: 12.v),
         Align(
           alignment: Alignment.centerLeft,
           child: Padding(
