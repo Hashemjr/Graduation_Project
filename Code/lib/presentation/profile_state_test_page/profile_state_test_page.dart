@@ -9,16 +9,17 @@ import 'package:chineasy/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:chineasy/level_progress_bar.dart';
-class ProfileStateTestBloc
-    extends Bloc<ProfileStateTestEvent, ProfileStateTestState> {
+class ProfileStateTestBloc extends Bloc<ProfileStateTestEvent, ProfileStateTestState> {
   ProfileStateTestBloc(ProfileStateTestState initialState)
       : super(initialState) {
     on<ProfileStateTestInitialEvent>(_onInitialize);
   }
+
   void _onInitialize(
     ProfileStateTestInitialEvent event,
     Emitter<ProfileStateTestState> emit,
   ) async {
+    // Fetch level progress when the bloc is initialized
     emit(state.copyWith(
       profileStateTestModelObj: state.profileStateTestModelObj?.copyWith(
         medalliontilelistItemList: fillMedalliontilelistItemList(),
@@ -26,20 +27,21 @@ class ProfileStateTestBloc
     ));
   }
 
+  // Your existing code for filling medalliontilelistItemList
   List<MedalliontilelistItemModel> fillMedalliontilelistItemList() {
     return [
       MedalliontilelistItemModel(
           imageId: ImageConstant.imgMedallions,
           courseName: "Essential Mandarin Course",
-          id:'1'),
+          id: '1'),
       MedalliontilelistItemModel(
           imageId: ImageConstant.imgMedallionsBlack900,
           courseName: "Advanced Mandarin Proficiency",
-          id:'2'),
+          id: '2'),
       MedalliontilelistItemModel(
           imageId: ImageConstant.medalgold,
           courseName: "Advanced Mandarin Proficiency",
-          id:'3'),
+          id: '3'),
     ];
   }
 }
@@ -136,11 +138,7 @@ class _ProfileStateTestPageState extends State<ProfileStateTestPage> {
   SizedBox(height: 12.v),
   Padding(
     padding: EdgeInsets.symmetric(horizontal: 30.h), // Adjust the padding as needed
-    child: LevelProgressBar(
-      currentScore: 600,  // Example value
-      maxScore: 1000,     // Example value
-      currentLevel: 1,    // Example value
-      nextLevel: 2,       // Example value
+    child: LevelProgressBar(     // Example value
     ),
   ),
   SizedBox(height: 12.v),

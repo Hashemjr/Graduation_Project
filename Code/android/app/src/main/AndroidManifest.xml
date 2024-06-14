@@ -11,7 +11,7 @@
 
     <application
         android:label="chineasy"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/logochineasy">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

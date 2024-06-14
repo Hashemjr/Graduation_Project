@@ -240,10 +240,6 @@ class _CoursesTestContainerPageState extends State<CoursesTestContainerPage> {
                       alignment: Alignment.center,
                       children: [
                         LevelProgressBar(
-                          currentScore: 600,
-                          maxScore: 1000,
-                          currentLevel: 1,
-                          nextLevel: 2,
                         ),
                       ],
                     ),
