@@ -54,15 +54,17 @@ dependencies:
   introduction_screen: ^3.1.14
   percent_indicator: ^4.2.3
   flutter_slidable: ^3.1.0
+  firebase_storage: ^11.6.9
+  firebase_database: ^10.4.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter_launcher_icons:
-  android: "launcher_icon"
+  android: "logochineasy"
   ios: true
-  image_path: "assets/images/dragon .png"
+  image_path: "assets/images/logochineasy.png"
   background_color: "#ffffff"
 flutter:
   uses-material-design: true

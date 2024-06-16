@@ -1,8 +1,11 @@
 import 'package:chineasy/core/app_export.dart';
+import 'package:chineasy/presentation/courses/Lesson_Temp/lesson_temp.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'PhrasebookScreen.dart';
 import 'SentenceBuildingScreen.dart';
 import 'PhraseBuilderScreen.dart';
+
 
 class Lessontemp4 extends StatefulWidget {
   @override
@@ -14,11 +17,12 @@ class _Lessontemp4State extends State<Lessontemp4> {
   void initState() {
     super.initState();
   }
-    @override
+
+  @override
   Widget build(BuildContext context) {
- 
     final double buttonWidth = MediaQuery.of(context).size.width * 0.8;
     final double buttonHeight = MediaQuery.of(context).size.height * 0.07;
+
     return SafeArea(
       child: Scaffold(
         extendBody: true,
@@ -43,8 +47,8 @@ class _Lessontemp4State extends State<Lessontemp4> {
                   child: Text(
                     'Lesson Menu',
                     style: TextStyle(
-                      fontFamily: 'Roboto', // Change to your desired font family
-                      fontSize: 30, // Adjust the font size as needed
+                      fontFamily: 'Roboto',
+                      fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -56,6 +60,7 @@ class _Lessontemp4State extends State<Lessontemp4> {
                   PhrasebookScreen(),
                   buttonWidth,
                   buttonHeight,
+                  'lesson4_page1', // Unique identifier for the lesson page
                 ),
                 SizedBox(height: 20),
                 _buildModernButton(
@@ -64,6 +69,7 @@ class _Lessontemp4State extends State<Lessontemp4> {
                   SentenceBuildingScreen(),
                   buttonWidth,
                   buttonHeight,
+                  'lesson4_page2', // Unique identifier for the lesson page
                 ),
                 SizedBox(height: 20),
                 _buildModernButton(
@@ -72,6 +78,7 @@ class _Lessontemp4State extends State<Lessontemp4> {
                   PhraseBuilderScreen(),
                   buttonWidth,
                   buttonHeight,
+                  'lesson4_page3', // Unique identifier for the lesson page
                 ),
               ],
             ),
@@ -80,14 +87,21 @@ class _Lessontemp4State extends State<Lessontemp4> {
       ),
     );
   }
-}
+
   Widget _buildModernButton(
-      BuildContext context, String text, Widget page, double width, double height) {
+      BuildContext context, String text, Widget page, double width, double height, String lessonId) {
     return SizedBox(
       width: width,
       height: height,
       child: ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
+          // Update course progress
+          await updateCourseProgress(lessonId);
+
+          // Update level progress (e.g., increment by 50)
+          await updateLevelProgress(50);
+
+          // Navigate to the lesson page
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => page),
@@ -110,7 +124,11 @@ class _Lessontemp4State extends State<Lessontemp4> {
       ),
     );
   }
-void main() {
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Lessontemp4(),

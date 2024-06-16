@@ -5,6 +5,7 @@ import 'models/home_page_container_model.dart';
 import 'package:chineasy/core/app_export.dart';
 import 'package:chineasy/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -37,24 +38,47 @@ class HomePageContainerScreen extends StatefulWidget {
 
 class _HomePageContainerScreenState extends State<HomePageContainerScreen> {
   late Future<Word> _wordOfTheDay;
-  ValueNotifier<double> progressNotifier = ValueNotifier<double>(72.0);
+  ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
   late String username = '';
 
   @override
   void initState() {
     super.initState();
     fetchUsername();
+    fetchProgress();
     _wordOfTheDay =
-        getWordOfTheDay(); // Call the function to fetch the word of the day
+    getWordOfTheDay(); // Call the function to fetch the word of the day
   }
+Future<void> fetchProgress() async {
+  User? user = FirebaseAuth.instance.currentUser;
+  if (user != null) {
+    String uid = user.uid;
+    DocumentReference userDoc = FirebaseFirestore.instance.collection('users').doc(uid);
+    DocumentSnapshot snapshot = await userDoc.get();
+    if (snapshot.exists) {
+      Map<String, dynamic> userData = snapshot.data() as Map<String, dynamic>;
+      String progressString = userData['Progressbar'] ?? '0';
+      double progress = double.tryParse(progressString) ?? 0.0;
+      
+      // If progress is 99, set it to 100
+      if (progress == 99) {
+        progress = 100;
+        // Update Firestore with the new progress value
+        await userDoc.update({'Progressbar': '100'});
+      }
 
+      // Update the progressNotifier
+      progressNotifier.value = progress;
+    }
+  }
+}
   Future<void> fetchUsername() async {
     String usernameFromFirestore = await getUsernameFromFirestore();
     setState(() {
       username = usernameFromFirestore; // Save the username in the state
     });
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomePageContainerBloc, HomePageContainerState>(
@@ -291,93 +315,105 @@ Widget _buildContinueStudying(BuildContext context) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 41.h),
-                        child: Row(
-                          children: [
-                            Container(
-                              height: 84.adaptSize,
-                              width: 84.adaptSize,
-                              margin: EdgeInsets.only(top: 12.v, bottom: 15.v),
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Container(
-                                    height: 84.adaptSize,
-                                    width: 84.adaptSize,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: SimpleCircularProgressBar(
-                                      progressColors: const [Color.fromARGB(255, 255, 255, 255)],
-                                      backColor: Color.fromARGB(199, 71, 71, 71),
-                                      progressStrokeWidth: 10,
-                                      backStrokeWidth: 5,
-                                      mergeMode: true,
-                                      fullProgressColor: Colors.green,
-                                      animationDuration: 3,
-                                      valueNotifier: progressNotifier,
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      decoration: AppDecoration.outlinePrimary1,
-                                      child: Text(
-                                        "lbl_72".tr,
-                                        style: CustomTextStyles.titleMediumPoppinsSemiBold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 16.h),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "lbl_beginner_level".tr,
-                                    style: CustomTextStyles.titleSmallGray50003,
-                                  ),
-                                  Text(
-                                    "lbl_chapter_2".tr,
-                                    style: CustomTextStyles.labelLargeGray50003,
-                                  ),
-                                  SizedBox(
-                                    width: 153.h,
-                                    child: Text(
-                                      "msg_pinyin_chinese".tr,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: CustomTextStyles.titleMediumPoppinsSemiBold.copyWith(
-                                        height: 1.33,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 12.v),
-                                  Text(
-                                    "msg_continue_your_journey".tr,
-                                    style: CustomTextStyles.bodySmallOnError,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 14.v),
-                      CustomElevatedButton(
-                        height: 44.v,
-                        text: "Mulan Chatbot".tr,
-                        buttonStyle: CustomButtonStyles.fillPrimary,
-                        buttonTextStyle: CustomTextStyles.titleSmallGray900,
-                        onPressed: () {
-                          NavigatorService.pushNamed(AppRoutes.chatbotScreen);
-                        },
-                      ),
-                    ],
+  Padding(
+    padding: EdgeInsets.only(right: 41.h),
+    child: Row(
+      children: [
+        Container(
+          height: 84.adaptSize,
+          width: 84.adaptSize,
+          margin: EdgeInsets.only(top: 12.v, bottom: 15.v),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                height: 84.adaptSize,
+                width: 84.adaptSize,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: SimpleCircularProgressBar(
+                  progressColors: const [Color.fromARGB(255, 255, 255, 255)],
+                  backColor: Color.fromARGB(199, 71, 71, 71),
+                  progressStrokeWidth: 10,
+                  backStrokeWidth: 5,
+                  mergeMode: true,
+                  fullProgressColor: Colors.green,
+                  animationDuration: 3,
+                  valueNotifier: progressNotifier,
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  decoration: AppDecoration.outlinePrimary1,
+                  child: ValueListenableBuilder<double>(
+                    valueListenable: progressNotifier,
+                    builder: (context, value, child) {
+                      return Text(
+                        '${value.toInt()}%', // Convert the progress to an integer and display it
+                        style: CustomTextStyles.titleMediumPoppinsSemiBold,
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 16.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "lbl_beginner_level".tr,
+                style: CustomTextStyles.titleSmallGray50003,
+              ),
+              Text(
+                "Chapter 1",
+                style: CustomTextStyles.labelLargeGray50003,
+              ),
+              SizedBox(
+                width: 153.h,
+                child: Text(
+                  "msg_pinyin_chinese".tr,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: CustomTextStyles.titleMediumPoppinsSemiBold.copyWith(
+                    height: 1.33,
+                  ),
+                ),
+              ),
+              SizedBox(height: 12.v),
+              GestureDetector(
+                onTap: () {
+                  // Navigate to the desired screen
+                  NavigatorService.pushNamed(AppRoutes.courseScreen);
+                },
+                child: Text(
+                  "msg_continue_your_journey".tr,
+                  style: CustomTextStyles.bodySmallOnError,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  ),
+  SizedBox(height: 14.v),
+  CustomElevatedButton(
+    height: 44.v,
+    text: "Mulan Chatbot".tr,
+    buttonStyle: CustomButtonStyles.fillPrimary,
+    buttonTextStyle: CustomTextStyles.titleSmallGray900,
+    onPressed: () {
+      NavigatorService.pushNamed(AppRoutes.chatbotScreen);
+    },
+  ),
+],
+
                   ),
                 ),
                 SizedBox(height: 12.v),
@@ -441,7 +477,6 @@ Widget _buildContinueStudying(BuildContext context) {
                                     ),
                                   ),
                                 ),
-                                // Other widgets...
                               ],
                             ),
                           ),

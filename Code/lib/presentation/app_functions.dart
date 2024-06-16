@@ -41,6 +41,7 @@ void addUserToFirestore(Map<String, String?> userData) {
     'birthday': userData['birthday'],
     'gender': userData['gender'],
     'college':'ecu',
+    'Progressbar':'0',
   }).then((_){
     print('User added to Firestore successfully!');
     // Add the Userstats subcollection
